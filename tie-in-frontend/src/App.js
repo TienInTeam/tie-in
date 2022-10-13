@@ -1,24 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
-
+import Login from './pages/Login';
+import SingUp from './pages/SignUp';
+import { AuthProvider } from './contexts/AuthContext';
 function App() {
   return (
+    <AuthProvider>
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {/* <Login/>
+        <br/> */}
+        <SingUp/>
       </header>
     </div>
+    </AuthProvider>
   );
 }
 
