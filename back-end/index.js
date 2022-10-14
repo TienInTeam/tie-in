@@ -1,31 +1,53 @@
-const express = require('express');
+const express = require("express");
 const app = express();
 const PORT = 8080;
 
+
+//Settings to connect to MongoDB
+const { MongoClient} = require('mongodb');
+const uri = "mongodb+srv://tieinuser1:tieinmongo01@testcluster.ryzz4av.mongodb.net/?retryWrites=true&w=majority";
+const client = new MongoClient(uri);
 
 app.use(express.json());
 
 app.listen(PORT, () => {
   console.log(`it is listening to ${PORT}`);
-})
-
-app.get('/student', (req, res) => {
-  res.status(200).send({
-    studentName: 'Rojin',
-    studentMajor: 'web & mobileapp development'
-  })
 });
 
-app.post('/student/:id', (req, res) => {
-  const { id } = req.params;
-  const { logo } = req.body;
+app.get("/student", (req, res) => {
 
-  if (!logo) {
-    res.status(418).send({ message: 'We need a logo' })
-  }
+  //Action when connected to MongoDB
+  client.connect(async err => {
+    const collection = client.db("TestDB1").collection("Students");
+    // perform actions on the collection object
+    const query = { age: 28 };
+    const student = await collection.findOne(query);
+    client.close();
 
-  res.send({
-    student: `your ${logo}`
-  })
+    res.status(200).send(student);
+  });
+//   const mongoDBSetting = async () => {
+//     await client.connect();
+//     const database = client.db("TestDB1");
+//     const studentsdb = database.collection("Students");
+//     const query = { name: "Diego" };
+//     const student = await studentsdb.findOne(query);
+
+//     await client.close();
+//     return student;
+//   };
+
+//   res.status(200).send(mongoDBSetting());
+  
 });
 
+app.post("/student", (req, res) => {
+
+  //Action when connected to MongoDB
+  client.connect(async err => {
+    const collection = client.db("TestDB1").collection("Students");
+    // perform actions on the collection object
+    const student = await collection.insertOne(req.body);
+    client.close();
+  });
+});
