@@ -19,22 +19,25 @@ app.listen(PORT, () => {
 })
 
 //Create endpoints
+
+//Read data
 app.get('/student', (req, res) => {
 
   client.connect(async err => {
     const collection = client.db("tiein").collection("student");
-    const query = {name: "Rojin"};
+    const query = { name: "Rojin" };
     const student = await collection.findOne(query);
     client.close();
 
     res.status(200).send(student);
   });
-  
+
 
 });
 
+//Create data
 app.post('/student', (req, res) => {
-  
+
   const body = req.body
 
   client.connect(async err => {
@@ -43,9 +46,51 @@ app.post('/student', (req, res) => {
     client.close();
 
 
-  res.send(student)
-});
+    res.send(student)
+  });
 
 });
 
+//Update data
+app.put('/student', (req, res) => {
+
+
+  client.connect(async err => {
+    const collection = client.db("tiein").collection("student");
+    const student = await collection.findOneAndUpdate(
+      { name: req.body.name },
+      {
+        $set: {
+          name: req.body.name,
+          class: req.body.class,
+          lastName: req.body.lastName
+        }
+      }
+    );
+
+    client.close();
+
+
+    res.send(student)
+  });
+
+});
+
+//Delete data
+app.delete('/student', (req, res) => {
+
+  
+
+  client.connect(async err => {
+    const collection = client.db("tiein").collection("student");
+    const student = await collection.deleteOne(
+      { name: req.body.name }
+    );
+    client.close();
+
+
+    res.send(student)
+  });
+
+});
 
