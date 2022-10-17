@@ -9,12 +9,12 @@ const client = new MongoClient(uri);
 //Use Express
 const express = require('express');
 const app = express();
-const PORT = 8080;
+const PORT = 3890;
 
 
 app.use(express.json());
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT || PORT, () => {
   console.log(`it is listening to ${PORT}`);
 })
 
