@@ -1,18 +1,24 @@
 import './App.css';
 import Login from './pages/Login';
-import SingUp from './pages/SignUp';
-import { AuthProvider } from './contexts/AuthContext';
+import SignUp from './pages/SignUp';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import Home from './pages/Home';
+
 function App() {
   return (
-    <AuthProvider>
-    <div className="App">
-      <header className="App-header">
-        {/* <Login/>
-        <br/> */}
-        <SingUp/>
-      </header>
-    </div>
-    </AuthProvider>
+
+    <Router>
+      <div className="App">
+        <>
+          <Routes>
+            <Route path='/' element={<Home />}/>
+            <Route path='/login' element={<Login />}/>
+            <Route path='/signup' element={<SignUp />}/>
+          </Routes>
+        </>
+      </div>
+    </Router>
+
   );
 }
 
