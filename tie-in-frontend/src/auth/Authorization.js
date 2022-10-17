@@ -16,12 +16,10 @@ export function signUp(email, password)
             sessionStorage.setItem('User ID:', uid );
             console.log(sessionStorage);
           }
-          
       })
       .catch((error) => {
             const errorMessage = error.message;
             console.log(errorMessage);
-
       });
     }
 
