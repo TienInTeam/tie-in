@@ -13,7 +13,6 @@ const Login = () => {
       await login(emailRef.current.value, passwordRef.current.value);
     }
     catch {
-      console.log("Failed");
       setError('Failed to Login');
     }
   }
