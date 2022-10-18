@@ -1,8 +1,8 @@
-import firebase from  "firebase/compat/app" ;
+import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 
-const app= firebase.initializeApp({
-    apiKey: "AIzaSyDZ3dscyzzhPEf0fcd4XYtAMpb5P3-GJCo",
+const app = firebase.initializeApp({
+  apiKey: "AIzaSyDZ3dscyzzhPEf0fcd4XYtAMpb5P3-GJCo",
   authDomain: "tie-in-b8590.firebaseapp.com",
   projectId: "tie-in-b8590",
   storageBucket: "tie-in-b8590.appspot.com",
