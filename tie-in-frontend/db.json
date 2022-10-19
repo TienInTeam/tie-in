@@ -1,0 +1,74 @@
+{
+  "students": [
+    {
+      "email": "fjoca00@gmail.com",
+      "full_name": "Florida",
+      "institution": "Langara",
+      "linkedIn_url": "https://test.com",
+      "location": "Vancouver",
+      "phone_number": "06589978525",
+      "position": "Software Engineer"
+    }
+  ],
+  "studentProject": [
+    {
+      "name": "nannies for you",
+      "logo": "Florida",
+      "description": "test test",
+      "linkedIn_url": "https://test.com",
+      "team_id": "",
+      "approval_status": "Pending",
+      "tags": "Software Engineer, Web-App",
+      "start_date": "",
+      "end_date": "",
+      "business_model": "",
+      "technology": "",
+      "instructor_email": "",
+      "product_link": "",
+      "subject": "",
+      "institution": ""
+    },
+    {
+      "id": 1,
+      "name": "Piccle",
+      "logo": "",
+      "description": "Test test ",
+      "linkedIn_url": "https://test.com",
+      "team_id": "",
+      "approval_status": "Pending",
+      "tags": "Software Engineer, Web-App",
+      "start_date": "2022-10-19T05:57:48.578Z",
+      "end_date": "2022-10-22T05:57:48.000Z",
+      "business_model": "",
+      "technology": [
+        "Adobe Illustrator",
+        "CSS",
+        "Trello"
+      ],
+      "instructor_email": "fjoca00@gmail.com",
+      "product_link": "https://google.com",
+      "institution": "Langara College"
+    },
+    {
+      "id": 2,
+      "name": "Get A Tat",
+      "logo": "",
+      "description": "Test 2",
+      "linkedIn_url": "https://test.com",
+      "team_id": "",
+      "approval_status": "Pending",
+      "tags": "Software Engineer, Web-App",
+      "start_date": "2022-10-25T05:57:48.000Z",
+      "end_date": "2022-10-29T05:57:48.000Z",
+      "business_model": "",
+      "technology": [
+        "Figma",
+        "React Native",
+        "Notion"
+      ],
+      "instructor_email": "fjoca@gmail.com",
+      "product_link": "https://google.com",
+      "institution": "Langara College"
+    }
+  ]
+}
