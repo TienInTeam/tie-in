@@ -1,11 +1,11 @@
 import React from 'react'
 import Button from './Button';
 
-function RequestStatusCrad({ logo, projectTitle, team, onApprove, onClose}) {
+function RequestStatusCradCompanySite({ logo, projectTitle, team, onApprove, onClose}) {
 
   const {teamName, image, name} = team;
   return (
-    <div className="request-status-card">
+    <div className="request-status-card-company">
     <img src={logo} alt="project's logo" />
     <h2>{projectTitle}</h2>
     <h3>{teamName}</h3>
@@ -18,4 +18,4 @@ function RequestStatusCrad({ logo, projectTitle, team, onApprove, onClose}) {
   )
 }
 
-export default RequestStatusCrad
+export default RequestStatusCradCompanySite
