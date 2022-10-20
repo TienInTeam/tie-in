@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from './Button';
 
-function RequestStatusCradCompanySite({ logo, projectTitle, team, onApprove, onClose}) {
+function RequestStatusCradCompanySide({ logo, projectTitle, team, onApprove, onClose}) {
 
   const {teamName, image, name} = team;
   return (
@@ -18,4 +18,4 @@ function RequestStatusCradCompanySite({ logo, projectTitle, team, onApprove, onC
   )
 }
 
-export default RequestStatusCradCompanySite
+export default RequestStatusCradCompanySide
