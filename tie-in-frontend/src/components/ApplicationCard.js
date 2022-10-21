@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import Button from './Button';
 
 function ApplicationCard({ companyProjectName, onClose, team, status }) {
@@ -17,4 +17,4 @@ function ApplicationCard({ companyProjectName, onClose, team, status }) {
   )
 }
 
-export default ApplicationCard
+export default ApplicationCard;

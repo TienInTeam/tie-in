@@ -5,10 +5,9 @@ function PreviousProjectCard({ projectName, onSeeDetails }) {
   return (
     <div className="previous-project-card">
       <h2>{projectName}</h2>
-
       <Button onClick={onSeeDetails} />
     </div>
-  )
+  );
 }
 
-export default PreviousProjectCard
+export default PreviousProjectCard;

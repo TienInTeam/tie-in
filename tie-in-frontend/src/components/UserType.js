@@ -10,7 +10,7 @@ function UserType({ image, onClick, description }) {
       </div>
       <div className="description">{description}</div>
     </div>
-  )
+  );
 }
 
-export default UserType
+export default UserType;
