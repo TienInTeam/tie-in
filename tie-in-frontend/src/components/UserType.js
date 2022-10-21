@@ -7,10 +7,9 @@ function UserType({ image, onClick, description }) {
       <div>
         <img src={image} alt="" />
         <Button onClick={onClick} />
-        </div>
-        <div className="description">{description}</div>
       </div>
-  
+      <div className="description">{description}</div>
+    </div>
   )
 }
 

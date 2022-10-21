@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 function InputType({ placeHolder, label, type, onChange }) {
 
   return (

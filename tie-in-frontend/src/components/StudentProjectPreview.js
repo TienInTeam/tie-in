@@ -1,10 +1,8 @@
 import React from 'react'
 import Button from './Button';
 
-function StudentProjectPreview({ studentProject, onSeeMore, onEdit}) {
-
+function StudentProjectPreview({ studentProject, onSeeMore, onEdit }) {
   const { logo, title, institution, description, category, location } = studentProject;
-
   return (
     <div>
       <img src={logo} alt="project's logo" />
@@ -17,7 +15,6 @@ function StudentProjectPreview({ studentProject, onSeeMore, onEdit}) {
       <p>{category}</p>
       <h3>Location</h3>
       <p>{location}</p>
-
       <Button onClick={onSeeMore} />
       <Button onClick={onEdit} />
     </div>
