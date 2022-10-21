@@ -5,7 +5,7 @@ function UploadButton({ title, onClickUpload }) {
     <>
       <button className="upload-button" onClick={onClickUpload}>{title}</button>
     </>
-  )
+  );
 }
 
-export default UploadButton
+export default UploadButton;

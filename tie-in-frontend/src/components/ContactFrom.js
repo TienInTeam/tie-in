@@ -8,7 +8,7 @@ function ContactFrom({onSend, label}) {
     <InputType label={label} />
     <Button onClick={onSend} />
     </div>
-  )
+  );
 }
 
-export default ContactFrom
+export default ContactFrom;

@@ -3,7 +3,8 @@ import Button from './Button'
 
 function StudentProjectDetails({ studentProject, team, onEdit }) {
   const { logo, title, verification, category, duration, location, institution, description, product, planUpload } = studentProject;
-  const { image, name, studentTitle, linkdin, email } = team;
+  const { image, name, studentTitle, linkedIn, email } = team;
+
   return (
     <div className="student-project-detail">
       <img src={logo} alt="project's logo" />
@@ -14,7 +15,7 @@ function StudentProjectDetails({ studentProject, team, onEdit }) {
       <p>{duration}</p>
       <h3>Location</h3>
       <p>{location}</p>
-      <h3>Instution</h3>
+      <h3>Institution</h3>
       <p>{institution}</p>
       <h3>Description</h3>
       <p>{description}</p>
@@ -26,11 +27,11 @@ function StudentProjectDetails({ studentProject, team, onEdit }) {
       <img src={image} alt="student's image" />
       <h3>{name}</h3>
       <h3>{studentTitle}</h3>
-      <a href={linkdin}>{linkdin}</a>
+      <a href={linkedIn}>{linkedIn}</a>
       <a href={email}>{email}</a>
       <Button onClick={onEdit} />
     </div>
-  )
+  );
 }
 
-export default StudentProjectDetails
+export default StudentProjectDetails;

@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from './Button';
 
-function RequestStatusCradCompanySide({ logo, projectTitle, team, onApprove, onClose }) {
+function RequestStatusCardCompanySide({ logo, projectTitle, team, onApprove, onClose }) {
   const { teamName, image, name } = team;
   return (
     <div className="request-status-card-company">
@@ -13,7 +13,7 @@ function RequestStatusCradCompanySide({ logo, projectTitle, team, onApprove, onC
       <Button onClick={onApprove} />
       <Button onClick={onClose} />
     </div>
-  )
+  );
 }
 
-export default RequestStatusCradCompanySide
+export default RequestStatusCardCompanySide;

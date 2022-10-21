@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import Button from './Button'
 
 function BusinessProjectDetails({ businessProject, onApply }) {
@@ -11,7 +11,7 @@ function BusinessProjectDetails({ businessProject, onApply }) {
       <h2>{projectTitle}</h2>
       <p>Team members:</p>
       <p>{teamMembers}</p>
-      <p>Team tequirement:</p>
+      <p>Team requirement:</p>
       <p>{teamRequirement}</p>
       <p>Project start date:</p>
       <p>{startDate}</p>
@@ -32,4 +32,4 @@ function BusinessProjectDetails({ businessProject, onApply }) {
   )
 }
 
-export default BusinessProjectDetails
+export default BusinessProjectDetails;

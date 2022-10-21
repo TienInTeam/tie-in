@@ -9,7 +9,7 @@ function InputType({ placeHolder, label, type, onChange }) {
         <input type={type} placeholder={placeHolder} onChange={onChange} />
       </label>
     </div>
-  )
+  );
 }
 
 export default InputType;

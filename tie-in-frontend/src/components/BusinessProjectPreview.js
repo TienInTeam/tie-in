@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import Button from './Button';
 
 function BusinessProjectPreview({ businessProject, onSeeMore, onEdit }) {
@@ -24,4 +24,4 @@ function BusinessProjectPreview({ businessProject, onSeeMore, onEdit }) {
   )
 }
 
-export default BusinessProjectPreview
+export default BusinessProjectPreview;

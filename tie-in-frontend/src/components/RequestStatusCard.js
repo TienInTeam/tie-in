@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from "./Button";
 
 function RequestStatusCard({ logo, projectTitle, team, status, onClose }) {
   const { teamName, image, name } = team;
@@ -14,7 +15,7 @@ function RequestStatusCard({ logo, projectTitle, team, status, onClose }) {
       <p>{status}</p>
       <Button onClick={onClose} />
     </div>
-  )
+  );
 }
 
-export default RequestStatusCard
+export default RequestStatusCard;

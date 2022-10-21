@@ -8,7 +8,7 @@ function SuccessPopUp({ title, subtitle, onClickSuccess }) {
       <p>{subtitle}</p>
       <Button onClick={onClickSuccess} />
     </div>
-  )
+  );
 }
 
-export default SuccessPopUp
+export default SuccessPopUp;
