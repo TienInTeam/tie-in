@@ -12,7 +12,6 @@ function ApplicationCard({ companyProjectName, onClose, team, status }) {
       <img src={image} alt="student's image" />
       <h3>Status</h3>
       <p>{status}</p>
-
       <Button onClick={onClose} />
     </div>
   )
