@@ -1,8 +1,7 @@
 import React from 'react'
 import Button from './Button'
 
-
-function SuccessPopUp({ title, subtitle, onClickSuccess}) {
+function SuccessPopUp({ title, subtitle, onClickSuccess }) {
   return (
     <div className="success-popup">
       <h2>{title}</h2>
