@@ -2,7 +2,7 @@ import React from 'react'
 import Button from './Button';
 
 function HighlightedStudentProject({ studentProject, onSeeMore }) {
-  const {name, description, institution, category, location, logo } = studentProject;
+  const { name, description, institution, category, location, logo } = studentProject;
   return (
     <div>
       <h2>{name}</h2>
@@ -15,11 +15,7 @@ function HighlightedStudentProject({ studentProject, onSeeMore }) {
       <h2>Location</h2>
       <p>{location}</p>
       <img src={logo} alt="project's logo" />
-
       <Button onClick={onSeeMore} />
-      
-
-
     </div>
   )
 }
