@@ -16,7 +16,6 @@ const SignUp = () => {
     try {
       setError('');
       setLoading(true);
-      console.log(emailRef.current.value, passwordRef.current.value);
       await signUp(emailRef.current.value, passwordRef.current.value);
     }
     catch {
