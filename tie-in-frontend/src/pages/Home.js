@@ -14,6 +14,9 @@ const Home = () => {
             <li>
                 <Link to="/uploadstudentproject">Upload student project</Link>
             </li>
+            <li>
+                <Link to="/liststudentproject">List student project</Link>
+            </li>
         </ul>
       </nav>
       <Outlet />

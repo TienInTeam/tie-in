@@ -1,5 +1,6 @@
 import './App.css';
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+import ListStudentProjects from "./pages/ListStudentProjects";
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
@@ -19,6 +20,7 @@ function App() {
             <Route path='/login' element={<Login />}/>
             <Route path='/signup' element={<SignUp />}/>
             <Route path='/uploadstudentproject' element={<UploadStudentProject />}/>
+            <Route path='/liststudentproject' element={<ListStudentProjects />}/>
           </Routes>
         </QueryClientProvider>
       </div>
