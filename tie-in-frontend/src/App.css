@@ -40,7 +40,33 @@
 h1 {
   color: #277188;
 }
+h2 {
+  color: #2e6879;
+}
 
 .studentProject {
   text-align: start;
+}
+
+.highlightStudentProject {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #c5c2c2;
+  border-radius: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.dashboard {
+  background-color: #383737;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+
+h4 {
+  color: #214d39;
 }
