@@ -1,7 +1,9 @@
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+import app from './firebase';
 
+//method to register user on the app and authenticate with firebase.
 export function signUp(email, password) {
-  const authentication = getAuth();
+  const authentication = getAuth(app);
   createUserWithEmailAndPassword(authentication, email, password).then((response) => {
     const user = authentication.currentUser;
     if (user !== null) {
@@ -17,9 +19,9 @@ export function signUp(email, password) {
     });
 }
 
-
+//method to login the user on the app and store authentication info.
 export function login(email, password) {
-  const authentication = getAuth();
+  const authentication = getAuth(app);
   signInWithEmailAndPassword(authentication, email, password)
     .then((response) => {
       const user = authentication.currentUser;
