@@ -42,14 +42,22 @@ app.post('/student', (req, res) => {
 
   client.connect(async err => {
     const collection = client.db("tiein").collection("student");
-    const student = await collection.insertOne(body);
+    const student = await collection.insertOne({
+      name: req.body.name,
+      class: req.body.class,
+      lastname: req.body.name
+    });
     client.close();
-
-
     res.send(student)
   });
 
 });
+
+
+
+
+
+
 
 //Update data
 app.put('/student', (req, res) => {
