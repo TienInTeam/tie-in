@@ -11,10 +11,6 @@ const client = new MongoClient(uri);
 
 app.use(express.json());
 
-app.listen(PORT, () => {
-  console.log(`it is listening to ${PORT}`);
-})
-
 //Create endpoints
 
 //Read data
