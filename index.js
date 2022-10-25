@@ -17,7 +17,7 @@ app.use(express.json());
 app.get('/student', (req, res) => {
 
   client.connect(async err => {
-    const collection = client.db("tiein").collection("student");
+    const collection = client.db("TestDB1").collection("Students");
     const query = { name: "Rojin" };
     const student = await collection.findOne(query);
     client.close();
