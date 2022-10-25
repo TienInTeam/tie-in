@@ -3,11 +3,15 @@ import { useState } from "react";
 import Datepicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { saveStudentProject } from "../api/studentProject";
+import Button from "../components/Button";
+import InputType from "../components/InputType";
+import { isEmailValid } from "../utils/email";
+import validateTextInput from "../utils/validateTextInput";
 
 function UploadStudentProject() {
-    const saveProject =  useMutation(["studentProject"], () => saveStudentProject({
-        "id": 2,
-        "name": name,
+    const saveProject = useMutation(["studentProject"], () => saveStudentProject({
+        "id": 31,
+        "name": projectName,
         "logo": image,
         "description": description,
         "linkedIn_url": "https://test.com",
@@ -18,7 +22,7 @@ function UploadStudentProject() {
         "end_date": endDate,
         "business_model": "",
         "technology": technology,
-        "instructor_email": instructor,
+        "instructor_email": instructorEmail,
         "product_link": productLink,
         "institution": institution
     }), {
@@ -29,15 +33,17 @@ function UploadStudentProject() {
         }
     });
 
-    const [name, setName] = useState("");
+    const [projectName, setProjectName] = useState("");
     const [image, setImage] = useState("");
     const [institution, setInstitution] = useState("");
     const [location, setLocation] = useState(null);
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(null);
+    const [dateIsChecked, setDateIsChecked] = useState(false);
     const [description, setDescription] = useState("");
     const [productLink, setProductLink] = useState("");
-    const [instructor, setInstructor] = useState("");
+    const [productCategory, setProductCategory] = useState("");
+    const [instructorEmail, setInstructorEmail] = useState("");
     const [additionalMessage, setAdditionalMessage] = useState("");
     const [technology, setTechnology] = useState([]);
 
@@ -47,41 +53,87 @@ function UploadStudentProject() {
         setEndDate(end);
     };
 
+    const validateInput = () => {
+
+        if (projectName === "" || institution === "" || productCategory === "") {
+            alert('Enter all mandatory input field values');
+            return false;
+        }
+        if (!validateTextInput(projectName)) {
+            alert("Valid Project name is required.");
+            return false;
+        }
+        if (!validateTextInput(institution)) {
+            alert("Valid Institution name is required.");
+            return false;
+        }
+        if (!validateTextInput(productCategory)) {
+            alert("Valid Product Category name is required.");
+            return false;
+        }
+        if (!isEmailValid(instructorEmail) || !instructorEmail || instructorEmail === "") {
+            alert("Valid email is required.");
+            return false;
+        }
+        if (location) {
+            if (!validateTextInput(location)) {
+                alert("Enter Valid location");
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+        else {
+            return true;
+        }
+
+    }
+
     const onSave = () => {
-        saveProject.mutate();
+        if (validateInput()) {
+            saveProject.mutate();
+        }
     }
 
     return (
         <div className={"upload-project"}>
-            <label>Project Name</label>
-            <input type={"text"} onChange={(e) => setName(e.target.value)}/>
-            <label>Upload logo:</label>
-            <input type={"file"} onChange={(e) => setImage(e.target.value)}/>
-            <label>Duration*</label>
-            <Datepicker
-                selected={startDate}
-                startDate={startDate}
-                endDate={endDate}
-                onChange={(date) => onChange(date)}
-                selectsRange
-            />
-            <label>Institution</label>
-            <input type={"text"} onChange={(e) => setInstitution(e.target.value)}/>
-            <label>Location</label>
-            <input type={"text"} onChange={(e) => setLocation(e.target.value)}/>
+            <InputType type={"text"} label={"Project Name* "} onChange={(e) => setProjectName(e.target.value)} />
+            <InputType type={"file"} label={"Upload logo: "} onChange={(e) => setImage(e.target.value)} />
+            <fieldset>
+                <label>Project Duration*</label>
+                <Datepicker
+                    selected={startDate}
+                    startDate={!dateIsChecked ? startDate : null}
+                    endDate={!dateIsChecked ? endDate : null}
+                    onChange={(date) => onChange(date)}
+                    selectsRange
+                    disabled={dateIsChecked}
+                />
+                <input type="checkbox" id="inProgressCheck" name="inProgressCheck" value="inProgress" checked={dateIsChecked}
+                    onChange={() => {
+                        setDateIsChecked(!dateIsChecked);
+                        if (dateIsChecked) {
+                            setStartDate(new Date());
+                        }
+                        else {
+                            setStartDate(null);
+                            setEndDate(null);
+                        }
+                    }} />
+                <label htmlFor="inProgressCheck"> Still in Progress</label>
+            </fieldset>
+
+            <InputType type={"text"} label={"Institution* "} onChange={(e) => setInstitution(e.target.value)} />
+            <InputType type={"text"} label={"Location "} onChange={(e) => setLocation(e.target.value)} />
             <label>Production Description</label>
-            <textarea onChange={(e) => setDescription(e.target.value)}/>
-            <label>Product Link</label>
-            <input type={"text"} onChange={(e) => setProductLink(e.target.value)}/>
-
-
-            <label>Instructor Email</label>
-            <input type={"text"} onChange={(e) => setInstructor(e.target.value)}/>
-
+            <textarea onChange={(e) => setDescription(e.target.value)} />
+            <InputType type={"text"} label={"Product Category* "} onChange={(e) => setProductCategory(e.target.value)} />
+            <InputType type={"email"} label={"Instructor Email* "} onChange={(e) => setInstructorEmail(e.target.value)} />
+            <InputType type={"text"} label={"Product Link "} onChange={(e) => setProductLink(e.target.value)} />
             <label>Additional Message</label>
-            <textarea onChange={(e) => setAdditionalMessage(e.target.value)}/>
-            <label>Additional files:</label>
-            <input type={"file"} onChange={(e) => setImage(e.target.value)}/>
+            <textarea onChange={(e) => setAdditionalMessage(e.target.value)} />
+            <InputType type={"file"} label={"Additional files: "} onChange={(e) => setImage(e.target.value)} />
 
             <label>Design</label>
             <select id="design" onChange={(e) => setTechnology([e.target.value])}>
@@ -115,7 +167,8 @@ function UploadStudentProject() {
                 <option> Jira </option>
                 <option> GitHub </option>
             </select>
-            <button onClick={onSave} style={{marginTop: "2rem"}}>Save</button>
+
+            <Button onClick={onSave} variant={"primary"} label={"Save"} />
         </div>
     );
 }
