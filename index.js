@@ -1,16 +1,13 @@
-//Connect mongoDB
-const { MongoClient } = require('mongodb');
-const uri = "mongodb+srv://rojintg:mongo@newclaster.bmbuxcx.mongodb.net/?retryWrites=true&w=majority";
-const client = new MongoClient(uri);
-
-
-
-
-//Use Express
-const express = require('express');
+const express = require("express");
 const app = express();
-const PORT = 8080;
 
+app.listen(process.env.PORT || 3000);
+
+//Settings to connect to MongoDB
+const { MongoClient } = require("mongodb");
+const uri =
+  "mongodb+srv://tieinuser1:tieinmongo01@testcluster.ryzz4av.mongodb.net/?retryWrites=true&w=majority";
+const client = new MongoClient(uri);
 
 app.use(express.json());
 
