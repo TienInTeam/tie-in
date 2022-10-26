@@ -1,22 +1,18 @@
-//Connect mongoDB
-const { MongoClient } = require('mongodb');
-const uri = "mongodb+srv://rojintg:mongo@newclaster.bmbuxcx.mongodb.net/?retryWrites=true&w=majority";
-const client = new MongoClient(uri);
-
-
-
-
 //Use Express
 const express = require('express');
 const app = express();
-const PORT = 8080;
 
+//Server Port
+app.listen(process.env.PORT || 3000);
 
+//Connect mongoDB
+const { MongoClient, ObjectId } = require('mongodb');
+const uri = "mongodb+srv://rojintg:mongo@newclaster.bmbuxcx.mongodb.net/?retryWrites=true&w=majority";
+const client = new MongoClient(uri);
+
+//Middleware for json reading.
 app.use(express.json());
 
-app.listen(PORT, () => {
-  console.log(`it is listening to ${PORT}`);
-})
 
 //Create endpoints
 
