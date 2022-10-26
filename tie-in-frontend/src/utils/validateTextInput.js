@@ -8,7 +8,6 @@ const validateTextInput =(input) =>
             else {
                 return true;
             }
-
 }
 
 export default validateTextInput;
