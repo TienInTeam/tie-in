@@ -54,7 +54,6 @@ function UploadStudentProject() {
     };
 
     const validateInput = () => {
-
         if (projectName === "" || institution === "" || productCategory === "") {
             alert('Enter all mandatory input field values');
             return false;
@@ -87,7 +86,6 @@ function UploadStudentProject() {
         else {
             return true;
         }
-
     }
 
     const onSave = () => {
