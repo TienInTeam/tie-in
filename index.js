@@ -4,10 +4,10 @@ const app = express();
 app.listen(process.env.PORT || 3000);
 
 //Settings to connect to MongoDB
-const { MongoClient } = require("mongodb");
+const mongodb = require("mongodb");
 const uri =
   "mongodb+srv://tieinuser1:tieinmongo01@testcluster.ryzz4av.mongodb.net/?retryWrites=true&w=majority";
-const client = new MongoClient(uri);
+const client = new mongodb.MongoClient(uri);
 
 app.use(express.json());
 
@@ -18,11 +18,12 @@ app.get('/student', (req, res) => {
 
   client.connect(async err => {
     const collection = client.db("TestDB1").collection("Students");
-    const query = { name: "Rojin" };
-    const student = await collection.findOne(query);
+    const query = {};
+    const cursor = await collection.find(query).toArray();
+
     client.close();
 
-    res.status(200).send(student);
+    res.status(200).send(cursor);
   });
 
 
@@ -34,7 +35,7 @@ app.post('/student', (req, res) => {
   const body = req.body
 
   client.connect(async err => {
-    const collection = client.db("tiein").collection("student");
+    const collection = client.db("TestDB1").collection("Students");
     const student = await collection.insertOne({
       name: req.body.name,
       class: req.body.class,
@@ -48,16 +49,12 @@ app.post('/student', (req, res) => {
 
 
 
-
-
-
-
 //Update data
 app.put('/student', (req, res) => {
 
 
   client.connect(async err => {
-    const collection = client.db("tiein").collection("student");
+    const collection = client.db("TestDB1").collection("Students");
     const student = await collection.findOneAndUpdate(
       { name: req.body.name },
       {
@@ -80,12 +77,11 @@ app.put('/student', (req, res) => {
 //Delete data
 app.delete('/student', (req, res) => {
 
-  
 
   client.connect(async err => {
-    const collection = client.db("tiein").collection("student");
+    const collection = client.db("TestDB1").collection("Students");
     const student = await collection.deleteOne(
-      { name: req.body.name }
+      { _id: new mongodb.ObjectID("634a28e4ceeff592ecea000f") }
     );
     client.close();
 
