@@ -25,7 +25,7 @@ app.get('/student', (req, res) => {
 
   client.connect(async err => {
     const collection = client.db("tiein").collection("student");
-    const query = { name: "Rojin" };
+    const query = { name: "jane" };
     const student = await collection.findOne(query);
     client.close();
 
@@ -60,13 +60,13 @@ app.post('/student', (req, res) => {
 
 
 //Update data
-app.put('/student', (req, res) => {
+app.put('/student/(:id)', (req, res) => {
 
 
   client.connect(async err => {
     const collection = client.db("tiein").collection("student");
     const student = await collection.findOneAndUpdate(
-      { name: req.body.name },
+      { id: req.body.name },
       {
         $set: {
           name: req.body.name,
@@ -85,20 +85,35 @@ app.put('/student', (req, res) => {
 });
 
 //Delete data
-app.delete('/student', (req, res) => {
+let ObjectID = require('mongodb').ObjectID;
 
-  
-
+app.delete('/student/id', (req, res) => {
+  const idMongo = json.stringify(req.params.id)
   client.connect(async err => {
-    const collection = client.db("tiein").collection("student");
-    const student = await collection.deleteOne(
-      { name: req.body.name }
-    );
-    client.close();
+      const collection = client.db("tiein").collection("student");
+      const student = await collection.deleteOne({ _id: ObjectId(idMongo) });
+      client.close();
+  
+  
+      res.send(student)
+    });
+
+  // client.connect(async err => {
+  //   const collection = client.db("tiein").collection("student");
+  //   const student = await collection.findByIdAndRemove(
+  //     (req.params.id, (err, doc) => {
+  //       if (!err) {
+  //         res.redirect('/users-list')
+  //       } else {
+  //         console.log(err)
+  //       }
+  //     })
+  //   );
+  //   client.close();
 
 
-    res.send(student)
-  });
+  //   res.send(student)
+  // });
 
 });
 
