@@ -7,7 +7,7 @@ app.listen(process.env.PORT || 3000);
 
 //Connect mongoDB
 const { MongoClient, ObjectId } = require('mongodb');
-const uri = "mongodb+srv://rojintg:mongo@newclaster.bmbuxcx.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb+srv://tieinuser1:tieinmongo01@testcluster.ryzz4av.mongodb.net/?retryWrites=true&w=majority";
 const client = new MongoClient(uri);
 
 //Middleware for json reading.
@@ -16,53 +16,47 @@ app.use(express.json());
 
 //Create endpoints
 
-//Read data
+//Get all Students
 app.get('/student', (req, res) => {
 
   client.connect(async err => {
-    const collection = client.db("tiein").collection("student");
-    const query = { name: "jane" };
-    const student = await collection.findOne(query);
+    const collection = client.db("TestDB1").collection("Students");
+    const query = {};
+    const allStudents = await collection.find(query).toArray();
+
     client.close();
 
-    res.status(200).send(student);
+    res.status(200).send(allStudents);
   });
-
-
 });
 
-//Create data
+//Create new Student
 app.post('/student', (req, res) => {
 
   const body = req.body
 
   client.connect(async err => {
-    const collection = client.db("tiein").collection("student");
+    const collection = client.db("TestDB1").collection("Students");
     const student = await collection.insertOne({
       name: req.body.name,
+      lastName: req.body.lastName,
       class: req.body.class,
-      lastname: req.body.name
+      age: req.body.age
     });
     client.close();
+
     res.send(student)
   });
 
 });
 
-
-
-
-
-
-
-//Update data
-app.put('/student/(:id)', (req, res) => {
-
+//Update student data
+app.put('/student/:id', (req, res) => {
 
   client.connect(async err => {
-    const collection = client.db("tiein").collection("student");
+    const collection = client.db("TestDB1").collection("Students");
     const student = await collection.findOneAndUpdate(
-      { id: req.body.name },
+      { id: req.params.id },
       {
         $set: {
           name: req.body.name,
@@ -74,42 +68,23 @@ app.put('/student/(:id)', (req, res) => {
 
     client.close();
 
-
     res.send(student)
   });
 
 });
 
 //Delete data
-let ObjectID = require('mongodb').ObjectID;
+app.delete('/student/:id', (req, res) => {
 
-app.delete('/student/id', (req, res) => {
-  const idMongo = json.stringify(req.params.id)
   client.connect(async err => {
-      const collection = client.db("tiein").collection("student");
-      const student = await collection.deleteOne({ _id: ObjectId(idMongo) });
-      client.close();
-  
-  
-      res.send(student)
-    });
+    const collection = client.db("TestDB1").collection("Students");
+    const deleteResponse = await collection.deleteOne(
+      { _id: new ObjectId(req.params.id) }
+    );
+    client.close();
 
-  // client.connect(async err => {
-  //   const collection = client.db("tiein").collection("student");
-  //   const student = await collection.findByIdAndRemove(
-  //     (req.params.id, (err, doc) => {
-  //       if (!err) {
-  //         res.redirect('/users-list')
-  //       } else {
-  //         console.log(err)
-  //       }
-  //     })
-  //   );
-  //   client.close();
-
-
-  //   res.send(student)
-  // });
+    res.send(deleteResponse)
+  });
 
 });
 
