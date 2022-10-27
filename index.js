@@ -91,3 +91,28 @@ app.delete('/student/:id', (req, res) => {
   });
 });
 
+
+
+/////////////Business/////////////////
+//Get all Sbusiness
+app.get('/student', (req, res) => {
+  client.connect(async err => {
+    const collection = client.db("TestDB1").collection("Business");
+    const query = {};
+    const allBusiness = await collection.find(query).toArray();
+    client.close();
+    res.status(200).send(allBusiness);
+  });
+});
+
+//Get one student
+app.get('/student/:id', (req, res) => {
+  client.connect(async err => {
+    const collection = client.db("TestDB1").collection("Business");
+    const oneBusiness = await collection.findOne(
+      { _id: new ObjectId(req.params.id) }
+    );
+    client.close();
+    res.status(200).send(oneBusiness);
+  });
+});
