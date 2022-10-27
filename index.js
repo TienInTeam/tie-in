@@ -134,3 +134,37 @@ app.post('/business', (req, res) => {
     res.send(business)
   });
 });
+
+//Update student data
+app.put('/business/:id', (req, res) => {
+  client.connect(async err => {
+    const collection = client.db("TestDB1").collection("Business");
+    const business = await collection.findOneAndUpdate(
+      { _id: new ObjectId(req.params.id) },
+      {
+        $set: {
+          name: req.body.name,
+          email: req.body.email,
+          phoneNumber: req.body.phoneNumber,
+          logoUrl: req.body.logoUrl,
+          linkedInUrl: req.body.linkedInUrl,
+          websiteUrl: req.body.websiteUrl 
+        }
+      }
+    );
+    client.close();
+    res.send(business)
+  });
+});
+
+//Delete  business data
+app.delete('/business/:id', (req, res) => {
+  client.connect(async err => {
+    const collection = client.db("TestDB1").collection("Business");
+    const deleteResponse = await collection.deleteOne(
+      { _id: new ObjectId(req.params.id) }
+    );
+    client.close();
+    res.send(deleteResponse)
+  });
+});
