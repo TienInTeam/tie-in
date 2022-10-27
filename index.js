@@ -94,8 +94,9 @@ app.delete('/student/:id', (req, res) => {
 
 
 /////////////Business/////////////////
-//Get all Sbusiness
-app.get('/student', (req, res) => {
+
+//Get all business
+app.get('/business', (req, res) => {
   client.connect(async err => {
     const collection = client.db("TestDB1").collection("Business");
     const query = {};
@@ -105,8 +106,8 @@ app.get('/student', (req, res) => {
   });
 });
 
-//Get one student
-app.get('/student/:id', (req, res) => {
+//Get one business
+app.get('/business/:id', (req, res) => {
   client.connect(async err => {
     const collection = client.db("TestDB1").collection("Business");
     const oneBusiness = await collection.findOne(
@@ -114,5 +115,22 @@ app.get('/student/:id', (req, res) => {
     );
     client.close();
     res.status(200).send(oneBusiness);
+  });
+});
+
+//Create new Business
+app.post('/business', (req, res) => {
+  client.connect(async err => {
+    const collection = client.db("TestDB1").collection("Business");
+    const business = await collection.insertOne({
+      name: req.body.name,
+      email: req.body.email,
+      phoneNumber: req.body.phoneNumber,
+      logoUrl: req.body.logoUrl,
+      linkedInUrl: req.body.linkedInUrl,
+      websiteUrl: req.body.websiteUrl 
+    });
+    client.close();
+    res.send(business)
   });
 });
