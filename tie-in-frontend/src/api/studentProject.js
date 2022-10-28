@@ -2,7 +2,7 @@ import project from "./baseURL";
 
 export const requestStudentProjects = () => {
     return project.get("/studentProject").then((res) => {
-        return res.data.result;
+        return res.data;
     });
 }
 
