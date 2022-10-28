@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+@import "sass/abstracts/variables";
+@import "sass/core/colors";
+@import "sass/components/buttons";
+@import "sass/components/highlightStudentProject";
+@import "sass/pages/dashboard";
