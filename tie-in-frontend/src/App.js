@@ -6,6 +6,8 @@ import SignUp from './pages/SignUp';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Home from './pages/Home';
 import UploadStudentProject from "./pages/UploadStudentProject";
+import UploadBusinessProject from './pages/UploadBusinessProject';
+
 import StudentDashboard from "./pages/StudentDashboard";
 
 const queryClient = new QueryClient();
@@ -20,7 +22,8 @@ function App() {
             <Route path='/' element={<Home />}/>
             <Route path='/login' element={<Login />}/>
             <Route path='/signup' element={<SignUp />}/>
-            <Route path='/uploadstudentproject' element={<UploadStudentProject/>}/>
+            <Route path='/uploadstudentproject' element={<UploadStudentProject />}/>
+            <Route path='/uploadbusinessproject' element={<UploadBusinessProject/>}/>
             <Route path='/studentdashboard' element={<StudentDashboard />}/>
           </Routes>
         </QueryClientProvider>
