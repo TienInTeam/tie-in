@@ -1,5 +1,6 @@
 import './App.scss';
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+import Dashboard from "./pages/Dashboard";
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
@@ -15,6 +16,7 @@ function App() {
       <div className="App">
         <QueryClientProvider client={queryClient}>
           <Routes>
+            <Route path='/dashboard' element={<Dashboard />}/>
             <Route path='/' element={<Home />}/>
             <Route path='/login' element={<Login />}/>
             <Route path='/signup' element={<SignUp />}/>
