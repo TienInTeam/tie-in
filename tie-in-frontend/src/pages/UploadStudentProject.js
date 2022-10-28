@@ -11,7 +11,7 @@ import { isURLValid } from "../utils/validateURL";
 
 function UploadStudentProject() {
     const saveProject = useMutation(["studentProject"], () => saveStudentProject({
-        "id": 35,
+        "id": 36,
         "name": projectName,
         "logo": imageLogo,
         "description": description,
@@ -28,6 +28,7 @@ function UploadStudentProject() {
         "additional_message": additionalMessage,
     }), {
         onSuccess: () => {
+            alert("Project details updated Successfully");
         },
         onError: () => {
             alert("Something went wrong, please try again.");
@@ -127,6 +128,7 @@ function UploadStudentProject() {
                         selectsRange
                         disabled={dateIsChecked}
                     />
+                    <label htmlFor="inProgressCheck">Still in Progress</label>
                     <input type="checkbox" id="inProgressCheck" name="inProgressCheck" value="inProgress" checked={dateIsChecked}
                         onChange={() => {
                             setDateIsChecked(!dateIsChecked);
@@ -138,7 +140,6 @@ function UploadStudentProject() {
                                 setEndDate(null);
                             }
                         }} />
-                    <label htmlFor="inProgressCheck"> Still in Progress</label>
                 </fieldset>
                 <InputType type={"file"} label={"Project Business Plan(optional) "} onChange={(e) => setBusinessPlan(e.target.value)} />
                 <InputType type={"text"} label={"Project Institution (required)"} onChange={(e) => setInstitution(e.target.value)} />
@@ -147,50 +148,58 @@ function UploadStudentProject() {
 
             <fieldset>
                 <InputType type={"text"} label={"Project Category (required)"} onChange={(e) => setProjectCategory(e.target.value)} />
-                <label>Project Description (required)</label>
-                <textarea onChange={(e) => setDescription(e.target.value)} />
+                <label>
+                    <span>Project Description (required)</span>
+                    <textarea onChange={(e) => setDescription(e.target.value)} />
+                </label>
                 <InputType type={"file"} label={"Project Image (optional) "} onChange={(e) => setProjectImage(e.target.value)} />
                 <InputType type={"text"} label={"Project Link (optional) "} onChange={(e) => setProjectLink(e.target.value)} />
             </fieldset>
 
             <fieldset>
-                <label>Design (optional)</label>
-                <select id="design" onChange={(e) => setTechnology([e.target.value])}>
-                    <option> ---Choose tool---</option>
-                    <option> Figma</option>
-                    <option> Adobe XD</option>
-                    <option> Adobe Illustrator</option>
-                    <option> Adobe Photoshop </option>
-                    <option> Sketch Up  </option>
-                </select>
+                <label><span>Design (optional)</span>
+                    <select id="design" onChange={(e) => setTechnology([e.target.value])}>
+                        <option> ---Choose tool---</option>
+                        <option> Figma</option>
+                        <option> Adobe XD</option>
+                        <option> Adobe Illustrator</option>
+                        <option> Adobe Photoshop </option>
+                        <option> Sketch Up  </option>
+                    </select><br />
+                </label>
 
-                <label>Development (optional)</label>
-                <select id="dev" onChange={(e) => setTechnology([...technology, e.target.value])}>
-                    <option> ---Choose tool---</option>
-                    <option> HTML </option>
-                    <option> JS </option>
-                    <option> React.JS </option>
-                    <option> CSS </option>
-                    <option> Java </option>
-                    <option> React Native </option>
-                </select>
 
-                <label>Management/Communication (optional)</label>
-                <select id="management" onChange={(e) => setTechnology([...technology, e.target.value])}>
-                    <option> ---Choose tool---</option>
-                    <option> Notion </option>
-                    <option> Slack </option>
-                    <option> Microsoft Teams </option>
-                    <option> LinkedIn </option>
-                    <option> Trello </option>
-                    <option> Jira </option>
-                    <option> GitHub </option>
-                </select>
+                <label><span>Development (optional)</span>
+                    <select id="dev" onChange={(e) => setTechnology([...technology, e.target.value])}>
+                        <option> ---Choose tool---</option>
+                        <option> HTML </option>
+                        <option> JS </option>
+                        <option> React.JS </option>
+                        <option> CSS </option>
+                        <option> Java </option>
+                        <option> React Native </option>
+                    </select><br />
+                </label>
+
+                <label><span>Management/Communication (optional)</span>
+                    <select id="management" onChange={(e) => setTechnology([...technology, e.target.value])}>
+                        <option> ---Choose tool---</option>
+                        <option> Notion </option>
+                        <option> Slack </option>
+                        <option> Microsoft Teams </option>
+                        <option> LinkedIn </option>
+                        <option> Trello </option>
+                        <option> Jira </option>
+                        <option> GitHub </option>
+                    </select><br />
+                </label>
             </fieldset>
 
             <fieldset>
-                <label>Additional Message</label>
-                <textarea onChange={(e) => setAdditionalMessage(e.target.value)} />
+                <label>
+                    <span>Additional Message</span>
+                    <textarea onChange={(e) => setAdditionalMessage(e.target.value)} />
+                </label>
                 <InputType type={"file"} label={"Additional files: "} onChange={(e) => setAddFile(e.target.value)} />
             </fieldset>
 
