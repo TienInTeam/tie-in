@@ -1,0 +1,9 @@
+@import "../core/colors";
+
+.primary {
+  background-color: $primary_color;
+  border-radius: 10px;
+  appearance: unset;
+  border: none;
+  padding: 5px 12px;
+}
