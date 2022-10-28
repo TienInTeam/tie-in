@@ -5,6 +5,9 @@ const Home = () => {
     <>
       <nav>
         <ul>
+            <li>
+                <Link to="/dashboard">Dashboard Company</Link>
+            </li>
           <li>
             <Link to="/login">Login</Link>
           </li>
