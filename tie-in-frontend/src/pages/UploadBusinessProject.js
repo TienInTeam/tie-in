@@ -19,6 +19,7 @@ function UploadBusinessProject() {
         "budget": estimatedBudget,
         "category": category,
         "technology": technology,
+        "additionalFields": additionalField,
         "files": additionalFile,
         "links": additionalLink
     }), {
