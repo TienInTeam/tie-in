@@ -59,7 +59,6 @@ const validateInput = () => {
       alert("Valid Project name is required.");
       return false;
   }
- 
   if (location) {
       if (!validateTextInput(location)) {
           alert("Enter Valid location");
