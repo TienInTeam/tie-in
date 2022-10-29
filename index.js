@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 
 //Server Port
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 2000);
 
 //Connect mongoDB
 const { MongoClient, ObjectId } = require('mongodb');
