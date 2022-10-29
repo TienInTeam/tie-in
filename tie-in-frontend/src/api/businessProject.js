@@ -6,6 +6,6 @@ export const requestBusinessProjects = () => {
     });
 }
 
-export const saveBusinessProjects = (postData) => project.post('/businessProject', postData, { 'Content-type': 'application/json' }).then((res) => {
+export const saveBusinessProject = (postData) => project.post('/businessProject', postData, {'Content-type': 'application/json'}).then((res) => {
     return res.data;
 });
