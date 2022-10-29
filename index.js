@@ -15,6 +15,65 @@ app.use(express.json());
 
 
 ///////////Create endpoints///////////
+
+/////////////USER/////////////////
+
+//Get all App Users
+app.get('/users', (req, res) => {
+  client.connect(async err => {
+    const collection = client.db("TestDB1").collection("Users");
+    const query = {};
+    const allUsers = await collection.find(query).toArray();
+    client.close();
+    res.status(200).send(allUsers);
+  });
+});
+
+//Get one App User by UID
+app.get('/users/:uid', (req, res) => {
+  client.connect(async err => {
+    const collection = client.db("TestDB1").collection("Users");
+    const user = await collection.findOne(
+      { uid: req.params.uid }
+    );
+    client.close();
+    res.status(200).send(user);
+  });
+});
+
+//Create new App User
+app.post('/users', (req, res) => {
+  client.connect(async err => {
+    const collection = client.db("TestDB1").collection("Users");
+    const user = await collection.insertOne({
+      uid: req.body.uid,
+      email: req.body.email,
+      type: req.body.type
+    });
+    client.close();
+    res.send(user)
+  });
+});
+
+//Update App User
+app.put('/users/:id', (req, res) => {
+  client.connect(async err => {
+    const collection = client.db("TestDB1").collection("Users");
+    const student = await collection.findOneAndUpdate(
+      { _id: new ObjectId(req.params.id) },
+      {
+        $set: {
+          uid: req.body.uid,
+          email: req.body.email,
+          type: req.body.type
+        }
+      }
+    );
+    client.close();
+    res.send(student)
+  });
+});
+
 ///////////////Student//////////////
 
 //Get all Students
