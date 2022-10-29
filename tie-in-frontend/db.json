@@ -172,5 +172,26 @@
       "institution": "ds",
       "additional_message": ""
     }
+  ],
+  "businessProject": [
+    {
+      "id": 42,
+      "name": "test",
+      "summary": "test",
+      "teamSize": "5",
+      "teamrequirement": "test",
+      "expectedDeadline": "2022-12-10T17:31:39.000Z",
+      "location": "Vancouver",
+      "budget": "10k",
+      "category": [
+        "CSS"
+      ],
+      "technology": [
+        "Mobile Application"
+      ],
+      "additionalFields": "",
+      "files": "",
+      "links": ""
+    }
   ]
 }
