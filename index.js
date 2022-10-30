@@ -13,7 +13,6 @@ const client = new MongoClient(uri);
 //Middleware for json reading.
 app.use(express.json());
 
-
 ///////////Create endpoints///////////
 ///////////////Student//////////////
 
@@ -91,10 +90,91 @@ app.delete('/student/:id', (req, res) => {
   });
 });
 
+//////////////Student Project/////////////
+//Get all student projects
+app.get('/student/project', (req, res) => {
+  client.connect(async err => {
+    const collection = client.db("TestDB1").collection("StudentProjects");
+    const query = {};
+    const allProjects = await collection.find(query).toArray();
+    client.close();
+    res.status(200).send(allProjects);
+  });
+});
+
+//Get one student project
+app.get('/student/project/:id', (req, res) => {
+  client.connect(async err => {
+    const collection = client.db("TestDB1").collection("StudentProjects");
+    const oneProject = await collection.findOne(
+      { _id: new ObjectId(req.params.id) }
+    );
+    client.close();
+    res.status(200).send(oneProject);
+  });
+});
+
+//Create new student project
+app.post('/student/project', (req, res) => {
+  client.connect(async err => {
+    const collection = client.db("TestDB1").collection("StudentProjects");
+    const project = await collection.insertOne({
+    name: req.body.name,
+    description: req.body.description,
+    teamId: req.body.teamId,
+    approvalStatus: req.body.approvalStatus,
+    logoUrl: req.body.logoUrl,
+    githubUrl: req.body.githubUrl,
+    designFileUrl: req.body.designFileUrl,
+    websiteUrl: req.body.websiteUrl,
+    subjects: req.body.subjects,
+    tags: req.body.tags
+    });
+    client.close();
+    res.send(project)
+  });
+});
+
+//Update student project
+app.put('/student/project/:id', (req, res) => {
+  client.connect(async err => {
+    const collection = client.db("TestDB1").collection("StudentProjects");
+    const project = await collection.findOneAndUpdate(
+      { _id: new ObjectId(req.params.id) },
+      {
+        $set: {
+          name: req.body.name,
+   	  description: req.body.description,
+   	  teamId: req.body.teamId,
+    	  approvalStatus: req.body.approvalStatus,
+    	  logoUrl: req.body.logoUrl,
+   	  githubUrl: req.body.githubUrl,
+    	  designFileUrl: req.body.designFileUrl,
+  	  websiteUrl: req.body.websiteUrl,
+  	  subjects: req.body.subjects,
+  	  tags: req.body.tags
+      }
+    }
+    );
+    client.close();
+    res.send(project)
+  });
+});
+
+//Delete  student project
+app.delete('/student/project/:id', (req, res) => {
+  client.connect(async err => {
+    const collection = client.db("TestDB1").collection("StudentProjects");
+    const deleteResponse = await collection.deleteOne(
+      { _id: new ObjectId(req.params.id) }
+    );
+    client.close();
+    res.send(deleteResponse)
+  });
+});
 
 
 /////////////Business/////////////////
-
 //Get all business
 app.get('/business', (req, res) => {
   client.connect(async err => {
@@ -168,3 +248,5 @@ app.delete('/business/:id', (req, res) => {
     res.send(deleteResponse)
   });
 });
+
+/////////////Business Project////////////////////
