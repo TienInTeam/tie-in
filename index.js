@@ -331,3 +331,78 @@ app.delete('/business/project/:id', (req, res) => {
     res.send(deleteResponse)
   });
 });
+
+///////////////Teams////////////////////////////////
+//Get all teams
+app.get('/student/teams', (req, res) => {
+  client.connect(async err => {
+    const collection = client.db("TestDB1").collection("Teams");
+    const query = {};
+    const allTeams = await collection.find(query).toArray();
+    client.close();
+    res.status(200).send(allTeams);
+  });
+});
+
+//Get one student
+app.get('/student/teams/:id', (req, res) => {
+  client.connect(async err => {
+    const collection = client.db("TestDB1").collection("Teams");
+    const oneTeam = await collection.findOne(
+      { _id: new ObjectId(req.params.id) }
+    );
+    client.close();
+    res.status(200).send(oneTeam);
+  });
+});
+
+//Create new team
+app.post('/student/teams', (req, res) => {
+  client.connect(async err => {
+    const collection = client.db("TestDB1").collection("Teams");
+    const team = await collection.insertOne({
+      email: req.body.email,
+      fullName: req.body.fullname,
+      Institution: req.body.institution,
+      linkedInUrl: req.body.linkedInUrl,
+      githubUrl: req.body.githubUrl,
+      profileUrl: req.body.profileUrl
+    });
+    client.close();
+    res.send(team)
+  });
+});
+
+//Update team data
+app.put('/student/teams/:id', (req, res) => {
+  client.connect(async err => {
+    const collection = client.db("TestDB1").collection("Teams");
+    const team = await collection.findOneAndUpdate(
+      { _id: new ObjectId(req.params.id) },
+      {
+        $set: {
+          email: req.body.email,
+          fullName: req.body.fullName,
+          Institution: req.body.Institution,
+          linkedInUrl: req.body.linkedInUrl,
+          githubUrl: req.body.githubUrl,
+          profileUrl: req.body.profileUrl
+        }
+      }
+    );
+    client.close();
+    res.send(team)
+  });
+});
+
+//Delete team
+app.delete('/student/teams/:id', (req, res) => {
+  client.connect(async err => {
+    const collection = client.db("TestDB1").collection("Teams");
+    const deleteResponse = await collection.deleteOne(
+      { _id: new ObjectId(req.params.id) }
+    );
+    client.close();
+    res.send(deleteResponse)
+  });
+});
