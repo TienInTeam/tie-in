@@ -406,3 +406,78 @@ app.delete('/student/teams/:id', (req, res) => {
     res.send(deleteResponse)
   });
 });
+
+/////////////////Applications///////////////
+//Get all applications
+app.get('/student/teams/applications', (req, res) => {
+  client.connect(async err => {
+    const collection = client.db("TestDB1").collection("Applications");
+    const query = {};
+    const allApplications = await collection.find(query).toArray();
+    client.close();
+    res.status(200).send(allApplications);
+  });
+});
+
+//Get one application
+app.get('/student/teams/applications/:id', (req, res) => {
+  client.connect(async err => {
+    const collection = client.db("TestDB1").collection("Applications");
+    const oneApplication = await collection.findOne(
+      { _id: new ObjectId(req.params.id) }
+    );
+    client.close();
+    res.status(200).send(oneApplication);
+  });
+});
+
+//Create new application
+app.post('/student/teams/applications', (req, res) => {
+  client.connect(async err => {
+    const collection = client.db("TestDB1").collection("Applications");
+    const application = await collection.insertOne({
+      email: req.body.email,
+      fullName: req.body.fullname,
+      Institution: req.body.institution,
+      linkedInUrl: req.body.linkedInUrl,
+      githubUrl: req.body.githubUrl,
+      profileUrl: req.body.profileUrl
+    });
+    client.close();
+    res.send(application)
+  });
+});
+
+//Update application
+app.put('/student/teams/applications/:id', (req, res) => {
+  client.connect(async err => {
+    const collection = client.db("TestDB1").collection("Applications");
+    const application = await collection.findOneAndUpdate(
+      { _id: new ObjectId(req.params.id) },
+      {
+        $set: {
+          email: req.body.email,
+          fullName: req.body.fullName,
+          Institution: req.body.Institution,
+          linkedInUrl: req.body.linkedInUrl,
+          githubUrl: req.body.githubUrl,
+          profileUrl: req.body.profileUrl
+        }
+      }
+    );
+    client.close();
+    res.send(application)
+  });
+});
+
+//Delete application
+app.delete('/student/teams/applications/:id', (req, res) => {
+  client.connect(async err => {
+    const collection = client.db("TestDB1").collection("Applications");
+    const deleteResponse = await collection.deleteOne(
+      { _id: new ObjectId(req.params.id) }
+    );
+    client.close();
+    res.send(deleteResponse)
+  });
+});
