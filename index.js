@@ -250,3 +250,84 @@ app.delete('/business/:id', (req, res) => {
 });
 
 /////////////Business Project////////////////////
+//Get all business projects
+app.get('/business/project', (req, res) => {
+  client.connect(async err => {
+    const collection = client.db("TestDB1").collection("BusinessProjects");
+    const query = {};
+    const allProjects = await collection.find(query).toArray();
+    client.close();
+    res.status(200).send(allProjects);
+  });
+});
+
+//Get one business project
+app.get('/business/project/:id', (req, res) => {
+  client.connect(async err => {
+    const collection = client.db("TestDB1").collection("BusinessProjects");
+    const oneProject = await collection.findOne(
+      { _id: new ObjectId(req.params.id) }
+    );
+    client.close();
+    res.status(200).send(oneProject);
+  });
+});
+
+//Create new business project
+app.post('/business/project', (req, res) => {
+  client.connect(async err => {
+    const collection = client.db("TestDB1").collection("BusinessProjects");
+    const project = await collection.insertOne({
+    name: req.body.name,
+    description: req.body.description,
+    teamId: req.body.teamId,
+    approvalStatus: req.body.approvalStatus,
+    logoUrl: req.body.logoUrl,
+    githubUrl: req.body.githubUrl,
+    designFileUrl: req.body.designFileUrl,
+    websiteUrl: req.body.websiteUrl,
+    subjects: req.body.subjects,
+    tags: req.body.tags
+    });
+    client.close();
+    res.send(project)
+  });
+});
+
+//Update business project
+app.put('/business/project/:id', (req, res) => {
+  client.connect(async err => {
+    const collection = client.db("TestDB1").collection("BusinessProjects");
+    const project = await collection.findOneAndUpdate(
+      { _id: new ObjectId(req.params.id) },
+      {
+        $set: {
+          name: req.body.name,
+   	      description: req.body.description,
+   	      teamId: req.body.teamId,
+    	    approvalStatus: req.body.approvalStatus,
+    	    logoUrl: req.body.logoUrl,
+   	      githubUrl: req.body.githubUrl,
+    	    designFileUrl: req.body.designFileUrl,
+  	      websiteUrl: req.body.websiteUrl,
+  	      subjects: req.body.subjects,
+  	      tags: req.body.tags
+        }
+      }
+    );
+    client.close();
+    res.send(project)
+  });
+});
+
+//Delete  business project
+app.delete('/business/project/:id', (req, res) => {
+  client.connect(async err => {
+    const collection = client.db("TestDB1").collection("BusinessProjects");
+    const deleteResponse = await collection.deleteOne(
+      { _id: new ObjectId(req.params.id) }
+    );
+    client.close();
+    res.send(deleteResponse)
+  });
+});
