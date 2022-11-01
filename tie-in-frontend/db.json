@@ -26,7 +26,8 @@
       "instructor_email": "",
       "product_link": "",
       "subject": "",
-      "institution": ""
+      "institution": "",
+      "location":"Vancouver"
     },
     {
       "id": 1,
@@ -47,7 +48,8 @@
       ],
       "instructor_email": "fjoca00@gmail.com",
       "product_link": "https://google.com",
-      "institution": "Langara College"
+      "institution": "Langara College",
+      "location":"Vancouver"
     },
     {
       "id": 2,
