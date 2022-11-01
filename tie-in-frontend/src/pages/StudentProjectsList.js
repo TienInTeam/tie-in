@@ -18,8 +18,8 @@ function StudentProjectsList() {
   return (
     <div className="student-projects-list">
     <div>
-      {requestStudentProject.data.map((student) => (
-            <StudentProjectPreview studentProject={student} onSeeMore={onSeeMore}/>
+      {requestStudentProject.data.map((student,index) => (
+            <StudentProjectPreview studentProject={student} key={index} onSeeMore={onSeeMore}/>
         ))}
     </div>
   </div>
