@@ -2,13 +2,21 @@ import React from 'react'
 import Button from './Button';
 
 function StudentProjectPreview({ studentProject, onSeeMore }) {
-  const { logo, title, institution, description, category, location } = studentProject;
+  const { logo, name, institution, description, category, location } = studentProject;
+
+  // const eachCategory = category.forEach(category => {
+  //   <p className="category">
+  //    {category}
+  //   </p>
+  // }); 
+
+  
 
   return (
     <div className="student-project-preview">
       <div className="title-container">
         <img src={logo} alt="project's logo" />
-        <h2>{title}</h2>
+        <h2>{name}</h2>
       </div>
       <div className="body-container">
         <div>
