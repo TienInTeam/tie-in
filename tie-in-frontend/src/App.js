@@ -24,7 +24,7 @@ function App() {
             <Route path='/signup' element={<SignUp />}/>
             <Route path='/uploadstudentproject' element={<UploadStudentProject />}/>
             <Route path='/uploadbusinessproject' element={<UploadBusinessProject/>}/>
-            <Route path='/StudentProjectsList' element={<StudentProjectsList/>}/>
+            <Route path='/studentprojectslist' element={<StudentProjectsList/>}/>
           </Routes>
         </QueryClientProvider>
       </div>

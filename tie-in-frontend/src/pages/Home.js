@@ -21,7 +21,7 @@ const Home = () => {
             <Link to="/uploadbusinessproject">Upload business project</Link>
           </li>
           <li>
-            <Link to="/studentProjectsList">Student Projects</Link>
+            <Link to="/studentprojectslist">Student Projects</Link>
           </li>
 
         </ul>
