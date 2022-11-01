@@ -3,13 +3,13 @@
   margin: 1rem;
   padding: .5rem;
 
- 
   .title-container{
     background-color: $tertiary_background_color;
     display: flex;
     padding: .8rem;
     font-size: 1.2rem;
     border-radius: 30px 30px 0 0 ;
+    align-items: center;
   }
   .body-container{
     background-color: $secondary_background_color;
@@ -18,11 +18,13 @@
     grid-template-rows: repeat(2,1fr);
     border-radius: 0 0 30px 30px;
   }
-
   .button {
     display: flex;
     align-items: center;
     justify-content: center;
     grid-column: 4/5;
+  }
+  .category{
+    background-color: $quaternary_background_color;
   }
 }
