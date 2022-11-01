@@ -1,8 +1,8 @@
 import { useMutation } from "@tanstack/react-query";
-import Button from './Button';
+import StudentProjectPreview from "./StudentProjectPreview";
 
-function ProjectCardPreview({ studentProject, onSeeMore}) {
-  const saveProject = useMutation(["businessProject"], () => saveBusinessProject({
+function ProjectCardPreview() {
+  const readProject = useMutation(["studentProject"], () => getStudentProject({
     "id": 76,
     "title": title,
     "instituition": institution,
@@ -17,20 +17,9 @@ function ProjectCardPreview({ studentProject, onSeeMore}) {
     }
 });
 
-  const { logo, title, institution, description, category, location } = studentProject;
   return (
     <div className="project-card">
-      <img src={logo} alt="logo's image" />
-      <h2>{title}</h2>
-      <h3>Instituition</h3>
-      <p>{institution}</p>
-      <h3>Description</h3>
-      <p>{description}</p>
-      <h3>Category</h3>
-      <p>{category}</p>
-      <h3>Location</h3>
-      <p>{location}</p>
-      <Button onClick={onSeeMore} />
+     <StudentProjectPreview logo={logo} title={title} description={description} category={category} location={location} />
     </div>
   )
 }
