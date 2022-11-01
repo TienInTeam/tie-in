@@ -1,7 +1,22 @@
-import React from 'react';
+import { useMutation } from "@tanstack/react-query";
 import Button from './Button';
 
 function ProjectCardPreview({ studentProject, onSeeMore}) {
+  const saveProject = useMutation(["businessProject"], () => saveBusinessProject({
+    "id": 76,
+    "title": title,
+    "instituition": institution,
+    "description": description,
+    "category": category,
+    "location": location
+}), {
+    onSuccess: () => {
+    },
+    onError: () => {
+        alert("Something went wrong, please try again.");
+    }
+});
+
   const { logo, title, institution, description, category, location } = studentProject;
   return (
     <div className="project-card">
