@@ -9,3 +9,7 @@ export const requestStudentProjects = () => {
 export const saveStudentProject = (postData) => project.post('/studentProject', postData, {'Content-type': 'application/json'}).then((res) => {
     return res.data;
 });
+
+export const getStudentProject = (getData) => project.get('/studentProject', getData, {'Content-type': 'application/json'}).then((res) => {
+    return res.data;
+});
