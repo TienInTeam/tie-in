@@ -23,9 +23,6 @@ const Home = () => {
           <li>
             <Link to="/uploadbusinessproject">Upload business project</Link>
           </li>
-          <li>
-            <Link to="/studentdashboard">Student Dashboard</Link>
-          </li>
         </ul>
       </nav>
       <Outlet />

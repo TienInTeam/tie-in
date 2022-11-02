@@ -9,8 +9,6 @@ import UploadStudentProject from "./pages/UploadStudentProject";
 import StudentDashboard from "./pages/StudentDashboard";
 import UploadBusinessProject from './pages/UploadBusinessProject';
 
-import StudentDashboard from "./pages/StudentDashboard";
-
 const queryClient = new QueryClient();
 
 function App() {
@@ -27,7 +25,6 @@ function App() {
             <Route path='/studentdashboard' element={<StudentDashboard />}/>
             <Route path='/uploadstudentproject' element={<UploadStudentProject />}/>
             <Route path='/uploadbusinessproject' element={<UploadBusinessProject/>}/>
-            <Route path='/studentdashboard' element={<StudentDashboard />}/>
           </Routes>
         </QueryClientProvider>
       </div>
