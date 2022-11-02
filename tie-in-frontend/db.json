@@ -184,5 +184,48 @@
       "institution": "ds",
       "additional_message": ""
     }
+  ],
+  "businessProject": [
+    {
+      "id": 2,
+      "company_name": "PWR Tech",
+      "logo": "Florida",
+      "description": "test test",
+      "linkedIn_url": "https://test.com",
+      "team_id": "",
+      "location": "Vancouver, BC",
+      "tags": "Software Engineer, Web-App",
+      "start_date": "",
+      "end_date": "",
+      "business_model": "",
+      "category": [
+        "mobililty",
+        "AI"
+      ],
+      "instructor_email": "",
+      "product_link": "",
+      "subject": "",
+      "institution": ""
+    },
+    {
+      "id": 1,
+      "company_name": "SRQ Inc",
+      "logo": "",
+      "description": "Test test ",
+      "linkedIn_url": "https://test.com",
+      "team_id": "",
+      "location": "Vancouver, BC",
+      "tags": "Software Engineer, Web-App",
+      "start_date": "2022-10-19",
+      "end_date": "2022-10-22",
+      "business_model": "",
+      "category": [
+        "Web",
+        "UI"
+      ],
+      "instructor_email": "fjoca00@gmail.com",
+      "product_link": "https://google.com",
+      "institution": "Langara College"
+    }
   ]
 }
