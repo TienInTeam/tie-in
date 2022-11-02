@@ -5,18 +5,21 @@ const Home = () => {
     <>
       <nav>
         <ul>
-            <li>
-                <Link to="/dashboard">Dashboard Company</Link>
-            </li>
+          <li>
+            <Link to="/dashboard">Dashboard Company</Link>
+          </li>
           <li>
             <Link to="/login">Login</Link>
           </li>
           <li>
             <Link to="/signup">Sign up</Link>
           </li>
-            <li>
-                <Link to="/uploadstudentproject">Upload student project</Link>
-            </li>
+          <li>
+            <Link to="/uploadstudentproject">Upload student project</Link>
+          </li>
+          <li>
+            <Link to="/studentdashboard">Student Dashboard</Link>
+          </li>
         </ul>
       </nav>
       <Outlet />

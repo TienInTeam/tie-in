@@ -5,5 +5,15 @@
   border-radius: 10px;
   appearance: unset;
   border: none;
-  padding: 5px 12px;
+  padding: 5px 24px;
+}
+
+
+.secondary {
+  background-color: $secondary_background_color;
+  border-radius: 10px;
+  appearance: unset;
+  border: 3px solid $secondary_color;
+  padding: 5px 24px;
+  color: $secondary_color;
 }
