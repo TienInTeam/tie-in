@@ -38,11 +38,7 @@ input {
   bottom: 1rem;
 }
 
-button.primary {
-  padding: 0.5rem 4rem 0.5rem 4rem;
-  background-color: #FCB51F;
-  border-radius: 20px;
-}
+
 
 .App {
   background-color: #253847;

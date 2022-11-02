@@ -1,6 +1,3 @@
-.App {
-  text-align: center;
-}
 
 .App-logo {
   height: 40vmin;
@@ -41,4 +38,7 @@
 @import "sass/core/colors";
 @import "sass/components/buttons";
 @import "sass/components/highlightStudentProject";
+@import "sass/components/highlightBusinessProject";
+@import "sass/components/RequestStatusCard";
 @import "sass/pages/dashboard";
+@import "sass/pages/studentDashboard";
