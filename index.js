@@ -20,8 +20,11 @@ app.use(express.json());
 //Get all App Users
 app.get('/users', (req, res) => {
   client.connect(async err => {
+    //Connection
     const collection = client.db("TestDB1").collection("Users");
+    //Specific query
     const query = {};
+    //Query result
     const allUsers = await collection.find(query).toArray();
     client.close();
     res.status(200).send(allUsers);
