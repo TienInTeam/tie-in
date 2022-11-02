@@ -22,9 +22,9 @@ function BusinessProjectPreview({ businessProject, onSeeMore }) {
       </div>
       <div>
         <h3>Category</h3>
-        <p>{category}</p>
+        <p>{category? category.map(cat => {return(<div className="category">{cat}</div>)}) : <p>-</p>}</p>
       </div>
-      <div>
+      <div className="button-container">
         <h3>Location</h3>
         <p>{location}</p>
         <Button label={"SeeMore"} variant={"button"} onClick={onSeeMore} />

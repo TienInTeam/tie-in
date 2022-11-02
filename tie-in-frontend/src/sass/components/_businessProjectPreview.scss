@@ -21,6 +21,7 @@
     grid-template-rows: repeat(2,1fr);
     border-radius: 0 0 30px 30px;
   }
+
   .button {
     display: flex;
     align-items: center;
@@ -29,5 +30,9 @@
   }
   .category{
     background-color: $quaternary_background_color;
+    border-radius: 50px;
+    margin: auto;
+    width: 50%;
+    margin-top: .4rem;
   }
 }
