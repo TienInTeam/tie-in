@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import UploadStudentProject from "./pages/UploadStudentProject";
 import UploadBusinessProject from './pages/UploadBusinessProject';
 import StudentProjectsList from './pages/StudentProjectsList';
+import BusinessProjectsList from './pages/BusinessProjectsList';
 
 
 const queryClient = new QueryClient();
@@ -25,6 +26,7 @@ function App() {
             <Route path='/uploadstudentproject' element={<UploadStudentProject />}/>
             <Route path='/uploadbusinessproject' element={<UploadBusinessProject/>}/>
             <Route path='/studentprojectslist' element={<StudentProjectsList/>}/>
+            <Route path='/businessprojectslist' element={<BusinessProjectsList/>}/>
           </Routes>
         </QueryClientProvider>
       </div>
