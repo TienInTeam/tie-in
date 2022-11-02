@@ -2,11 +2,11 @@ import React from 'react';
 import Button from './Button';
 
 function BusinessProjectPreview({ businessProject, onSeeMore }) {
-  const { logo, name, description, teamRequirement, dueDate, category, location } = businessProject;
+  const { logo, company_name, description, teamRequirement, dueDate, category, location } = businessProject;
   return (
     <div>
        <img src={logo} alt="project's logo" />
-      <h2>{name}</h2>
+      <h2>{company_name}</h2>
       <h3>Description</h3>
       <p>{description}</p>
       <h3>Team Requirement</h3>
