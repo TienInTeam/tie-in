@@ -8,20 +8,18 @@ function BusinessProjectsList() {
   if (requestBusinessProject.isLoading) {
     return <span>Loading...</span>
   }
-
   if (requestBusinessProject.isError) {
     return <span>Error: {requestBusinessProject.error.message}</span>
   }
-
   const onSeeMore = () => {
     alert("see more is clicked")
   }
-
+// console.log(businessProject);
   return (
     <div>
       <div>
-        {requestBusinessProject.data.map((businessProject, index) => (
-          <BusinessProjectPreview businessProject={businessProject} key={index} onSeeMore={onSeeMore} />
+        {requestBusinessProject.data.map((business, index) => (
+          <BusinessProjectPreview businessProject={business} key={index} onSeeMore={onSeeMore} />
         ))}
       </div>
     </div>

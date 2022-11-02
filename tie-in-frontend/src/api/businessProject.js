@@ -2,7 +2,7 @@ import project from "./baseURL";
 
 export const requestBusinessProjects = () => {
     return project.get("/businessProject").then((res) => {
-        return res.data.result;
+        return res.data;
     });
 }
 
