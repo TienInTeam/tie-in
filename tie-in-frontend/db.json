@@ -81,7 +81,7 @@
     {
       "name": "nannies for you",
       "logo": "Florida",
-      "description": "test test",
+      "description": "test test hgljhgjhb .jhvbljh jhvljhv j",
       "linkedIn_url": "https://test.com",
       "team_id": "",
       "approval_status": "Pending",
@@ -93,7 +93,8 @@
       "instructor_email": "",
       "product_link": "",
       "subject": "",
-      "institution": ""
+      "institution": "",
+      "location":"Vancouver"
     },
     {
       "id": 1,
@@ -114,13 +115,14 @@
       ],
       "instructor_email": "fjoca00@gmail.com",
       "product_link": "https://google.com",
-      "institution": "Langara College"
+      "institution": "Langara College",
+      "location":"Vancouver"
     },
     {
       "id": 2,
       "name": "Get A Tat",
       "logo": "",
-      "description": "Test 2",
+      "description": "Test 2 khjbljh jhbjlhvb jbljhv ftu",
       "linkedIn_url": "https://test.com",
       "team_id": "",
       "approval_status": "Pending",
@@ -133,7 +135,12 @@
         "React Native",
         "Notion"
       ],
-      "instructor_email": "fjoca@gmail.com",
+      "category":[
+        "web development",
+        "react",
+        "figma"
+      ],
+      "nstructor_email": "fjoca@gmail.com",
       "product_link": "https://google.com",
       "institution": "Langara College"
     }
@@ -165,6 +172,22 @@
       "tags": "Software Engineer, Web-App",
       "application_date": "2022-10-19",
       "business_model": "",
+      "technology": [
+        "Adobe Illustrator",
+        "JS",
+        "LinkedIn",
+        "Trello"
+      ],
+      "category":[
+        "Mobile application",
+        "react",
+        "design"
+      ],
+      "instructor_email": "tomsd@g.cmo",
+      "instructor_linkedIn": "",
+      "project_link": "",
+      "institution": "dwewewe",
+      "additional_message": "ds"
       "team_images": [
         "https://picsum.photos/id/237/200/300",
         "https://picsum.photos/id/241/244/300",

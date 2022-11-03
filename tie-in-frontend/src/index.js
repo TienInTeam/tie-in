@@ -10,6 +10,7 @@ import SignUpBusiness from "./pages/signup/SignUpBusiness";
 import SignUpStudent from "./pages/signup/SignUpStudent";
 import SignUpLandingPage from "./pages/signup/SignUpLandingPage";
 import StudentDashboard from "./pages/StudentDashboard";
+import StudentProjectsList from "./pages/StudentProjectsList";
 import UploadBusinessProject from "./pages/UploadBusinessProject";
 import UploadStudentProject from "./pages/UploadStudentProject";
 import Header from "./components/Header";
@@ -34,7 +35,8 @@ root.render(
                         <Route path='/uploadstudentproject' element={<UploadStudentProject />} />
                         <Route path='/uploadbusinessproject' element={<UploadBusinessProject />} />
                         <Route path='/studentdashboard' element={<StudentDashboard />} />
-                        <Route
+                        <Route path='/studentprojectslist' element={<StudentProjectsList/>}/>
+                    <Route
                             path="*"
                             element={
                                 <main style={{ padding: "1rem" }}>
