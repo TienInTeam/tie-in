@@ -10,6 +10,7 @@ import SignUpBusiness from "./pages/signup/SignUpBusiness";
 import SignUpStudent from "./pages/signup/SignUpStudent";
 import SignUpLandingPage from "./pages/signup/SignUpLandingPage";
 import StudentDashboard from "./pages/StudentDashboard";
+import StudentProjectsList from "./pages/StudentProjectsList";
 import UploadBusinessProject from "./pages/UploadBusinessProject";
 import UploadStudentProject from "./pages/UploadStudentProject";
 
