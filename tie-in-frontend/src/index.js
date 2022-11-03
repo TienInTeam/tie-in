@@ -28,6 +28,7 @@ root.render(
                     <Route path='/signup/business' element={<SignUpBusiness/>}/>
                     <Route path='/uploadstudentproject' element={<UploadStudentProject/>}/>
                     <Route path='/uploadbusinessproject' element={<UploadBusinessProject/>}/>
+                    <Route path='/studentdashboard' element={<StudentDashboard />}/>
                     <Route
                         path="*"
                         element={
