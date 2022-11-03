@@ -99,7 +99,7 @@ const SignUpBusiness = () => {
                     value={description}
                 />
                 <InputType
-                    placeHolder={"Enter a valid email"}
+                    placeHolder={"Enter your company email"}
                     label={"Email"}
                     onChange={(e) => setBusinessEmail(e.target.value)}
                     type={"text"}
@@ -120,14 +120,14 @@ const SignUpBusiness = () => {
                     value={linkedInUrl}
                 />
                 <InputType
-                    placeHolder={"Password"}
+                    placeHolder={"Enter your password"}
                     label={"Password"}
                     onChange={(e) => setPassword(e.target.value)}
                     type={"text"}
                     value={password}
                 />
                 <InputType
-                    placeHolder={"Confirm Password"}
+                    placeHolder={"Confirm your  Password"}
                     label={"Confirm Password"}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     type={"text"}
