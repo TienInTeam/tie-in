@@ -33,25 +33,27 @@ input {
 
 .input-type * {
   display: grid;
-  grid-template-columns: repeat(1fr);
+  grid-template-columns: 1fr;
   text-align: center;
   bottom: 1rem;
 }
 
 
 
-.App {
-  background-color: #253847;
-}
 
 a {
   color: white;
 }
 
-.App {
+#root {
   background-color: #0B1A27;
+  height: 100vh;
+  color: white;
 }
 
-.App {
-  background-color: #0B1A27;
-}
+@import "sass/abstracts/variables";
+@import "sass/core/colors";
+@import "sass/components/buttons";
+@import "sass/components/highlightStudentProject";
+@import "sass/pages/dashboard";
+@import "sass/layout/forms";

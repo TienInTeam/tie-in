@@ -3,15 +3,16 @@ import app from './firebase';
 
 //method to register user on the app and authenticate with firebase.
 export function signUp(email, password) {
+
   const authentication = getAuth(app);
   createUserWithEmailAndPassword(authentication, email, password).then((response) => {
     const user = authentication.currentUser;
     if (user !== null) {
       const email = user.email;
       const uid = user.uid;
-      sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken);
-      sessionStorage.setItem('User Email:', email);
-      sessionStorage.setItem('User ID:', uid);
+      sessionStorage.setItem('authToken', response._tokenResponse.refreshToken);
+      sessionStorage.setItem('userEmail', email);
+      sessionStorage.setItem('userId', uid);
     }
   })
     .catch((error) => {
@@ -28,9 +29,9 @@ export function login(email, password) {
       if (user !== null) {
         const email = user.email;
         const uid = user.uid;
-        sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken);
-        sessionStorage.setItem('User Email:', email);
-        sessionStorage.setItem('User ID:', uid);
+        sessionStorage.setItem('authToken', response._tokenResponse.refreshToken);
+        sessionStorage.setItem('userEmail', email);
+        sessionStorage.setItem('userId', uid);
       }
     })
     .catch((error) => {
