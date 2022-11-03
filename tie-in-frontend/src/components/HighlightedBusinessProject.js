@@ -1,21 +1,23 @@
 import React from 'react'
-import Button from "./Button";
+import Button from './Button';
 
 function HighlightedBusinessProject({ businessProject, onSeeMore}) {
-  const { name, description, members, dueDate, location} = businessProject;
+  const { company_name, category, end_date, location} = businessProject;
 
   return (
-    <div>
-        <h2>{name}</h2>
-        <h2>Description</h2>
-        <p>{description}</p>
-        <h2>Members Requirement</h2>
-        <p>{members}</p>
-        <h2>Due Date</h2>
-        <p>{dueDate}</p>
-        <h2>Location</h2>
+    <div className={"highlightBusinessProject"}>
+        <h2>{company_name}</h2>
+        
+        <p>
+          {
+          category.map((category, index) => 
+            <span key={index}> {category} </span>
+         )
+          }
+        </p>
+        <p>{end_date ? end_date: "N/A"}</p>
         <p>{location}</p>
-        <Button onClick={onSeeMore} />
+        <Button label={"See More"} variant={"primary"} onClick={onSeeMore}/>
     </div>
   );
 }

@@ -1,0 +1,23 @@
+.highlightBusinessProject{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  color: white;
+}
+.business-project-wrapper {
+  background-color: #253847;
+  border-radius: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 950px;
+}
+
+.highlightBusinessProject {
+  background-color: $secondary_background_color;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+
+.highlightBusinessProject h2{
+  padding: 0 0 0 1rem;
+}
