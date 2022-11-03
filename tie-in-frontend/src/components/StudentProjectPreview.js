@@ -4,14 +4,6 @@ import Button from './Button';
 function StudentProjectPreview({ studentProject, onSeeMore }) {
   const { logo, name, institution, description, category, location } = studentProject;
 
-  // const eachCategory = category.forEach(category => {
-  //   <p className="category">
-  //    {category}
-  //   </p>
-  // }); 
-
-  
-
   return (
     <div className="student-project-preview">
       <div className="title-container">
@@ -29,13 +21,13 @@ function StudentProjectPreview({ studentProject, onSeeMore }) {
         </div>
         <div>
           <h3>Category</h3>
-          <p>{category}</p>
+          {category? category.map((cat, index) => {return(<div className="category" key={index}>{cat}</div>)}) : <p>-</p>}
         </div>
         <div>
           <h3>Location</h3>
           <p>{location}</p>
         </div>
-        <Button label={"SeeMore"} variant={"button"} onClick={onSeeMore} />
+        <Button label={"SeeMore"} variant={"primary"} onClick={onSeeMore} />
       </div>
     </div>
   );

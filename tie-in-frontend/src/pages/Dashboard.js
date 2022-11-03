@@ -32,8 +32,8 @@ const Dashboard = () => {
         <h2>Category</h2>
         <h2>Location</h2>
       </div>
-      {requestStudentProject.data.map((student) => (
-          <HighlightedStudentProject studentProject={student} onSeeMore={onSeeMore}/>
+      {requestStudentProject.data.map((student,index) => (
+          <HighlightedStudentProject key={index} studentProject={student} onSeeMore={onSeeMore}/>
       ))}
     </div>
       </>
