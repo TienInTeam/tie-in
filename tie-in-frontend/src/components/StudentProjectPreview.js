@@ -27,7 +27,7 @@ function StudentProjectPreview({ studentProject, onSeeMore }) {
           <h3>Location</h3>
           <p>{location}</p>
         </div>
-        <Button label={"SeeMore"} variant={"primary"} onClick={onSeeMore} />
+        <Button label={"See More"} variant={"primary"} onClick={onSeeMore} />
       </div>
     </div>
   );
