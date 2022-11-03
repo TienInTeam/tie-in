@@ -1,8 +1,8 @@
-import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.scss';
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -12,6 +12,8 @@ import SignUpLandingPage from "./pages/signup/SignUpLandingPage";
 import StudentDashboard from "./pages/StudentDashboard";
 import UploadBusinessProject from "./pages/UploadBusinessProject";
 import UploadStudentProject from "./pages/UploadStudentProject";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 const queryClient = new QueryClient();
 
@@ -20,25 +22,29 @@ root.render(
     <React.StrictMode>
         <BrowserRouter>
             <QueryClientProvider client={queryClient}>
-                <Routes>
-                    <Route path='/dashboard' element={<Dashboard/>}/>
-                    <Route path='/' element={<Home/>}/>
-                    <Route path='/login' element={<Login/>}/>
-                    <Route path='/signuplanding' element={<SignUpLandingPage/>}/>
-                    <Route path='/signup/student' element={<SignUpStudent/>}/>
-                    <Route path='/signup/business' element={<SignUpBusiness/>}/>
-                    <Route path='/uploadstudentproject' element={<UploadStudentProject/>}/>
-                    <Route path='/uploadbusinessproject' element={<UploadBusinessProject/>}/>
-                    <Route path='/studentdashboard' element={<StudentDashboard />}/>
-                    <Route
-                        path="*"
-                        element={
-                            <main style={{padding: "1rem"}}>
-                                <p>There's nothing here!</p>
-                            </main>
-                        }
-                    />
-                </Routes>
+                <Header />
+                <div className="body">
+                    <Routes>
+                        <Route path='/dashboard' element={<Dashboard />} />
+                        <Route path='/' element={<Home />} />
+                        <Route path='/login' element={<Login />} />
+                        <Route path='/signuplanding' element={<SignUpLandingPage />} />
+                        <Route path='/signup/student' element={<SignUpStudent />} />
+                        <Route path='/signup/business' element={<SignUpBusiness />} />
+                        <Route path='/uploadstudentproject' element={<UploadStudentProject />} />
+                        <Route path='/uploadbusinessproject' element={<UploadBusinessProject />} />
+                        <Route path='/studentdashboard' element={<StudentDashboard />} />
+                        <Route
+                            path="*"
+                            element={
+                                <main style={{ padding: "1rem" }}>
+                                    <p>There's nothing here!</p>
+                                </main>
+                            }
+                        />
+                    </Routes>
+                </div>
+                <Footer />
             </QueryClientProvider>
         </BrowserRouter>
     </React.StrictMode>
