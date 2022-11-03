@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import SignUpBusiness from "./pages/signup/SignUpBusiness";
 import SignUpStudent from "./pages/signup/SignUpStudent";
 import SignUpLandingPage from "./pages/signup/SignUpLandingPage";
+import StudentDashboard from "./pages/StudentDashboard";
 import UploadBusinessProject from "./pages/UploadBusinessProject";
 import UploadStudentProject from "./pages/UploadStudentProject";
 
@@ -28,6 +29,7 @@ root.render(
                     <Route path='/signup/business' element={<SignUpBusiness/>}/>
                     <Route path='/uploadstudentproject' element={<UploadStudentProject/>}/>
                     <Route path='/uploadbusinessproject' element={<UploadBusinessProject/>}/>
+                    <Route path='/studentdashboard' element={<StudentDashboard />}/>
                     <Route
                         path="*"
                         element={

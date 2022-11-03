@@ -38,11 +38,7 @@ input {
   bottom: 1rem;
 }
 
-button.primary {
-  padding: 0.5rem 4rem 0.5rem 4rem;
-  background-color: #FCB51F;
-  border-radius: 20px;
-}
+
 
 
 a {
@@ -61,3 +57,6 @@ a {
 @import "sass/components/highlightStudentProject";
 @import "sass/pages/dashboard";
 @import "sass/layout/forms";
+@import "sass/components/highlightBusinessProject";
+@import "sass/components/requestStatusCard";
+@import "sass/pages/studentDashboard";
