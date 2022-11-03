@@ -4,14 +4,6 @@ import Button from './Button';
 function StudentProjectPreview({ studentProject, onSeeMore }) {
   const { logo, name, institution, description, category, location } = studentProject;
 
-  // const eachCategory = category.forEach(category => {
-  //   <p className="category">
-  //    {category}
-  //   </p>
-  // }); 
-
-  
-
   return (
     <div className="student-project-preview">
       <div className="title-container">
