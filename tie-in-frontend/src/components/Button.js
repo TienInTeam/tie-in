@@ -3,7 +3,7 @@ import React from 'react';
 function Button({ label, onClick, variant }) {
   return (
     <div className="button">
-      <button className={variant ? "primary" : "secondary"} onClick={onClick} >{label}</button>
+      <button className={variant} onClick={onClick} >{label}</button>
     </div>
   )
 }
