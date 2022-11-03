@@ -23,6 +23,9 @@ const Home = () => {
                     <li>
                         <Link to="/uploadbusinessproject">Upload business project</Link>
                     </li>
+                    <li>
+                        <Link to="/studentprojectslist">Student Projects</Link>
+                    </li>
                 </ul>
             </nav>
             <Outlet/>
