@@ -89,7 +89,7 @@ const onSave = () => {
       <textarea placeholder="Enter your project summary" onChange={(e) => setDescription(e.target.value)} />
       </label>
       <fieldset>
-        <lebel>Expected Deadline (Required)</lebel>
+        <label>Expected Deadline (Required)</label>
         <Datepicker
                     selected={date}
                     date={!dateIsChecked ? date : null}
