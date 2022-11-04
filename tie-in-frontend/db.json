@@ -47,6 +47,7 @@
       "start_date": "",
       "end_date": "",
       "business_model": "",
+      "status": false,
       "category": [
         "mobililty",
         "AI"
@@ -68,6 +69,7 @@
       "start_date": "2022-10-19",
       "end_date": "2022-10-22",
       "business_model": "",
+      "status": true,
       "category": [
         "Web",
         "UI"
@@ -76,6 +78,7 @@
       "product_link": "https://google.com",
       "institution": "Langara College"
     }
+    
   ],
   "studentProject": [
     {
@@ -187,7 +190,7 @@
       "instructor_linkedIn": "",
       "project_link": "",
       "institution": "dwewewe",
-      "additional_message": "ds"
+      "additional_message": "ds",
       "team_images": [
         "https://picsum.photos/id/237/200/300",
         "https://picsum.photos/id/241/244/300",
@@ -360,51 +363,6 @@
       "linkedInUrl": "",
       "location": "Vancouver",
       "id": 11
-    }
-  ],
-  "businessProject": [
-    {
-      "id": 2,
-      "company_name": "PWR Tech",
-      "logo": "Florida",
-      "description": "test test",
-      "linkedIn_url": "https://test.com",
-      "team_id": "",
-      "location": "Vancouver, BC",
-      "tags": "Software Engineer, Web-App",
-      "start_date": "",
-      "end_date": "",
-      "team_member":"2-4",
-      "business_model": "",
-      "category": [
-        "mobililty",
-        "AI"
-      ],
-      "instructor_email": "",
-      "product_link": "",
-      "subject": "",
-      "institution": ""
-    },
-    {
-      "id": 1,
-      "company_name": "SRQ Inc",
-      "logo": "",
-      "description": "Test test ",
-      "linkedIn_url": "https://test.com",
-      "team_id": "",
-      "location": "Vancouver, BC",
-      "tags": "Software Engineer, Web-App",
-      "start_date": "2022-10-19",
-      "end_date": "2022-10-22",
-      "team_member":"3-5",
-      "business_model": "",
-      "category": [
-        "Web",
-        "UI"
-      ],
-      "instructor_email": "fjoca00@gmail.com",
-      "product_link": "https://google.com",
-      "institution": "Langara College"
     }
   ]
 }
