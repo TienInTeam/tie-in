@@ -14,13 +14,21 @@ function BusinessProjectsList() {
   const onSeeMore = () => {
     alert("see more is clicked")
   }
-// console.log(businessProject);
+  const onCheckStatus = () => {
+    alert("check status is clicked")
+  }
+  console.log("data:" + JSON.stringify(requestBusinessProject.data));
   return (
     <div>
       <div>
-        {requestBusinessProject.data.map((business, index) => (
-          <BusinessProjectPreview businessProject={business} key={index} onSeeMore={onSeeMore} />
-        ))}
+        {requestBusinessProject.data.map((business, index) =>
+          <BusinessProjectPreview
+            businessProject={business}
+            key={index}
+            onSeeMore={onSeeMore}
+            onCheckStatus={onCheckStatus}
+          />
+        )}
       </div>
     </div>
   )
