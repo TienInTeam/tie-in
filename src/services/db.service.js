@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const dbConfig = require("../configs/db.config");
 
 //MongoDB client
@@ -29,7 +31,7 @@ async function getOneFromDb(collection, userQuery) {
   try {
     await client.connect();
     const dbCollection = database.collection(collection);
-    const query = {};
+    const query = userQuery;
     const result = await dbCollection.findOne(query);
 
     return result;
@@ -41,7 +43,7 @@ async function getOneFromDb(collection, userQuery) {
   }
 }
 
-async function postOneToDb(collection, requestBody) {
+async function createOneInDb(collection, requestBody) {
   try {
     await client.connect();
     const dbCollection = database.collection(collection);
@@ -60,7 +62,7 @@ async function postOneToDb(collection, requestBody) {
 async function updateOneInDb(collection, userQuery, requestBody) {
   try {
     await client.connect();
-    const dbCollection = database.collection("Users");
+    const dbCollection = database.collection(collection);
     const query = userQuery;
     const updateBody = requestBody;
     const result = await dbCollection.findOneAndUpdate(query, updateBody);
@@ -74,11 +76,11 @@ async function updateOneInDb(collection, userQuery, requestBody) {
   }
 }
 
-async function deleteOneFromDb(collection, query) {
+async function deleteOneFromDb(collection, userQuery) {
   try {
     await client.connect();
-    const dbCollection = database.collection("Users");
-    const query = {};
+    const dbCollection = database.collection(collection);
+    const query = userQuery;
     const result = await dbCollection.deleteOne(query);
 
     return result;
@@ -93,7 +95,7 @@ async function deleteOneFromDb(collection, query) {
 module.exports = {
   getAllFromDb,
   getOneFromDb,
-  postOneToDb,
+  createOneInDb,
   updateOneInDb,
   deleteOneFromDb,
 };
