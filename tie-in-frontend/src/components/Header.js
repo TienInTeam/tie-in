@@ -30,7 +30,6 @@ export default function Header() {
     }
 
     const [displayMenu, setDisplayMenu] = useState(false);
-    const isLoggedIn = sessionStorage.getItem('userId');
     let Menu;
     const RenderLoginMenu = () => {
         return <div className="site-header-main">
@@ -81,7 +80,7 @@ export default function Header() {
         </div>;
     }
 
-    if (isLoggedIn) {
+    if (sessionStorage.getItem("userLoggedIn")) {
         Menu = RenderLoginMenu;
     } else {
         Menu = RenderLogoutMenu;
