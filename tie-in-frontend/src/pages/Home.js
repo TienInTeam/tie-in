@@ -1,4 +1,4 @@
-import {Outlet, Link} from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 
 const Home = () => {
     return (
@@ -31,7 +31,7 @@ const Home = () => {
                     </li>
                 </ul>
             </nav>
-            <Outlet/>
+            <Outlet />
         </>
     );
 };

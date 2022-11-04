@@ -1,0 +1,117 @@
+@import "../core/colors";
+
+#tie-in-logo {
+    background-color: #fff;
+}
+
+.site-header-main {
+    position: relative;
+    padding-bottom: 2rem;
+
+    li {
+        list-style-type: none;
+
+        a {
+            text-decoration: none;
+            display: block;
+        }
+    }
+
+    .top-menu {
+        color: white;
+        background-color: $darker_blue_card_background;
+        opacity: 0.7;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+        text-align: left;
+        position: absolute;
+        right: 0;
+        transform: translateY(-100%);
+        z-index: -1;
+        transition: transform 0.5s ease-in-out;
+
+        ul {
+            width: 16rem;
+            padding: 0;
+            margin: 0;
+
+            p {
+                padding: 0;
+                margin: 0;
+            }
+
+            li {
+                height: 3.25rem;
+                padding-left: 2rem;
+                display: flex;
+                align-items: center;
+                text-align: left;
+            }
+
+            li:not(li:last-child) {
+                border-bottom: 1px solid white;
+            }
+        }
+    }
+
+    .icon:hover {
+        cursor: pointer;
+    }
+
+    .show {
+        display: flex;
+        transform: translateY(0%);
+        z-index: 1;
+    }
+}
+
+.site-header-top {
+    background-color: $darker_blue_card_background;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem 0 1rem;
+
+    .site-logo {
+        display: flex;
+        align-items: center;
+        flex: 1 0 25%;
+    }
+
+    .site-header-cta-menu {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: flex-end;
+        flex: 1 1 30%;
+        gap: 1rem;
+    }
+
+    .site-header-menu {
+        flex: 1 0 40%;
+        align-self: center;
+
+        ul {
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-flow: row wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+        }
+    }
+
+    .site-header-buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1 0 40%;
+        gap: 1rem;
+    }
+
+    li p,
+    h2 {
+        color: white;
+        padding-left: 5px;
+    }
+}
