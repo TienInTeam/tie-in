@@ -47,6 +47,7 @@
       "start_date": "",
       "end_date": "",
       "business_model": "",
+      "status": false,
       "category": [
         "mobililty",
         "AI"
@@ -68,6 +69,7 @@
       "start_date": "2022-10-19",
       "end_date": "2022-10-22",
       "business_model": "",
+      "status": true,
       "category": [
         "Web",
         "UI"
@@ -76,6 +78,7 @@
       "product_link": "https://google.com",
       "institution": "Langara College"
     }
+    
   ],
   "studentProject": [
     {

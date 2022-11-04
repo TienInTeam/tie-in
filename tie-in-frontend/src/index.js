@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.scss';
+import BusinessProjectsList from "./pages/BusinessProjectsList";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
@@ -36,7 +37,8 @@ root.render(
                         <Route path='/uploadbusinessproject' element={<UploadBusinessProject />} />
                         <Route path='/studentdashboard' element={<StudentDashboard />} />
                         <Route path='/studentprojectslist' element={<StudentProjectsList/>}/>
-                    <Route
+                        <Route path='/businessprojectslist' element={<BusinessProjectsList/>}/>
+                        <Route
                             path="*"
                             element={
                                 <main style={{ padding: "1rem" }}>
