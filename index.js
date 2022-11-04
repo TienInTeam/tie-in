@@ -5,11 +5,6 @@ const app = express();
 //Server Port
 app.listen(process.env.PORT || 2000);
 
-//Connect mongoDB
-const { MongoClient, ObjectId } = require('mongodb');
-const uri = "mongodb+srv://tieinuser1:tieinmongo01@testcluster.ryzz4av.mongodb.net/?retryWrites=true&w=majority";
-const client = new MongoClient(uri);
-
 //Middleware for json reading.
 app.use(express.json());
 
