@@ -41,7 +41,8 @@
 }
 
 .title-wrapper {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   align-items: baseline;
   justify-content: space-evenly;
   color: white;

@@ -13,6 +13,7 @@
     font-size: 1.2rem;
     border-radius: 30px 30px 0 0 ;
     align-items: center;
+    justify-content: space-between;
   }
   .body-container{
     background-color: $secondary_background_color;
@@ -27,12 +28,18 @@
     align-items: center;
     justify-content: center;
     grid-column: 4/5;
+    margin-left: 0.5rem;
   }
   .category{
     background-color: $quaternary_background_color;
     border-radius: 50px;
-    margin: auto;
     width: 50%;
     margin-top: .4rem;
+    padding-left: 1rem;
+  }
+
+  .button-wrapper {
+    display: flex;
+    flex-direction: row;
   }
 }
