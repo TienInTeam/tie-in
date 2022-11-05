@@ -1,12 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as BackIcon } from '../assets/icons/navigation/back-icon.svg';
 
-function StudentProjectDetails({ studentProject, team }) {
+function StudentProjectDetails({ studentProject, team}) {
   const { image, logo_url, project_name, category, start_date, end_date, location, institution, description, project_link, business_model, development, design, management, others, additional_info } = studentProject;
   // const { team_name, studentTitle, linkedIn, email } = team;
   const navigate = useNavigate()
   const onBack = () => {
-    navigate("/studentprojectslist")
+    navigate(-1);
   }
   return (
     <div className="student-project-details">
@@ -46,7 +46,7 @@ function StudentProjectDetails({ studentProject, team }) {
       <p>{development}</p>
       <p>DESIGN:</p>
       <p>{design}</p>
-      <p>MANAGEMENt:</p>
+      <p>MANAGEMENT:</p>
       <p>{management}</p>
       <p>OTHERS:</p>
       <p>{others}</p>
