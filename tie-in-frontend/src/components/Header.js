@@ -29,15 +29,19 @@ export default function Header() {
         navigate("/home");
     }
 
+    const onLogo = () => {
+        navigate("/");
+    }
+
     const [displayMenu, setDisplayMenu] = useState(false);
     let Menu;
     const RenderLoginMenu = () => {
         return <div className="site-header-main">
             <div className="site-header-top">
-                <div className='site-logo'>
+                <a onClick={onLogo} className='site-logo'>
                     <Logo />
                     <h2>Tie-in</h2>
-                </div>
+                </a>
                 <div className="site-header-cta-menu">
                     <Button label={"Upload"} variant={"primary"} onClick={uploadProject} />
                     <div className="icon profile-icon" onClick={changeDisplayMenu}><ProfileIcon /></div>
