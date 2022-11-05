@@ -48,6 +48,8 @@ a {
 
 .body {
   min-height: 100vh;
+  display: grid;
+  grid-template-columns: 22% 77%;
 }
 
 #root {
@@ -71,4 +73,5 @@ a {
 @import "sass/components/studentProjectPreview";
 @import "sass/components/businessProjectPreview";
 @import "sass/pages/businessProjectRequest";
+@import "sass/components/sideMenu";
 

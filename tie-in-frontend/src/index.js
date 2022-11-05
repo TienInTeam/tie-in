@@ -17,6 +17,7 @@ import UploadStudentProject from "./pages/UploadStudentProject";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import StudentProjectDetailsPage from "./pages/StudentProjectDetailsPage";
+import SideMenu from "./components/SideMenu";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ root.render(
             <QueryClientProvider client={queryClient}>
                 <Header />
                 <div className="body">
+                    <SideMenu />
                     <Routes>
                         <Route path='/dashboard' element={<Dashboard />} />
                         <Route path='/' element={<Home />} />
