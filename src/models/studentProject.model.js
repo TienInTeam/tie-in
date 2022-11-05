@@ -47,3 +47,5 @@ function StudentProject(
   this.additional_info = additionalInfo;
   this.others = others;
 }
+
+module.exports = StudentProject;

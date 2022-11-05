@@ -1,5 +1,6 @@
-function Team(id, name, members) {
-  this.id = id;
+function Team(name, members) {
   this.name = name;
   this.members = members;
 }
+
+module.exports = Team;
