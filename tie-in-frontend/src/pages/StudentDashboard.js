@@ -32,7 +32,7 @@ const StudentDashboard = () => {
   }
 
   return (
-    <>
+    <div>
       <div className={"data-visualization"}>
         <div className="visualization-component">
           <h1>Total Project View</h1>
@@ -71,7 +71,7 @@ const StudentDashboard = () => {
           <RequestStatusCard application={application} key={index} />
         ))}
       </div>
-    </>
+    </div>
   )
 }
 
