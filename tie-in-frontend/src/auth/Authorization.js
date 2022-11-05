@@ -21,20 +21,19 @@ export function signUp(email, password) {
 }
 
 //method to login the user on the app and store authentication info.
-export function login(email, password) {
+export const login = async (email, password) => {
   const authentication = getAuth(app);
-  signInWithEmailAndPassword(authentication, email, password)
-    .then((response) => {
-      const user = authentication.currentUser;
-      if (user !== null) {
-        const email = user.email;
-        const uid = user.uid;
-        sessionStorage.setItem('authToken', response._tokenResponse.refreshToken);
-        sessionStorage.setItem('userEmail', email);
-        sessionStorage.setItem('userId', uid);
-      }
-    })
-    .catch((error) => {
-      const errorMessage = error.message;
-    });
+  try {
+    const userCredential = await signInWithEmailAndPassword(authentication, email, password)
+    const user = authentication.currentUser;
+    if (user !== null) {
+      const email = user.email;
+      const uid = user.uid;
+      sessionStorage.setItem('authToken', userCredential._tokenResponse.refreshToken);
+      sessionStorage.setItem('userEmail', email);
+      sessionStorage.setItem('userId', uid);
+    }
+  } catch (e) {
+    console.error('error: ' + e)
+  }
 }

@@ -1,7 +1,7 @@
 import project from "./baseURL";
 
-export const requestUser = () => {
-    return project.get("/users").then((res) => {
+export const requestUser = (uid) => {
+    return project.get(`/users/${uid}`).then((res) => {
         return res.data;
     });
 }

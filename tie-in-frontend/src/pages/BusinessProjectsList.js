@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import { requestBusinessProjects } from "../api/businessProject";
 import BusinessProjectPreview from "../components/BusinessProjectPreview";
 
-
 function BusinessProjectsList() {
   const requestBusinessProject = useQuery(["businessProject"], () => requestBusinessProjects())
   if (requestBusinessProject.isLoading) {
@@ -15,9 +14,9 @@ function BusinessProjectsList() {
     alert("see more is clicked")
   }
   const onCheckStatus = () => {
-    alert("check status is clicked")
+    alert("Check status is clicked")
   }
-  console.log("data:" + JSON.stringify(requestBusinessProject.data));
+
   return (
     <div>
       <div>
@@ -31,7 +30,7 @@ function BusinessProjectsList() {
         )}
       </div>
     </div>
-  )
+  );
 }
 
 export default BusinessProjectsList;
