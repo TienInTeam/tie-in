@@ -19,3 +19,5 @@ function Student(
   this.position = position;
   this.phone_number = phoneNumber;
 }
+
+module.exports = Student;
