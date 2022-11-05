@@ -120,7 +120,10 @@
       "instructor_email": "fjoca00@gmail.com",
       "product_link": "https://google.com",
       "institution": "Langara College",
-      "location":"Vancouver"
+      "location":"Vancouver",
+      "image":[
+        "https://picsum.photos/200/200"
+      ]
     },
     {
       "id": 2,

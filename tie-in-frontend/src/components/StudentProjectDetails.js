@@ -1,7 +1,7 @@
 
 function StudentProjectDetails({ studentProject, team }) {
-  const { logo_url, project_name, category, start_date, end_date, location, institution, description, project_link, business_model, development, design, management, others, additional_info } = studentProject;
-  const { image, name, studentTitle, linkedIn, email } = team;
+  const { image, logo_url, project_name, category, start_date, end_date, location, institution, description, project_link, business_model, development, design, management, others, additional_info } = studentProject;
+  // const { team_name, studentTitle, linkedIn, email } = team;
 
   return (
     <div className="student-project-detail">
@@ -16,7 +16,7 @@ function StudentProjectDetails({ studentProject, team }) {
       <h3>Institution</h3>
       <p>{institution}</p>
       {image?
-      image.map((image,index) => {return(<img src={image} alt="student's image" key={index} />)})
+      image.map((image,index) => {return(<img src={image} alt="project's image" key={index} />)})
       : ""
       }
       <h3>Description</h3>
@@ -36,11 +36,11 @@ function StudentProjectDetails({ studentProject, team }) {
       <p>{others}</p>
       <h3>Additional Information</h3>
       <p>{additional_info}</p>
-      <h3>Team {team_name} contact:</h3>
-      <h3>{name}</h3>
-      <h3>{studentTitle}</h3>
-      <a href={linkedIn}>{linkedIn}</a>
-      <a href={email}>{email}</a>
+      {/* <h3>Team {team_name} contact:</h3>
+      <h3>{team_name}</h3>
+      {/* <h3>{studentTitle}</h3> */}
+      {/* <a href={linkedIn}>{linkedIn}</a> */}
+      {/* <a href={email}>{email}</a> */} 
     </div>
   );
 }
