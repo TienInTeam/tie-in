@@ -1,10 +1,16 @@
+import { useNavigate } from 'react-router-dom';
+import { ReactComponent as BackIcon } from '../assets/icons/navigation/back-icon.svg';
 
 function StudentProjectDetails({ studentProject, team }) {
   const { image, logo_url, project_name, category, start_date, end_date, location, institution, description, project_link, business_model, development, design, management, others, additional_info } = studentProject;
   // const { team_name, studentTitle, linkedIn, email } = team;
-
+  const navigate = useNavigate()
+  const onBack = () => {
+    navigate("/studentprojectslist")
+  }
   return (
     <div className="student-project-details">
+      <div className="icon back-icon" onClick={onBack}><BackIcon /></div>
       <div className="title">
         <img src={logo_url} alt="project's logo" />
         <h1>{project_name}</h1>

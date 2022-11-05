@@ -14,10 +14,9 @@ function StudentProjectDetailsPage() {
   if (requestStudentProjectById.isError) {
     return <span>Error: {requestStudentProjectById.error.message}</span>
   }
-
+  
   return (
     <div className="student-projects-details">
-
       <div>
             <StudentProjectDetails studentProject={requestStudentProjectById.data} />
       </div>
