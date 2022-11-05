@@ -15,7 +15,7 @@ function StudentProjectsList() {
   }
 
   const onSeeMore = (id) => {
-    navigate(`/studentprojectdetails/${id}`);
+    navigate(`/studentprojectdetails/${id+1}`);
     console.log(id);
   }
   return (
