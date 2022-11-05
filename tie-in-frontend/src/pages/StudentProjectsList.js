@@ -1,8 +1,10 @@
-import {useQuery} from "@tanstack/react-query";
-import {requestStudentProjects} from "../api/studentProject";
+import { useQuery } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
+import { requestStudentProjects } from "../api/studentProject";
 import StudentProjectPreview from "../components/StudentProjectPreview";
 
 function StudentProjectsList() {
+  const navigate = useNavigate();
   const requestStudentProject = useQuery(["studentProject"], () => requestStudentProjects())
   if (requestStudentProject.isLoading) {
     return <span>Loading...</span>
@@ -12,17 +14,18 @@ function StudentProjectsList() {
     return <span>Error: {requestStudentProject.error.message}</span>
   }
 
-  const onSeeMore = () => {
-    alert("see more is clicked")
+  const onSeeMore = (id) => {
+    navigate(`/studentprojectdetails/${id}`);
+    console.log(id);
   }
   return (
     <div className="student-projects-list">
-    <div>
-      {requestStudentProject.data.map((student,index) => (
-            <StudentProjectPreview studentProject={student} key={index} onSeeMore={onSeeMore}/>
+      <div>
+        {requestStudentProject.data.map((student, index) => (
+          <StudentProjectPreview studentProject={student} key={index} onSeeMore={() => onSeeMore(index)} />
         ))}
+      </div>
     </div>
-  </div>
   )
 }
 
