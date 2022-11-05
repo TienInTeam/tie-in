@@ -36,13 +36,15 @@ function BusinessProjectPreview({ businessProject, onSeeMore, onCheckStatus }) {
         <div className="button-container">
           <h3>Location</h3>
           <p>{location}</p>
+          <div className={"button-wrapper"}>
+            {status ?
+                <Button
+                    label={"Check Status"}
+                    variant={"secondary"}
+                    onClick={onCheckStatus}
+                /> : "" }
           <Button label={"See More"} variant={"primary"} onClick={onSeeMore} />
-          {status ? 
-          <Button
-              label={"Check Status"}
-              variant={"secondary"}
-              onClick={onCheckStatus}
-          /> : "" }
+          </div>
         </div>
       </div>
     </div>
