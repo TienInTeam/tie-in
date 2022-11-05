@@ -15,3 +15,5 @@ function Business(
   this.address = address;
   this.location = location;
 }
+
+module.exports = Business;

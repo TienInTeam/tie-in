@@ -19,7 +19,7 @@ async function getOneUserByUid(req, res, next) {
 async function createOneUser(req, res, next) {
   res
     .status(200)
-    .send(await appService.createOneStudentInDb(userCollection, req.body));
+    .send(await appService.createOneUserInDb(userCollection, req.body));
 }
 
 // async function updateOneUser(req, res, next) {
@@ -57,7 +57,7 @@ async function getOneStudentByEmail(req, res, next) {
 async function createOneStudent(req, res, next) {
   res
     .status(200)
-    .send(await appService.createOneStudentInDb(userCollection, req.body));
+    .send(await appService.createOneStudentInDb(studentCollection, req.body));
 }
 
 ////////// TEAMS //////////
@@ -106,7 +106,7 @@ const studentProjectCollection = "StudentProject";
 async function getAllStudentProjects(req, res, next) {
   res
     .status(200)
-    .send(await appService.getAllUsersFromDb(studentProjectCollection));
+    .send(await appService.getAllStudentProjectsFromDb(studentProjectCollection));
 }
 
 async function getOneStudentProjectByName(req, res, next) {
@@ -138,7 +138,7 @@ const businessProjectCollection = "BusinessProject";
 async function getAllBusinessProjects(req, res, next) {
   res
     .status(200)
-    .send(await appService.getAllUsersFromDb(businessProjectCollection));
+    .send(await appService.getAllBusinessFromDb(businessProjectCollection));
 }
 
 async function getOneBusinessProjectByName(req, res, next) {
@@ -146,7 +146,7 @@ async function getOneBusinessProjectByName(req, res, next) {
   res
     .status(200)
     .send(
-      await appService.getOneUserFromDb(businessProjectCollection, userQuery)
+      await appService.getOneBusinessFromDb(businessProjectCollection, userQuery)
     );
 }
 
@@ -164,10 +164,10 @@ async function createOneBusinessProject(req, res, next) {
 const applicationsCollection = "Applications";
 
 async function getAllApplications(req, res, next) {
-    res
-      .status(200)
-      .send(await appService.getAllApplicationsFromDb(applicationsCollection));
-  }
+  res
+    .status(200)
+    .send(await appService.getAllApplicationsFromDb(applicationsCollection));
+}
 
 // async function getOneApplicationById(req, res, next) {
 //   res.status(200).send(
