@@ -81,7 +81,7 @@ const onSave = () => {
 
   return (
     <div className="upload-business-project">
-      <h2>Businesss Projrct Request</h2>
+      <h2>Business Project Request</h2>
       <p>Mandatory Fields</p>
       <InputType label={"Project Title (Required)"} type={"text"} placeHolder={"Enter your project name"} onChange={(e) => setProjectName(e.target.value)}/>
       <label>

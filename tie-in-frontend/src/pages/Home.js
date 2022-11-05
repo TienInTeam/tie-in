@@ -55,7 +55,7 @@ const Home = () => {
                         <Link to="/login">Login</Link>
                     </li>
                     <li>
-                        <Link to="/signuplanding">Sign up landing</Link>
+                        <Link to="/signuplanding">Sign up</Link>
                     </li>
                 </ul>
             </nav>
