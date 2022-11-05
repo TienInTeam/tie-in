@@ -4,17 +4,27 @@ function StudentProjectDetails({ studentProject, team }) {
   // const { team_name, studentTitle, linkedIn, email } = team;
 
   return (
-    <div className="student-project-detail">
-      <img src={logo_url} alt="project's logo" />
-      <h1>{project_name}</h1>
+    <div className="student-project-details">
+      <div className="title">
+        <img src={logo_url} alt="project's logo" />
+        <h1>{project_name}</h1>
       <p>{category}</p>
-      <h3>Duration</h3>
-      <p>{start_date}</p>
-      <p>{end_date}</p>
-      <h3>Location</h3>
-      <p>{location}</p>
-      <h3>Institution</h3>
-      <p>{institution}</p>
+      </div>
+      <div className="subtitle">
+        <div>
+          <h3>Duration</h3>
+          <p>{start_date}</p>
+          <p>{end_date}</p>
+        </div>
+        <div>
+          <h3>Location</h3>
+        <p>{location}</p>
+        </div>
+        <div>
+          <h3>Institution</h3>
+          <p>{institution}</p>
+        </div>
+      </div>
       {image?
       image.map((image,index) => {return(<img src={image} alt="project's image" key={index} />)})
       : ""
