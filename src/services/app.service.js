@@ -1,6 +1,12 @@
 const dbService = require("./db.service");
 
-const userModel = require("../models/user.model");
+const User = require("../models/user.model");
+const Student = require("../models/student.model");
+const Team = require("../models/team.model");
+const Business = require("../models/business.model");
+const StudentProject = require("../models/studentProject.model");
+const BusinessProject = require("../models/businessProject.model");
+const Application = require("../models/application.model");
 
 //=================================== Model Building functions
 
@@ -78,16 +84,35 @@ function newStudentProject(userInfo) {
 
 function newBusinessProject(userInfo) {
   const newUser = new BusinessProject(
-    userInfo.uid,
-    userInfo.email,
-    userInfo.type
+    userInfo.name,
+    userInfo.location,
+    userInfo.description,
+    userInfo.budget,
+    userInfo.team_size,
+    userInfo.team_requirements,
+    userInfo.end_date,
+    userInfo.subjects,
+    userInfo.design_url,
+    userInfo.project_link,
+    userInfo.category,
+    userInfo.technology,
+    userInfo.additional_field,
+    userInfo.file,
+    userInfo.links,
+    userInfo.status
   );
 
   return newUser;
 }
 
 function newApplication(userInfo) {
-  const newUser = new Application(userInfo.uid, userInfo.email, userInfo.type);
+  const newUser = new Application(
+    userInfo.team_id,
+    userInfo.request_id,
+    userInfo.application_status,
+    userInfo.uploaded_files,
+    userInfo.application_date
+  );
 
   return newUser;
 }
@@ -102,7 +127,7 @@ async function getAllUsersFromDb(collection) {
 }
 
 async function getOneUserFromDb(collection, userQuery) {
-  const response = dbService.getOneFromDb(collection, { uid: userQuery });
+  const response = dbService.getOneFromDb(collection, userQuery);
 
   return response;
 }
@@ -113,21 +138,21 @@ async function createOneUserInDb(collection, requestBody) {
   return response;
 }
 
-async function updateOneUserInDb(collection, userQuery, requestBody) {
-  const response = dbService.updateOneInDb(
-    collection,
-    { uid: userQuery },
-    newUser(requestBody)
-  );
+// async function updateOneUserInDb(collection, userQuery, requestBody) {
+//   const response = dbService.updateOneInDb(
+//     collection,
+//     { uid: userQuery },
+//     newUser(requestBody)
+//   );
 
-  return response;
-}
+//   return response;
+// }
 
-async function deleteOneUserFromDb(collection, userQuery) {
-  const response = dbService.deleteOneFromDb(collection, { uid: userQuery });
+// async function deleteOneUserFromDb(collection, userQuery) {
+//   const response = dbService.deleteOneFromDb(collection, { uid: userQuery });
 
-  return response;
-}
+//   return response;
+// }
 
 ////////// STUDENT //////////
 async function getAllStudentsFromDb(collection) {
@@ -137,7 +162,7 @@ async function getAllStudentsFromDb(collection) {
 }
 
 async function getOneStudentFromDb(collection, userQuery) {
-  const response = dbService.getOneFromDb(collection, { email: userQuery });
+  const response = dbService.getOneFromDb(collection, userQuery);
 
   return response;
 }
@@ -148,17 +173,17 @@ async function createOneStudentInDb(collection, requestBody) {
   return response;
 }
 
-async function updateOneStudentInDb(collection, userQuery, requestBody) {
-  const response = dbService.updateOneInDb(collection, userQuery, requestBody);
+// async function updateOneStudentInDb(collection, userQuery, requestBody) {
+//   const response = dbService.updateOneInDb(collection, userQuery, requestBody);
 
-  return response;
-}
+//   return response;
+// }
 
-async function deleteOneStudentFromDb(collection, userQuery) {
-  const response = dbService.deleteOneFromDb(collection, userQuery);
+// async function deleteOneStudentFromDb(collection, userQuery) {
+//   const response = dbService.deleteOneFromDb(collection, userQuery);
 
-  return response;
-}
+//   return response;
+// }
 
 ////////// TEAMS //////////
 async function getAllTeamsFromDb(collection) {
@@ -174,22 +199,22 @@ async function getOneTeamFromDb(collection, userQuery) {
 }
 
 async function createOneTeamInDb(collection, requestBody) {
-  const response = dbService.createOneInDb(collection, requestBody);
+  const response = dbService.createOneInDb(collection, newTeam(requestBody));
 
   return response;
 }
 
-async function updateOneTeamInDb(collection, userQuery, requestBody) {
-  const response = dbService.updateOneInDb(collection, userQuery, requestBody);
+// async function updateOneTeamInDb(collection, userQuery, requestBody) {
+//   const response = dbService.updateOneInDb(collection, userQuery, requestBody);
 
-  return response;
-}
+//   return response;
+// }
 
-async function deleteOneTeamFromDb(collection, userQuery) {
-  const response = dbService.deleteOneFromDb(collection, userQuery);
+// async function deleteOneTeamFromDb(collection, userQuery) {
+//   const response = dbService.deleteOneFromDb(collection, userQuery);
 
-  return response;
-}
+//   return response;
+// }
 
 ////////// BUSINESS //////////
 async function getAllBusinessFromDb(collection) {
@@ -205,22 +230,25 @@ async function getOneBusinessFromDb(collection, userQuery) {
 }
 
 async function createOneBusinessInDb(collection, requestBody) {
-  const response = dbService.createOneInDb(collection, requestBody);
+  const response = dbService.createOneInDb(
+    collection,
+    newBusiness(requestBody)
+  );
 
   return response;
 }
 
-async function updateOneBusinessInDb(collection, userQuery, requestBody) {
-  const response = dbService.updateOneInDb(collection, userQuery, requestBody);
+// async function updateOneBusinessInDb(collection, userQuery, requestBody) {
+//   const response = dbService.updateOneInDb(collection, userQuery, requestBody);
 
-  return response;
-}
+//   return response;
+// }
 
-async function deleteOneBusinessFromDb(collection, userQuery) {
-  const response = dbService.deleteOneFromDb(collection, userQuery);
+// async function deleteOneBusinessFromDb(collection, userQuery) {
+//   const response = dbService.deleteOneFromDb(collection, userQuery);
 
-  return response;
-}
+//   return response;
+// }
 
 ////////// STUDENT PROJECT //////////
 async function getAllStudentProjectsFromDb(collection) {
@@ -236,22 +264,25 @@ async function getOneStudentProjectFromDb(collection, userQuery) {
 }
 
 async function createOneStudentProjectInDb(collection, requestBody) {
-  const response = dbService.createOneInDb(collection, requestBody);
+  const response = dbService.createOneInDb(
+    collection,
+    newStudentProject(requestBody)
+  );
 
   return response;
 }
 
-async function updateOneStudentProjectInDb(collection, userQuery, requestBody) {
-  const response = dbService.updateOneInDb(collection, userQuery, requestBody);
+// async function updateOneStudentProjectInDb(collection, userQuery, requestBody) {
+//   const response = dbService.updateOneInDb(collection, userQuery, requestBody);
 
-  return response;
-}
+//   return response;
+// }
 
-async function deleteOneStudentProjectFromDb(collection, userQuery) {
-  const response = dbService.deleteOneFromDb(collection, userQuery);
+// async function deleteOneStudentProjectFromDb(collection, userQuery) {
+//   const response = dbService.deleteOneFromDb(collection, userQuery);
 
-  return response;
-}
+//   return response;
+// }
 
 ////////// BUSINESS PROJECT //////////
 async function getAllBusinessProjectsFromDb(collection) {
@@ -267,26 +298,29 @@ async function getOneBusinessProjectFromDb(collection, userQuery) {
 }
 
 async function createOneBusinessProjectInDb(collection, requestBody) {
-  const response = dbService.createOneInDb(collection, requestBody);
+  const response = dbService.createOneInDb(
+    collection,
+    newBusinessProject(requestBody)
+  );
 
   return response;
 }
 
-async function updateOneBusinessProjectInDb(
-  collection,
-  userQuery,
-  requestBody
-) {
-  const response = dbService.updateOneInDb(collection, userQuery, requestBody);
+// async function updateOneBusinessProjectInDb(
+//   collection,
+//   userQuery,
+//   requestBody
+// ) {
+//   const response = dbService.updateOneInDb(collection, userQuery, requestBody);
 
-  return response;
-}
+//   return response;
+// }
 
-async function deleteOneBusinessProjectFromDb(collection, userQuery) {
-  const response = dbService.deleteOneFromDb(collection, userQuery);
+// async function deleteOneBusinessProjectFromDb(collection, userQuery) {
+//   const response = dbService.deleteOneFromDb(collection, userQuery);
 
-  return response;
-}
+//   return response;
+// }
 
 ////////// APPLICATION //////////
 async function getAllApplicationsFromDb(collection) {
@@ -302,63 +336,66 @@ async function getOneApplicationFromDb(collection, userQuery) {
 }
 
 async function createOneApplicationInDb(collection, requestBody) {
-  const response = dbService.createOneInDb(collection, requestBody);
+  const response = dbService.createOneInDb(
+    collection,
+    newApplication(requestBody)
+  );
 
   return response;
 }
 
-async function updateOneApplicationInDb(collection, userQuery, requestBody) {
-  const response = dbService.updateOneInDb(collection, userQuery, requestBody);
+// async function updateOneApplicationInDb(collection, userQuery, requestBody) {
+//   const response = dbService.updateOneInDb(collection, userQuery, requestBody);
 
-  return response;
-}
+//   return response;
+// }
 
-async function deleteOneApplicationFromDb(collection, userQuery) {
-  const response = dbService.deleteOneFromDb(collection, userQuery);
+// async function deleteOneApplicationFromDb(collection, userQuery) {
+//   const response = dbService.deleteOneFromDb(collection, userQuery);
 
-  return response;
-}
+//   return response;
+// }
 
 module.exports = {
   getAllUsersFromDb,
   getOneUserFromDb,
   createOneUserInDb,
-  updateOneUserInDb,
-  deleteOneUserFromDb,
+  // updateOneUserInDb,
+  // deleteOneUserFromDb,
 
   getAllStudentsFromDb,
   getOneStudentFromDb,
   createOneStudentInDb,
-  updateOneStudentInDb,
-  deleteOneStudentFromDb,
+  // updateOneStudentInDb,
+  // deleteOneStudentFromDb,
 
   getAllTeamsFromDb,
   getOneTeamFromDb,
   createOneTeamInDb,
-  updateOneTeamInDb,
-  deleteOneTeamFromDb,
+  // updateOneTeamInDb,
+  // deleteOneTeamFromDb,
 
   getAllBusinessFromDb,
   getOneBusinessFromDb,
   createOneBusinessInDb,
-  updateOneBusinessInDb,
-  deleteOneBusinessFromDb,
+  // updateOneBusinessInDb,
+  // deleteOneBusinessFromDb,
 
   getAllStudentProjectsFromDb,
   getOneStudentProjectFromDb,
   createOneStudentProjectInDb,
-  updateOneStudentProjectInDb,
-  deleteOneStudentProjectFromDb,
+  // updateOneStudentProjectInDb,
+  // deleteOneStudentProjectFromDb,
 
   getAllBusinessProjectsFromDb,
   getOneBusinessProjectFromDb,
   createOneBusinessProjectInDb,
-  updateOneBusinessProjectInDb,
-  deleteOneBusinessProjectFromDb,
+  // updateOneBusinessProjectInDb,
+  // deleteOneBusinessProjectFromDb,
 
   getAllApplicationsFromDb,
   getOneApplicationFromDb,
   createOneApplicationInDb,
-  updateOneApplicationInDb,
-  deleteOneApplicationFromDb,
+  // updateOneApplicationInDb,
+  // deleteOneApplicationFromDb,
 };
