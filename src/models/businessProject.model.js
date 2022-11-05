@@ -7,6 +7,8 @@ function BusinessProject(
   teamRequirements,
   endDate,
   subjects,
+  designUrl,
+  projectLink,
   category,
   technology,
   additionalField,
@@ -31,3 +33,5 @@ function BusinessProject(
   this.links = links;
   this.status = status;
 }
+
+module.exports = BusinessProject;
