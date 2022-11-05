@@ -1,5 +1,3 @@
-require("dotenv").config();
-
 const dbConfig = require("../configs/db.config");
 
 //MongoDB client
