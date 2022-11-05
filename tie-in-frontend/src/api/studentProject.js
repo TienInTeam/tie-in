@@ -10,3 +10,7 @@ export const saveStudentProject = (postData) => project.post('/studentProject', 
     return res.data;
 });
 
+export const requestStudentProject = (id) => project.get(`/studentProject/${id}`).then((res) => {
+    return res.data;
+});
+

@@ -1,5 +1,3 @@
-import React from 'react'
-import Button from './Button'
 
 function StudentProjectDetails({ studentProject, team }) {
   const { logo_url, project_name, category, start_date, end_date, location, institution, description, project_link, business_model, development, design, management, others, additional_info } = studentProject;

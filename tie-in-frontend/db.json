@@ -81,7 +81,8 @@
     
   ],
   "studentProject": [
-    {
+    {  
+      "id": 7,
       "name": "nannies for you",
       "logo": "Florida",
       "description": "test test hgljhgjhb .jhvbljh jhvljhv j",
@@ -90,13 +91,13 @@
       "approval_status": "Pending",
       "tags": "Software Engineer, Web-App",
       "start_date": "",
-      "end_date": "",
+      "end_date": "2/8/2022",
       "business_model": "",
       "technology": "",
       "instructor_email": "",
       "product_link": "",
       "subject": "",
-      "institution": "",
+      "institution": "Langara",
       "location":"Vancouver"
     },
     {

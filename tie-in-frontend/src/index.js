@@ -35,7 +35,7 @@ root.render(
                     <Route path='/studentdashboard' element={<StudentDashboard />}/>
                     <Route path='/studentprojectslist' element={<StudentProjectsList/>}/>
                     <Route path='/businessprojectslist' element={<BusinessProjectsList/>}/>
-                    <Route path='/studentprojectdetails' element={<StudentProjectDetails/>}/>
+                    <Route path='/studentprojectdetails/:id' element={<StudentProjectDetails/>}/>
                     <Route
                         path="*"
                         element={
