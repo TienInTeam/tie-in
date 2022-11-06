@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React from 'react';
+import { useNavigate, createSearchParams } from "react-router-dom";
 import { requestBusinessProjects } from "../api/businessProject";
 import { requestApplicationStatuses } from "../api/studentApplications";
 import HighlightedBusinessProject from "../components/HighlightedBusinessProject";
@@ -8,8 +9,9 @@ import Button from "../components/Button";
 
 const StudentDashboard = () => {
 
-  const requestBusinessProject = useQuery(["businessProject"], () => requestBusinessProjects())
-  const requestApplicationStatus = useQuery(["applicationStatus"], () => requestApplicationStatuses())
+  const requestBusinessProject = useQuery(["businessProject"], () => requestBusinessProjects());
+  const requestApplicationStatus = useQuery(["applicationStatus"], () => requestApplicationStatuses());
+  const navigate = useNavigate();
 
   if (requestBusinessProject.isLoading) {
     return <span>Loading...</span>
@@ -27,9 +29,13 @@ const StudentDashboard = () => {
     return <span>Error: {requestBusinessProject.error.message}</span>
   }
 
-  const onSeeMore = () => {
-    alert("see more is clicked")
-  }
+  const onSeeMore = (id) => {
+    navigate('/businessrequestdetails', {
+      state: {
+        id: `${id}`
+      }
+    });
+  };
 
   return (
     <>
@@ -52,7 +58,7 @@ const StudentDashboard = () => {
           <h2>Location</h2>
         </div>
         {requestBusinessProject.data.map((business, index) => (
-          <HighlightedBusinessProject businessProject={business} key={index} onSeeMore={onSeeMore} />
+          <HighlightedBusinessProject businessProject={business} key={index} onSeeMore={() => onSeeMore(business.id)} />
         ))}
       </div>
 
