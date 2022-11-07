@@ -15,7 +15,7 @@ code {
 .upload-project {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  max-width: 650px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -25,7 +25,9 @@ fieldset {
   background-color: #0B1A27;
   color: white;
 }
-
+fieldset .input-type {
+  margin-bottom: 1rem;
+}
 input {
   border-radius: 5px;
   height: 1.5rem;
@@ -40,6 +42,8 @@ input {
 
 a {
   color: white;
+  text-decoration: none;
+  font-size: 22px;
 }
 
 .body {
@@ -65,3 +69,6 @@ a {
 @import "sass/components/header";
 @import "sass/components/footer";
 @import "sass/components/studentProjectPreview";
+@import "sass/components/businessProjectPreview";
+@import "sass/pages/businessProjectRequest";
+
