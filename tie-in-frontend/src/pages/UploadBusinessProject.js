@@ -9,19 +9,20 @@ import validateTextInput from "../utils/validateTextInput";
 
 function UploadBusinessProject() {
     const saveProject = useMutation(["businessProject"], () => saveBusinessProject({
-        "id": 42,
         "name": projectName,
-        "summary": description,
-        "teamSize": teamSize,
-        "teamrequirement": teamRequirement,
-        "expectedDeadline": date,
+        "description": description,
+        "team_size": teamSize,
+        "team_requirements": teamRequirement,
+        "start_date": startDate,
+        "end_date": endDate,
         "location": location,
         "budget": estimatedBudget,
         "category": category,
         "technology": technology,
         "additionalFields": additionalField,
-        "files": additionalFile,
-        "links": additionalLink
+        "file": additionalFile,
+        "links": additionalLink,
+        "status": "available"
     }), {
         onSuccess: () => {
         },
@@ -32,7 +33,8 @@ function UploadBusinessProject() {
 
   const [projectName, setProjectName] = useState("");
   const [description, setDescription] = useState("");
-  const [date, setDate] = useState(null);
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(null);
   const [dateIsChecked, setDateIsChecked] = useState(false);
   const [teamSize, setTeamSize] = useState("");
   const [teamRequirement, setTeamRequirement] = useState("");
@@ -44,11 +46,6 @@ function UploadBusinessProject() {
   const [additionalField, setAdditionalField] = useState("");
   const [additionalFile, setAdditionalFile] = useState("");
   const [additionalLink, setAdditionalLink] = useState("");
-  
-  const onChange = (dates) => {
-    const date = dates;
-    setDate(date);
-};
 
 const validateInput = () => {
   if (projectName === "" || description === "" || teamSize === "" || estimatedBudget === "" || teamRequirement === "") {
@@ -79,6 +76,12 @@ const onSave = () => {
   }
 }
 
+    const onChange = (dates) => {
+        const [start, end] = dates;
+        setStartDate(start);
+        setEndDate(end);
+    };
+
   return (
     <div className="upload-business-project">
       <h2>Business Project Request</h2>
@@ -90,19 +93,22 @@ const onSave = () => {
       </label>
       <fieldset>
         <label>Expected Deadline (Required)</label>
-        <Datepicker
-                    selected={date}
-                    date={!dateIsChecked ? date : null}
-                    onChange={(date) => onChange(date)}           
-        />
+          <Datepicker
+              selected={startDate}
+              startDate={!dateIsChecked ? startDate : null}
+              endDate={!dateIsChecked ? endDate : null}
+              onChange={(date) => onChange(date)}
+              selectsRange
+              disabled={dateIsChecked}
+          />
         <input type="checkbox" id="notSpecifiedDate" name="notSpecifiedCheck" value="notSpecified" checked={dateIsChecked}
                     onChange={() => {
                         setDateIsChecked(!dateIsChecked);
                         if (dateIsChecked) {
-                            setDate(new Date());
+                            setStartDate(new Date());
                         }
                         else {
-                            setDate(null);
+                            setStartDate(null);
                         }
                     }} />
       <label htmlFor="notSpecifiedDate">Not Specified Yet</label>

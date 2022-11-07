@@ -8,7 +8,10 @@ import Button from "../components/Button";
 
 const StudentDashboard = () => {
 
-  const requestBusinessProject = useQuery(["businessProject"], () => requestBusinessProjects())
+  const requestBusinessProject = useQuery(["businessProject"], () => requestBusinessProjects(), {
+    onError: useQuery
+
+  })
   const requestApplicationStatus = useQuery(["applicationStatus"], () => requestApplicationStatuses())
 
   if (requestBusinessProject.isLoading) {

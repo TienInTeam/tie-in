@@ -14,11 +14,11 @@ const SignUpStudent = () => {
     const saveStudent = useMutation(["student"], () => addStudent({
         uid: sessionStorage.getItem("userId"),
         email: email,
-        firstName: firstName,
-        lastName: lastName,
+        first_name: firstName,
+        last_name: lastName,
         institution: institution,
-        linkedInURL: linkedInURL,
-        profileUrl: websiteURL,
+        linkedIn_url: linkedInURL,
+        portfolio_url: websiteURL,
         location: location,
     }));
 
