@@ -9,19 +9,20 @@ import validateTextInput from "../utils/validateTextInput";
 
 function UploadBusinessProject() {
     const saveProject = useMutation(["businessProject"], () => saveBusinessProject({
-        "id": 42,
         "name": projectName,
         "description": description,
         "team_size": teamSize,
         "team_requirements": teamRequirement,
-        "expectedDeadline": date,
+        "start_date": startDate,
+        "end_date": endDate,
         "location": location,
         "budget": estimatedBudget,
         "category": category,
         "technology": technology,
         "additionalFields": additionalField,
-        "files": additionalFile,
-        "links": additionalLink
+        "file": additionalFile,
+        "links": additionalLink,
+        "status": "available"
     }), {
         onSuccess: () => {
         },
@@ -30,27 +31,23 @@ function UploadBusinessProject() {
         }
     });
 
-    const [projectName, setProjectName] = useState("");
-    const [description, setDescription] = useState("");
-    const [date, setDate] = useState(null);
-    const [dateIsChecked, setDateIsChecked] = useState(false);
-    const [teamSize, setTeamSize] = useState("");
-    const [teamRequirement, setTeamRequirement] = useState("");
-    const [estimatedBudget, setEstimatedBudget] = useState("");
-    const [location, setLocation] = useState("");
-    const [locationIsChecked, setLocationIsChecked] = useState(false);
-    const [technology, setTechnology] = useState([]);
-    const [category, setCategory] = useState([]);
-    const [additionalField, setAdditionalField] = useState("");
-    const [additionalFile, setAdditionalFile] = useState("");
-    const [additionalLink, setAdditionalLink] = useState("");
+  const [projectName, setProjectName] = useState("");
+  const [description, setDescription] = useState("");
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(null);
+  const [dateIsChecked, setDateIsChecked] = useState(false);
+  const [teamSize, setTeamSize] = useState("");
+  const [teamRequirement, setTeamRequirement] = useState("");
+  const [estimatedBudget, setEstimatedBudget] = useState("");
+  const [location, setLocation] = useState("");
+  const [locationIsChecked, setLocationIsChecked] = useState(false);
+  const [technology, setTechnology] = useState([]);
+  const [category, setCategory] = useState([]);
+  const [additionalField, setAdditionalField] = useState("");
+  const [additionalFile, setAdditionalFile] = useState("");
+  const [additionalLink, setAdditionalLink] = useState("");
 
-    const onChange = (dates) => {
-        const date = dates;
-        setDate(date);
-    };
-
-const validateInput = () => {
+  const validateInput = () => {
   if (projectName === "" || description === "" || teamSize === "" || estimatedBudget === "" || teamRequirement === "") {
       alert('Enter all mandatory input field values');
       return false;
@@ -83,30 +80,39 @@ const validateInput = () => {
         }
     }
 
-    return (
-        <div className="upload-business-project">
-            <h2>Business Project Request</h2>
-            <p>Mandatory Fields</p>
-            <InputType label={"Project Title (Required)"} type={"text"} placeHolder={"Enter your project name"} onChange={(e) => setProjectName(e.target.value)} />
-            <label>
-                <span>Project Summary (Required)</span>
-                <textarea placeholder="Enter your project summary" onChange={(e) => setDescription(e.target.value)} />
-            </label>
-            <fieldset>
-                <label>Expected Deadline (Required)</label>
-                <Datepicker
-                    selected={date}
-                    date={!dateIsChecked ? date : null}
-                    onChange={(date) => onChange(date)}
-                />
-                <input type="checkbox" id="notSpecifiedDate" name="notSpecifiedCheck" value="notSpecified" checked={dateIsChecked}
+    const onChange = (dates) => {
+        const [start, end] = dates;
+        setStartDate(start);
+        setEndDate(end);
+    };
+
+  return (
+    <div className="upload-business-project">
+      <h2>Business Project Request</h2>
+      <p>Mandatory Fields</p>
+      <InputType label={"Project Title (Required)"} type={"text"} placeHolder={"Enter your project name"} onChange={(e) => setProjectName(e.target.value)}/>
+      <label>
+      <span>Project Summary (Required)</span>
+      <textarea placeholder="Enter your project summary" onChange={(e) => setDescription(e.target.value)} />
+      </label>
+      <fieldset>
+        <label>Expected Deadline (Required)</label>
+          <Datepicker
+              selected={startDate}
+              startDate={!dateIsChecked ? startDate : null}
+              endDate={!dateIsChecked ? endDate : null}
+              onChange={(date) => onChange(date)}
+              selectsRange
+              disabled={dateIsChecked}
+          />
+        <input type="checkbox" id="notSpecifiedDate" name="notSpecifiedCheck" value="notSpecified" checked={dateIsChecked}
                     onChange={() => {
                         setDateIsChecked(!dateIsChecked);
                         if (dateIsChecked) {
-                            setDate(new Date());
+                            setStartDate(new Date());
                         }
                         else {
-                            setDate(null);
+                            setStartDate(null);
                         }
                     }} />
       <label htmlFor="notSpecifiedDate">Not Specified Yet</label>

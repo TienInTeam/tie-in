@@ -12,8 +12,7 @@ import validateTextInput from "../../utils/validateTextInput";
 const SignUpBusiness = () => {
     const userType = "business";
     const saveBusiness = useMutation(['business'], () => addBusiness({
-        uid: sessionStorage.getItem("userId"),
-        name: businessName,
+        company_name: businessName,
         email: businessEmail,
         description: description,
         websiteUrl: websiteUrl,
