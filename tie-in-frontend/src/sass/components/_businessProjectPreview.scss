@@ -1,15 +1,19 @@
-.student-project-preview{
+.business-project-preview{
   color: white;
   margin: 1rem;
   padding: .5rem;
 
+  h2 {
+  margin: 0;
+  }
   .title-container{
     background-color: $tertiary_background_color;
     display: flex;
-    padding: .8rem;
+    padding: .4rem;
     font-size: 1.2rem;
     border-radius: 30px 30px 0 0 ;
     align-items: center;
+    justify-content: space-between;
   }
   .body-container{
     background-color: $secondary_background_color;
@@ -18,17 +22,24 @@
     grid-template-rows: repeat(2,1fr);
     border-radius: 0 0 30px 30px;
   }
+
   .button {
     display: flex;
     align-items: center;
     justify-content: center;
     grid-column: 4/5;
+    margin-left: 0.5rem;
   }
   .category{
     background-color: $quaternary_background_color;
+    border-radius: 50px;
     width: 50%;
     margin-top: .4rem;
-    border-radius: 50px;
-    padding: .2rem .5rem;
+    padding-left: 1rem;
+  }
+
+  .button-wrapper {
+    display: flex;
+    flex-direction: row;
   }
 }

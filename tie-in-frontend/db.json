@@ -12,15 +12,14 @@
       "id": 1
     },
     {
-      "uid": "dIpgZlMyOEgMbGMKaOlM6D1Oj1t2",
+      "id": "lHhJvVQSDCXuNrABk844QA2yrcI2",
       "email": "student@gmail.com",
       "firstName": "Florida",
       "lastName": "Joca",
       "institution": "Langara",
       "linkedInURL": "",
       "profileUrl": "",
-      "location": "",
-      "id": 2
+      "location": ""
     },
     {
       "uid": "ZNqz2l03q2QZ0mHjZlogKO0IccT2",
@@ -32,6 +31,17 @@
       "profileUrl": "",
       "location": "",
       "id": 3
+    },
+    {
+      "uid": null,
+      "email": "student@gmail.com",
+      "firstName": "Florida",
+      "lastName": "joca",
+      "institution": "Langara",
+      "linkedInURL": "",
+      "profileUrl": "",
+      "location": "",
+      "id": 4
     }
   ],
   "businessProjects": [
@@ -50,6 +60,7 @@
       "business_id": 2,
       "links": "www.pwrtech.com",
       "business_model": "",
+      "status": false,
       "category": [
         "mobililty",
         "AI"
@@ -72,6 +83,7 @@
       "start_date": "2022-10-19",
       "end_date": "2022-10-22",
       "business_model": "",
+      "status": true,
       "category": [
         "Web",
         "UI"
@@ -81,11 +93,11 @@
       "institution": "Langara College"
     }
   ],
-  "studentProject": [
+  "studentProjects": [
     {
       "name": "nannies for you",
       "logo": "Florida",
-      "description": "test test hgljhgjhb .jhvbljh jhvljhv j",
+      "description": "test test ",
       "linkedIn_url": "https://test.com",
       "team_id": "",
       "approval_status": "Pending",
@@ -126,7 +138,7 @@
       "id": 2,
       "name": "Get A Tat",
       "logo": "",
-      "description": "Test 2 khjbljh jhbjlhvb jbljhv ftu",
+      "description": "Test 2 ",
       "linkedIn_url": "https://test.com",
       "team_id": "",
       "approval_status": "Pending",
@@ -223,22 +235,14 @@
       "id": 1
     },
     {
-      "uid": "dIpgZlMyOEgMbGMKaOlM6D1Oj1t2",
-      "email": "student@gmail.com",
-      "type": "student",
-      "id": 2
-    },
-    {
-      "uid": "NUcVXLycxHWWLc17YadMOxVTlOr2",
+      "id": "ZNqz2l03q2QZ0mHjZlogKO0IccT2",
       "email": "company@gmail.com",
-      "type": "business",
-      "id": 4
+      "type": "business"
     },
     {
-      "uid": "ZNqz2l03q2QZ0mHjZlogKO0IccT2",
+      "id": "NUcVXLycxHWWLc17YadMOxVTlOr2",
       "email": "fjoca@gmail.com",
-      "type": "student",
-      "id": 5
+      "type": "student"
     },
     {
       "uid": "T0cM3O4xAseGEKQE8tl8Sn1QARI3",
@@ -279,7 +283,7 @@
   ],
   "business": [
     {
-      "uid": "4WBNVzwoWUW6E3YIIJJTpnrRfNf2",
+      "id": 1,
       "name": "Tie in",
       "email": "company@gmail.com",
       "description": "This is based in Vancouver",
