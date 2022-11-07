@@ -9,24 +9,28 @@ import Button from "../components/Button";
 
 const StudentDashboard = () => {
 
-  const requestBusinessProject = useQuery(["businessProject"], () => requestBusinessProjects());
-  const requestApplicationStatus = useQuery(["applicationStatus"], () => requestApplicationStatuses());
+  const requestBusinessProject = useQuery(["businessProject"], () => requestBusinessProjects(),
+    {
+      onError: (error) => {
+        alert(error.message);
+      }
+    });
+
+  const requestApplicationStatus = useQuery(["applicationStatus"], () => requestApplicationStatuses(),
+    {
+      onError: (error) => {
+        alert(error.message);
+      }
+    });
+
   const navigate = useNavigate();
 
   if (requestBusinessProject.isLoading) {
     return <span>Loading...</span>
   }
 
-  if (requestBusinessProject.isError) {
-    return <span>Error: {requestBusinessProject.error.message}</span>
-  }
-
   if (requestApplicationStatus.isLoading) {
     return <span>Loading...</span>
-  }
-
-  if (requestApplicationStatus.isError) {
-    return <span>Error: {requestBusinessProject.error.message}</span>
   }
 
   const onSeeMore = (id) => {

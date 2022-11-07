@@ -8,18 +8,18 @@ const BusinessRequestDetails = () => {
 
     const location = useLocation();
     const business_request_id = location.state.id;
-    const requestBusinessProjectByID = useQuery(["businessProjectById"], () => requestBusinessProjectsByID(business_request_id));
+    const requestBusinessProjectByID = useQuery(["businessProjectById"], () => requestBusinessProjectsByID(business_request_id),
+        {
+            onError: (error) => {
+                alert(error.message);
+            }
+        });
 
     if (requestBusinessProjectByID.isLoading) {
         return <span>Loading...</span>
     }
 
-    if (requestBusinessProjectByID.isError) {
-        return <span>Error: {requestBusinessProjectByID.error.message}</span>
-    }
-
     const onApply = () => {
-        console.log("jshj");
     }
 
     return (
