@@ -19,7 +19,7 @@ function BusinessProjectsList() {
   }
 
   return (
-    <div>
+    <div className="grid-container">
       <SideMenu />
       <div>
         {requestBusinessProject.data.map((business, index) =>
