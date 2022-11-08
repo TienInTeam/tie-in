@@ -1,13 +1,13 @@
 .data-visualization {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  background-color: $secondary_background_color;
+  background-color: $blue_card_background;
   gap: 2rem;
   margin-left: auto;
   margin-right: auto;
   max-width: 950px;
   margin-bottom: 2rem;
-  color: white;
+  color: $white;
   border-radius: 1rem;
 }
 
