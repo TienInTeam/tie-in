@@ -4,7 +4,7 @@
   padding: .5rem;
 
   .title-container{
-    background-color: $tertiary_background_color;
+    background-color: $darker_blue_card_background;
     display: flex;
     padding: .8rem;
     font-size: 1.2rem;
@@ -12,7 +12,7 @@
     align-items: center;
   }
   .body-container{
-    background-color: $secondary_background_color;
+    background-color: $blue_card_background;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2,1fr);
