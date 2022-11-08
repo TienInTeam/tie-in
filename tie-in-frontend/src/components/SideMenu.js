@@ -1,9 +1,9 @@
-import React from 'react'
-import { Link, Outlet } from 'react-router-dom'
+import React from 'react';
+import { Link, Outlet } from 'react-router-dom';
 
 function SideMenu() {
   const userType = sessionStorage.getItem("userType");
-  const isLoggedIn = sessionStorage.getItem("userLoggedIn")
+  const isLoggedIn = sessionStorage.getItem("userLoggedIn");
 
   if (isLoggedIn === "true") {
     if (userType === "business") {
@@ -69,4 +69,4 @@ function SideMenu() {
 
 }
 
-export default SideMenu
+export default SideMenu;
