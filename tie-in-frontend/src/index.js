@@ -28,7 +28,6 @@ root.render(
             <QueryClientProvider client={queryClient}>
                 <Header />
                 <div className="body">
-                    <SideMenu />
                     <Routes>
                         <Route path='/dashboard' element={<Dashboard />} />
                         <Route path='/' element={<Home />} />

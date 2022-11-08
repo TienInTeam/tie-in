@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { requestBusinessProjects } from "../api/businessProject";
 import BusinessProjectPreview from "../components/BusinessProjectPreview";
+import SideMenu from "../components/SideMenu";
 
 function BusinessProjectsList() {
   const requestBusinessProject = useQuery(["businessProject"], () => requestBusinessProjects())
@@ -19,6 +20,7 @@ function BusinessProjectsList() {
 
   return (
     <div>
+      <SideMenu />
       <div>
         {requestBusinessProject.data.map((business, index) =>
           <BusinessProjectPreview

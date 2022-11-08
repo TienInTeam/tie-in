@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { requestStudentProjects } from "../api/studentProject";
+import SideMenu from "../components/SideMenu";
 import StudentProjectPreview from "../components/StudentProjectPreview";
 
 function StudentProjectsList() {
@@ -19,7 +20,8 @@ function StudentProjectsList() {
     console.log(id);
   }
   return (
-    <div className="student-projects-list">
+    <div className="student-projects-list grid-container">
+      <SideMenu />
       <div>
         {requestStudentProject.data.map((student, index) => (
           <StudentProjectPreview studentProject={student} key={index} onSeeMore={() => onSeeMore(index)} />
