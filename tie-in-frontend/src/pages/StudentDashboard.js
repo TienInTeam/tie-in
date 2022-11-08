@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React from 'react';
-import { useNavigate, createSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { requestBusinessProjects } from "../api/businessProject";
 import { requestApplicationStatuses } from "../api/studentApplications";
 import HighlightedBusinessProject from "../components/HighlightedBusinessProject";
