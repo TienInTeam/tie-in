@@ -1,8 +1,6 @@
 .signup {
   color: white;
   padding-bottom: 1rem;
-
-
 }
 
 .input-type {
@@ -17,14 +15,49 @@
 }
 
 .signup-type {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 2rem;
+}
+
+.signup-section {
   display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
   align-items: center;
-  justify-content: space-evenly;
-  padding-top: 5rem;
+}
+.signup-section:nth-child(1) {
+  border-right: 3px solid lightgrey;
 }
 
 .login {
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.email-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.person-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+  .name {
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+  }
+  .input-type *{
+    text-align: left;
+  }
 }

@@ -38,6 +38,7 @@ input {
   grid-template-columns: 1fr;
   text-align: center;
   bottom: 1rem;
+  appearance: none;
 }
 
 a {
@@ -71,4 +72,5 @@ a {
 @import "sass/components/studentProjectPreview";
 @import "sass/components/businessProjectPreview";
 @import "sass/pages/businessProjectRequest";
+@import "sass/pages/home";
 
