@@ -11,7 +11,7 @@ export default function Header() {
         if (sessionStorage.getItem('userType') === 'student') {
             navigate("/uploadstudentproject");
         }
-        else if (sessionStorage.getItem('userType') === 'company') {
+        else if (sessionStorage.getItem('userType') === 'business') {
             navigate("/uploadbusinessproject");
         }
     }
