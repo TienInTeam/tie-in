@@ -42,6 +42,17 @@
       "profileUrl": "",
       "location": "",
       "id": 4
+    },
+    {
+      "uid": null,
+      "email": "test@gmail.com",
+      "firstName": "Florida",
+      "lastName": "Joca",
+      "institution": "UBC",
+      "linkedInURL": "",
+      "profileUrl": "",
+      "location": "",
+      "id": 5
     }
   ],
   "businessProjects": [
@@ -91,6 +102,21 @@
       "instructor_email": "fjoca00@gmail.com",
       "product_link": "https://google.com",
       "institution": "Langara College"
+    },
+    {
+      "id": 42,
+      "name": "Test",
+      "summary": "test",
+      "teamSize": "5",
+      "teamrequirement": "2devs",
+      "expectedDeadline": "2022-11-09T08:00:00.000Z",
+      "location": "test",
+      "budget": "3000",
+      "category": [],
+      "technology": [],
+      "additionalFields": "",
+      "files": "",
+      "links": ""
     }
   ],
   "studentProjects": [
@@ -279,6 +305,12 @@
       "email": "dwdw@gmso.cpm",
       "type": "business",
       "id": 11
+    },
+    {
+      "uid": null,
+      "email": "test@gmail.com",
+      "type": "student",
+      "id": 12
     }
   ],
   "business": [
@@ -290,7 +322,6 @@
       "websiteUrl": "",
       "linkedInUrl": "",
       "location": "Vancouver",
-      "id": 1,
       "logo": "https://picsum.com/440/332"
     },
     {
