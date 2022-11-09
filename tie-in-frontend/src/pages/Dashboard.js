@@ -50,8 +50,7 @@ const Dashboard = () => {
         )
     } else {
         return (
-            <div className="grid-container">
-                <SideMenu />
+            <div>
                 <StudentDashboard />
             </div>
         );
