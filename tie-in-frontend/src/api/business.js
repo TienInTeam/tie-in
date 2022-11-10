@@ -8,8 +8,7 @@ export const addBusiness = (postData) => project.post("/business", postData).the
     return res.data;
 });
 
-export const getBusinessLogoByID = (id) => {
-    console.log(id);
+export const getBusinessByID = (id) => {
     return project.get(`/business/${id}`).then((res) => {
         return res.data;
     });

@@ -12,7 +12,6 @@ export const saveBusinessProject = (postData) => project.post('/businessProjects
 
 
 export const requestBusinessProjectsByID = (id) => {
-    console.log(id);
     return project.get(`/businessProjects/${id}`).then((res) => {
         return res.data;
     });

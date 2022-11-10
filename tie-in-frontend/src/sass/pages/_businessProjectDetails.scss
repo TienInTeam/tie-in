@@ -1,0 +1,54 @@
+.business-project-details {
+    display: block;
+    padding: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .business-request-header {
+        padding: 1rem 1rem 0.5rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid white;
+
+        .company-branding {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+
+            .company-logo img {
+                height: 50px;
+                width: 50px;
+            }
+        }
+    }
+
+    .request-body-top{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        p a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+    }
+
+    h2 {
+        padding: 0;
+        margin: 0;
+    }
+
+    .business-request-body {
+        padding: 1rem;
+        h3{
+            margin: 0.5rem 0 0.5rem 0;
+        }
+    }
+
+    .business-request-footer {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
