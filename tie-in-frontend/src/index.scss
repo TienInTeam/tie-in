@@ -25,9 +25,11 @@ fieldset {
   background-color: #0B1A27;
   color: white;
 }
+
 fieldset .input-type {
   margin-bottom: 1rem;
 }
+
 input {
   border-radius: 5px;
   height: 1.5rem;
@@ -71,4 +73,4 @@ a {
 @import "sass/components/studentProjectPreview";
 @import "sass/components/businessProjectPreview";
 @import "sass/pages/businessProjectRequest";
-
+@import "sass/pages/businessProjectDetails"

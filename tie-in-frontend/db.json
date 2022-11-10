@@ -47,20 +47,22 @@
   "businessProjects": [
     {
       "id": 2,
-      "name": "PWR Tech",
-      "logo": "Florida",
+      "name": "App to create time travel",
       "description": "test test",
-      "team_requirements": "8 desingers",
+      "budget" : "300k",
+      "team_requirements": "3 desingers",
+      "team_size": "2-4",
       "linkedIn_url": "https://test.com",
       "team_id": "",
       "location": "Vancouver, BC",
       "tags": "Software Engineer, Web-App",
-      "start_date": "",
-      "end_date": "",
+      "start_date": "10 Jan 2022",
+      "end_date": "13-Jun-2031",
       "business_id": 2,
       "links": "www.pwrtech.com",
       "business_model": "",
       "status": false,
+      "additiona_file_url": "http://africau.edu/images/default/sample.pdf",
       "category": [
         "mobililty",
         "AI"
@@ -72,13 +74,15 @@
     },
     {
       "id": 1,
-      "name": "SRQ Inc",
-      "logo": "",
+      "name": "Reservation App",
       "description": "Test test ",
-      "team_requirements": "8 developers, no designers",
+      "budget" : "3400k",
+      "team_requirements": "2 developers, no designers",
+      "team_size": "2-4",
       "linkedIn_url": "https://test.com",
       "team_id": "",
       "location": "Vancouver, BC",
+      "business_id": 1,
       "tags": "Software Engineer, Web-App",
       "start_date": "2022-10-19",
       "end_date": "2022-10-22",
@@ -96,7 +100,6 @@
   "studentProjects": [
     {
       "name": "nannies for you",
-      "logo": "Florida",
       "description": "test test ",
       "linkedIn_url": "https://test.com",
       "team_id": "",
@@ -115,7 +118,6 @@
     {
       "id": 1,
       "name": "Piccle",
-      "logo": "",
       "description": "Test test ",
       "linkedIn_url": "https://test.com",
       "team_id": "",
@@ -137,7 +139,6 @@
     {
       "id": 2,
       "name": "Get A Tat",
-      "logo": "",
       "description": "Test 2 ",
       "linkedIn_url": "https://test.com",
       "team_id": "",
@@ -284,30 +285,29 @@
   "business": [
     {
       "id": 1,
-      "name": "Tie in",
+      "company_name": "Tie in",
       "email": "company@gmail.com",
       "description": "This is based in Vancouver",
       "websiteUrl": "",
       "linkedInUrl": "",
       "location": "Vancouver",
-      "id": 1,
-      "logo": "https://picsum.com/440/332"
+      "logo": "https://picsum.photos/240/300"
     },
     {
       "uid": "BHcR2uFeOvfyICYb7NRrJeHJPUK2",
-      "name": "Tie in",
+      "company_name": "Tie in",
       "email": "company@gmail.com",
       "description": "This is based in Vancouver",
       "websiteUrl": "",
       "linkedInUrl": "",
       "location": "Vancouver",
       "id": 2,
-      "logo": "https://picsum.com/540/362"
+      "logo": "https://picsum.photos/350/300"
     },
     {
       "uid": "IIO48sHFWiZona215fYuO19yBQD3",
-      "logo": "https://picsum.com/140/362",
-      "name": "Tie in",
+      "logo": "https://picsum.photos/200/324",
+      "company_name": "Tie in",
       "email": "company@gmail.com",
       "description": "This is based in Vancouver",
       "websiteUrl": "",
@@ -317,8 +317,8 @@
     },
     {
       "uid": "8wg16f3fdcX5dhVnwc12M6p2G6A3",
-      "logo": "https://picsum.com/560/362",
-      "name": "Tie in",
+      "logo": "https://picsum.photos/200/335",
+      "company_name": "Tie in",
       "email": "company@gmail.com",
       "description": "This is based in Vancouver",
       "websiteUrl": "",
@@ -328,19 +328,19 @@
     },
     {
       "uid": "IGUGluhM56ZQwPELLczQN8Fzj8p1",
-      "name": "Tie in",
+      "company_name": "Tie in",
       "email": "company1@gmail.com",
       "description": "This is based in Vancouver",
       "websiteUrl": "",
       "linkedInUrl": "",
       "location": "Vancouver",
-      "logo": "https://picsum.com/1040/362",
+      "logo": "https://picsum.photos/620/300",
       "id": 5
     },
     {
       "uid": "f23qdn1FUldGttkcfJ9tONZHmPy1",
-      "logo": "https://picsum.com/1670/362",
-      "name": "Tie in",
+      "logo": "https://picsum.photos/510/300",
+      "company_name": "Tie in",
       "email": "company2@gmail.com",
       "description": "This is based in Vancouver",
       "websiteUrl": "",
@@ -350,19 +350,19 @@
     },
     {
       "uid": "s9jaJ0aLvfgunWcuSspJOHUXnXr1",
-      "name": "Tie in",
+      "company_name": "Tie in",
       "email": "company3@gmail.com",
       "description": "This is based in Vancouver",
       "websiteUrl": "",
       "linkedInUrl": "",
       "location": "Vancouver",
       "id": 7,
-      "logo": "https://picsum.com/540/462"
+      "logo": "https://picsum.photos/437/300"
     },
     {
       "uid": "yFX2ZB9SqZaKW9R2WzkI1oPFWk33",
-      "name": "Tie in",
-      "logo": "https://picsum.com/560/354",
+      "company_name": "Tie in",
+      "logo": "https://picsum.photos/827/300",
       "email": "compan6y3@gmail.com",
       "description": "This is based in Vancouver",
       "websiteUrl": "",
@@ -372,29 +372,29 @@
     },
     {
       "uid": "NUcVXLycxHWWLc17YadMOxVTlOr2",
-      "name": "Tie in",
+      "company_name": "Tie in",
       "email": "company@gmail.com",
       "description": "This is based in Vancouver",
       "websiteUrl": "",
       "linkedInUrl": "",
       "location": "Vancouver",
       "id": 9,
-      "logo": "https://picsum.com/2340/362"
+      "logo": "https://picsum.photos.com/2340/362"
     },
     {
       "uid": "T0cM3O4xAseGEKQE8tl8Sn1QARI3",
-      "name": "Tie in",
+      "company_name": "Tie in",
       "email": "company@gmail.com",
       "description": "This is based in Vancouver",
       "websiteUrl": "",
       "linkedInUrl": "",
       "location": "Vancouver",
-      "logo": "https://picsum.com/2130/362",
+      "logo": "https://picsum.photos.com/2130/362",
       "id": 10
     },
     {
       "uid": "T0cM3O4xAseGEKQE8tl8Sn1QARI3",
-      "name": "Tie in",
+      "company_name": "Tie in",
       "email": "company2@gmail.com",
       "description": "This is based in Vancouver",
       "websiteUrl": "",
@@ -404,7 +404,7 @@
     },
     {
       "uid": "C63Oxd3fWmY2GSC29yd744N6u9Z2",
-      "name": "wdw",
+      "company_name": "wdw",
       "email": "dwdw@gmso.cpm",
       "description": "wd",
       "websiteUrl": "ww.wdwew.wpomc",
@@ -414,7 +414,7 @@
     },
     {
       "uid": "0LONTfmXTEYMoW3yNA3NauHMLRy2",
-      "name": "wdw",
+      "company_name": "wdw",
       "email": "dwdw@gmso.cpm",
       "description": "wd",
       "websiteUrl": "ww.wdwew.wpomc",
@@ -434,7 +434,7 @@
     },
     {
       "uid": "0LONTfmXTEYMoW3yNA3NauHMLRy2",
-      "name": "wdw",
+      "company_name": "wdw",
       "email": "dwdw@gmso.cpm",
       "description": "wd",
       "websiteUrl": "ww.wdwew.wpomc",
