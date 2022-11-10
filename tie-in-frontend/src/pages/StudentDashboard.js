@@ -27,6 +27,7 @@ const StudentDashboard = () => {
 
   const requestApplicationStatus = useQuery(["applicationStatus"], () => requestApplicationStatuses(),
     {
+      enabled: !requestBusinessProject.isLoading,
       onError: (error) => {
         alert(error.message);
       }
@@ -52,6 +53,35 @@ const StudentDashboard = () => {
     });
   };
 
+  const renderHighlightedBusinessProjects = () => {
+    if (!requestBusinessProject?.data) {
+      return null;
+    }
+    return requestBusinessProject.data.map((businessProject) => (
+       return requestBusiness.data.filter((business) => (
+            businessProject.id === business.id
+        )).map((filteredBusiness, index) =>
+            (
+                <HighlightedBusinessProject
+                    businessProject={businessProject}
+                    company_name={filteredBusiness.company_name}
+                    key={index}
+                    onSeeMore={() => onSeeMore(businessProject.id)}
+                />
+            )
+        )
+    ))
+  }
+
+  const renderApplicationsStatus = () => {
+    if (!requestApplicationStatus?.data) {
+      return null;
+    }
+      return requestApplicationStatus.data.map((application, index) => (
+        <RequestStatusCard application={application} key={index} />
+    ))
+  }
+
   return (
     <div className="grid-container">
       <SideMenu />
@@ -66,45 +96,29 @@ const StudentDashboard = () => {
           </div>
         </div>
 
-        <div className={"business-project-wrapper"}>
-          <h2>Recent Company Requests</h2>
-          <div className={"recent-requests-title-wrapper"}>
-            <h2>Company Name</h2>
-            <h2>Category</h2>
-            <h2>Due Date</h2>
-            <h2>Location</h2>
-          </div>
-          {requestBusinessProject.data.map((businessProject) => (
-            requestBusiness.data.filter((business) => (
-              businessProject.id === business.id
-            )).map((filteredBusiness, index) =>
-            (
-              <HighlightedBusinessProject
-                businessProject={businessProject}
-                company_name={filteredBusiness.company_name}
-                key={index}
-                onSeeMore={() => onSeeMore(businessProject.id)}
-              />
-            )
-            )
-          ))}
+      <div className={"business-project-wrapper"}>
+        <h2>Recent Company Requests</h2>
+        <div className={"recent-requests-title-wrapper"}>
+          <h2>Company Name</h2>
+          <h2>Category</h2>
+          <h2>Due Date</h2>
+          <h2>Location</h2>
         </div>
+        {renderHighlightedBusinessProjects()}
+      </div>
 
-        <div className={"request-status-list-wrapper"}>
-          <div className="request-status-header">
-            <h2>Applications Status</h2>
-            <Button label={"See More"} variant={"secondary"} onClick={onSeeMore} />
-          </div>
-          <div className={"title-wrapper"}>
-            <h2>Company:</h2>
-            <h2 className="team-wrapper">Team:</h2>
-            <h2>Date:</h2>
-            <h2>Status:</h2>
-          </div>
-          {requestApplicationStatus.data.map((application, index) => (
-            <RequestStatusCard application={application} key={index} />
-          ))}
+      <div className={"request-status-list-wrapper"}>
+        <div className="request-status-header">
+          <h2>Applications Status</h2>
+          <Button label={"See More"} variant={"secondary"} onClick={onSeeMore} />
         </div>
+        <div className={"title-wrapper"}>
+          <h2>Company:</h2>
+          <h2 className="team-wrapper">Team:</h2>
+          <h2>Date:</h2>
+          <h2>Status:</h2>
+        </div>
+        {renderApplicationsStatus()}
       </div>
     </div>
   )
