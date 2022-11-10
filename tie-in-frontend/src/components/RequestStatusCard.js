@@ -4,6 +4,8 @@ import React from 'react';
 
 function RequestStatusCard({ application }) {
   const { team_name, team_id, team_images, company_name, application_date, application_status } = application;
+
+
   return (
     <div className="request-status-card">
       <p>{company_name}</p>
@@ -11,7 +13,7 @@ function RequestStatusCard({ application }) {
         <h3>{team_name}</h3>
         <div className="team-images-wrapper" id={`team${team_id}`}>
           {
-            team_images.map((image, index) => {
+            team_images?.map((image, index) => {
               if (index <= 2) {
                 return <img key={index} src={image} alt="student" />
               }

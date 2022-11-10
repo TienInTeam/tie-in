@@ -6,7 +6,7 @@ export const requestStudentProjects = () => {
     });
 }
 
-export const saveStudentProject = (postData) => project.post('/students/projects', postData).then((res) => {
+export const saveStudentProject = (postData) => project.post('/studentProjects', postData).then((res) => {
     return res.data;
 });
 

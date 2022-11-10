@@ -4,6 +4,7 @@ import BusinessProjectPreview from "../components/BusinessProjectPreview";
 
 function BusinessProjectsList() {
   const requestBusinessProject = useQuery(["businessProject"], () => requestBusinessProjects())
+
   if (requestBusinessProject.isLoading) {
     return <span>Loading...</span>
   }
