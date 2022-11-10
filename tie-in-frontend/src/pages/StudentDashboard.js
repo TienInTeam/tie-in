@@ -7,6 +7,7 @@ import { getBusinesses } from '../api/business';
 import HighlightedBusinessProject from "../components/HighlightedBusinessProject";
 import RequestStatusCard from "../components/RequestStatusCard";
 import Button from "../components/Button";
+import SideMenu from "../components/SideMenu";
 
 const StudentDashboard = () => {
 
@@ -52,14 +53,17 @@ const StudentDashboard = () => {
   };
 
   return (
-    <>
-      <div className={"data-visualization"}>
-        <div className="visualization-component">
-          <h1>Total Project View</h1>
-        </div>
-        <div className="visualization-component">
-          <h1>Projects Applied</h1>
-          <h1>Conversion Rate</h1>
+    <div className="grid-container">
+      <SideMenu />
+      <div>
+        <div className={"data-visualization"}>
+          <div className="visualization-component">
+            <h1>Total Project View</h1>
+          </div>
+          <div className="visualization-component">
+            <h1>Projects Applied</h1>
+            <h1>Conversion Rate</h1>
+          </div>
         </div>
       </div>
 
@@ -101,7 +105,6 @@ const StudentDashboard = () => {
           <RequestStatusCard application={application} key={index} />
         ))}
       </div>
-    </>
   )
 }
 

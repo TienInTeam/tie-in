@@ -1,5 +1,5 @@
 .business-project-preview{
-  color: white;
+  color: $white;
   margin: 1rem;
   padding: .5rem;
 
@@ -7,7 +7,7 @@
   margin: 0;
   }
   .title-container{
-    background-color: $tertiary_background_color;
+    background-color: $darker_blue_card_background;
     display: flex;
     padding: .4rem;
     font-size: 1.2rem;
@@ -16,7 +16,7 @@
     justify-content: space-between;
   }
   .body-container{
-    background-color: $secondary_background_color;
+    background-color: $blue_card_background;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2,1fr);
