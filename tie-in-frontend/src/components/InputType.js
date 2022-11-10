@@ -1,12 +1,12 @@
 import React from 'react'
 
-function InputType({ placeHolder, label, type, onChange, value}) {
+function InputType({ placeHolder, label, type, min, onChange, value}) {
 
   return (
     <div className="input-type">
       <label>
         <span>{label}</span>
-        <input type={type} placeholder={placeHolder} onChange={onChange} value={value} />
+        <input type={type} placeholder={placeHolder} onChange={onChange} min={min} value={value} />
       </label>
     </div>
   );

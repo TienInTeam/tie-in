@@ -59,6 +59,10 @@ const validateInput = () => {
       alert("Valid Project name is required.");
       return false;
   }
+  if(teamSize<1){
+    alert('Team size should be positive number.');
+    return false;
+  }
   if (location) {
       if (!validateTextInput(location)) {
           alert("Enter Valid location");
@@ -107,7 +111,7 @@ const onSave = () => {
                     }} />
       <label htmlFor="notSpecifiedDate">Not Specified Yet</label>
       </fieldset>
-      <InputType label={"Team Size (Required)"} type={"text"} placeHolder={"Enter your preferred team size"} onChange={(e) => setTeamSize(e.target.value)}/>
+      <InputType label={"Team Size (Required)"} type={"number"} placeHolder={"Enter your preferred team size"} min={1} onChange={(e) => setTeamSize(e.target.value)}/>
       <InputType label={"Team Requirement (Required)"} type={"text"} placeHolder={"Enter your team requirements"} onChange={(e) => setTeamRequirement(e.target.value)}/>
       <InputType label={"Estimated Budget (Required)"} type={"text"} placeHolder={"Please choose a budget range"} onChange={(e) => setEstimatedBudget(e.target.value)}/>
       <fieldset>
