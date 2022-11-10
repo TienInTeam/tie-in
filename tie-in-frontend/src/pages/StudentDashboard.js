@@ -75,21 +75,11 @@ const StudentDashboard = () => {
           <h2>Due Date</h2>
           <h2>Location</h2>
         </div>
-        {requestBusinessProject.data.map((businessProject) => (
-          requestBusiness.data.filter((business) => (
-            businessProject.id === business.id
-          )).map((filteredBusiness, index) =>
-          (
-            <HighlightedBusinessProject
-              businessProject={businessProject}
-              company_name={filteredBusiness.company_name}
-              key={index}
-              onSeeMore={() => onSeeMore(businessProject.id)}
-            />
-          )
-          )
+        {requestBusinessProject.data.map((business, index) => (
+          <HighlightedBusinessProject businessProject={business} key={index} onSeeMore={() => onSeeMore(business.id)} />
         ))}
       </div>
+
       <div className={"request-status-list-wrapper"}>
         <div className="request-status-header">
           <h2>Applications Status</h2>
@@ -105,7 +95,8 @@ const StudentDashboard = () => {
           <RequestStatusCard application={application} key={index} />
         ))}
       </div>
-  )
+      </div>
+      )
 }
 
 export default StudentDashboard;
