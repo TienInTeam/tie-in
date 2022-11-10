@@ -259,10 +259,9 @@
   ],
   "users": [
     {
-      "uid": "1Ff9jefgl3YksU4elbJ6l88blHY2",
-      "email": "fjoca@gmail.com",
-      "type": "student",
-      "id": 1
+      "id": "keeD20K5qvPu4psN69lMIdXpBcY2",
+      "email": "student@gmail.com",
+      "type": "student"
     },
     {
       "id": "ZNqz2l03q2QZ0mHjZlogKO0IccT2",
