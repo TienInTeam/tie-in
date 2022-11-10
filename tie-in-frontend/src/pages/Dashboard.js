@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import React from 'react';
 import { requestStudentProjects } from "../api/studentProject";
-import { requestUser } from "../api/user";
+import {requestUser} from "../api/user";
 import HighlightedStudentProject from "../components/HighlightedStudentProject";
 import SideMenu from "../components/SideMenu";
 import StudentDashboard from "./StudentDashboard";
@@ -12,18 +12,20 @@ const Dashboard = () => {
         onSuccess: (data) => sessionStorage.setItem("userType", data.type)
     });
 
-    const requestStudentProject = useQuery(["studentProject"], () => requestStudentProjects())
-    if (requestStudentProject.isLoading) {
-        return <span>Loading...</span>
-    }
+  const requestStudentProject = useQuery(["studentProject"], () => requestStudentProjects(),
+    {
+      onError: (error) => {
+        alert(error.message);
+      }
+    });
 
-    if (requestStudentProject.isError) {
-        return <span>Error: {requestStudentProject.error.message}</span>
-    }
+  if (requestStudentProject.isLoading) {
+    return <span>Loading...</span>
+  }
 
-    const onSeeMore = () => {
-        alert("see more is clicked")
-    }
+  const onSeeMore = () => {
+    alert("see more is clicked")
+  }
 
     if (sessionStorage.getItem('userType') === "business") {
         return (
