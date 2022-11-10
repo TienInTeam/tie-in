@@ -51,6 +51,11 @@ a {
   min-height: 100vh;
 }
 
+.grid-container {
+  display: grid;
+  grid-template-columns: 22% 77%;
+}
+
 #root {
   background-color: #0B1A27;
   color: white;
@@ -72,5 +77,6 @@ a {
 @import "sass/components/studentProjectPreview";
 @import "sass/components/businessProjectPreview";
 @import "sass/pages/businessProjectRequest";
+@import "sass/components/sideMenu";
 @import "sass/pages/home";
 
