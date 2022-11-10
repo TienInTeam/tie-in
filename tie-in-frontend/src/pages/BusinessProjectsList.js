@@ -4,13 +4,16 @@ import BusinessProjectPreview from "../components/BusinessProjectPreview";
 import SideMenu from "../components/SideMenu";
 
 function BusinessProjectsList() {
-  const requestBusinessProject = useQuery(["businessProject"], () => requestBusinessProjects())
+  const requestBusinessProject = useQuery(["businessProject"], () => requestBusinessProjects(), {
+    onError: (error) => {
+      alert(error.message);
+    }
+  });
+
   if (requestBusinessProject.isLoading) {
     return <span>Loading...</span>
   }
-  if (requestBusinessProject.isError) {
-    return <span>Error: {requestBusinessProject.error.message}</span>
-  }
+
   const onSeeMore = () => {
     alert("see more is clicked")
   }
