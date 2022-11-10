@@ -62,7 +62,9 @@
       "links": "www.pwrtech.com",
       "business_model": "",
       "status": false,
-      "additiona_file_url": "http://africau.edu/images/default/sample.pdf",
+      "additional_file_url": 
+      ["http://africau.edu/images/default/sample.pdf",
+      "http://africau.edu/images/default/sample.pdf"],
       "category": [
         "mobililty",
         "AI"
