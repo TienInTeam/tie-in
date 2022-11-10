@@ -7,12 +7,10 @@ import RequestStatusCard from "../components/RequestStatusCard";
 import Button from "../components/Button";
 
 const StudentDashboard = () => {
-
-  const requestBusinessProject = useQuery(["businessProject"], () => requestBusinessProjects(), {
-    onError: useQuery
-
-  })
-  const requestApplicationStatus = useQuery(["applicationStatus"], () => requestApplicationStatuses())
+  const requestBusinessProject = useQuery(["businessProject"], () => requestBusinessProjects());
+  const requestApplicationStatus = useQuery(["applicationStatus"], () => requestApplicationStatuses(), {
+    enabled: !requestBusinessProject.isLoading
+  });
 
   if (requestBusinessProject.isLoading) {
     return <span>Loading...</span>
@@ -32,6 +30,24 @@ const StudentDashboard = () => {
 
   const onSeeMore = () => {
     alert("see more is clicked")
+  }
+
+  const renderHighlightedBusinessProjects = () => {
+    if (!requestBusinessProject?.data) {
+      return null;
+    }
+    return requestBusinessProject.data.map((business, index) => (
+        <HighlightedBusinessProject businessProject={business} key={index} onSeeMore={onSeeMore} />
+    ))
+  }
+
+  const renderApplicationsStatus = () => {
+    if (!requestApplicationStatus?.data) {
+      return null;
+    }
+      return requestApplicationStatus.data.map((application, index) => (
+        <RequestStatusCard application={application} key={index} />
+    ))
   }
 
   return (
@@ -54,9 +70,7 @@ const StudentDashboard = () => {
           <h2>Due Date</h2>
           <h2>Location</h2>
         </div>
-        {requestBusinessProject.data.map((business, index) => (
-          <HighlightedBusinessProject businessProject={business} key={index} onSeeMore={onSeeMore} />
-        ))}
+        {renderHighlightedBusinessProjects()}
       </div>
 
       <div className={"request-status-list-wrapper"}>
@@ -70,9 +84,7 @@ const StudentDashboard = () => {
           <h2>Date:</h2>
           <h2>Status:</h2>
         </div>
-        {requestApplicationStatus.data.map((application, index) => (
-          <RequestStatusCard application={application} key={index} />
-        ))}
+        {renderApplicationsStatus()}
       </div>
     </>
   )
