@@ -2,32 +2,38 @@ import React from 'react';
 import Button from './Button'
 
 function BusinessProjectDetails({ businessProject, onApply }) {
-  const { name, logo, location, projectTitle, teamMembers, teamRequirement, startDate, endDate, budget, projectLocation, summary, fieldText, link } = businessProject
+  const { name, location, logo ,description,budget,team_size, team_requirements,start_date, end_date, subjects, category, technology , additional_field, projectTitle,  links, summary,file } = businessProject;
+
+
   return (
     <div className="business-project-details">
       <img src={logo} alt="company's logo" />
-      <h2>{name}</h2>
-      <p>{location}</p>
+      <div className="business-request-header">
+        <h2>{name}</h2>
+        <p>{location}</p>
+      </div>
+      <h2>Team Size</h2>
+      <p>{team_size}</p>
       <h2>{projectTitle}</h2>
-      <p>Team members:</p>
-      <p>{teamMembers}</p>
       <p>Team requirement:</p>
-      <p>{teamRequirement}</p>
+      <p>{team_requirements}</p>
+      {/* <p>Project Duration {startDate ?  startDate: "Ongoing"}</p> */}
       <p>Project start date:</p>
-      <p>{startDate}</p>
+      <p>{start_date}</p>
       <p>Project end date:</p>
-      <p>{endDate}</p>
+      <p>{end_date}</p>
       <p>Estimated Budget:</p>
       <p>{budget}</p>
-      <p>Location:</p>
-      <p>{projectLocation}</p>
       <h3>Summary</h3>
       <p>{summary}</p>
-      <h3>Additional Field Text</h3>
-      <p>{fieldText}</p>
+      <h3>Description</h3>
+      <p>{description}</p>
       <h3>Links</h3>
-      <a href={link}>{link}</a>
-      <Button onClick={onApply} />
+      <h3>Additional Field Text</h3>
+      <p>{additional_field}</p>
+      <h3>Links</h3>
+      <a href={links}>{links}</a>
+      <Button label={"Apply"} variant={"primary"} onClick={onApply} />
     </div>
   )
 }
