@@ -1,12 +1,12 @@
-import {useMutation} from "@tanstack/react-query";
-import React, {useState} from "react";
+import { useMutation } from "@tanstack/react-query";
+import React, { useState } from "react";
 
-import {addBusiness} from "../../api/business";
-import {addUser} from "../../api/user";
-import {signUp} from "../../auth/Authorization";
+import { addBusiness } from "../../api/business";
+import { addUser } from "../../api/user";
+import { signUp } from "../../auth/Authorization";
 import Button from "../../components/Button";
 import InputType from "../../components/InputType";
-import {isEmailValid} from "../../utils/email";
+import { isEmailValid } from "../../utils/email";
 import validateTextInput from "../../utils/validateTextInput";
 
 const SignUpBusiness = () => {
@@ -19,13 +19,23 @@ const SignUpBusiness = () => {
         websiteUrl: websiteUrl,
         linkedInUrl: linkedInUrl,
         location: businessLocation,
-    }));
+    }),
+        {
+            onError: (error) => {
+                alert(error.message);
+            }
+        });
 
     const saveUser = useMutation(["user"], () => addUser({
         uid: sessionStorage.getItem("userId"),
         email: businessEmail,
         type: userType,
-    }))
+    }),
+        {
+            onError: (error) => {
+                alert(error.message);
+            }
+        })
 
     const [businessName, setBusinessName] = useState("");
     const [businessLocation, setBusinessLocation] = useState("");
@@ -138,7 +148,7 @@ const SignUpBusiness = () => {
                     label={"I agree the Terms & Conditions of Tie-in"}
                     onChange={() => setTermsCondition(true)}
                 />
-                <Button label={"Sign Up"} variant={"primary"} onClick={onSubmit}/>
+                <Button label={"Sign Up"} variant={"primary"} onClick={onSubmit} />
             </form>
         </div>
     );

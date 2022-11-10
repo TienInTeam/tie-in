@@ -3,10 +3,10 @@
 import React from 'react';
 
 function RequestStatusCard({ application }) {
-  const { team_name, team_id, team_images, company_name, application_date, application_status } = application;
+  const { team_name, team_id, team_images, name, application_date, application_status } = application;
   return (
     <div className="request-status-card">
-      <p>{company_name}</p>
+      <p>{name}</p>
       <div className="team-wrapper team-wrapper-content">
         <h3>{team_name}</h3>
         <div className="team-images-wrapper" id={`team${team_id}`}>
