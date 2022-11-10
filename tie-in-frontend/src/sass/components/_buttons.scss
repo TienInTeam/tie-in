@@ -5,7 +5,7 @@ button:hover{
 }
 
 .primary {
-  background-color: $primary_color;
+  background-color: $primary_yellow;
   border-radius: 10px;
   appearance: unset;
   border: none;
@@ -13,10 +13,10 @@ button:hover{
 }
 
 .secondary {
-  background-color: $secondary_background_color;
+  background-color: $blue_card_background;
   border-radius: 10px;
   appearance: unset;
-  border: 3px solid $secondary_color;
+  border: 3px solid $secondary_blue_color;
   padding: 5px 24px;
-  color: $secondary_color;
+  color: $secondary_blue_color;
 }
