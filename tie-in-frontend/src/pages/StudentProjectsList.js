@@ -1,23 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
 import { requestStudentProjects } from "../api/studentProject";
-import SideMenu from "../components/SideMenu";
 import StudentProjectPreview from "../components/StudentProjectPreview";
+import SideMenu from "../components/SideMenu";
 
 function StudentProjectsList() {
-  const navigate = useNavigate();
-  const requestStudentProject = useQuery(["studentProject"], () => requestStudentProjects())
+  const requestStudentProject = useQuery(["studentProject"], () => requestStudentProjects(),
+    {
+      onError: (error) => {
+        alert(error.message);
+      }
+    })
+
   if (requestStudentProject.isLoading) {
     return <span>Loading...</span>
   }
 
-  if (requestStudentProject.isError) {
-    return <span>Error: {requestStudentProject.error.message}</span>
-  }
-
-  const onSeeMore = (id) => {
-    navigate(`/studentprojectdetails/${id+1}`);
-    console.log(id);
+  const onSeeMore = () => {
+    alert("see more is clicked")
   }
   return (
     <div className="student-projects-list grid-container">
