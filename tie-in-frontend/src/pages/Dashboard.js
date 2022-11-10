@@ -3,6 +3,7 @@ import React from 'react';
 import { requestStudentProjects } from "../api/studentProject";
 import {requestUser} from "../api/user";
 import HighlightedStudentProject from "../components/HighlightedStudentProject";
+import SideMenu from "../components/SideMenu";
 import StudentDashboard from "./StudentDashboard";
 
 const Dashboard = () => {
@@ -28,27 +29,32 @@ const Dashboard = () => {
 
     if (sessionStorage.getItem('userType') === "business") {
         return (
-            <>
-                <div className={"data-visualization"}>
-                    <h1>Data visualization 1</h1>
-                    <h1>Data visualization 2</h1>
-                </div>
-                <div className={"student-project-wrapper"}>
-                    <div className={"title-wrapper"}>
-                        <h2>Name</h2>
-                        <h2>Category</h2>
-                        <h2>Institution</h2>
-                        <h2>Location</h2>
+            <div className="grid-container">
+                <SideMenu />
+                <div>
+                    <div className={"data-visualization"}>
+                        <h1>Data visualization 1</h1>
+                        <h1>Data visualization 2</h1>
                     </div>
-                    {requestStudentProject.data.map((student, index) => (
-                        <HighlightedStudentProject key={index} studentProject={student} onSeeMore={onSeeMore}/>
-                    ))}
+                    <div className={"student-project-wrapper"}>
+                        <div className={"title-wrapper"}>
+                            <h2>Name</h2>
+                            <h2>Category</h2>
+                            <h2>Institution</h2>
+                            <h2>Location</h2>
+                        </div>
+                        {requestStudentProject.data.map((student, index) => (
+                            <HighlightedStudentProject key={index} studentProject={student} onSeeMore={onSeeMore} />
+                        ))}
+                    </div>
                 </div>
-            </>
+            </div>
         )
     } else {
         return (
-            <StudentDashboard/>
+            <div>
+                <StudentDashboard />
+            </div>
         );
     }
 }

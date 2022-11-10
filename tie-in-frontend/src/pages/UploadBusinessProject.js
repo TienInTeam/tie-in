@@ -50,28 +50,32 @@ function UploadBusinessProject() {
         setDate(date);
     };
 
-    const validateInput = () => {
-        if (projectName === "" || description === "" || teamSize === "" || estimatedBudget === "" || teamRequirement === "") {
-            alert('Enter all mandatory input field values');
-            return false;
-        }
-        if (!validateTextInput(projectName)) {
-            alert("Valid Project name is required.");
-            return false;
-        }
-        if (location) {
-            if (!validateTextInput(location)) {
-                alert("Enter Valid location");
-                return false;
-            }
-            else {
-                return true;
-            }
-        }
-        else {
-            return true;
-        }
-    }
+const validateInput = () => {
+  if (projectName === "" || description === "" || teamSize === "" || estimatedBudget === "" || teamRequirement === "") {
+      alert('Enter all mandatory input field values');
+      return false;
+  }
+  if (!validateTextInput(projectName)) {
+      alert("Valid Project name is required.");
+      return false;
+  }
+  if(teamSize<1){
+    alert('Team size should be positive number.');
+    return false;
+  }
+  if (location) {
+      if (!validateTextInput(location)) {
+          alert("Enter Valid location");
+          return false;
+      }
+      else {
+          return true;
+      }
+  }
+  else {
+      return true;
+  }
+}
 
     const onSave = () => {
         if (validateInput()) {
@@ -105,14 +109,14 @@ function UploadBusinessProject() {
                             setDate(null);
                         }
                     }} />
-                <label htmlFor="notSpecifiedDate">Not Specified Yet</label>
-            </fieldset>
-            <InputType label={"Team Size (Required)"} type={"text"} placeHolder={"Enter your preferred team size"} onChange={(e) => setTeamSize(e.target.value)} />
-            <InputType label={"Team Requirement (Required)"} type={"text"} placeHolder={"Enter your team requirements"} onChange={(e) => setTeamRequirement(e.target.value)} />
-            <InputType label={"Estimated Budget (Required)"} type={"text"} placeHolder={"Please choose a budget range"} onChange={(e) => setEstimatedBudget(e.target.value)} />
-            <fieldset>
-                <InputType label={"Location (Required)"} type={"text"} placeHolder={"Please choose a budget range"} onChange={(e) => setLocation(e.target.value)} />
-                <input type="checkbox" id="notSpecifiedLocation" name="notSpecifiedCheck" value="notSpecifiedLocation" checked={locationIsChecked}
+      <label htmlFor="notSpecifiedDate">Not Specified Yet</label>
+      </fieldset>
+      <InputType label={"Team Size (Required)"} type={"number"} placeHolder={"Enter your preferred team size"} min={1} onChange={(e) => setTeamSize(e.target.value)}/>
+      <InputType label={"Team Requirement (Required)"} type={"text"} placeHolder={"Enter your team requirements"} onChange={(e) => setTeamRequirement(e.target.value)}/>
+      <InputType label={"Estimated Budget (Required)"} type={"text"} placeHolder={"Please choose a budget range"} onChange={(e) => setEstimatedBudget(e.target.value)}/>
+      <fieldset>
+      <InputType label={"Location (Required)"} type={"text"} placeHolder={"Please choose a budget range"} onChange={(e) => setLocation(e.target.value)}/>
+      <input type="checkbox" id="notSpecifiedLocation" name="notSpecifiedCheck" value="notSpecifiedLocation" checked={locationIsChecked}
                     onChange={() => {
                         setLocationIsChecked(!locationIsChecked);
                         if (locationIsChecked) {

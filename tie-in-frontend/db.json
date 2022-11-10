@@ -42,6 +42,17 @@
       "profileUrl": "",
       "location": "",
       "id": 4
+    },
+    {
+      "uid": null,
+      "email": "test@gmail.com",
+      "firstName": "Florida",
+      "lastName": "Joca",
+      "institution": "UBC",
+      "linkedInURL": "",
+      "profileUrl": "",
+      "location": "",
+      "id": 5
     }
   ],
   "businessProjects": [
@@ -97,10 +108,26 @@
       "instructor_email": "fjoca00@gmail.com",
       "product_link": "https://google.com",
       "institution": "Langara College"
+    },
+    {
+      "id": 42,
+      "name": "Test",
+      "summary": "test",
+      "teamSize": "5",
+      "teamrequirement": "2devs",
+      "expectedDeadline": "2022-11-09T08:00:00.000Z",
+      "location": "test",
+      "budget": "3000",
+      "category": [],
+      "technology": [],
+      "additionalFields": "",
+      "files": "",
+      "links": ""
     }
   ],
   "studentProjects": [
     {
+      "id": 7,
       "name": "nannies for you",
       "description": "test test ",
       "linkedIn_url": "https://test.com",
@@ -108,14 +135,14 @@
       "approval_status": "Pending",
       "tags": "Software Engineer, Web-App",
       "start_date": "",
-      "end_date": "",
+      "end_date": "2/8/2022",
       "business_model": "",
       "technology": "",
       "instructor_email": "",
       "product_link": "",
       "subject": "",
-      "institution": "",
-      "location": "Vancouver"
+      "institution": "Langara",
+      "location":"Vancouver"
     },
     {
       "id": 1,
@@ -136,7 +163,10 @@
       "instructor_email": "fjoca00@gmail.com",
       "product_link": "https://google.com",
       "institution": "Langara College",
-      "location": "Vancouver"
+      "location":"Vancouver",
+      "image":[
+        "https://picsum.photos/200/200"
+      ]
     },
     {
       "id": 2,
@@ -232,10 +262,9 @@
   ],
   "users": [
     {
-      "uid": "1Ff9jefgl3YksU4elbJ6l88blHY2",
-      "email": "fjoca@gmail.com",
-      "type": "student",
-      "id": 1
+      "id": "keeD20K5qvPu4psN69lMIdXpBcY2",
+      "email": "student@gmail.com",
+      "type": "student"
     },
     {
       "id": "ZNqz2l03q2QZ0mHjZlogKO0IccT2",
@@ -282,6 +311,12 @@
       "email": "dwdw@gmso.cpm",
       "type": "business",
       "id": 11
+    },
+    {
+      "uid": null,
+      "email": "test@gmail.com",
+      "type": "student",
+      "id": 12
     }
   ],
   "business": [

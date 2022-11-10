@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as Logo } from '../assets/tie-in-logo.svg';
@@ -7,11 +6,14 @@ import Button from "../components/Button";
 
 export default function Header() {
     const navigate = useNavigate();
+    const userType = sessionStorage.getItem("userType");
+    const isLoggedIn = sessionStorage.getItem("userLoggedIn");
+
     const uploadProject = () => {
         if (sessionStorage.getItem('userType') === 'student') {
             navigate("/uploadstudentproject");
         }
-        else if (sessionStorage.getItem('userType') === 'company') {
+        else if (sessionStorage.getItem('userType') === 'business') {
             navigate("/uploadbusinessproject");
         }
     }
@@ -30,8 +32,14 @@ export default function Header() {
     }
 
     const onLogo = () => {
-        navigate("/");
+        if (isLoggedIn === "true") {
+            if (userType === "business") {
+                navigate("/dashboard");
+            } else {
+                navigate("/studentdashboard")
+            }
     }
+}
 
     const [displayMenu, setDisplayMenu] = useState(false);
     let Menu;
@@ -95,4 +103,5 @@ export default function Header() {
             <Menu />
         </>
     )
+    
 }
