@@ -38,10 +38,10 @@ root.render(
                         <Route path='/uploadstudentproject' element={<UploadStudentProject />} />
                         <Route path='/uploadbusinessproject' element={<UploadBusinessProject />} />
                         <Route path='/studentdashboard' element={<StudentDashboard />} />
-                        <Route path='/studentprojectslist' element={<StudentProjectsList/>}/>
-                        <Route path='/businessprojectslist' element={<BusinessProjectsList/>}/>
-                        <Route path='/businessrequestdetails' element={<BusinessRequestDetails/>}/>
-                        <Route path="/applybusinessproject" element={<ApplyBusinessProject/>} />
+                        <Route path='/studentprojectslist' element={<StudentProjectsList />} />
+                        <Route path='/businessprojectslist' element={<BusinessProjectsList />} />
+                        <Route path='/businessrequestdetails' element={<BusinessRequestDetails />} />
+                        <Route path='/applybusinessproject' element={<ApplyBusinessProject />} />
                         <Route
                             path="*"
                             element={

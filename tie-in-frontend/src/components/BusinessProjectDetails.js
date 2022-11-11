@@ -36,14 +36,19 @@ function BusinessProjectDetails({ businessProject, business, onApply }) {
           <p>{additional_field ? additional_field : "No additional data available"}</p>
         </div>
         <div className='additional-files'>
+        <h3>Additional Files</h3>
           {
+          additional_file_url ? 
             additional_file_url.map((files, index) =>
               <a key={index} href={files}><FileIcon /> <span>{files.split('/').pop()}</span></a>
-            )
+            ) : <p>No files available</p>
           }
         </div>
-        <h3>Links</h3>
-        <a href={links}>{links}</a>
+        <div className="links">
+          <h3>Links</h3>
+          {links ? <a href={links}>{links}</a> : <p>No links available</p>}
+          
+        </div>
       </div>
       <div className="business-request-footer">
         <Button label={"Apply"} variant={"primary"} onClick={onApply} />

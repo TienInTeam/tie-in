@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import BusinessProjectDetails from '../components/BusinessProjectDetails';
 import { requestBusinessProjectsByID } from '../api/businessProject';
 import { getBusinessByID } from '../api/business';
+import { ReactComponent as BackIcon } from '../assets/icons/navigation/back-icon.svg';
 
 const BusinessRequestDetails = () => {
 
@@ -38,15 +39,23 @@ const BusinessRequestDetails = () => {
     const onApply = (id) => {
         navigate('/applybusinessproject', {
             state: {
-                id: `${id}`,
-                businessProject: `bleh`
+                id: `${id}`
             }
         });
     }
 
     return (
         <>
-            <BusinessProjectDetails businessProject={requestBusinessProjectByID.data} business={requestBusinessByID.data} onApply={()=>onApply(requestBusinessProjectByID.data.id)} />
+            <div className="business-project-main">
+                <div className="business-project-main-title">
+                    <a href="/studentdashboard"><BackIcon /></a>
+                    <h2>Business Project</h2>
+                </div>
+                <div className="business-project-details-main">
+                    <BusinessProjectDetails businessProject={requestBusinessProjectByID.data} business={requestBusinessByID.data} onApply={() => onApply(requestBusinessProjectByID.data.id)} />
+                </div>
+
+            </div>
         </>
     )
 }
