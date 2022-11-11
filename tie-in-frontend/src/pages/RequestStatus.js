@@ -13,27 +13,6 @@ function RequestStatus() {
     return <span>Loading...</span>
   }
 
-
-  const team = [
-    {
-      "id": 56,
-      "team_name": "Luna",
-      "members": [
-        {
-          "id": 112,
-          "member_photo": "https://picsum.photos/id/476/200/300"
-        },
-        {
-          "id": 113,
-          "member_photo": "https://picsum.photos/id/476/200/300"
-        },
-        {
-          "id": 114,
-          "member_photo": "https://picsum.photos/id/476/200/300"
-        }
-      ]
-    },
-  ]
   const onApprove = () => {
     alert("reset")
   }
@@ -41,17 +20,10 @@ function RequestStatus() {
     <>
       <h1>Request Status List</h1>
       <div>
-        {
-        team.map((team, index) => {
-            console.log("team:" + JSON.stringify(team.team_name));
-            <TeamsBox
-              team={team}
-              onApprove={onApprove}
-              key={index}
-            />
-          }
-          )
-        }
+      {requestTeam.data.map((team, index) => (
+          <TeamsBox team_name={team.team_name} members={team.members} key={index}/>
+        ))}
+       
       </div>
     </>
   )
