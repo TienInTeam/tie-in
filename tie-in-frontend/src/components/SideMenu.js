@@ -22,7 +22,7 @@ function SideMenu() {
                   <Link to="/studentprojectslist">Student Projects</Link>
                 </li>
                 <li>
-                  <Link to="/requestStatus">Request Status</Link>
+                  <Link to="/requeststatus">Request Status</Link>
                 </li>
               </ul>
             </nav>

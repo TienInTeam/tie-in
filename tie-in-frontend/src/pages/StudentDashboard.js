@@ -45,7 +45,7 @@ const StudentDashboard = () => {
   return (
     <div className="grid-container">
       <SideMenu />
-      <div>
+            <div>
         <div className={"data-visualization"}>
           <div className="visualization-component">
             <h1>Total Project View</h1>
@@ -83,7 +83,7 @@ const StudentDashboard = () => {
           ))}
         </div>
             </div>
-      </div>
+    </div>
   )
 }
 
