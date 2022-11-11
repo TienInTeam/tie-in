@@ -3,6 +3,7 @@ import React from 'react';
 import { useNavigate } from "react-router-dom";
 import { requestBusinessProjects } from "../api/businessProject";
 import { requestApplicationStatuses } from "../api/studentApplications";
+import { getBusinesses } from '../api/business';
 import HighlightedBusinessProject from "../components/HighlightedBusinessProject";
 import RequestStatusCard from "../components/RequestStatusCard";
 import Button from "../components/Button";
@@ -11,6 +12,13 @@ import SideMenu from "../components/SideMenu";
 const StudentDashboard = () => {
 
   const requestBusinessProject = useQuery(["businessProject"], () => requestBusinessProjects(),
+    {
+      onError: (error) => {
+        alert(error.message);
+      }
+    });
+
+  const requestBusiness = useQuery(["business"], () => getBusinesses(),
     {
       onError: (error) => {
         alert(error.message);
@@ -29,8 +37,10 @@ const StudentDashboard = () => {
   if (requestBusinessProject.isLoading) {
     return <span>Loading...</span>
   }
-
   if (requestApplicationStatus.isLoading) {
+    return <span>Loading...</span>
+  }
+  if (requestBusiness.isLoading) {
     return <span>Loading...</span>
   }
 
@@ -55,6 +65,7 @@ const StudentDashboard = () => {
             <h1>Conversion Rate</h1>
           </div>
         </div>
+
         <div className={"business-project-wrapper"}>
           <h2>Recent Company Requests</h2>
           <div className={"recent-requests-title-wrapper"}>
@@ -63,10 +74,22 @@ const StudentDashboard = () => {
             <h2>Due Date</h2>
             <h2>Location</h2>
           </div>
-          {requestBusinessProject.data.map((business, index) => (
-            <HighlightedBusinessProject businessProject={business} key={index} onSeeMore={onSeeMore} />
+          {requestBusinessProject.data.map((businessProject) => (
+            requestBusiness.data.filter((business) => (
+              businessProject.id === business.id
+            )).map((filteredBusiness, index) =>
+            (
+              <HighlightedBusinessProject
+                businessProject={businessProject}
+                company_name={filteredBusiness.company_name}
+                key={index}
+                onSeeMore={() => onSeeMore(businessProject.id)}
+              />
+            )
+            )
           ))}
         </div>
+
         <div className={"request-status-list-wrapper"}>
           <div className="request-status-header">
             <h2>Applications Status</h2>
@@ -82,8 +105,8 @@ const StudentDashboard = () => {
             <RequestStatusCard application={application} key={index} />
           ))}
         </div>
-            </div>
       </div>
+    </div>
   )
 }
 

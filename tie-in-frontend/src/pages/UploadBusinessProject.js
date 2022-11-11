@@ -11,9 +11,9 @@ function UploadBusinessProject() {
     const saveProject = useMutation(["businessProject"], () => saveBusinessProject({
         "id": 42,
         "name": projectName,
-        "summary": description,
-        "teamSize": teamSize,
-        "teamrequirement": teamRequirement,
+        "description": description,
+        "team_size": teamSize,
+        "team_requirements": teamRequirement,
         "expectedDeadline": date,
         "location": location,
         "budget": estimatedBudget,
@@ -30,25 +30,25 @@ function UploadBusinessProject() {
         }
     });
 
-  const [projectName, setProjectName] = useState("");
-  const [description, setDescription] = useState("");
-  const [date, setDate] = useState(null);
-  const [dateIsChecked, setDateIsChecked] = useState(false);
-  const [teamSize, setTeamSize] = useState("");
-  const [teamRequirement, setTeamRequirement] = useState("");
-  const [estimatedBudget, setEstimatedBudget] = useState("");
-  const [location, setLocation] = useState("");
-  const [locationIsChecked, setLocationIsChecked] = useState(false);
-  const [technology, setTechnology] = useState([]);
-  const [category, setCategory] = useState([]);
-  const [additionalField, setAdditionalField] = useState("");
-  const [additionalFile, setAdditionalFile] = useState("");
-  const [additionalLink, setAdditionalLink] = useState("");
-  
-  const onChange = (dates) => {
-    const date = dates;
-    setDate(date);
-};
+    const [projectName, setProjectName] = useState("");
+    const [description, setDescription] = useState("");
+    const [date, setDate] = useState(null);
+    const [dateIsChecked, setDateIsChecked] = useState(false);
+    const [teamSize, setTeamSize] = useState("");
+    const [teamRequirement, setTeamRequirement] = useState("");
+    const [estimatedBudget, setEstimatedBudget] = useState("");
+    const [location, setLocation] = useState("");
+    const [locationIsChecked, setLocationIsChecked] = useState(false);
+    const [technology, setTechnology] = useState([]);
+    const [category, setCategory] = useState([]);
+    const [additionalField, setAdditionalField] = useState("");
+    const [additionalFile, setAdditionalFile] = useState("");
+    const [additionalLink, setAdditionalLink] = useState("");
+
+    const onChange = (dates) => {
+        const date = dates;
+        setDate(date);
+    };
 
 const validateInput = () => {
   if (projectName === "" || description === "" || teamSize === "" || estimatedBudget === "" || teamRequirement === "") {
@@ -77,29 +77,29 @@ const validateInput = () => {
   }
 }
 
-const onSave = () => {
-  if (validateInput()) {
-      saveProject.mutate();
-  }
-}
+    const onSave = () => {
+        if (validateInput()) {
+            saveProject.mutate();
+        }
+    }
 
-  return (
-    <div className="upload-business-project">
-      <h2>Business Project Request</h2>
-      <p>Mandatory Fields</p>
-      <InputType label={"Project Title (Required)"} type={"text"} placeHolder={"Enter your project name"} onChange={(e) => setProjectName(e.target.value)}/>
-      <label>
-      <span>Project Summary (Required)</span>
-      <textarea placeholder="Enter your project summary" onChange={(e) => setDescription(e.target.value)} />
-      </label>
-      <fieldset>
-        <label>Expected Deadline (Required)</label>
-        <Datepicker
+    return (
+        <div className="upload-business-project">
+            <h2>Business Project Request</h2>
+            <p>Mandatory Fields</p>
+            <InputType label={"Project Title (Required)"} type={"text"} placeHolder={"Enter your project name"} onChange={(e) => setProjectName(e.target.value)} />
+            <label>
+                <span>Project Summary (Required)</span>
+                <textarea placeholder="Enter your project summary" onChange={(e) => setDescription(e.target.value)} />
+            </label>
+            <fieldset>
+                <label>Expected Deadline (Required)</label>
+                <Datepicker
                     selected={date}
                     date={!dateIsChecked ? date : null}
-                    onChange={(date) => onChange(date)}           
-        />
-        <input type="checkbox" id="notSpecifiedDate" name="notSpecifiedCheck" value="notSpecified" checked={dateIsChecked}
+                    onChange={(date) => onChange(date)}
+                />
+                <input type="checkbox" id="notSpecifiedDate" name="notSpecifiedCheck" value="notSpecified" checked={dateIsChecked}
                     onChange={() => {
                         setDateIsChecked(!dateIsChecked);
                         if (dateIsChecked) {
@@ -121,14 +121,14 @@ const onSave = () => {
                         setLocationIsChecked(!locationIsChecked);
                         if (locationIsChecked) {
                             setLocation(onChange);
-                        }else{
-                          setLocation(null);
+                        } else {
+                            setLocation(null);
                         }
                     }} />
-      <label htmlFor="notSpecifiedLocation">Not Specified Yet</label>
-      </fieldset>
-      <label htmlFor="category">Project Category (Optional)</label>
-      <select id="category" placeholder="Select a category related to your project" onChange={(e) => setTechnology([e.target.value])}>
+                <label htmlFor="notSpecifiedLocation">Not Specified Yet</label>
+            </fieldset>
+            <label htmlFor="category">Project Category (Optional)</label>
+            <select id="category" placeholder="Select a category related to your project" onChange={(e) => setTechnology([e.target.value])}>
                 <option> ---Choose category---</option>
                 <option> Web Application</option>
                 <option> Mobile Application</option>
@@ -149,12 +149,12 @@ const onSave = () => {
                 <option> Adobe Illustrator</option>
                 <option> Adobe Photoshop </option>
             </select>
-            <InputType label={"Additional Field (Optional)"} type={"text"} placeHolder={"You can add and customize additional fields for extra project request information "} onChange={(e) => setAdditionalField(e.target.value)}/>
-            <InputType label={"Additional File (Optional)"} type={"file"} placeHolder={" (Maximum file size 2mb)"} onChange={(e) => setAdditionalFile(e.target.value)}/>
-            <InputType label={"Additional Link (Optional)"} type={"text"} placeHolder={" You can add and customize additional link for your request "} onChange={(e) => setAdditionalLink(e.target.value)}/>
+            <InputType label={"Additional Field (Optional)"} type={"text"} placeHolder={"You can add and customize additional fields for extra project request information "} onChange={(e) => setAdditionalField(e.target.value)} />
+            <InputType label={"Additional File (Optional)"} type={"file"} placeHolder={" (Maximum file size 2mb)"} onChange={(e) => setAdditionalFile(e.target.value)} />
+            <InputType label={"Additional Link (Optional)"} type={"text"} placeHolder={" You can add and customize additional link for your request "} onChange={(e) => setAdditionalLink(e.target.value)} />
             <Button onClick={onSave} variant={"primary"} label={"Save"} />
-    </div>
-  )
+        </div>
+    )
 }
 
 export default UploadBusinessProject;
