@@ -17,7 +17,7 @@ import UploadStudentProject from "./pages/UploadStudentProject";
 import BusinessRequestDetails from "./pages/BusinessRequestDetails";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import RequestStatus from "./pages/signup/RequestStatus";
+import RequestStatus from "./pages/RequestStatus";
 
 const queryClient = new QueryClient();
 
@@ -38,10 +38,10 @@ root.render(
                         <Route path='/uploadstudentproject' element={<UploadStudentProject />} />
                         <Route path='/uploadbusinessproject' element={<UploadBusinessProject />} />
                         <Route path='/studentdashboard' element={<StudentDashboard />} />
-                        <Route path='/studentprojectslist' element={<StudentProjectsList/>}/>
-                        <Route path='/businessprojectslist' element={<BusinessProjectsList/>}/>
-                        <Route path='/businessrequestdetails' element={<BusinessRequestDetails/>}/>
-                        <Route path='/requestStatus' element={<RequestStatus/>}/>
+                        <Route path='/studentprojectslist' element={<StudentProjectsList />} />
+                        <Route path='/businessprojectslist' element={<BusinessProjectsList />} />
+                        <Route path='/businessrequestdetails' element={<BusinessRequestDetails />} />
+                        <Route path='/requeststatus' element={<RequestStatus />} />
                         <Route
                             path="*"
                             element={
