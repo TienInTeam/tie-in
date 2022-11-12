@@ -11,6 +11,7 @@ import validateTextInput from "../../utils/validateTextInput";
 
 const SignUpStudent = () => {
     const userType = "student";
+    const uid = sessionStorage.getItem("userId");
     const saveStudent = useMutation(["student"], () => addStudent({
         uid: sessionStorage.getItem("userId"),
         email: email,
@@ -28,9 +29,11 @@ const SignUpStudent = () => {
         });
 
     const saveUser = useMutation(["user"], () => addUser({
-        uid: sessionStorage.getItem("userId"),
+        uid: uid,
         email: email,
         type: userType,
+    }, {
+        enabled: !!uid,
     }));
 
     const [firstName, setFirstName] = useState("");
