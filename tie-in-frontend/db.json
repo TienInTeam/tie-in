@@ -180,6 +180,7 @@
       "tags": "Software Engineer, Web-App",
       "start_date": "2022-10-19",
       "end_date": "2022-10-22",
+      "business_id": 1,
       "business_model": "",
       "status": true,
       "category": [
@@ -362,7 +363,7 @@
     },
     {
       "uid": "T0cM3O4xAseGEKQE8tl8Sn1QARI3",
-      "email": "company@gmail.com",
+      "email": "company54@gmail.com",
       "type": "business",
       "id": 6
     },
@@ -406,30 +407,30 @@
   "business": [
     {
       "id": 1,
-      "name": "Tie in",
-      "email": "company@gmail.com",
+      "name": "Tie in1",
+      "email": "company1@gmail.com",
       "description": "This is based in Vancouver",
       "websiteUrl": "",
       "linkedInUrl": "",
       "location": "Vancouver",
-      "logo": "https://picsum.com/440/332"
+      "logo_url": "https://picsum.com/440/332"
     },
     {
       "uid": "BHcR2uFeOvfyICYb7NRrJeHJPUK2",
-      "name": "Tie in",
+      "name": "Tie in2",
       "email": "company@gmail.com",
       "description": "This is based in Vancouver",
       "websiteUrl": "",
       "linkedInUrl": "",
       "location": "Vancouver",
       "id": 2,
-      "logo": "https://picsum.com/540/362"
+      "logo_url": "https://picsum.photos/id/476/200/300"
     },
     {
       "uid": "IIO48sHFWiZona215fYuO19yBQD3",
-      "logo": "https://picsum.com/140/362",
-      "name": "Tie in",
-      "email": "company@gmail.com",
+      "logo_url": "https://picsum.com/140/362",
+      "name": "Tie in3",
+      "email": "company3@gmail.com",
       "description": "This is based in Vancouver",
       "websiteUrl": "",
       "linkedInUrl": "",
@@ -438,9 +439,9 @@
     },
     {
       "uid": "8wg16f3fdcX5dhVnwc12M6p2G6A3",
-      "logo": "https://picsum.com/560/362",
-      "name": "Tie in",
-      "email": "company@gmail.com",
+      "logo_url": "https://picsum.com/560/362",
+      "name": "Tie in4",
+      "email": "company4@gmail.com",
       "description": "This is based in Vancouver",
       "websiteUrl": "",
       "linkedInUrl": "",
@@ -450,19 +451,19 @@
     {
       "uid": "IGUGluhM56ZQwPELLczQN8Fzj8p1",
       "name": "Tie in",
-      "email": "company1@gmail.com",
+      "email": "company5@gmail.com",
       "description": "This is based in Vancouver",
       "websiteUrl": "",
       "linkedInUrl": "",
       "location": "Vancouver",
-      "logo": "https://picsum.com/1040/362",
+      "logo_url": "https://picsum.com/1040/362",
       "id": 5
     },
     {
       "uid": "f23qdn1FUldGttkcfJ9tONZHmPy1",
-      "logo": "https://picsum.com/1670/362",
+      "logo_url": "https://picsum.com/1670/362",
       "name": "Tie in",
-      "email": "company2@gmail.com",
+      "email": "company6@gmail.com",
       "description": "This is based in Vancouver",
       "websiteUrl": "",
       "linkedInUrl": "",
@@ -472,18 +473,18 @@
     {
       "uid": "s9jaJ0aLvfgunWcuSspJOHUXnXr1",
       "name": "Tie in",
-      "email": "company3@gmail.com",
+      "email": "company7@gmail.com",
       "description": "This is based in Vancouver",
       "websiteUrl": "",
       "linkedInUrl": "",
       "location": "Vancouver",
       "id": 7,
-      "logo": "https://picsum.com/540/462"
+      "logo_url": "https://picsum.com/540/462"
     },
     {
       "uid": "yFX2ZB9SqZaKW9R2WzkI1oPFWk33",
       "name": "Tie in",
-      "logo": "https://picsum.com/560/354",
+      "logo_url": "https://picsum.com/560/354",
       "email": "compan6y3@gmail.com",
       "description": "This is based in Vancouver",
       "websiteUrl": "",
@@ -494,29 +495,29 @@
     {
       "uid": "NUcVXLycxHWWLc17YadMOxVTlOr2",
       "name": "Tie in",
-      "email": "company@gmail.com",
+      "email": "company9@gmail.com",
       "description": "This is based in Vancouver",
       "websiteUrl": "",
       "linkedInUrl": "",
       "location": "Vancouver",
       "id": 9,
-      "logo": "https://picsum.com/2340/362"
+      "logo_url": "https://picsum.com/2340/362"
     },
     {
       "uid": "T0cM3O4xAseGEKQE8tl8Sn1QARI3",
       "name": "Tie in",
-      "email": "company@gmail.com",
+      "email": "company10@gmail.com",
       "description": "This is based in Vancouver",
       "websiteUrl": "",
       "linkedInUrl": "",
       "location": "Vancouver",
-      "logo": "https://picsum.com/2130/362",
+      "logo_url": "https://picsum.com/2130/362",
       "id": 10
     },
     {
       "uid": "T0cM3O4xAseGEKQE8tl8Sn1QARI3",
       "name": "Tie in",
-      "email": "company2@gmail.com",
+      "email": "company11@gmail.com",
       "description": "This is based in Vancouver",
       "websiteUrl": "",
       "linkedInUrl": "",
@@ -575,11 +576,11 @@
       },
       {
         "id": 113,
-        "member_photo": "https://picsum.photos/id/476/200/300"
+        "member_photo": "https://picsum.photos/id/532/200/300"
       },
       {
         "id": 114,
-        "member_photo": "https://picsum.photos/id/476/200/300"
+        "member_photo": "https://picsum.photos/id/782/200/300"
       }  
     ]
   },
@@ -589,15 +590,15 @@
     "members":[
       {
         "id": 112,
-        "member_photo": "https://picsum.photos/id/476/200/300"
+        "member_photo": "https://picsum.photos/id/145/200/300"
       },
       {
         "id": 113,
-        "member_photo": "https://picsum.photos/id/476/200/300"
+        "member_photo": "https://picsum.photos/id/261/200/300"
       },
       {
         "id": 114,
-        "member_photo": "https://picsum.photos/id/476/200/300"
+        "member_photo": "https://picsum.photos/id/123/200/300"
       }  
     ]
   },
@@ -607,15 +608,15 @@
     "members":[
       {
         "id": 112,
-        "member_photo": "https://picsum.photos/id/476/200/300"
+        "member_photo": "https://picsum.photos/id/621/200/300"
       },
       {
         "id": 118,
-        "member_photo": "https://picsum.photos/id/476/200/300"
+        "member_photo": "https://picsum.photos/id/351/200/300"
       },
       {
         "id": 119,
-        "member_photo": "https://picsum.photos/id/476/200/300"
+        "member_photo": "https://picsum.photos/id/742/200/300"
       }  
     ]
   }

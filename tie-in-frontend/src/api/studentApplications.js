@@ -9,3 +9,8 @@ export const requestApplicationStatuses = () => {
 export const saveApplicationStatuses = (postData) => project.post('/applicationStatus', postData, { 'Content-type': 'application/json' }).then((res) => {
     return res.data;
 });
+
+
+export const updateApplicationStatuses = (postData) => project.post('/applicationStatus', postData, { 'Content-type': 'application/json' }).then((res) => {
+    return res.data;
+});

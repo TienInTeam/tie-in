@@ -1,32 +1,69 @@
 import { useQuery } from "@tanstack/react-query";
-import { requestTeams } from "../api/teams";
-import TeamsBox from "../components/TeamsBox";
+import { useMutation } from "@tanstack/react-query";
+import { requestBusinessProjects } from "../api/businessProject";
+import { updateApplicationStatuses } from "../api/studentApplications";
+import { getBusinessByEmail } from "../api/business";
 import React from "react";
+import TeamApplication from "../components/TeamApplication";
 
 function RequestStatus() {
-  const requestTeam = useQuery(["teams"], () => requestTeams(), {
+  const requestBusinessByEmail = useQuery(["businessByEmail"], () => getBusinessByEmail(sessionStorage.getItem("userEmail")),{
+    enabled: !!sessionStorage.getItem("userEmail"),
+  },
+  {
+      onError: (error) => {
+        alert(error.message);
+      }
+  });
+
+  const requestBusinessProject = useQuery(["businessProject"], () => requestBusinessProjects(), {
     onError: (error) => {
       alert(error.message);
     }
   });
-  if (requestTeam.isLoading) {
+  if (requestBusinessProject.isLoading) {
     return <span>Loading...</span>
   }
-
-  const onApprove = () => {
-    alert("reset")
+  if (requestBusinessByEmail.isLoading) {
+    return <span>Loading...</span>
   }
-  return (
-    <>
-      <h1>Request Status List</h1>
-      <div>
-      {requestTeam.data.map((team, index) => (
-          <TeamsBox team_name={team.team_name} members={team.members} key={index}/>
-        ))}
-       
-      </div>
-    </>
-  )
+  if (requestBusinessByEmail.isSuccess) {
+    console.log("PICTURE:",requestBusinessByEmail.data);
+  }
+  if (requestBusinessProject.isSuccess) {
+    console.log("NAME:",requestBusinessProject.data);
+  }
+
+  console.log(requestBusinessByEmail.data[0].logo_url);
+
+  const onClose = () => {
+    alert("close button clicked")
+  }
+        {
+          for(let i=0; i<requestBusinessProject.data.length; i++){
+              if(requestBusinessProject.data[i].business_id === requestBusinessByEmail.data[0].id){
+                return(
+
+                <div>
+                  <h2>Request</h2>
+                  <TeamApplication
+                  name={requestBusinessProject.data[i].name}
+                  logo_url={requestBusinessByEmail.data[0].logo_url}
+                  onClose={onClose}
+                  />
+                </div>
+                )
+                
+              } else {
+                return(
+                  <div>
+                    <h2>Request</h2>
+                  </div>
+                )
+              }
+            
+          }
+        }
 }
 
-export default RequestStatus
+export default RequestStatus;
