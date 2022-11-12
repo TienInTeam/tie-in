@@ -22,8 +22,10 @@ function TeamApplication({ name, logo_url, onClose }) {
   return (
     <div className="team-application">
       <div className="title-wrapper">
-        <img src={logo_url} alt="company's logo" />
-         <h2>{name}</h2>
+        <div className="logo-wrapper">
+          <img src={logo_url} alt="company's logo" />
+           <h2>{name}</h2>
+        </div>
         <Button label={"Close Project"} variant={"secondary"} onClick={onClose} />
       </div>
       <div>
