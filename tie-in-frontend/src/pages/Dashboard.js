@@ -9,7 +9,10 @@ import StudentDashboard from "./StudentDashboard";
 const Dashboard = () => {
     useQuery(["user"], () => requestUser(sessionStorage.getItem("userId")), {
         enabled: !!sessionStorage.getItem("userId"),
-        onSuccess: (data) => sessionStorage.setItem("userType", data.type)
+        onSuccess: (data) => {
+            sessionStorage.setItem("userType", data.type)
+            console.log('here' + JSON.stringify(data))
+        }
     });
 
   const requestStudentProject = useQuery(["studentProject"], () => requestStudentProjects(),
