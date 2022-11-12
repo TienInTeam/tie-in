@@ -47,26 +47,32 @@ function UploadBusinessProject() {
     const [additionalFile, setAdditionalFile] = useState("");
     const [additionalLink, setAdditionalLink] = useState("");
 
-    const validateInput = () => {
-        if (projectName === "" || description === "" || teamSize === "" || estimatedBudget === "" || teamRequirement === "") {
-            alert('Enter all mandatory input field values');
-            return false;
-        }
-        if (!validateTextInput(projectName)) {
-            alert("Valid Project name is required.");
-            return false;
-        }
-        if (location) {
-            if (!validateTextInput(location)) {
-                alert("Enter Valid location");
-                return false;
-            } else {
-                return true;
-            }
-        } else {
-            return true;
-        }
-    }
+const validateInput = () => {
+  if (projectName === "" || description === "" || teamSize === "" || estimatedBudget === "" || teamRequirement === "") {
+      alert('Enter all mandatory input field values');
+      return false;
+  }
+  if (!validateTextInput(projectName)) {
+      alert("Valid Project name is required.");
+      return false;
+  }
+  if(teamSize<1){
+    alert('Team size should be positive number.');
+    return false;
+  }
+  if (location) {
+      if (!validateTextInput(location)) {
+          alert("Enter Valid location");
+          return false;
+      }
+      else {
+          return true;
+      }
+  }
+  else {
+      return true;
+  }
+}
 
     const onSave = () => {
         if (validateInput()) {

@@ -1,5 +1,5 @@
 .request-status-list-wrapper {
-  background-color: #253847;
+  background-color: $darker_blue_card_background;
   border-radius: 1rem;
   margin-left: auto;
   margin-right: auto;
@@ -7,14 +7,14 @@
 }
 
 .request-status-card {
-  background-color: $secondary_background_color;
+  background-color: $blue_card_background;
   border-radius: 1rem;
   margin-bottom: 1rem;
   padding-left: 1rem;
   display: flex;
   align-items: baseline;
   justify-content: space-evenly;
-  color: white;
+  color: $white;
 }
 
 .request-status-card *,

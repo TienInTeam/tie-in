@@ -42,22 +42,40 @@
       "profileUrl": "",
       "location": "",
       "id": 4
+    },
+    {
+      "uid": null,
+      "email": "test@gmail.com",
+      "firstName": "Florida",
+      "lastName": "Joca",
+      "institution": "UBC",
+      "linkedInURL": "",
+      "profileUrl": "",
+      "location": "",
+      "id": 5
     }
   ],
-  "businessProject": [
+  "businessProjects": [
     {
       "id": 2,
-      "company_name": "PWR Tech",
-      "logo": "Florida",
+      "name": "App to create time travel",
       "description": "test test",
+      "budget" : "300k",
+      "team_requirements": "3 desingers",
+      "team_size": "2-4",
       "linkedIn_url": "https://test.com",
       "team_id": "",
       "location": "Vancouver, BC",
       "tags": "Software Engineer, Web-App",
-      "start_date": "",
-      "end_date": "",
+      "start_date": "10 Jan 2022",
+      "end_date": "13-Jun-2031",
+      "business_id": 2,
+      "links": "www.pwrtech.com",
       "business_model": "",
       "status": false,
+      "additional_file_url": 
+      ["http://africau.edu/images/default/sample.pdf",
+      "http://africau.edu/images/default/sample.pdf"],
       "category": [
         "mobililty",
         "AI"
@@ -69,12 +87,15 @@
     },
     {
       "id": 1,
-      "company_name": "SRQ Inc",
-      "logo": "",
+      "name": "Reservation App",
       "description": "Test test ",
+      "budget" : "3400k",
+      "team_requirements": "2 developers, no designers",
+      "team_size": "2-4",
       "linkedIn_url": "https://test.com",
       "team_id": "",
       "location": "Vancouver, BC",
+      "business_id": 1,
       "tags": "Software Engineer, Web-App",
       "start_date": "2022-10-19",
       "end_date": "2022-10-22",
@@ -87,31 +108,45 @@
       "instructor_email": "fjoca00@gmail.com",
       "product_link": "https://google.com",
       "institution": "Langara College"
+    },
+    {
+      "id": 42,
+      "name": "Test",
+      "summary": "test",
+      "teamSize": "5",
+      "teamrequirement": "2devs",
+      "expectedDeadline": "2022-11-09T08:00:00.000Z",
+      "location": "test",
+      "budget": "3000",
+      "category": [],
+      "technology": [],
+      "additionalFields": "",
+      "files": "",
+      "links": ""
     }
   ],
-  "studentProject": [
+  "studentProjects": [
     {
+      "id": 7,
       "name": "nannies for you",
-      "logo": "Florida",
       "description": "test test ",
       "linkedIn_url": "https://test.com",
       "team_id": "",
       "approval_status": "Pending",
       "tags": "Software Engineer, Web-App",
       "start_date": "",
-      "end_date": "",
+      "end_date": "2/8/2022",
       "business_model": "",
       "technology": "",
       "instructor_email": "",
       "product_link": "",
       "subject": "",
-      "institution": "",
-      "location": "Vancouver"
+      "institution": "Langara",
+      "location":"Vancouver"
     },
     {
       "id": 1,
       "name": "Piccle",
-      "logo": "",
       "description": "Test test ",
       "linkedIn_url": "https://test.com",
       "team_id": "",
@@ -128,12 +163,14 @@
       "instructor_email": "fjoca00@gmail.com",
       "product_link": "https://google.com",
       "institution": "Langara College",
-      "location": "Vancouver"
+      "location":"Vancouver",
+      "image":[
+        "https://picsum.photos/200/200"
+      ]
     },
     {
       "id": 2,
       "name": "Get A Tat",
-      "logo": "",
       "description": "Test 2 ",
       "linkedIn_url": "https://test.com",
       "team_id": "",
@@ -159,7 +196,7 @@
   ],
   "applicationStatus": [
     {
-      "company_name": "nannies for you",
+      "name": "nannies for you",
       "team_name": "Power Puff kids",
       "team_id": 113,
       "application_status": "Pending",
@@ -173,7 +210,7 @@
     },
     {
       "id": 1,
-      "company_name": "Piccle",
+      "name": "Piccle",
       "logo": "",
       "team_id": 2323,
       "description": "Test test ",
@@ -210,7 +247,7 @@
     },
     {
       "id": 2,
-      "company_name": "Get A Tat",
+      "name": "Get A Tat",
       "description": "Test 2",
       "team_id": 345,
       "team_name": "Mojo Rojo",
@@ -225,10 +262,9 @@
   ],
   "users": [
     {
-      "uid": "1Ff9jefgl3YksU4elbJ6l88blHY2",
-      "email": "fjoca@gmail.com",
-      "type": "student",
-      "id": 1
+      "id": "keeD20K5qvPu4psN69lMIdXpBcY2",
+      "email": "student@gmail.com",
+      "type": "student"
     },
     {
       "id": "ZNqz2l03q2QZ0mHjZlogKO0IccT2",
@@ -253,34 +289,62 @@
       "id": 7
     },
     {
-      "id": "keeD20K5qvPu4psN69lMIdXpBcY2",
-      "email": "student@gmail.com",
-      "type": "student"
+      "uid": "C63Oxd3fWmY2GSC29yd744N6u9Z2",
+      "email": "dwdw@gmso.cpm",
+      "type": "business",
+      "id": 8
+    },
+    {
+      "uid": "0LONTfmXTEYMoW3yNA3NauHMLRy2",
+      "email": "dwdw@gmso.cpm",
+      "type": "business",
+      "id": 9
+    },
+    {
+      "uid": "0LONTfmXTEYMoW3yNA3NauHMLRy2",
+      "email": "dwdw@gmso.cpm",
+      "type": "business",
+      "id": 10
+    },
+    {
+      "uid": "0LONTfmXTEYMoW3yNA3NauHMLRy2",
+      "email": "dwdw@gmso.cpm",
+      "type": "business",
+      "id": 11
+    },
+    {
+      "uid": null,
+      "email": "test@gmail.com",
+      "type": "student",
+      "id": 12
     }
   ],
   "business": [
     {
       "id": 1,
-      "name": "Tie in",
-      "email": "company@gmail.com",
-      "description": "This is based in Vancouver",
-      "websiteUrl": "",
-      "linkedInUrl": "",
-      "location": "Vancouver"
-    },
-    {
-      "uid": "BHcR2uFeOvfyICYb7NRrJeHJPUK2",
-      "name": "Tie in",
+      "company_name": "Tie in",
       "email": "company@gmail.com",
       "description": "This is based in Vancouver",
       "websiteUrl": "",
       "linkedInUrl": "",
       "location": "Vancouver",
-      "id": 2
+      "logo": "https://picsum.photos/240/300"
+    },
+    {
+      "uid": "BHcR2uFeOvfyICYb7NRrJeHJPUK2",
+      "company_name": "Tie in",
+      "email": "company@gmail.com",
+      "description": "This is based in Vancouver",
+      "websiteUrl": "",
+      "linkedInUrl": "",
+      "location": "Vancouver",
+      "id": 2,
+      "logo": "https://picsum.photos/350/300"
     },
     {
       "uid": "IIO48sHFWiZona215fYuO19yBQD3",
-      "name": "Tie in",
+      "logo": "https://picsum.photos/200/324",
+      "company_name": "Tie in",
       "email": "company@gmail.com",
       "description": "This is based in Vancouver",
       "websiteUrl": "",
@@ -290,7 +354,8 @@
     },
     {
       "uid": "8wg16f3fdcX5dhVnwc12M6p2G6A3",
-      "name": "Tie in",
+      "logo": "https://picsum.photos/200/335",
+      "company_name": "Tie in",
       "email": "company@gmail.com",
       "description": "This is based in Vancouver",
       "websiteUrl": "",
@@ -300,17 +365,19 @@
     },
     {
       "uid": "IGUGluhM56ZQwPELLczQN8Fzj8p1",
-      "name": "Tie in",
+      "company_name": "Tie in",
       "email": "company1@gmail.com",
       "description": "This is based in Vancouver",
       "websiteUrl": "",
       "linkedInUrl": "",
       "location": "Vancouver",
+      "logo": "https://picsum.photos/620/300",
       "id": 5
     },
     {
       "uid": "f23qdn1FUldGttkcfJ9tONZHmPy1",
-      "name": "Tie in",
+      "logo": "https://picsum.photos/510/300",
+      "company_name": "Tie in",
       "email": "company2@gmail.com",
       "description": "This is based in Vancouver",
       "websiteUrl": "",
@@ -320,17 +387,19 @@
     },
     {
       "uid": "s9jaJ0aLvfgunWcuSspJOHUXnXr1",
-      "name": "Tie in",
+      "company_name": "Tie in",
       "email": "company3@gmail.com",
       "description": "This is based in Vancouver",
       "websiteUrl": "",
       "linkedInUrl": "",
       "location": "Vancouver",
-      "id": 7
+      "id": 7,
+      "logo": "https://picsum.photos/437/300"
     },
     {
       "uid": "yFX2ZB9SqZaKW9R2WzkI1oPFWk33",
-      "name": "Tie in",
+      "company_name": "Tie in",
+      "logo": "https://picsum.photos/827/300",
       "email": "compan6y3@gmail.com",
       "description": "This is based in Vancouver",
       "websiteUrl": "",
@@ -340,33 +409,75 @@
     },
     {
       "uid": "NUcVXLycxHWWLc17YadMOxVTlOr2",
-      "name": "Tie in",
+      "company_name": "Tie in",
       "email": "company@gmail.com",
       "description": "This is based in Vancouver",
       "websiteUrl": "",
       "linkedInUrl": "",
       "location": "Vancouver",
-      "id": 9
+      "id": 9,
+      "logo": "https://picsum.photos.com/2340/362"
     },
     {
       "uid": "T0cM3O4xAseGEKQE8tl8Sn1QARI3",
-      "name": "Tie in",
+      "company_name": "Tie in",
       "email": "company@gmail.com",
       "description": "This is based in Vancouver",
       "websiteUrl": "",
       "linkedInUrl": "",
       "location": "Vancouver",
+      "logo": "https://picsum.photos.com/2130/362",
       "id": 10
     },
     {
       "uid": "T0cM3O4xAseGEKQE8tl8Sn1QARI3",
-      "name": "Tie in",
+      "company_name": "Tie in",
       "email": "company2@gmail.com",
       "description": "This is based in Vancouver",
       "websiteUrl": "",
       "linkedInUrl": "",
       "location": "Vancouver",
       "id": 11
+    },
+    {
+      "uid": "C63Oxd3fWmY2GSC29yd744N6u9Z2",
+      "company_name": "wdw",
+      "email": "dwdw@gmso.cpm",
+      "description": "wd",
+      "websiteUrl": "ww.wdwew.wpomc",
+      "linkedInUrl": "ww.wdwew.wpomc",
+      "location": "wd",
+      "id": 12
+    },
+    {
+      "uid": "0LONTfmXTEYMoW3yNA3NauHMLRy2",
+      "company_name": "wdw",
+      "email": "dwdw@gmso.cpm",
+      "description": "wd",
+      "websiteUrl": "ww.wdwew.wpomc",
+      "linkedInUrl": "ww.wdwew.wpomc",
+      "location": "wd",
+      "id": 13
+    },
+    {
+      "uid": "0LONTfmXTEYMoW3yNA3NauHMLRy2",
+      "name": "wdw",
+      "email": "dwdw@gmso.cpm",
+      "description": "wd",
+      "websiteUrl": "ww.wdwew.wpomc",
+      "linkedInUrl": "ww.wdwew.wpomc",
+      "location": "wd",
+      "id": 14
+    },
+    {
+      "uid": "0LONTfmXTEYMoW3yNA3NauHMLRy2",
+      "company_name": "wdw",
+      "email": "dwdw@gmso.cpm",
+      "description": "wd",
+      "websiteUrl": "ww.wdwew.wpomc",
+      "linkedInUrl": "ww.wdwew.wpomc",
+      "location": "wd",
+      "id": 15
     }
   ]
 }

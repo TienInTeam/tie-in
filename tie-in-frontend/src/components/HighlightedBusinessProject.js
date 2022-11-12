@@ -1,9 +1,8 @@
 import React from 'react'
 import Button from './Button';
 
-function HighlightedBusinessProject({ businessProject, onSeeMore}) {
-  const { company_name, category, end_date, location} = businessProject;
-
+function HighlightedBusinessProject({ businessProject, company_name, onSeeMore}) {
+  const { name, category, end_date, location} = businessProject;
 
     const renderCategory = () => {
         if (!category) {

@@ -14,6 +14,7 @@ import StudentDashboard from "./pages/StudentDashboard";
 import StudentProjectsList from "./pages/StudentProjectsList";
 import UploadBusinessProject from "./pages/UploadBusinessProject";
 import UploadStudentProject from "./pages/UploadStudentProject";
+import BusinessRequestDetails from "./pages/BusinessRequestDetails";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
@@ -38,6 +39,7 @@ root.render(
                         <Route path='/studentdashboard' element={<StudentDashboard />} />
                         <Route path='/studentprojectslist' element={<StudentProjectsList/>}/>
                         <Route path='/businessprojectslist' element={<BusinessProjectsList/>}/>
+                        <Route path='/businessrequestdetails' element={<BusinessRequestDetails/>}/>
                         <Route
                             path="*"
                             element={
