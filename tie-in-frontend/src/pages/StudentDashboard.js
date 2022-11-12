@@ -9,7 +9,7 @@ import RequestStatusCard from "../components/RequestStatusCard";
 import Button from "../components/Button";
 import SideMenu from "../components/SideMenu";
 
-const StudentDashboard = () => {
+function StudentDashboard() {
 
   const requestBusinessProject = useQuery(["businessProject"], () => requestBusinessProjects(),
     {
@@ -118,10 +118,12 @@ const StudentDashboard = () => {
           <h2>Date:</h2>
           <h2>Status:</h2>
         </div>
-        {renderApplicationsStatus()}
+          {renderApplicationsStatus()}
+      </div>
       </div>
     </div>
   )
 }
 
 export default StudentDashboard;
+
