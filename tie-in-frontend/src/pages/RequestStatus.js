@@ -45,7 +45,7 @@ function RequestStatus() {
                 return(
 
                 <div>
-                  <h2>Request</h2>
+                  <h2>Request Status List</h2>
                   <TeamApplication
                   name={requestBusinessProject.data[i].name}
                   logo_url={requestBusinessByEmail.data[0].logo_url}
@@ -57,7 +57,7 @@ function RequestStatus() {
               } else {
                 return(
                   <div>
-                    <h2>Request</h2>
+                    <h2>Request Status List</h2>
                   </div>
                 )
               }
