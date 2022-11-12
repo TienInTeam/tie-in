@@ -9,3 +9,11 @@ export const requestBusinessProjects = () => {
 export const saveBusinessProject = (postData) => project.post('/businessProjects', postData).then((res) => {
     return res.data;
 });
+
+
+export const requestBusinessProjectsByID = (id) => {
+    return project.get(`/businessProjects/${id}`).then((res) => {
+        return res.data;
+    });
+}
+

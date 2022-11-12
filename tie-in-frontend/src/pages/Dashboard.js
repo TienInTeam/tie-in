@@ -1,8 +1,9 @@
-import {useQuery} from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import React from 'react';
-import {requestStudentProjects} from "../api/studentProject";
+import { requestStudentProjects } from "../api/studentProject";
 import {requestUser} from "../api/user";
 import HighlightedStudentProject from "../components/HighlightedStudentProject";
+import SideMenu from "../components/SideMenu";
 import StudentDashboard from "./StudentDashboard";
 
 const Dashboard = () => {
@@ -11,42 +12,49 @@ const Dashboard = () => {
         onSuccess: (data) => sessionStorage.setItem("userType", data.type)
     });
 
-    const requestStudentProject = useQuery(["studentProject"], () => requestStudentProjects())
-    if (requestStudentProject.isLoading) {
-        return <span>Loading...</span>
-    }
+  const requestStudentProject = useQuery(["studentProject"], () => requestStudentProjects(),
+    {
+      onError: (error) => {
+        alert(error.message);
+      }
+    });
 
-    if (requestStudentProject.isError) {
-        return <span>Error: {requestStudentProject.error.message}</span>
-    }
+  if (requestStudentProject.isLoading) {
+    return <span>Loading...</span>
+  }
 
-    const onSeeMore = () => {
-        alert("see more is clicked")
-    }
+  const onSeeMore = () => {
+    alert("see more is clicked")
+  }
 
     if (sessionStorage.getItem('userType') === "business") {
         return (
-            <>
-                <div className={"data-visualization"}>
-                    <h1>Data visualization 1</h1>
-                    <h1>Data visualization 2</h1>
-                </div>
-                <div className={"student-project-wrapper"}>
-                    <div className={"title-wrapper"}>
-                        <h2>Name</h2>
-                        <h2>Category</h2>
-                        <h2>Institution</h2>
-                        <h2>Location</h2>
+            <div className="grid-container">
+                <SideMenu />
+                <div>
+                    <div className={"data-visualization"}>
+                        <h1>Data visualization 1</h1>
+                        <h1>Data visualization 2</h1>
                     </div>
-                    {requestStudentProject.data.map((student, index) => (
-                        <HighlightedStudentProject key={index} studentProject={student} onSeeMore={onSeeMore}/>
-                    ))}
+                    <div className={"student-project-wrapper"}>
+                        <div className={"title-wrapper"}>
+                            <h2>Name</h2>
+                            <h2>Category</h2>
+                            <h2>Institution</h2>
+                            <h2>Location</h2>
+                        </div>
+                        {requestStudentProject.data.map((student, index) => (
+                            <HighlightedStudentProject key={index} studentProject={student} onSeeMore={onSeeMore} />
+                        ))}
+                    </div>
                 </div>
-            </>
+            </div>
         )
     } else {
         return (
-            <StudentDashboard/>
+            <div>
+                <StudentDashboard />
+            </div>
         );
     }
 }

@@ -1,43 +1,75 @@
 import { useQuery } from "@tanstack/react-query";
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 import { requestBusinessProjects } from "../api/businessProject";
 import { requestApplicationStatuses } from "../api/studentApplications";
+import { getBusinesses } from '../api/business';
 import HighlightedBusinessProject from "../components/HighlightedBusinessProject";
 import RequestStatusCard from "../components/RequestStatusCard";
 import Button from "../components/Button";
+import SideMenu from "../components/SideMenu";
 
 const StudentDashboard = () => {
-  const requestBusinessProject = useQuery(["businessProject"], () => requestBusinessProjects());
-  const requestApplicationStatus = useQuery(["applicationStatus"], () => requestApplicationStatuses(), {
-    enabled: !requestBusinessProject.isLoading
-  });
+
+  const requestBusinessProject = useQuery(["businessProject"], () => requestBusinessProjects(),
+    {
+      onError: (error) => {
+        alert(error.message);
+      }
+    });
+
+  const requestBusiness = useQuery(["business"], () => getBusinesses(),
+    {
+      onError: (error) => {
+        alert(error.message);
+      }
+    });
+
+  const requestApplicationStatus = useQuery(["applicationStatus"], () => requestApplicationStatuses(),
+    {
+      enabled: !requestBusinessProject.isLoading,
+      onError: (error) => {
+        alert(error.message);
+      }
+    });
+
+  const navigate = useNavigate();
 
   if (requestBusinessProject.isLoading) {
     return <span>Loading...</span>
   }
-
-  if (requestBusinessProject.isError) {
-    return <span>Error: {requestBusinessProject.error.message}</span>
-  }
-
   if (requestApplicationStatus.isLoading) {
     return <span>Loading...</span>
   }
-
-  if (requestApplicationStatus.isError) {
-    return <span>Error: {requestBusinessProject.error.message}</span>
+  if (requestBusiness.isLoading) {
+    return <span>Loading...</span>
   }
 
-  const onSeeMore = () => {
-    alert("see more is clicked")
-  }
+  const onSeeMore = (id) => {
+    navigate('/businessrequestdetails', {
+      state: {
+        id: `${id}`
+      }
+    });
+  };
 
   const renderHighlightedBusinessProjects = () => {
     if (!requestBusinessProject?.data) {
       return null;
     }
-    return requestBusinessProject.data.map((business, index) => (
-        <HighlightedBusinessProject businessProject={business} key={index} onSeeMore={onSeeMore} />
+    return requestBusinessProject.data.map((businessProject) => (
+        requestBusiness.data.filter((business) => (
+            businessProject.id === business.id
+        )).map((filteredBusiness, index) =>
+            (
+                <HighlightedBusinessProject
+                    businessProject={businessProject}
+                    company_name={filteredBusiness.company_name}
+                    key={index}
+                    onSeeMore={() => onSeeMore(businessProject.id)}
+                />
+            )
+        )
     ))
   }
 
@@ -51,27 +83,29 @@ const StudentDashboard = () => {
   }
 
   return (
-    <>
-      <div className={"data-visualization"}>
-        <div className="visualization-component">
-          <h1>Total Project View</h1>
+    <div className="grid-container">
+      <SideMenu />
+      <div>
+        <div className={"data-visualization"}>
+          <div className="visualization-component">
+            <h1>Total Project View</h1>
+          </div>
+          <div className="visualization-component">
+            <h1>Projects Applied</h1>
+            <h1>Conversion Rate</h1>
+          </div>
         </div>
-        <div className="visualization-component">
-          <h1>Projects Applied</h1>
-          <h1>Conversion Rate</h1>
-        </div>
-      </div>
 
-      <div className={"business-project-wrapper"}>
-        <h2>Recent Company Requests</h2>
-        <div className={"recent-requests-title-wrapper"}>
-          <h2>Company Name</h2>
-          <h2>Category</h2>
-          <h2>Due Date</h2>
-          <h2>Location</h2>
+        <div className={"business-project-wrapper"}>
+          <h2>Recent Company Requests</h2>
+          <div className={"recent-requests-title-wrapper"}>
+            <h2>Company Name</h2>
+            <h2>Category</h2>
+            <h2>Due Date</h2>
+            <h2>Location</h2>
+          </div>
+          {renderHighlightedBusinessProjects()}
         </div>
-        {renderHighlightedBusinessProjects()}
-      </div>
 
       <div className={"request-status-list-wrapper"}>
         <div className="request-status-header">
@@ -86,7 +120,7 @@ const StudentDashboard = () => {
         </div>
         {renderApplicationsStatus()}
       </div>
-    </>
+    </div>
   )
 }
 
