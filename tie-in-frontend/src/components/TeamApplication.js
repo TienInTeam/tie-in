@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 import { requestTeams } from "../api/teams";
 import TeamsBox from "../components/TeamsBox";
 import Button from "./Button";
 
 function TeamApplication({ name, logo_url, onClose }) {
-
-  
+  // const [approve, setApprove] = useState("Approve")
 
   const requestTeam = useQuery(["teams"], () => requestTeams(), {
     onError: (error) => {
@@ -17,7 +17,6 @@ function TeamApplication({ name, logo_url, onClose }) {
   }
 
   const onApprove = () => {
-    alert("reset")
   }
   return (
     <div className="team-application">

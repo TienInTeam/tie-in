@@ -5,6 +5,7 @@ import { updateApplicationStatuses } from "../api/studentApplications";
 import { getBusinessByEmail } from "../api/business";
 import React from "react";
 import TeamApplication from "../components/TeamApplication";
+import SideMenu from "../components/SideMenu"
 
 function RequestStatus() {
   const requestBusinessByEmail = useQuery(["businessByEmail"], () => getBusinessByEmail(sessionStorage.getItem("userEmail")),{
@@ -43,20 +44,23 @@ function RequestStatus() {
           for(let i=0; i<requestBusinessProject.data.length; i++){
               if(requestBusinessProject.data[i].business_id === requestBusinessByEmail.data[0].id){
                 return(
-
-                <div>
-                  <h2>Request Status List</h2>
-                  <TeamApplication
-                  name={requestBusinessProject.data[i].name}
-                  logo_url={requestBusinessByEmail.data[0].logo_url}
-                  onClose={onClose}
-                  />
+                <div className="grid-container">
+                  <SideMenu />
+                  <div>
+                    <h2>Request Status List</h2>
+                    <TeamApplication
+                    name={requestBusinessProject.data[i].name}
+                    logo_url={requestBusinessByEmail.data[0].logo_url}
+                    onClose={onClose}
+                    />
+                  </div>
                 </div>
                 )
                 
               } else {
                 return(
                   <div>
+                    <SideMenu className="grid-container"/>
                     <h2>Request Status List</h2>
                   </div>
                 )
