@@ -6,6 +6,7 @@ export const requestUser = (uid) => {
     });
 }
 
+
 export const addUser = (postData) => { project.post('/users', postData,).then((res) => {
     return res.data;
 });}

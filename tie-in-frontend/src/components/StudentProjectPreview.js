@@ -21,11 +21,11 @@ function StudentProjectPreview({ studentProject, onSeeMore }) {
         </div>
         <div>
           <h3>Category</h3>
-          {category? category.map((cat, index) => {return(<div className="category" key={index}>{cat}</div>)}) : <p>-</p>}
+          {category ? category.map((cat, index) => {return(<div className="category" key={index}>{cat}</div>)}) : <p>-</p>}
         </div>
         <div>
           <h3>Location</h3>
-          <p>{location}</p>
+          <p>{location}</p>˚
         </div>
         <Button label={"See More"} variant={"primary"} onClick={onSeeMore} />
       </div>
