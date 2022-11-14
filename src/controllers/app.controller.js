@@ -67,6 +67,11 @@ async function getAllTeams(req, res, next) {
   res.status(200).send(await appService.getAllTeamsFromDb(teamCollection));
 }
 
+async function getAllTeamsOfStudentById(req, res, next) {
+  const userQuery = { id: req.params.id };
+  res.status(200).send(await appService.getAllTeamsOfStudent(teamCollection, userQuery));
+}
+
 async function getOneTeamByName(req, res, next) {
   const userQuery = { name: req.params.name };
   res
@@ -78,6 +83,12 @@ async function createOneTeam(req, res, next) {
   res
     .status(200)
     .send(await appService.createOneTeamInDb(teamCollection, req.body));
+}
+
+async function deleteOneTeamById(req, res, next) {
+  res
+    .status(200)
+    .send(await appService.deleteOneTeamFromDb(teamCollection, req.body));
 }
 
 ////////// BUSINESS //////////
@@ -198,8 +209,10 @@ module.exports = {
   createOneStudent,
 
   getAllTeams,
+  getAllTeamsOfStudentById,
   getOneTeamByName,
   createOneTeam,
+  deleteOneTeamById,
 
   getAllBusiness,
   getOneBusinessByEmail,
