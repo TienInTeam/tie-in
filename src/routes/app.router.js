@@ -18,10 +18,11 @@ router.post('/students', appController.createOneStudent);
 
 ////////// TEAMS ROUTES //////////
 router.get('/teams', appController.getAllTeams);
-router.get('/teams/:name', appController.getOneTeamByName);
+router.get('/teams/all/:id', appController.getAllTeamsOfStudentById);
+// router.get('/teams/:name', appController.getOneTeamByName);
 router.post('/teams', appController.createOneTeam);
 // router.put('/students/teams/:name', appController.updateOneUser);
-// router.delete('/students/teams/:name', appController.deleteOneUser);
+router.delete('/teams/:id', appController.deleteOneTeamById);
 
 ////////// BUSINESS ROUTES //////////
 router.get('/business', appController.getAllBusiness);

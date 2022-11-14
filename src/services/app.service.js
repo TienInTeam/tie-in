@@ -33,7 +33,7 @@ function newStudent(userInfo) {
 }
 
 function newTeam(userInfo) {
-  const newTeam = new Team(userInfo.id, userInfo.name, userInfo.members);
+  const newTeam = new Team(userInfo.team_name, userInfo.members);
 
   return newTeam;
 }
@@ -108,7 +108,7 @@ function newBusinessProject(userInfo) {
 function newApplication(userInfo) {
   const newUser = new Application(
     userInfo.team_id,
-    userInfo.request_id,
+    userInfo.business_request_id,
     userInfo.application_status,
     userInfo.uploaded_files,
     userInfo.application_date
@@ -192,6 +192,18 @@ async function getAllTeamsFromDb(collection) {
   return response;
 }
 
+async function getAllTeamsOfStudent(collection, userQuery) {
+  //Get All teams from collection
+  const allTeams = await dbService.getAllFromDb(collection);
+
+  //Filtering array by member id
+  const filteredArray = allTeams.filter((team) =>
+    team.members.some((member) => member.student_id == userQuery.id)
+  );
+
+  return filteredArray;
+}
+
 async function getOneTeamFromDb(collection, userQuery) {
   const response = dbService.getOneFromDb(collection, userQuery);
 
@@ -210,11 +222,11 @@ async function createOneTeamInDb(collection, requestBody) {
 //   return response;
 // }
 
-// async function deleteOneTeamFromDb(collection, userQuery) {
-//   const response = dbService.deleteOneFromDb(collection, userQuery);
+async function deleteOneTeamFromDb(collection, userQuery) {
+  const response = dbService.deleteOneFromDb(collection, userQuery);
 
-//   return response;
-// }
+  return response;
+}
 
 ////////// BUSINESS //////////
 async function getAllBusinessFromDb(collection) {
@@ -370,10 +382,11 @@ module.exports = {
   // deleteOneStudentFromDb,
 
   getAllTeamsFromDb,
+  getAllTeamsOfStudent,
   getOneTeamFromDb,
   createOneTeamInDb,
   // updateOneTeamInDb,
-  // deleteOneTeamFromDb,
+  deleteOneTeamFromDb,
 
   getAllBusinessFromDb,
   getOneBusinessFromDb,
