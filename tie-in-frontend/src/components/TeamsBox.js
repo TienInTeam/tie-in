@@ -1,6 +1,20 @@
+import { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { updateApplicationStatuses } from "../api/studentApplications";
 import Button from "./Button";
 
-const TeamsBox = ({ team_name, members, onApprove}) => {
+const TeamsBox = ({ team_name, members}) => {
+  const [approve, setApprove] = useState(false)
+
+  const changeStatus = useMutation(["applicationStatus"], () => updateApplicationStatuses({
+    "application_status": "approved"
+})
+  );
+
+  const onApprove = () => {
+    setApprove(!approve)
+    changeStatus.mutate()
+  }
   return (
     <div className="team-box">
       <h3>{team_name}</h3>
@@ -11,7 +25,7 @@ const TeamsBox = ({ team_name, members, onApprove}) => {
 
         ))}
       </div>
-      <Button label={"Approve"} variant={"primary"} onClick={onApprove} />
+      <Button label={approve?"Approved":"Accept"} variant={"primary"} onClick={onApprove} />
     </div>
   )
 }

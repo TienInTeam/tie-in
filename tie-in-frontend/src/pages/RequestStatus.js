@@ -1,7 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useMutation } from "@tanstack/react-query";
 import { requestBusinessProjects } from "../api/businessProject";
-import { updateApplicationStatuses } from "../api/studentApplications";
 import { getBusinessByEmail } from "../api/business";
 import React from "react";
 import TeamApplication from "../components/TeamApplication";
@@ -27,12 +25,6 @@ function RequestStatus() {
   }
   if (requestBusinessByEmail.isLoading) {
     return <span>Loading...</span>
-  }
-  if (requestBusinessByEmail.isSuccess) {
-    console.log("PICTURE:",requestBusinessByEmail.data);
-  }
-  if (requestBusinessProject.isSuccess) {
-    console.log("NAME:",requestBusinessProject.data);
   }
 
   console.log(requestBusinessByEmail.data[0].logo_url);
