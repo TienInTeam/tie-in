@@ -1,8 +1,9 @@
 require("dotenv").config();
 
 const settings = {
-  dbName: "TESTDB1",
-  uri: "mongodb+srv://root:root@cluster0.lb9myjr.mongodb.net/?retryWrites=true&w=majority",
+  // dbName: "TESTDB1",
+  dbName: process.env.TEST_DB,
+  uri: process.env.MONGO_URL,
 };
 
 module.exports = {
