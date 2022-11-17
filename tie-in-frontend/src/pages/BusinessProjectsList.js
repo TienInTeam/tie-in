@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { requestBusinessProjects } from "../api/businessProject";
 import BusinessProjectPreview from "../components/BusinessProjectPreview";
+import Searchbar from "../components/Searchbar";
 import SideMenu from "../components/SideMenu";
 
 function BusinessProjectsList() {
@@ -25,6 +26,7 @@ function BusinessProjectsList() {
     <div className="grid-container">
       <SideMenu />
       <div>
+      <Searchbar />
         {requestBusinessProject.data.map((business, index) =>
           <BusinessProjectPreview
             businessProject={business}
