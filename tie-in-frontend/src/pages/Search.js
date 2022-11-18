@@ -6,7 +6,6 @@ import BusinessProjectPreview from "../components/BusinessProjectPreview";
 function Search() {
   const queryString = useLocation().search;
   const queryParams = new URLSearchParams(queryString);
-  // let params = useParams();
   const query = queryParams.get('q');
   console.log(query);
 
@@ -29,7 +28,7 @@ function Search() {
   }
 
   return (
-    <div>
+    <div className="search">
       <h2>Projects Including "{query}"</h2>
       {
         request.data.map((business, index) =>
