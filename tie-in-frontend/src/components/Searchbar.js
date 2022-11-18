@@ -4,7 +4,7 @@ import InputType from "./InputType";
 import { ReactComponent as SearchIcon } from '../assets/icons/actions/actions-search.svg';
 
 
-function Searchbar({ onCategory, onSize, onLocation }) {
+function Searchbar({onChange}) {
   const [term, setTerm] = useState("");
 
 
@@ -25,8 +25,8 @@ function Searchbar({ onCategory, onSize, onLocation }) {
       <div className="icon search-icon" onClick={submitHandle}><SearchIcon /></div>
         <InputType type={"text"} placeHolder={"Input Project Name"} onChange={onSearch} />
       </form>
-      <form onSubmit={submitHandle} className="filter-wrapper">
-        <select id="category" aria-label="Choose category" onChange={onCategory}>
+      <form onSubmit={onChange} className="filter-wrapper">
+        <select id="category" aria-label="Choose category">
           <option selected disabled>Category</option>
           <option value="UI/UX">UI/UX</option>
           <option value="Mobile Application">Mobile Application</option>
@@ -35,7 +35,7 @@ function Searchbar({ onCategory, onSize, onLocation }) {
           <option value="Commercial">Commercial</option>
           <option value="Marketing">Marketing</option>
         </select>
-        <select id="size" aria-label="Choose size" onChange={onSize}>
+        <select id="size" aria-label="Choose size">
           <option selected disabled>Size</option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -44,7 +44,7 @@ function Searchbar({ onCategory, onSize, onLocation }) {
           <option value="5">5</option>
           <option value="6">6</option>
         </select>
-        <select id="location" aria-label="Choose location" onChange={onLocation}>
+        <select id="location" aria-label="Choose location">
           <option selected disabled>Location</option>
           <option value="Vancouver">Vancouver</option>
           <option value="Burnaby">Burnaby</option>
