@@ -62,7 +62,7 @@
       "description": "test test",
       "budget" : "300k",
       "team_requirements": "3 desingers",
-      "team_size": "2-4",
+      "team_size": "4",
       "linkedIn_url": "https://test.com",
       "team_id": "",
       "location": "Vancouver, BC",
@@ -78,7 +78,8 @@
       "http://africau.edu/images/default/sample.pdf"],
       "category": [
         "mobililty",
-        "AI"
+        "AI",
+        "Commercial"
       ],
       "instructor_email": "",
       "product_link": "",
