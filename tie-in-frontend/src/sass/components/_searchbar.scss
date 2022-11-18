@@ -13,6 +13,25 @@
     border-radius: 8px;
   }
 
+  .search-wrapper {
+    position: relative;
+  }
+
+  .search-icon {
+    position: absolute;
+    right: 0;
+    font-style: .5rem;
+    margin: .2rem;
+  }
+
+  .search-icon svg {
+    width: 30px;
+    height: 30px;
+  }
+  .search-icon svg path{ 
+    fill: black;
+  }
+
   .filter-wrapper {
     display: flex;
     align-items: center;
