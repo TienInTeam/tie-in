@@ -1,5 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import React, { useState } from "react";
+import {useNavigate} from "react-router-dom";
 
 import { addBusiness } from "../../api/business";
 import { addUser } from "../../api/user";
@@ -11,6 +12,8 @@ import validateTextInput from "../../utils/validateTextInput";
 
 const SignUpBusiness = () => {
     const userType = "business";
+    const navigate = useNavigate();
+
     const saveBusiness = useMutation(['business'], () => addBusiness({
         company_name: businessName,
         email: businessEmail,
@@ -31,6 +34,8 @@ const SignUpBusiness = () => {
         type: userType,
     }),
         {
+            enabled: !!sessionStorage.getItem("userId"),
+            onSuccess:  () => sessionStorage.clear(),
             onError: (error) => {
                 alert(error.message);
             }
@@ -76,8 +81,9 @@ const SignUpBusiness = () => {
         e.preventDefault();
         if (formValidation()) {
             await signUp(businessEmail, password)
+            saveBusiness.mutate();
             saveUser.mutate();
-            await saveBusiness.mutate();
+            navigate("/login")
         } else
             alert("Something went wrong! Please try again.")
     }

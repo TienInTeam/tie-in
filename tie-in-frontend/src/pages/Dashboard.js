@@ -7,20 +7,23 @@ import SideMenu from "../components/SideMenu";
 import StudentDashboard from "./StudentDashboard";
 
 const Dashboard = () => {
-    useQuery(["user"], () => requestUser(sessionStorage.getItem("userId")), {
+   const requestUserType =  useQuery(["user"], () => requestUser(sessionStorage.getItem("userId")), {
         enabled: !!sessionStorage.getItem("userId"),
         onSuccess: (data) => {
             sessionStorage.setItem("userType", data.type)
-            console.log('here' + JSON.stringify(data))
         }
     });
 
-  const requestStudentProject = useQuery(["studentProject"], () => requestStudentProjects(),
-    {
+
+  const requestStudentProject = useQuery(["studentProject"], () => requestStudentProjects(),{
+      enabled: !!requestUserType,
       onError: (error) => {
         alert(error.message);
       }
     });
+    if (requestUserType.isLoading) {
+        return <span>Loading...</span>
+    }
 
   if (requestStudentProject.isLoading) {
     return <span>Loading...</span>
