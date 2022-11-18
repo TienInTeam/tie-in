@@ -45,9 +45,10 @@ const StudentDashboard = () => {
   }
 
   const onSeeMore = (id) => {
+    sessionStorage.setItem('BusinessProjectViewed', id);
     navigate('/businessrequestdetails', {
       state: {
-        id: `${id}`
+        id: `${sessionStorage.getItem('BusinessProjectViewed')}`
       }
     });
   };
