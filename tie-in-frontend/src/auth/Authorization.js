@@ -2,22 +2,21 @@ import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } f
 import app from './firebase';
 
 //method to register user on the app and authenticate with firebase.
-export function signUp(email, password) {
-
+export const signUp = async (email, password) => {
   const authentication = getAuth(app);
-  createUserWithEmailAndPassword(authentication, email, password).then((response) => {
+  try {
+    const userCredential = await createUserWithEmailAndPassword(authentication, email, password)
     const user = authentication.currentUser;
     if (user !== null) {
       const email = user.email;
       const uid = user.uid;
-      sessionStorage.setItem('authToken', response._tokenResponse.refreshToken);
+      sessionStorage.setItem('authToken', userCredential.user.refreshToken);
       sessionStorage.setItem('userEmail', email);
       sessionStorage.setItem('userId', uid);
     }
-  })
-    .catch((error) => {
-      const errorMessage = error.message;
-    });
+  } catch (e) {
+    console.error('error: ' + e)
+  }
 }
 
 //method to login the user on the app and store authentication info.

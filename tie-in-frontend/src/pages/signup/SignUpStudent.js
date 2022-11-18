@@ -1,5 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import React, { useState } from 'react';
+import {useNavigate} from "react-router-dom";
 
 import { addStudent } from "../../api/student";
 import { addUser } from "../../api/user";
@@ -12,29 +13,30 @@ import validateTextInput from "../../utils/validateTextInput";
 const SignUpStudent = () => {
     const userType = "student";
     const uid = sessionStorage.getItem("userId");
-    const saveStudent = useMutation(["student"], () => addStudent({
-        uid: sessionStorage.getItem("userId"),
-        email: email,
-        first_name: firstName,
-        last_name: lastName,
-        institution: institution,
-        linkedIn_url: linkedInURL,
-        portfolio_url: websiteURL,
-        location: location,
-    }),
-        {
-            onError: (error) => {
-                alert(error.message);
-            }
-        });
+    const navigate = useNavigate();
 
     const saveUser = useMutation(["user"], () => addUser({
         uid: uid,
         email: email,
         type: userType,
-    }, {
-        enabled: !!uid,
-    }));
+    }),{
+        enabled: !!uid
+    });
+
+    const saveStudent = useMutation(["student"], () => addStudent({
+            email: email,
+            first_name: firstName,
+            last_name: lastName,
+            institution: institution,
+            linkedIn_url: linkedInURL,
+            portfolio_url: websiteURL,
+            location: location,
+        }),
+        {
+            onError: (error) => {
+                alert(error.message);
+            }
+        });
 
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -77,10 +79,12 @@ const SignUpStudent = () => {
         e.preventDefault();
         if (formValidation()) {
             await signUp(email, password)
-            await saveUser.mutate();
-            await saveStudent.mutate();
+            saveUser.mutate();
+            saveStudent.mutate();
+            sessionStorage.clear();
+            navigate("/login");
         } else
-            alert("not successfull")
+            alert("Sign up failed! Please try again later.")
     }
 
     return (
