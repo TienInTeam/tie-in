@@ -1,6 +1,6 @@
 const appService = require("../services/app.service");
 
-const userModel = require("../models/user.model");
+const userModel = require("../models/request/user.model");
 
 ////////// USER //////////
 const userCollection = "Users";

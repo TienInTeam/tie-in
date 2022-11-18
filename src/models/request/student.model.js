@@ -7,7 +7,8 @@ function Student(
   githubUrl,
   portfolioUrl,
   position,
-  phoneNumber
+  phoneNumber,
+  photoUrl
 ) {
   this.email = email;
   this.first_name = firstName;
@@ -18,6 +19,7 @@ function Student(
   this.portfolio_url = portfolioUrl;
   this.position = position;
   this.phone_number = phoneNumber;
+  this.photo_url = photoUrl;
 }
 
 module.exports = Student;
