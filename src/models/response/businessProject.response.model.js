@@ -1,4 +1,4 @@
-const BusinessId = require("../generic/businessId.generic.model")
+const BusinessId = require("../generic/businessId.generic.model");
 
 function BusinessProject(
   name,
