@@ -1,6 +1,6 @@
 const appService = require("../services/app.service");
 
-const userModel = require("../models/request/user.model");
+const { ObjectId } = require("mongodb");
 
 ////////// USER //////////
 const userCollection = "Users";
@@ -31,12 +31,12 @@ async function createOneUser(req, res, next) {
 //     );
 // }
 
-// async function deleteOneUser(req, res, next) {
-//   const userQuery = { uid: req.params.uid };
-//   res
-//     .status(200)
-//     .send(await appService.deleteOneStudentFromDb(userCollection, userQuery));
-// }
+async function deleteOneUser(req, res, next) {
+  const userQuery = { uid: req.params.uid };
+  res
+    .status(200)
+    .send(await appService.deleteOneStudentFromDb(userCollection, userQuery));
+}
 
 ////////// STUDENT //////////
 const studentCollection = "Students";
@@ -69,7 +69,9 @@ async function getAllTeams(req, res, next) {
 
 async function getAllTeamsOfStudentById(req, res, next) {
   const userQuery = { id: req.params.id };
-  res.status(200).send(await appService.getAllTeamsOfStudent(teamCollection, userQuery));
+  res
+    .status(200)
+    .send(await appService.getAllTeamsOfStudent(teamCollection, userQuery));
 }
 
 async function getOneTeamByName(req, res, next) {
@@ -86,9 +88,10 @@ async function createOneTeam(req, res, next) {
 }
 
 async function deleteOneTeamById(req, res, next) {
+  const userQuery = { _id: new ObjectId(req.params.id) };
   res
     .status(200)
-    .send(await appService.deleteOneTeamFromDb(teamCollection, req.body));
+    .send(await appService.deleteOneTeamFromDb(teamCollection, userQuery));
 }
 
 ////////// BUSINESS //////////
@@ -111,13 +114,21 @@ async function createOneBusiness(req, res, next) {
     .send(await appService.createOneBusinessInDb(businessCollection, req.body));
 }
 
+async function deleteOneBusinessById(req, res, next) {
+  res
+    .status(200)
+    .send(await appService.deleteOneTeamFromDb(teamCollection, req.body));
+}
+
 ////////// STUDENT PROJECT //////////
 const studentProjectCollection = "StudentProject";
 
 async function getAllStudentProjects(req, res, next) {
   res
     .status(200)
-    .send(await appService.getAllStudentProjectsFromDb(studentProjectCollection));
+    .send(
+      await appService.getAllStudentProjectsFromDb(studentProjectCollection)
+    );
 }
 
 async function getOneStudentProjectById(req, res, next) {
@@ -157,7 +168,10 @@ async function getOneBusinessProjectById(req, res, next) {
   res
     .status(200)
     .send(
-      await appService.getOneBusinessFromDb(businessProjectCollection, userQuery)
+      await appService.getOneBusinessFromDb(
+        businessProjectCollection,
+        userQuery
+      )
     );
 }
 
