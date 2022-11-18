@@ -1,6 +1,6 @@
 const appService = require("../services/app.service");
 
-const { ObjectId } = require("mongodb");
+const userModel = require("../models/request/user.model");
 
 ////////// USER //////////
 const userCollection = "Users";

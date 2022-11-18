@@ -1,12 +1,12 @@
 const dbService = require("./db.service");
 
-const User = require("../models/user.model");
-const Student = require("../models/student.model");
-const Team = require("../models/team.model");
-const Business = require("../models/business.model");
-const StudentProject = require("../models/studentProject.model");
-const BusinessProject = require("../models/businessProject.model");
-const Application = require("../models/application.model");
+const User = require("../models/request/user.model");
+const Student = require("../models/request/student.model");
+const Team = require("../models/request/team.model");
+const Business = require("../models/request/business.model");
+const StudentProject = require("../models/request/studentProject.model");
+const BusinessProject = require("../models/request/businessProject.model");
+const Application = require("../models/request/application.model");
 
 //=================================== Model Building functions
 

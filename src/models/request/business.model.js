@@ -7,7 +7,7 @@ function Business(
   address,
   location
 ) {
-  this.company_name = companyName;
+  this.name = companyName;
   this.email = email;
   this.logo_url = logoUrl;
   this.linkedIn_url = linkedInUrl;

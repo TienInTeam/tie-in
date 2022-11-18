@@ -1,12 +1,12 @@
+const TeamId = require("../generic/teamId.generic.model");
+
 function StudentProject(
   projectName,
   description,
-  teamId,
+  team,
   approvalStatus,
   logoUrl,
-  development,
   developmentUrl,
-  design,
   designUrl,
   projectLink,
   category,
@@ -19,18 +19,14 @@ function StudentProject(
   image,
   instructorEmail,
   instructorLinkedin,
-  management,
-  additionalInfo,
-  others
+  technology
 ) {
   this.project_name = projectName;
   this.description = description;
-  this.team_id = teamId;
+  this.team = new TeamId(team.team_id, team.team_name);
   this.approval_status = approvalStatus;
   this.logo_url = logoUrl;
-  this.development = development;
   this.development_url = developmentUrl;
-  this.design = design;
   this.design_url = designUrl;
   this.project_link = projectLink;
   this.category = category;
@@ -43,9 +39,7 @@ function StudentProject(
   this.image = image;
   this.instructor_email = instructorEmail;
   this.instructor_linkedin = instructorLinkedin;
-  this.management = management;
-  this.additional_info = additionalInfo;
-  this.others = others;
+  this.technology = technology;
 }
 
 module.exports = StudentProject;
