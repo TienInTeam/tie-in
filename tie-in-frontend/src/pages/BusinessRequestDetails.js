@@ -1,13 +1,15 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useQuery } from "@tanstack/react-query";
 import BusinessProjectDetails from '../components/BusinessProjectDetails';
 import { requestBusinessProjectsByID } from '../api/businessProject';
 import { getBusinessByID } from '../api/business';
+import { ReactComponent as BackIcon } from '../assets/icons/navigation/back-icon.svg';
 
 const BusinessRequestDetails = () => {
 
     const location = useLocation();
+    const navigate = useNavigate();
     const business_request_id = location.state.id;
     const requestBusinessProjectByID = useQuery(["businessProjectById"], () => requestBusinessProjectsByID(business_request_id),
         {
@@ -34,16 +36,26 @@ const BusinessRequestDetails = () => {
         return <span>Loading...</span>
     }
 
-    const onApply = () => {
+    const onApply = (id) => {
+        navigate('/applybusinessproject', {
+            state: {
+                id: `${id}`
+            }
+        });
     }
 
     return (
         <>
-            <BusinessProjectDetails
-                businessProject={requestBusinessProjectByID.data}
-                business={requestBusinessByID.data}
-                onApply={onApply}
-            />
+            <div className="business-project-main">
+                <div className="business-project-main-title">
+                    <a href="/studentdashboard"><BackIcon /></a>
+                    <h2>Business Project</h2>
+                </div>
+                <div className="business-project-details-main">
+                    <BusinessProjectDetails businessProject={requestBusinessProjectByID.data} business={requestBusinessByID.data} onApply={() => onApply(requestBusinessProjectByID.data.id)} />
+                </div>
+
+            </div>
         </>
     )
 }
