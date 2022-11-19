@@ -36,8 +36,8 @@ const Dashboard = () => {
                 <div>
                     <div className={"data-visualization"}>
                         <div className="visualization-component">
-                            <h1>Total Project View</h1>
-                            <DataVisualizationAreaChart />
+                            <h1>Total Project Views</h1>
+                            <DataVisualizationAreaChart inputPages={'c'}/>
                         </div>
                         <div className="visualization-component">
                             <DataVisualizationPieChart inputPage={''}/>
