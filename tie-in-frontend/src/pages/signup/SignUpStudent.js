@@ -20,7 +20,10 @@ const SignUpStudent = () => {
         email: email,
         type: userType,
     }),{
-        enabled: !!uid
+        enabled: !!uid,
+        onError: (error) => {
+            alert(error.message);
+        }
     });
 
     const saveStudent = useMutation(["student"], () => addStudent({
@@ -38,15 +41,15 @@ const SignUpStudent = () => {
             }
         });
 
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
+    const [firstName, setFirstName] = useState("test");
+    const [lastName, setLastName] = useState("test");
     const [email, setEmail] = useState("");
-    const [institution, setInstitution] = useState("");
-    const [websiteURL, setWebsiteURL] = useState("");
+    const [institution, setInstitution] = useState("test");
+    const [websiteURL, setWebsiteURL] = useState("https://test.com");
     const [linkedInURL, setLinkedInURL] = useState("");
     const [location, setLocation] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
+    const [password, setPassword] = useState("testtest");
+    const [confirmPassword, setConfirmPassword] = useState("testtest");
     const [termsCondition, setTermsCondition] = useState(false);
 
     const formValidation = () => {
@@ -78,9 +81,9 @@ const SignUpStudent = () => {
     async function onSubmit(e) {
         e.preventDefault();
         if (formValidation()) {
-            await signUp(email, password)
-            saveUser.mutate();
+            await signUp(email, password);
             saveStudent.mutate();
+            saveUser.mutate();
             sessionStorage.clear();
             navigate("/login");
         } else

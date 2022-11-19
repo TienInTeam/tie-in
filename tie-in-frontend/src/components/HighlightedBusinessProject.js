@@ -2,7 +2,7 @@ import React from 'react'
 import Button from './Button';
 
 function HighlightedBusinessProject({ businessProject, company_name, onSeeMore}) {
-  const { name, category, end_date, location} = businessProject;
+  const { category, end_date, location} = businessProject;
 
     const renderCategory = () => {
         if (!category) {
