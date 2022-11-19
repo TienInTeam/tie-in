@@ -12,6 +12,7 @@ import validateTextInput from "../../utils/validateTextInput";
 
 const SignUpBusiness = () => {
     const userType = "business";
+    const uid = sessionStorage.getItem("userId");
     const navigate = useNavigate();
 
     const saveBusiness = useMutation(['business'], () => addBusiness({
@@ -29,13 +30,12 @@ const SignUpBusiness = () => {
         });
 
     const saveUser = useMutation(["user"], () => addUser({
-        uid: sessionStorage.getItem("userId"),
+        uid: uid,
         email: businessEmail,
         type: userType,
     }),
         {
-            enabled: !!sessionStorage.getItem("userId"),
-            onSuccess:  () => sessionStorage.clear(),
+            enabled: !!uid,
             onError: (error) => {
                 alert(error.message);
             }
@@ -83,6 +83,7 @@ const SignUpBusiness = () => {
             await signUp(businessEmail, password)
             saveBusiness.mutate();
             saveUser.mutate();
+            sessionStorage.clear();
             navigate("/login")
         } else
             alert("Something went wrong! Please try again.")
