@@ -2,7 +2,9 @@ import project from "./baseURL";
 
 export const requestUser = (uid) => {
     return project.get(`/users/${uid}`).then((res) => {
-        return res.data;
+        if(!res.data) {
+            throw new Error("try again");
+        } return res.data;
     });
 }
 
