@@ -1,3 +1,5 @@
+import {useNavigate} from "react-router-dom";
+import Button from "../components/Button";
 import ContactFrom from "../components/ContactFrom";
 import ContactProfile from "../components/ContactProfile";
 import HomeSection from "../components/HomeSection";
@@ -9,8 +11,11 @@ import {ReactComponent as FindTeam} from "../assets/icons/home/find-team.svg";
 import {ReactComponent as WhyUs1} from "../assets/icons/home/why-us1.svg";
 import {ReactComponent as WhyUs2} from "../assets/icons/home/why-us2.svg";
 import {ReactComponent as WhyUs3} from "../assets/icons/home/why-us3.svg";
+import {ReactComponent as HomeIcon} from "../assets/icons/home/home.svg";
+
 
 const Home = () => {
+    const navigate = useNavigate();
     const onTryNow = () => {
 
     }
@@ -19,9 +24,22 @@ const Home = () => {
 
     }
 
+    const onClick = () => {
+        navigate("/signuplanding")
+    }
+
     return (
         <div className={"home"}>
-            <SignUpUserType/>
+           <div className={"home-intro"}>
+               <HomeIcon/>
+               <div>
+                   <h1>“Projects to be sponsored,
+                       ideas to be created; Simply Tie-in.”</h1>
+                   <h3>Tie-in is a collaborated-driven responsive web platform for businesses to support projects and for students to work on business ideas.
+                   </h3>
+                   <Button variant={"primary"} label={"Get Started"} onClick={onClick}/>
+               </div>
+           </div>
             <h1>Student Team</h1>
             <div className={"section-wrapper"}>
                 <HomeSection
