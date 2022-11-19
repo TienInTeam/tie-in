@@ -39,7 +39,11 @@ const BusinessRequestDetails = () => {
 
     return (
         <>
-            <BusinessProjectDetails businessProject={requestBusinessProjectByID.data} business={requestBusinessByID.data} onApply={onApply} />
+            <BusinessProjectDetails
+                businessProject={requestBusinessProjectByID.data}
+                business={requestBusinessByID.data}
+                onApply={onApply}
+            />
         </>
     )
 }

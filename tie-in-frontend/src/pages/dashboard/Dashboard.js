@@ -5,13 +5,17 @@ import BusinessDashboard from "./BusinessDashboard";
 import StudentDashboard from "./StudentDashboard";
 
 const Dashboard = () => {
-    useQuery(["user"], () => requestUser(sessionStorage.getItem("userId")), {
+    const requestUserType = useQuery(["user"], () => requestUser(sessionStorage.getItem("userId")), {
         enabled: !!sessionStorage.getItem("userId"),
         onSuccess: (data) => {
             sessionStorage.setItem("userType", data.type)
             console.log(sessionStorage.getItem("userType"))
         }
     });
+
+    if (requestUserType.isLoading) {
+        return <span>Loading...</span>
+    }
 
     if (sessionStorage.getItem('userType') === "business") {
         return <BusinessDashboard/>

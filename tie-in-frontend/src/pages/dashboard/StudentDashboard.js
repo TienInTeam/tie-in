@@ -57,20 +57,20 @@ function StudentDashboard() {
     if (!requestBusinessProject?.data) {
       return null;
     }
-    return requestBusinessProject.data.map((businessProject) => (
-       return requestBusiness.data.filter((business) => (
-            businessProject.id === business.id
+    return requestBusinessProject.data.map((businessProject) => {
+        return requestBusiness.data.filter((business) => (
+          businessProject.business.business_id === business._id
         )).map((filteredBusiness, index) =>
             (
                 <HighlightedBusinessProject
                     businessProject={businessProject}
-                    company_name={filteredBusiness.company_name}
+                    company_name={filteredBusiness.name}
                     key={index}
-                    onSeeMore={() => onSeeMore(businessProject.id)}
+                    onSeeMore={() => onSeeMore(businessProject._id)}
                 />
             )
         )
-    ))
+  })
   }
 
   const renderApplicationsStatus = () => {
