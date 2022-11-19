@@ -4,8 +4,10 @@ import InputType from "./InputType";
 import { ReactComponent as SearchIcon } from '../assets/icons/actions/actions-search.svg';
 
 
-function Searchbar({onChange}) {
+function Searchbar({onSelectChange}) {
   const [term, setTerm] = useState("");
+  const [filter, setFilter] = useState([]);
+  const onChange = (e) => setFilter({selectValue:e.target.value});
 
 
   const history = useNavigate();
@@ -26,8 +28,8 @@ function Searchbar({onChange}) {
         <InputType type={"text"} placeHolder={"Input Project Name"} onChange={onSearch} />
       </form>
       <form onSubmit={onChange} className="filter-wrapper">
-        <select id="category" aria-label="Choose category">
-          <option selected disabled>Category</option>
+        <select id="category" aria-label="Choose category" onChange={(e) => onSelectChange(e.target.value)} value={filter}>
+          <option selected value="" disabled>Category</option>
           <option value="UI/UX">UI/UX</option>
           <option value="Mobile Application">Mobile Application</option>
           <option value="System Architecture">System Architecture</option>
@@ -35,8 +37,8 @@ function Searchbar({onChange}) {
           <option value="Commercial">Commercial</option>
           <option value="Marketing">Marketing</option>
         </select>
-        <select id="size" aria-label="Choose size">
-          <option selected disabled>Size</option>
+        <select id="size" aria-label="Choose size" value={filter}>
+          <option selected value="" disabled>Size</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -44,8 +46,8 @@ function Searchbar({onChange}) {
           <option value="5">5</option>
           <option value="6">6</option>
         </select>
-        <select id="location" aria-label="Choose location">
-          <option selected disabled>Location</option>
+        <select id="location" aria-label="Choose location" value={filter}>
+          <option selected value="" disabled>Location</option>
           <option value="Vancouver">Vancouver</option>
           <option value="Burnaby">Burnaby</option>
           <option value="North Vancouver">North Vancouver</option>
