@@ -59,7 +59,7 @@ function StudentDashboard() {
     }
     return requestBusinessProject.data.map((businessProject) => {
         return requestBusiness.data.filter((business) => (
-          businessProject.business.business_id === business._id
+          businessProject.business?.business_id === business?._id
         )).map((filteredBusiness, index) =>
             (
                 <HighlightedBusinessProject

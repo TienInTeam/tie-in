@@ -41,13 +41,13 @@ function UploadStudentProject() {
     const [businessPlan, setBusinessPlan] = useState("");
     const [projectImage, setProjectImage] = useState("");
     const [institution, setInstitution] = useState("");
-    const [location, setLocation] = useState(null);
+    const [location, setLocation] = useState("");
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(null);
     const [dateIsChecked, setDateIsChecked] = useState(false);
     const [description, setDescription] = useState("");
     const [projectLink, setProjectLink] = useState("");
-    const [projectCategory, setProjectCategory] = useState("");
+    const [projectCategory, setProjectCategory] = useState([]);
     const [instructorEmail, setInstructorEmail] = useState("");
     const [instructorLinkedIn, setInstructorLinkedIn] = useState("");
     const [additionalMessage, setAdditionalMessage] = useState("");
@@ -147,7 +147,7 @@ function UploadStudentProject() {
             </fieldset>
 
             <fieldset>
-                <InputType type={"text"} label={"Project Category (required)"} onChange={(e) => setProjectCategory(e.target.value)} />
+                <InputType type={"text"} label={"Project Category (required)"} onChange={(e) => setProjectCategory([e.target.value])} />
                 <label>
                     <span>Project Description (required)</span>
                     <textarea onChange={(e) => setDescription(e.target.value)} />
