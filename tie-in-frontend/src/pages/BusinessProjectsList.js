@@ -6,20 +6,24 @@ import Searchbar from "../components/Searchbar";
 import SideMenu from "../components/SideMenu";
 
 function BusinessProjectsList() {
-  const [filter, setFilter] = useState([]);
+  const [categoryFilter, setCategoryFilter] = useState(null);
+  const [sizeFilter, setSizeFilter] = useState(null);
+  const [locationFilter, setLocationFilter] = useState(null);
 
-  const requestFilteredBusinessProject = useQuery(["businessProject"], () => requestBusinessProjects(filter),
+
+  const requestFilteredBusinessProject = useQuery(["businessProject"], () => requestBusinessProjects(categoryFilter),
     {
       select: (businessProject) => (businessProject
-        .filter(businessProject => businessProject.category.includes(filter[0]))
-        // .filter(businessProject => businessProject.team_size === filter[1])
-        // .filter(businessProject => businessProject.location.includes(filter[2]))
+              .filter(businessProject => {
+                  return categoryFilter ? businessProject.category.includes(categoryFilter) : true
+              })
+              .filter(businessProject => {
+                  return sizeFilter ? businessProject.team_size === sizeFilter : true
+              })
+              .filter(businessProject => {
+                  return locationFilter ? businessProject.location.includes(locationFilter) : true
+              })
       )
-
-      // (businessProject.filter((businessProject) => 
-      // (businessProject.category.includes(filter[0])) || (businessProject.team_size === filter[1])) || (businessProject.location.includes(filter[2]))
-      // ))
-
     },
     {
       onError: (error) => {
@@ -48,17 +52,23 @@ function BusinessProjectsList() {
     alert("Check status is clicked")
   }
 
-  const onChange = (value) => {
-    setFilter(filter => [...filter, value]);
+  const onCategoryChange = (value) => {
+    setCategoryFilter(value);
   }
-  console.log(filter[1]);
+  const onSizeChange = (value) => {
+      setSizeFilter(value);
+  }
+  const onLocationChange = (value) => {
+      setLocationFilter(value);
+  }
+
 
   return (
     <div className="grid-container">
       <SideMenu />
       <div>
-        <Searchbar onSelectChange={onChange} />
-        {filter.length ? requestFilteredBusinessProject.data.map((business, index) =>
+        <Searchbar onCategory={onCategoryChange} onSize={onSizeChange} onLocation={onLocationChange}/>
+        {categoryFilter || sizeFilter || locationFilter ? requestFilteredBusinessProject.data.map((business, index) =>
           <BusinessProjectPreview
             businessProject={business}
             key={index}
