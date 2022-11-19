@@ -33,21 +33,21 @@ router.post('/business', appController.createOneBusiness);
 
 ////////// STUDENT PROJECT ROUTES //////////
 router.get('/studentProjects', appController.getAllStudentProjects);
-router.get('/studentProjects/:name', appController.getOneStudentProjectByName);
+router.get('/studentProjects/:id', appController.getOneStudentProjectById);
 router.post('/studentProjects', appController.createOneStudentProject);
 // router.put('/students/projects/:name', appController.updateOneUser);
 // router.delete('/students/projects/:name', appController.deleteOneUser);
 
 ////////// BUSINESS PROJECT ROUTES //////////
 router.get('/businessProjects', appController.getAllBusinessProjects);
-router.get('/businessProjects/:name', appController.getOneBusinessProjectByName);
+router.get('/businessProjects/:id', appController.getOneBusinessProjectById);
 router.post('/businessProjects', appController.createOneBusinessProject);
 // router.put('/business/projects/:name', appController.updateOneUser);
 // router.delete('/business/projects/:name', appController.deleteOneUser);
 
 ////////// APPLICATIONS ROUTES //////////
 router.get('/applications', appController.getAllApplications);
-// router.get('/students/teams/applications/:id', appController.getOneApplicationBy);
+router.get('/students/teams/applications/:id', appController.getOneApplicationById);
 router.post('/applications', appController.createOneApplication);
 // router.put('/students/teams/applications/:id', appController.updateOneUser);
 // router.delete('/students/teams/applications/:id', appController.deleteOneUser);
