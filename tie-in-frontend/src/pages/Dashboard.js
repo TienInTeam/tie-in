@@ -1,10 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import React from 'react';
 import { requestStudentProjects } from "../api/studentProject";
-import {requestUser} from "../api/user";
+import { requestUser } from "../api/user";
 import HighlightedStudentProject from "../components/HighlightedStudentProject";
 import SideMenu from "../components/SideMenu";
 import StudentDashboard from "./StudentDashboard";
+import DataVisualizationPieChart from "../components/DataVisualizationPieChart";
+import DataVisualizationAreaChart from "../components/DataVisualizationAreaChart";
 
 const Dashboard = () => {
     useQuery(["user"], () => requestUser(sessionStorage.getItem("userId")), {
@@ -12,20 +14,20 @@ const Dashboard = () => {
         onSuccess: (data) => sessionStorage.setItem("userType", data.type)
     });
 
-  const requestStudentProject = useQuery(["studentProject"], () => requestStudentProjects(),
-    {
-      onError: (error) => {
-        alert(error.message);
-      }
-    });
+    const requestStudentProject = useQuery(["studentProject"], () => requestStudentProjects(),
+        {
+            onError: (error) => {
+                alert(error.message);
+            }
+        });
 
-  if (requestStudentProject.isLoading) {
-    return <span>Loading...</span>
-  }
+    if (requestStudentProject.isLoading) {
+        return <span>Loading...</span>
+    }
 
-  const onSeeMore = () => {
-    alert("see more is clicked")
-  }
+    const onSeeMore = () => {
+        alert("see more is clicked")
+    }
 
     if (sessionStorage.getItem('userType') === "business") {
         return (
@@ -33,6 +35,14 @@ const Dashboard = () => {
                 <SideMenu />
                 <div>
                     <div className={"data-visualization"}>
+                        <div className="visualization-component">
+                            <h1>Total Project View</h1>
+                            <DataVisualizationAreaChart />
+                        </div>
+                        <div className="visualization-component">
+                            <DataVisualizationPieChart inputPage={''}/>
+                        </div>
+                    </div><div className={"data-visualization"}>
                         <h1>Data visualization 1</h1>
                         <h1>Data visualization 2</h1>
                     </div>
