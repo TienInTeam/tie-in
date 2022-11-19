@@ -8,6 +8,7 @@ import HighlightedBusinessProject from "../components/HighlightedBusinessProject
 import RequestStatusCard from "../components/RequestStatusCard";
 import Button from "../components/Button";
 import SideMenu from "../components/SideMenu";
+import DataVisualizationPieChart from "../components/DataVisualizationPieChart";
 
 const StudentDashboard = () => {
 
@@ -62,8 +63,7 @@ const StudentDashboard = () => {
             <h1>Total Project View</h1>
           </div>
           <div className="visualization-component">
-            <h1>Projects Applied</h1>
-            <h1>Conversion Rate</h1>
+            <DataVisualizationPieChart inputPage={'s'}/>
           </div>
         </div>
 
