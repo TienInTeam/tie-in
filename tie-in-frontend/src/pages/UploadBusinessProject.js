@@ -47,7 +47,7 @@ function UploadBusinessProject() {
     const [additionalFile, setAdditionalFile] = useState("");
     const [additionalLink, setAdditionalLink] = useState("");
 
-  const validateInput = () => {
+const validateInput = () => {
   if (projectName === "" || description === "" || teamSize === "" || estimatedBudget === "" || teamRequirement === "") {
       alert('Enter all mandatory input field values');
       return false;

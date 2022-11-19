@@ -96,16 +96,16 @@ function StudentDashboard() {
           </div>
         </div>
 
-      <div className={"business-project-wrapper"}>
-        <h2>Recent Company Requests</h2>
-        <div className={"recent-requests-title-wrapper"}>
-          <h2>Company Name</h2>
-          <h2>Category</h2>
-          <h2>Due Date</h2>
-          <h2>Location</h2>
+        <div className={"business-project-wrapper"}>
+          <h2>Recent Company Requests</h2>
+          <div className={"recent-requests-title-wrapper"}>
+            <h2>Company Name</h2>
+            <h2>Category</h2>
+            <h2>Due Date</h2>
+            <h2>Location</h2>
+          </div>
+          {renderHighlightedBusinessProjects()}
         </div>
-        {renderHighlightedBusinessProjects()}
-      </div>
 
       <div className={"request-status-list-wrapper"}>
         <div className="request-status-header">
