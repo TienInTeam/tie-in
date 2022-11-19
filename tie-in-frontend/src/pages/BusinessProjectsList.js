@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { requestBusinessProjects, requestBusinessProjectsByQuery } from "../api/businessProject";
 import {useNavigate} from "react-router-dom";
-import { requestBusinessProjects } from "../api/businessProject";
 import BusinessProjectPreview from "../components/BusinessProjectPreview";
 import Searchbar from "../components/Searchbar";
 import SideMenu from "../components/SideMenu";
