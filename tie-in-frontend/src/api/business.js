@@ -1,6 +1,9 @@
 import project from "./baseURL";
 
 export const getBusinesses = () => project.get('/business').then((res) => {
+    if(!res.data) {
+        throw new Error("try again");
+    }
     return res.data;
 })
 
