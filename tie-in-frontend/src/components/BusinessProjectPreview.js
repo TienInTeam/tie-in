@@ -2,7 +2,7 @@ import React from 'react';
 import Button from './Button';
 
 function BusinessProjectPreview({businessProject, onSeeMore, onCheckStatus}) {
-    const {status, logo, company_name, description, team_member, dueDate, category, location} = businessProject;
+    const {status, logo, company_name, description, team_size, dueDate, category, location} = businessProject;
 
     const renderCategory = () => {
         if (!category) {
@@ -33,7 +33,7 @@ function BusinessProjectPreview({businessProject, onSeeMore, onCheckStatus}) {
                 </div>
                 <div>
                     <h3>Team Member</h3>
-                    <p>{team_member}</p>
+                    <p>{team_size}</p>
                     <h3>Due date</h3>
                     <p>{dueDate}</p>
                 </div>
