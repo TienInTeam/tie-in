@@ -2,7 +2,9 @@ import project from "./baseURL";
 
 export const requestApplicationStatuses = () => {
     return project.get("/applications").then((res) => {
-        return res.data;
+        if(!res.data) {
+            throw new Error("try again");
+        } return res.data;
     });
 }
 
