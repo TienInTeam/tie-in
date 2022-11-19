@@ -91,7 +91,7 @@ function StudentDashboard() {
         <div className={"data-visualization"}>
           <div className="visualization-component">
             <h1>Total Project View</h1>
-            <DataVisualizationAreaChart/>
+            <DataVisualizationAreaChart inputPages={'s'}/>
           </div>
           <div className="visualization-component">
             <DataVisualizationPieChart inputPage={'s'}/>
