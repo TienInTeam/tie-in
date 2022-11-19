@@ -13,8 +13,6 @@ const data = [
     { month: "Sep", value: 35, score: 35 },
     { month: "Oct", value: 32, score: 32 },
     { month: "Nov", value: 35, score: 35 },
-
-
 ]
 
 const CustomizedTick2 = ({ x, y, payload }) => {
@@ -43,7 +41,6 @@ const args = {
     customizedTick: CustomizedTick2,
     // tickFormatter: null,
     renderTooltip: renderTooltip,
-    uniqueId: 2,
 }
 
 const Dots = () => {

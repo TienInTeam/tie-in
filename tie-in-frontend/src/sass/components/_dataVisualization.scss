@@ -3,7 +3,11 @@
 .visualization-component {
     margin: 2rem 0;
     background-color: $blue_card_background;
-    border-radius: 5px;
+    border-radius: 20px;
+
+    g.recharts-cartesian-axis-tick text{
+        fill:white;
+    }
 }
 
 .new-project-component {
