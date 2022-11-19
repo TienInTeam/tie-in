@@ -29,25 +29,26 @@ function BusinessProjectsList() {
   const onCheckStatus = () => {
     alert("Check status is clicked")
   }
-  const onChange = (value) => {
-    setFilter(value)
-  }
-  return (
-    <div className="grid-container">
-      <SideMenu />
-      <div>
-      <Searchbar onChange={onChange}/>
-        {requestBusinessProject.data.map((business, index) =>
-          <BusinessProjectPreview
-            businessProject={business}
-            key={index}
-            onSeeMore={onSeeMore}
-            onCheckStatus={onCheckStatus}
-          />
-        )}
-      </div>
-    </div>
-  );
+  // const onChange = (e) => setFilter({selectValue:e.target.value});
+  
+          return (
+            <div className="grid-container">
+              <SideMenu />
+              <div>
+              <Searchbar onSelectChange={onChange}/>
+                {requestBusinessProject.data.map((business, index) =>
+                  <BusinessProjectPreview
+                    businessProject={business}
+                    key={index}
+                    onSeeMore={onSeeMore}
+                    onCheckStatus={onCheckStatus}
+                  />
+                )}
+              </div>
+            </div>
+          
+          );
+        
         
 }
 
