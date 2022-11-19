@@ -19,6 +19,7 @@ import BusinessRequestDetails from "./pages/BusinessRequestDetails";
 import ApplyBusinessProject from "./pages/ApplyBusinessProject";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Search from "./pages/Search";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +44,8 @@ root.render(
                         <Route path='/studentprojectslist' element={<StudentProjectsList/>}/>
                         <Route path='/businessprojectslist' element={<BusinessProjectsList/>}/>
                         <Route path='/businessrequestdetails' element={<BusinessRequestDetails/>}/>
+                        <Route path='/search' element={<Search/>}/>
+
                         <Route path='/applybusinessproject' element={<ApplyBusinessProject />} />
                         <Route
                             path="*"
