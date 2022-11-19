@@ -1,5 +1,19 @@
-.new-project-component .recharts-wrapper{
-    display: flex;
-    flex-flow: row;
-    align-items: flex-end;
+@import "../core/colors";
+
+.visualization-component {
+    margin: 2rem 0;
+    background-color: $blue_card_background;
+    border-radius: 5px;
+}
+
+.new-project-component {
+
+    .recharts-wrapper {
+        display: flex;
+        flex-flow: row wrap;
+    }
+}
+
+.data-visualization {
+    background-color: $dark_blue_background;
 }

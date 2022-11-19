@@ -9,6 +9,7 @@ import RequestStatusCard from "../components/RequestStatusCard";
 import Button from "../components/Button";
 import SideMenu from "../components/SideMenu";
 import DataVisualizationPieChart from "../components/DataVisualizationPieChart";
+import DataVisualizationAreaChart from "../components/DataVisualizationAreaChart";
 
 const StudentDashboard = () => {
 
@@ -61,6 +62,7 @@ const StudentDashboard = () => {
         <div className={"data-visualization"}>
           <div className="visualization-component">
             <h1>Total Project View</h1>
+            <DataVisualizationAreaChart/>
           </div>
           <div className="visualization-component">
             <DataVisualizationPieChart inputPage={'s'}/>
