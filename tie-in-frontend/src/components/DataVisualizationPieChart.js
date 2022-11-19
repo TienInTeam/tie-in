@@ -69,3 +69,5 @@ const DataVisualizationPieChart = ({inputPage}) => {
     )
 }
 export default DataVisualizationPieChart;
+
+//Reference https://technostuf.com/react-pie-chart-using-recharts-with-legend-and-custom-label/
