@@ -1,13 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import React from 'react';
 import { useNavigate } from "react-router-dom";
-import { requestBusinessProjects } from "../api/businessProject";
-import { requestApplicationStatuses } from "../api/studentApplications";
-import { getBusinesses } from '../api/business';
-import HighlightedBusinessProject from "../components/HighlightedBusinessProject";
-import RequestStatusCard from "../components/RequestStatusCard";
-import Button from "../components/Button";
-import SideMenu from "../components/SideMenu";
+import { requestBusinessProjects } from "../../api/businessProject";
+import { requestApplicationStatuses } from "../../api/studentApplications";
+import { getBusinesses } from '../../api/business';
+import HighlightedBusinessProject from "../../components/HighlightedBusinessProject";
+import RequestStatusCard from "../../components/RequestStatusCard";
+import Button from "../../components/Button";
+import SideMenu from "../../components/SideMenu";
 
 function StudentDashboard() {
 
