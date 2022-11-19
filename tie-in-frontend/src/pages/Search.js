@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import { useLocation, useParams } from "react-router-dom";
-import { requestBusinessProjectsByQuery, requestBusinessProjects } from "../api/businessProject";
+import { useLocation, useNavigate } from "react-router-dom";
+import { requestBusinessProjectsByQuery } from "../api/businessProject";
 import BusinessProjectPreview from "../components/BusinessProjectPreview";
+import { ReactComponent as BackIcon } from '../assets/icons/navigation/back-icon.svg';
 
 function Search() {
   const queryString = useLocation().search;
@@ -18,7 +19,6 @@ function Search() {
     },
     { enabled: !!query }
   );
-  console.log(request.data, 'in request data e');
 
   const onSeeMore = () => {
     alert("see more is clicked")
@@ -26,9 +26,13 @@ function Search() {
   const onCheckStatus = () => {
     alert("Check status is clicked")
   }
-
+  const navigate = useNavigate()
+  const onBack = () => {
+    navigate("/businessprojectslist")
+  }
   return (
     <div className="search">
+      <div className="icon back-icon" onClick={onBack}><BackIcon /></div>
       <h2>Projects Including "{query}"</h2>
       {
         request.data.map((business, index) =>

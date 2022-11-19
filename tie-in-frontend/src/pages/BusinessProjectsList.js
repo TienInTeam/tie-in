@@ -7,18 +7,36 @@ import SideMenu from "../components/SideMenu";
 
 function BusinessProjectsList() {
   const [filter, setFilter] = useState([]);
-  const requestBusinessProject = useQuery(["businessProject"], () => requestBusinessProjects(), {
-    onError: (error) => {
-      alert(error.message);
-    }
-  });
 
-  const requestFilteredBusinessProject = useQuery(["businessProject", filter], () => requestBusinessProjectsByQuery(filter), {
-    onError: (error) => {
-      alert(error.message);
-    }
-  });
+  const requestFilteredBusinessProject = useQuery(["businessProject"], () => requestBusinessProjects(filter),
+    {
+      select: (businessProject) => (businessProject
+        .filter(businessProject => businessProject.category.includes(filter[0]))
+        // .filter(businessProject => businessProject.team_size === filter[1])
+        // .filter(businessProject => businessProject.location.includes(filter[2]))
+      )
 
+      // (businessProject.filter((businessProject) => 
+      // (businessProject.category.includes(filter[0])) || (businessProject.team_size === filter[1])) || (businessProject.location.includes(filter[2]))
+      // ))
+
+    },
+    {
+      onError: (error) => {
+        alert(error.message);
+      }
+    });
+
+  const requestBusinessProject = useQuery(["businessProject"], () => requestBusinessProjects(),
+    {
+      onError: (error) => {
+        alert(error.message);
+      }
+    });
+
+  if (requestFilteredBusinessProject.isLoading) {
+    return <span>Loading...</span>
+  }
   if (requestBusinessProject.isLoading) {
     return <span>Loading...</span>
   }
@@ -29,27 +47,40 @@ function BusinessProjectsList() {
   const onCheckStatus = () => {
     alert("Check status is clicked")
   }
-  // const onChange = (e) => setFilter({selectValue:e.target.value});
-  
-          return (
-            <div className="grid-container">
-              <SideMenu />
-              <div>
-              <Searchbar onSelectChange={onChange}/>
-                {requestBusinessProject.data.map((business, index) =>
-                  <BusinessProjectPreview
-                    businessProject={business}
-                    key={index}
-                    onSeeMore={onSeeMore}
-                    onCheckStatus={onCheckStatus}
-                  />
-                )}
-              </div>
-            </div>
-          
-          );
-        
-        
+
+  const onChange = (value) => {
+    setFilter(filter => [...filter, value]);
+  }
+  console.log(filter[1]);
+
+  return (
+    <div className="grid-container">
+      <SideMenu />
+      <div>
+        <Searchbar onSelectChange={onChange} />
+        {filter.length ? requestFilteredBusinessProject.data.map((business, index) =>
+          <BusinessProjectPreview
+            businessProject={business}
+            key={index}
+            onSeeMore={onSeeMore}
+            onCheckStatus={onCheckStatus}
+          />
+        ) :
+          requestBusinessProject.data.map((business, index) =>
+            <BusinessProjectPreview
+              businessProject={business}
+              key={index}
+              onSeeMore={onSeeMore}
+              onCheckStatus={onCheckStatus}
+            />
+          )
+        }
+      </div>
+    </div>
+
+  );
+
+
 }
 
 export default BusinessProjectsList;
