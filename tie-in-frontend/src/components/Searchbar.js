@@ -4,7 +4,7 @@ import InputType from "./InputType";
 import { ReactComponent as SearchIcon } from '../assets/icons/actions/actions-search.svg';
 
 
-function Searchbar({ onSelectChange }) {
+function Searchbar({ onCategory, onSize, onLocation }) {
   const [term, setTerm] = useState("");
 
 
@@ -27,7 +27,7 @@ function Searchbar({ onSelectChange }) {
         <InputType type={"text"} placeHolder={"Input Project Name"} onChange={onSearch} />
       </form>
       <form onSubmit={submitHandle} className="filter-wrapper">
-        <select id="category" aria-label="Choose category" onChange={(e) => onSelectChange(e.target.value)} defaultValue="">
+        <select id="category" aria-label="Choose category" onChange={(e) => onCategory(e.target.value)} defaultValue="">
           <option value="" disabled>Category</option>
           <option value="UI/UX">UI/UX</option>
           <option value="Mobile Application">Mobile Application</option>
@@ -36,7 +36,7 @@ function Searchbar({ onSelectChange }) {
           <option value="Commercial">Commercial</option>
           <option value="Marketing">Marketing</option>
         </select>
-        <select id="size" aria-label="Choose size" onChange={(e) => onSelectChange(e.target.value)} defaultValue="">
+        <select id="size" aria-label="Choose size" onChange={(e) => onSize(e.target.value)} defaultValue="">
           <option value="" disabled>Size</option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -45,7 +45,7 @@ function Searchbar({ onSelectChange }) {
           <option value="5">5</option>
           <option value="6">6</option>
         </select>
-        <select id="location" aria-label="Choose location" onChange={(e) => onSelectChange(e.target.value)} defaultValue="">
+        <select id="location" aria-label="Choose location" onChange={(e) => onLocation(e.target.value)} defaultValue="">
           <option value="" disabled>Location</option>
           <option value="Vancouver">Vancouver</option>
           <option value="Burnaby">Burnaby</option>
