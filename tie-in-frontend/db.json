@@ -65,7 +65,7 @@
       "team_size": "4",
       "linkedIn_url": "https://test.com",
       "team_id": "",
-      "location": "Vancouver, BC",
+      "location": "Vancouver",
       "tags": "Software Engineer, Web-App",
       "start_date": "10 Jan 2022",
       "end_date": "13-Jun-2031",
@@ -78,7 +78,7 @@
       "http://africau.edu/images/default/sample.pdf"],
       "category": [
         "mobililty",
-        "AI",
+        "UI/UX",
         "Commercial"
       ],
       "instructor_email": "",
@@ -92,10 +92,10 @@
       "description": "Test test ",
       "budget" : "3400k",
       "team_requirements": "2 developers, no designers",
-      "team_size": "2-4",
+      "team_size": "5",
       "linkedIn_url": "https://test.com",
       "team_id": "",
-      "location": "Vancouver, BC",
+      "location": "Vancouver",
       "business_id": 1,
       "tags": "Software Engineer, Web-App",
       "start_date": "2022-10-19",
@@ -103,8 +103,8 @@
       "business_model": "",
       "status": true,
       "category": [
-        "Web",
-        "UI"
+        "Web Development",
+        "UI/UX"
       ],
       "instructor_email": "fjoca00@gmail.com",
       "product_link": "https://google.com",
@@ -114,12 +114,14 @@
       "id": 42,
       "name": "Test",
       "summary": "test",
-      "teamSize": "5",
+      "teamSize": "3",
       "teamrequirement": "2devs",
       "expectedDeadline": "2022-11-09T08:00:00.000Z",
       "location": "test",
       "budget": "3000",
-      "category": [],
+      "category": [
+        "Marketing"
+      ],
       "technology": [],
       "additionalFields": "",
       "files": "",
