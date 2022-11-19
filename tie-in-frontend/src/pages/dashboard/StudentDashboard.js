@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { requestBusinessProjects } from "../../api/businessProject";
 import { requestApplicationStatuses } from "../../api/studentApplications";
 import { getBusinesses } from '../../api/business';
+import DataVisualizationAreaChart from "../../components/DataVisualizationAreaChart";
+import DataVisualizationPieChart from "../../components/DataVisualizationPieChart";
 import HighlightedBusinessProject from "../../components/HighlightedBusinessProject";
 import RequestStatusCard from "../../components/RequestStatusCard";
 import Button from "../../components/Button";
@@ -89,10 +91,10 @@ function StudentDashboard() {
         <div className={"data-visualization"}>
           <div className="visualization-component">
             <h1>Total Project View</h1>
+            <DataVisualizationAreaChart/>
           </div>
           <div className="visualization-component">
-            <h1>Projects Applied</h1>
-            <h1>Conversion Rate</h1>
+            <DataVisualizationPieChart inputPage={'s'}/>
           </div>
         </div>
 
