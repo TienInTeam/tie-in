@@ -9,6 +9,7 @@ const client = new MongoClient(uri);
 const dbName = dbConfig.settings.dbName;
 const database = client.db(dbName);
 
+
 async function getAllFromDb(collection) {
   try {
     await client.connect();
@@ -17,6 +18,30 @@ async function getAllFromDb(collection) {
     const result = await dbCollection.find(query).toArray();
 
     return result;
+
+  } catch (err) {
+    console.error(`An error was encountered: ${err}`);
+  } finally {
+    client.close();
+  }
+}
+
+async function getAllTeamsFromDbFix(collection) {
+  try {
+
+    await client.connect();
+    const dbCollectionTeams = database.collection("Teams");
+    const dbCollectionStudents = database.collection("Students");
+    const teams = await dbCollectionTeams.find({}).toArray();
+
+    const mutatedTeams = await Promise.all(teams.map(async team => {
+      team.members = await Promise.all(team.members.map(async member => {
+        return dbCollectionStudents.findOne( { _id: new ObjectId(member) });
+      }))
+      return team;
+    }) )
+
+    return mutatedTeams;
 
   } catch (err) {
     console.error(`An error was encountered: ${err}`);
@@ -91,9 +116,11 @@ async function deleteOneFromDb(collection, userQuery) {
 }
 
 module.exports = {
+
   getAllFromDb,
   getOneFromDb,
   createOneInDb,
   updateOneInDb,
   deleteOneFromDb,
+  getAllTeamsFromDbFix
 };

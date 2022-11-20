@@ -31,8 +31,8 @@ async function createOneUser(req, res, next) {
 //     );
 // }
 
-async function deleteOneUser(req, res, next) {
-  const userQuery = { uid: req.params.uid };
+async function deleteOneUserById(req, res, next) {
+  const userQuery = { _id: new ObjectId(req.params.id) };
   res
     .status(200)
     .send(await appService.deleteOneStudentFromDb(userCollection, userQuery));
@@ -58,6 +58,13 @@ async function createOneStudent(req, res, next) {
   res
     .status(200)
     .send(await appService.createOneStudentInDb(studentCollection, req.body));
+}
+
+async function deleteOneStudentById(req, res, next) {
+  const userQuery = { _id: new ObjectId(req.params.id) };
+  res
+    .status(200)
+    .send(await appService.deleteOneStudentFromDb(userCollection, userQuery));
 }
 
 ////////// TEAMS //////////
@@ -115,9 +122,10 @@ async function createOneBusiness(req, res, next) {
 }
 
 async function deleteOneBusinessById(req, res, next) {
+  const userQuery = { _id: new ObjectId(req.params.id) };
   res
     .status(200)
-    .send(await appService.deleteOneTeamFromDb(teamCollection, req.body));
+    .send(await appService.deleteOneTeamFromDb(teamCollection, userQuery));
 }
 
 ////////// STUDENT PROJECT //////////
@@ -154,6 +162,13 @@ async function createOneStudentProject(req, res, next) {
     );
 }
 
+async function deleteOneStudentProjectById(req, res, next) {
+  const userQuery = { _id: new ObjectId(req.params.id) };
+  res
+    .status(200)
+    .send(await appService.deleteOneTeamFromDb(teamCollection, userQuery));
+}
+
 ////////// BUSINESS PROJECT //////////
 const businessProjectCollection = "BusinessProject";
 
@@ -185,6 +200,13 @@ async function createOneBusinessProject(req, res, next) {
       )
     );
 }
+
+async function deleteOneBusinessProjectById(req, res, next) {
+  const userQuery = { _id: new ObjectId(req.params.id) };
+  res
+    .status(200)
+    .send(await appService.deleteOneTeamFromDb(teamCollection, userQuery));
+}
 ////////// APPLICATIONS //////////
 const applicationsCollection = "Applications";
 
@@ -212,14 +234,23 @@ async function createOneApplication(req, res, next) {
     );
 }
 
+async function deleteOneApplicationById(req, res, next) {
+  const userQuery = { _id: new ObjectId(req.params.id) };
+  res
+    .status(200)
+    .send(await appService.deleteOneTeamFromDb(teamCollection, userQuery));
+}
+
 module.exports = {
   getAllUsers,
   getOneUserByUid,
   createOneUser,
+  deleteOneUserById,
 
   getAllStudents,
   getOneStudentByEmail,
   createOneStudent,
+  deleteOneStudentById,
 
   getAllTeams,
   getAllTeamsOfStudentById,
@@ -230,16 +261,20 @@ module.exports = {
   getAllBusiness,
   getOneBusinessByEmail,
   createOneBusiness,
+  deleteOneBusinessById,
 
   getAllStudentProjects,
   getOneStudentProjectById,
   createOneStudentProject,
+  deleteOneStudentProjectById,
 
   getAllBusinessProjects,
   getOneBusinessProjectById,
   createOneBusinessProject,
+  deleteOneBusinessProjectById,
 
   getAllApplications,
   getOneApplicationById,
   createOneApplication,
+  deleteOneApplicationById
 };

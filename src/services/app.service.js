@@ -1,4 +1,7 @@
 const dbService = require("./db.service");
+const { ObjectId } = require("mongodb");
+
+const TeamMemberGeneric = require("../models/generic/teamMember.generic.model");
 
 const UserModelRequest = require("../models/request/user.request.model");
 const StudentModelRequest = require("../models/request/student.request.model");
@@ -87,7 +90,7 @@ function buildStudentProjectModelRequest(userInfo) {
     userInfo.image,
     userInfo.instructor_email,
     userInfo.instructor_linkedin,
-    userInfo.technologies,
+    userInfo.technologies
   );
 
   return buildStudentProjectModelRequest;
@@ -130,75 +133,88 @@ function buildApplicationModelRequest(userInfo) {
 
 ////// RESPONSE //////
 
-// function buildTeamModelResponse(userInfo) {
-//   const buildTeamModelResponse = new TeamModelResponse(
-//     userInfo.team_name,
-//     userInfo.members
-//   );
+// async function buildTeamModelResponse(team) {
+//   const teamMembers = await team.members.map(async (student) => {
+//     // console.log(student);
+//     const userQuery = { _id: new ObjectId(student) };
+//     const studentInfo = await dbService.getOneFromDb("Students", userQuery);
+//     console.log(studentInfo);
 
-//   return buildTeamModelResponse;
+
+//     // return new TeamMemberGeneric(
+//     //   // studentInfo._id,
+//     //   studentInfo.first_name,
+//     //   studentInfo.last_name,
+//     //   studentInfo.email,
+//     //   studentInfo.photo
+//     // );
+//   });
+
+//   // const buildTeamModelResponse = new TeamModelResponse(team.name, teamMembers);
+
+//   // return buildTeamModelResponse;
 // }
 
-// function buildStudentProjectModelResponse(userInfo) {
-//   const buildStudentProjectModelResponse = new StudentProjectModelResponse(
-//     userInfo.project_name,
-//     userInfo.description,
-//     userInfo.team_id,
-//     userInfo.approval_status,
-//     userInfo.logo_url,
-//     userInfo.development_url,
-//     userInfo.design_url,
-//     userInfo.project_link,
-//     userInfo.category,
-//     userInfo.institution,
-//     userInfo.location,
-//     userInfo.message,
-//     userInfo.start_date,
-//     userInfo.end_date,
-//     userInfo.business_model,
-//     userInfo.image,
-//     userInfo.instructor_email,
-//     userInfo.instructor_linkedin,
-//     userInfo.technologies,
-//   );
+function buildStudentProjectModelResponse(userInfo) {
+  const buildStudentProjectModelResponse = new StudentProjectModelResponse(
+    userInfo.project_name,
+    userInfo.description,
+    userInfo.team_id,
+    userInfo.approval_status,
+    userInfo.logo_url,
+    userInfo.development_url,
+    userInfo.design_url,
+    userInfo.project_link,
+    userInfo.category,
+    userInfo.institution,
+    userInfo.location,
+    userInfo.message,
+    userInfo.start_date,
+    userInfo.end_date,
+    userInfo.business_model,
+    userInfo.image,
+    userInfo.instructor_email,
+    userInfo.instructor_linkedin,
+    userInfo.technologies
+  );
 
-//   return buildStudentProjectModelResponse;
-// }
+  return buildStudentProjectModelResponse;
+}
 
-// function buildBusinessProjectModelResponse(userInfo) {
-//   const buildBusinessProjectModelRequest = new BusinessProjectModelRequest(
-//     userInfo.name,
-//     userInfo.location,
-//     userInfo.description,
-//     userInfo.budget,
-//     userInfo.team_size,
-//     userInfo.team_requirements,
-//     userInfo.end_date,
-//     userInfo.subjects,
-//     userInfo.design_url,
-//     userInfo.project_link,
-//     userInfo.category,
-//     userInfo.technology,
-//     userInfo.additional_field,
-//     userInfo.file,
-//     userInfo.links,
-//     userInfo.status
-//   );
+function buildBusinessProjectModelResponse(userInfo) {
+  const buildBusinessProjectModelRequest = new BusinessProjectModelRequest(
+    userInfo.name,
+    userInfo.location,
+    userInfo.description,
+    userInfo.budget,
+    userInfo.team_size,
+    userInfo.team_requirements,
+    userInfo.end_date,
+    userInfo.subjects,
+    userInfo.design_url,
+    userInfo.project_link,
+    userInfo.category,
+    userInfo.technology,
+    userInfo.additional_field,
+    userInfo.file,
+    userInfo.links,
+    userInfo.status
+  );
 
-//   return buildBusinessProjectModelRequest;
-// }
+  return buildBusinessProjectModelRequest;
+}
 
-// function buildApplicationModelResponse(userInfo) {
-//   const buildApplicationModelRequest = new ApplicationModelResponse(
-//     userInfo.team,
-//     userInfo.business_request_id,
-//     userInfo.application_status,
-//     userInfo.uploaded_files,
-//     userInfo.created_at
-//   );
+function buildApplicationModelResponse(userInfo) {
+  const buildApplicationModelRequest = new ApplicationModelResponse(
+    userInfo.team,
+    userInfo.business_request_id,
+    userInfo.application_status,
+    userInfo.uploaded_files,
+    userInfo.created_at
+  );
 
-//   return buildApplicationModelRequest;
-// }
+  return buildApplicationModelRequest;
+}
 
 //===================================
 
@@ -276,9 +292,18 @@ async function deleteOneStudentFromDb(collection, userQuery) {
 
 ////////// TEAMS //////////
 async function getAllTeamsFromDb(collection) {
-  const response = dbService.getAllFromDb(new Team());
+  // const userQuery = { _id: new ObjectId(student) };
+  const dbResponse = dbService.getAllTeamsFromDbFix(collection);
+  // const dbResponse = await dbService.getAllFromDb(collection);
+  // console.log(dbResponse);
+  // const getTeamStudentInfo = dbResponse.map(team => team.members.map(async member => await dbService.getOneFromDb("Students", { _id: new ObjectId(member) })));
 
-  return response;
+  // // const response = await dbResponse.map(
+  // //   async (team) => await buildTeamModelResponse(team)
+  // // );
+  // return getTeamStudentInfo;
+
+  return dbResponse;
 }
 
 async function getAllTeamsOfStudent(collection, userQuery) {
