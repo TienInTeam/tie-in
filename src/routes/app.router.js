@@ -19,6 +19,7 @@ router.delete('/students/:email', appController.deleteOneStudentById);
 ////////// TEAMS ROUTES //////////
 router.get('/teams', appController.getAllTeams);
 router.get('/teams/all/:id', appController.getAllTeamsOfStudentById);
+router.get('/teams/:id', appController.getOneTeamById);
 router.post('/teams', appController.createOneTeam);
 // router.put('/students/teams/:name', appController.updateOneUser);
 router.delete('/teams/:id', appController.deleteOneTeamById);

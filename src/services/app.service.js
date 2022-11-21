@@ -16,7 +16,17 @@ const StudentProjectResponse = require("../models/response/studentProject.respon
 const BusinessProjectResponse = require("../models/response/businessProject.response.model");
 const ApplicationModelResponse = require("../models/response/application.response.model");
 
-//=================================== Model Building functions
+//=================================== GLOBAL VARIABLES/CONSTANTS
+
+const USER_COLLECTION = "Users";
+const STUDENT_COLLECTION = "Students";
+const TEAM_COLLECTION = "Teams";
+const BUSINESS_COLLECTION = "Business";
+const STRUDENT_PROJECT_COLLECTION = "StudentProject";
+const BUSINESS_PROJECT_COLLECTION = "BusinessProject";
+const APPLICATION_COLLECTION = "Applications";
+
+//=================================== MODEL BUILDING FUNCTIONS
 
 ////// REQUEST //////
 
@@ -133,29 +143,30 @@ function buildApplicationModelRequest(userInfo) {
 
 ////// RESPONSE //////
 
-// async function buildTeamModelResponse(team) {
-//   const teamMembers = await team.members.map(async (student) => {
-//     // console.log(student);
-//     const userQuery = { _id: new ObjectId(student) };
-//     const studentInfo = await dbService.getOneFromDb("Students", userQuery);
-//     console.log(studentInfo);
+async function buildTeamModelResponse(team) {
+  // const response = await Promise.all(
+    // allTeamsList.map(
+      const teamMembers = await Promise.all(
+        team.members.map(async (member) => {
+          const memberInfo = await dbService.getOneFromDb(STUDENT_COLLECTION, {
+            _id: new ObjectId(member),
+          });
+          const selectedInfo = {
+            _id: memberInfo._id,
+            first_name: memberInfo.first_name,
+            last_name: memberInfo.last_name,
+            email: memberInfo.email,
+            photo_url: memberInfo.photo_url,
+          };
+          return selectedInfo;
+        })
+      );
+      return new TeamModelResponse(team._id, team.team_name, teamMembers);
 
+  return response;
+}
 
-//     // return new TeamMemberGeneric(
-//     //   // studentInfo._id,
-//     //   studentInfo.first_name,
-//     //   studentInfo.last_name,
-//     //   studentInfo.email,
-//     //   studentInfo.photo
-//     // );
-//   });
-
-//   // const buildTeamModelResponse = new TeamModelResponse(team.name, teamMembers);
-
-//   // return buildTeamModelResponse;
-// }
-
-function buildStudentProjectModelResponse(userInfo) {
+async function buildStudentProjectModelResponse(userInfo) {
   const buildStudentProjectModelResponse = new StudentProjectModelResponse(
     userInfo.project_name,
     userInfo.description,
@@ -181,7 +192,7 @@ function buildStudentProjectModelResponse(userInfo) {
   return buildStudentProjectModelResponse;
 }
 
-function buildBusinessProjectModelResponse(userInfo) {
+async function buildBusinessProjectModelResponse(userInfo) {
   const buildBusinessProjectModelRequest = new BusinessProjectModelRequest(
     userInfo.name,
     userInfo.business_id,
@@ -204,7 +215,7 @@ function buildBusinessProjectModelResponse(userInfo) {
   return buildBusinessProjectModelRequest;
 }
 
-function buildApplicationModelResponse(userInfo) {
+async function buildApplicationModelResponse(userInfo) {
   const buildApplicationModelRequest = new ApplicationModelResponse(
     userInfo.team,
     userInfo.business_request_id,
@@ -216,84 +227,11 @@ function buildApplicationModelResponse(userInfo) {
   return buildApplicationModelRequest;
 }
 
-////// RESPONSE //////
-
-// function buildTeamModelResponse(userInfo) {
-//   const buildTeamModelResponse = new TeamModelResponse(
-//     userInfo.team_name,
-//     userInfo.members
-//   );
-
-//   return buildTeamModelResponse;
-// }
-
-// function buildStudentProjectModelResponse(userInfo) {
-//   const buildStudentProjectModelResponse = new StudentProjectModelResponse(
-//     userInfo.project_name,
-//     userInfo.description,
-//     userInfo.team_id,
-//     userInfo.approval_status,
-//     userInfo.logo_url,
-//     userInfo.development_url,
-//     userInfo.design_url,
-//     userInfo.project_link,
-//     userInfo.category,
-//     userInfo.institution,
-//     userInfo.location,
-//     userInfo.message,
-//     userInfo.start_date,
-//     userInfo.end_date,
-//     userInfo.business_model,
-//     userInfo.image,
-//     userInfo.instructor_email,
-//     userInfo.instructor_linkedin,
-//     userInfo.technologies,
-//   );
-
-//   return buildStudentProjectModelResponse;
-// }
-
-// function buildBusinessProjectModelResponse(userInfo) {
-//   const buildBusinessProjectModelRequest = new BusinessProjectModelRequest(
-//     userInfo.name,
-//     userInfo.location,
-//     userInfo.description,
-//     userInfo.budget,
-//     userInfo.team_size,
-//     userInfo.team_requirements,
-//     userInfo.end_date,
-//     userInfo.subjects,
-//     userInfo.design_url,
-//     userInfo.project_link,
-//     userInfo.category,
-//     userInfo.technology,
-//     userInfo.additional_field,
-//     userInfo.file,
-//     userInfo.links,
-//     userInfo.status
-//   );
-
-//   return buildBusinessProjectModelRequest;
-// }
-
-// function buildApplicationModelResponse(userInfo) {
-//   const buildApplicationModelRequest = new ApplicationModelResponse(
-//     userInfo.team,
-//     userInfo.business_request_id,
-//     userInfo.application_status,
-//     userInfo.uploaded_files,
-//     userInfo.created_at
-//   );
-
-//   return buildApplicationModelRequest;
-// }
-
-//===================================
+//=================================== API OPERATIONS
 
 ////////// USER //////////
 async function getAllUsersFromDb(collection) {
   const response = dbService.getAllFromDb(collection);
-
   return response;
 }
 
@@ -364,27 +302,26 @@ async function deleteOneStudentFromDb(collection, userQuery) {
 
 ////////// TEAMS //////////
 async function getAllTeamsFromDb(collection) {
-  // const userQuery = { _id: new ObjectId(student) };
-  const dbResponse = dbService.getAllTeamsFromDbFix(collection);
-  // const dbResponse = await dbService.getAllFromDb(collection);
-  // console.log(dbResponse);
-  // const getTeamStudentInfo = dbResponse.map(team => team.members.map(async member => await dbService.getOneFromDb("Students", { _id: new ObjectId(member) })));
+  const allTeamsFromDb = await dbService.getAllFromDb(collection);
+  console.log(allTeamsFromDb);
+  const response = await Promise.all(allTeamsFromDb.map(
+    async team => {
+      console.log(team);
+      await buildTeamModelResponse(team);
+    }
+  ))
 
-  // // const response = await dbResponse.map(
-  // //   async (team) => await buildTeamModelResponse(team)
-  // // );
-  // return getTeamStudentInfo;
-
-  return dbResponse;
+  return response;
 }
 
 async function getAllTeamsOfStudent(collection, userQuery) {
   //Get All teams from collection
   const allTeams = await dbService.getAllFromDb(collection);
+  const allTeamsResponse = await buildTeamModelResponse(allTeams);
 
   //Filtering array by member id
-  const filteredArray = allTeams.filter((team) =>
-    team.members.some((member) => member.student_id == userQuery.id)
+  const filteredArray = allTeamsResponse.filter((team) =>
+    team.members.some((member) => member._id == userQuery.id)
   );
 
   return filteredArray;
