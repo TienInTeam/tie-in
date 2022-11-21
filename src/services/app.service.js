@@ -184,20 +184,20 @@ function buildStudentProjectModelResponse(userInfo) {
 function buildBusinessProjectModelResponse(userInfo) {
   const buildBusinessProjectModelRequest = new BusinessProjectModelRequest(
     userInfo.name,
+    userInfo.business_id,
     userInfo.location,
     userInfo.description,
     userInfo.budget,
     userInfo.team_size,
     userInfo.team_requirements,
+    userInfo.created_at,
     userInfo.end_date,
     userInfo.subjects,
     userInfo.design_url,
     userInfo.project_link,
     userInfo.category,
-    userInfo.technology,
-    userInfo.additional_field,
-    userInfo.file,
-    userInfo.links,
+    userInfo.technologies,
+    userInfo.file_urls,
     userInfo.status
   );
 
@@ -215,6 +215,78 @@ function buildApplicationModelResponse(userInfo) {
 
   return buildApplicationModelRequest;
 }
+
+////// RESPONSE //////
+
+// function buildTeamModelResponse(userInfo) {
+//   const buildTeamModelResponse = new TeamModelResponse(
+//     userInfo.team_name,
+//     userInfo.members
+//   );
+
+//   return buildTeamModelResponse;
+// }
+
+// function buildStudentProjectModelResponse(userInfo) {
+//   const buildStudentProjectModelResponse = new StudentProjectModelResponse(
+//     userInfo.project_name,
+//     userInfo.description,
+//     userInfo.team_id,
+//     userInfo.approval_status,
+//     userInfo.logo_url,
+//     userInfo.development_url,
+//     userInfo.design_url,
+//     userInfo.project_link,
+//     userInfo.category,
+//     userInfo.institution,
+//     userInfo.location,
+//     userInfo.message,
+//     userInfo.start_date,
+//     userInfo.end_date,
+//     userInfo.business_model,
+//     userInfo.image,
+//     userInfo.instructor_email,
+//     userInfo.instructor_linkedin,
+//     userInfo.technologies,
+//   );
+
+//   return buildStudentProjectModelResponse;
+// }
+
+// function buildBusinessProjectModelResponse(userInfo) {
+//   const buildBusinessProjectModelRequest = new BusinessProjectModelRequest(
+//     userInfo.name,
+//     userInfo.location,
+//     userInfo.description,
+//     userInfo.budget,
+//     userInfo.team_size,
+//     userInfo.team_requirements,
+//     userInfo.end_date,
+//     userInfo.subjects,
+//     userInfo.design_url,
+//     userInfo.project_link,
+//     userInfo.category,
+//     userInfo.technology,
+//     userInfo.additional_field,
+//     userInfo.file,
+//     userInfo.links,
+//     userInfo.status
+//   );
+
+//   return buildBusinessProjectModelRequest;
+// }
+
+// function buildApplicationModelResponse(userInfo) {
+//   const buildApplicationModelRequest = new ApplicationModelResponse(
+//     userInfo.team,
+//     userInfo.business_request_id,
+//     userInfo.application_status,
+//     userInfo.uploaded_files,
+//     userInfo.created_at
+//   );
+
+//   return buildApplicationModelRequest;
+// }
 
 //===================================
 
