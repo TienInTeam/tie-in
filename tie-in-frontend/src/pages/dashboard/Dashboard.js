@@ -19,8 +19,14 @@ const Dashboard = () => {
 
     if (sessionStorage.getItem('userType') === "business") {
         return <BusinessDashboard/>
-    } else {
+    } else if (sessionStorage.getItem('userType') === "student"){
         return <StudentDashboard />
+    } else {
+        return  (
+            <div>
+                <h2>Try again! Login Failed.</h2>
+            </div>
+        )
     }
 }
 
