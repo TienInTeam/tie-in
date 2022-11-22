@@ -4,29 +4,29 @@ import InputType from "./InputType";
 import { ReactComponent as SearchIcon } from '../assets/icons/actions/actions-search.svg';
 
 
-function Searchbar({ onCategory, onSize, onLocation }) {
-  const [term, setTerm] = useState("");
+function Searchbar({ onCategory, onSize, onLocation, onSearch }) {
+  // const [term, setTerm] = useState("");
 
 
 
-  const history = useNavigate();
-  const onSearch = (e) => {
-    setTerm(e.target.value)
-  }
-  const submitHandle = () => {
-    history(`/search?q=${term}`, { replace: true });
-  }
+  // const history = useNavigate();
+  // const onSearch = (e) => {
+  //   setTerm(e.target.value)
+  // }
+  // const submitHandle = () => {
+  //   history(`/search?q=${term}`, { replace: true });
+  // }
   return (
     <div className="search-bar">
       <div className="text-wrapper">
         <h1>Business Project</h1>
         <p>Find the detail requests here</p>
       </div>
-      <form className="search-wrapper" onSubmit={submitHandle}>
-        <div className="icon search-icon" onClick={submitHandle}><SearchIcon /></div>
-        <InputType type={"text"} placeHolder={"Input Project Name"} onChange={onSearch} />
+      <form className="search-wrapper">
+        <div className="icon search-icon"><SearchIcon /></div>
+        <InputType type={"text"} placeHolder={"Input Project Name"} onChange={(e) => onSearch(e.target.value)}/>
       </form>
-      <form onSubmit={submitHandle} className="filter-wrapper">
+      <form className="filter-wrapper">
         <select id="category" aria-label="Choose category" onChange={(e) => onCategory(e.target.value)} defaultValue="">
           <option value="" disabled>Category</option>
           <option value="UI/UX">UI/UX</option>
