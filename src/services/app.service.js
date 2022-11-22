@@ -145,25 +145,23 @@ function buildApplicationModelRequest(userInfo) {
 
 async function buildTeamModelResponse(team) {
   // const response = await Promise.all(
-    // allTeamsList.map(
-      const teamMembers = await Promise.all(
-        team.members.map(async (member) => {
-          const memberInfo = await dbService.getOneFromDb(STUDENT_COLLECTION, {
-            _id: new ObjectId(member),
-          });
-          const selectedInfo = {
-            _id: memberInfo._id,
-            first_name: memberInfo.first_name,
-            last_name: memberInfo.last_name,
-            email: memberInfo.email,
-            photo_url: memberInfo.photo_url,
-          };
-          return selectedInfo;
-        })
-      );
-      return new TeamModelResponse(team._id, team.team_name, teamMembers);
-
-  return response;
+  // allTeamsList.map(
+  const teamMembers = await Promise.all(
+    team.members.map(async (member) => {
+      const memberInfo = await dbService.getOneFromDb(STUDENT_COLLECTION, {
+        _id: new ObjectId(member),
+      });
+      const selectedInfo = {
+        _id: memberInfo._id,
+        first_name: memberInfo.first_name,
+        last_name: memberInfo.last_name,
+        email: memberInfo.email,
+        photo_url: memberInfo.photo_url,
+      };
+      return selectedInfo;
+    })
+  );
+  return new TeamModelResponse(team._id, team.team_name, teamMembers);
 }
 
 async function buildStudentProjectModelResponse(userInfo) {
@@ -235,7 +233,8 @@ async function getAllUsersFromDb(collection) {
   return response;
 }
 
-async function getOneUserFromDb(collection, userQuery) {
+async function getOneUserFromDb(collection, reqParam) {
+  const userQuery = { uid: reqParam };
   const response = dbService.getOneFromDb(collection, userQuery);
 
   return response;
@@ -260,7 +259,8 @@ async function createOneUserInDb(collection, requestBody) {
 //   return response;
 // }
 
-async function deleteOneUserFromDb(collection, userQuery) {
+async function deleteOneUserFromDb(collection, reqParam) {
+  const userQuery = { _id: new ObjectId(reqParam) };
   const response = dbService.deleteOneFromDb(collection, userQuery);
 
   return response;
@@ -273,7 +273,8 @@ async function getAllStudentsFromDb(collection) {
   return response;
 }
 
-async function getOneStudentFromDb(collection, userQuery) {
+async function getOneStudentFromDb(collection, reqParam) {
+  const userQuery = { email: reqParam };
   const response = dbService.getOneFromDb(collection, userQuery);
 
   return response;
@@ -294,7 +295,8 @@ async function createOneStudentInDb(collection, requestBody) {
 //   return response;
 // }
 
-async function deleteOneStudentFromDb(collection, userQuery) {
+async function deleteOneStudentFromDb(collection, reqParam) {
+  const userQuery = { id: new ObjectId(reqParam) };
   const response = dbService.deleteOneFromDb(collection, userQuery);
 
   return response;
@@ -303,34 +305,39 @@ async function deleteOneStudentFromDb(collection, userQuery) {
 ////////// TEAMS //////////
 async function getAllTeamsFromDb(collection) {
   const allTeamsFromDb = await dbService.getAllFromDb(collection);
-  console.log(allTeamsFromDb);
-  const response = await Promise.all(allTeamsFromDb.map(
-    async team => {
-      console.log(team);
-      await buildTeamModelResponse(team);
-    }
-  ))
+  const parsedTeams = await Promise.all(
+    allTeamsFromDb.map(async (team) => {
+      return buildTeamModelResponse(team);
+    })
+  );
 
-  return response;
+  return parsedTeams;
 }
 
-async function getAllTeamsOfStudent(collection, userQuery) {
+async function getAllTeamsOfStudent(collection, reqParam) {
   //Get All teams from collection
-  const allTeams = await dbService.getAllFromDb(collection);
-  const allTeamsResponse = await buildTeamModelResponse(allTeams);
+  const allTeamsFromDb = await dbService.getAllFromDb(collection);
+  const parsedTeams = await Promise.all(
+    allTeamsFromDb.map(async (team) => {
+      return buildTeamModelResponse(team);
+    })
+  );
 
   //Filtering array by member id
-  const filteredArray = allTeamsResponse.filter((team) =>
-    team.members.some((member) => member._id == userQuery.id)
+  const filteredArray = parsedTeams.filter(team =>
+    {
+      return team.members.some(member => member._id == reqParam)
+    }
+
   );
 
   return filteredArray;
 }
 
-async function getOneTeamFromDb(collection, userQuery) {
-  const response = dbService.getOneFromDb(collection, userQuery);
-
-  return response;
+async function getOneTeamFromDb(collection, reqParam) {
+  const team = await dbService.getOneFromDb(collection, reqParam);
+  const parsedTeam =  buildTeamModelResponse(team)
+  return parsedTeam;
 }
 
 async function createOneTeamInDb(collection, requestBody) {
@@ -348,7 +355,8 @@ async function createOneTeamInDb(collection, requestBody) {
 //   return response;
 // }
 
-async function deleteOneTeamFromDb(collection, userQuery) {
+async function deleteOneTeamFromDb(collection, reqParam) {
+  const userQuery = { _id: new ObjectId(reqParam) };
   const response = dbService.deleteOneFromDb(collection, userQuery);
 
   return response;
@@ -361,8 +369,8 @@ async function getAllBusinessFromDb(collection) {
   return response;
 }
 
-async function getOneBusinessFromDb(collection, userQuery) {
-  const response = dbService.getOneFromDb(collection, userQuery);
+async function getOneBusinessFromDb(collection, reqParam) {
+  const response = dbService.getOneFromDb(collection, reqParam);
 
   return response;
 }
