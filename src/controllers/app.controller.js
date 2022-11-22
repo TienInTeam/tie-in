@@ -1,6 +1,6 @@
 const appService = require("../services/app.service");
 
-const userModel = require("../models/user.model");
+const { ObjectId } = require("mongodb");
 
 ////////// USER //////////
 const userCollection = "Users";
@@ -67,6 +67,11 @@ async function getAllTeams(req, res, next) {
   res.status(200).send(await appService.getAllTeamsFromDb(teamCollection));
 }
 
+async function getAllTeamsOfStudentById(req, res, next) {
+  const userQuery = { id: req.params.id };
+  res.status(200).send(await appService.getAllTeamsOfStudent(teamCollection, userQuery));
+}
+
 async function getOneTeamByName(req, res, next) {
   const userQuery = { name: req.params.name };
   res
@@ -78,6 +83,12 @@ async function createOneTeam(req, res, next) {
   res
     .status(200)
     .send(await appService.createOneTeamInDb(teamCollection, req.body));
+}
+
+async function deleteOneTeamById(req, res, next) {
+  res
+    .status(200)
+    .send(await appService.deleteOneTeamFromDb(teamCollection, req.body));
 }
 
 ////////// BUSINESS //////////
@@ -109,8 +120,8 @@ async function getAllStudentProjects(req, res, next) {
     .send(await appService.getAllStudentProjectsFromDb(studentProjectCollection));
 }
 
-async function getOneStudentProjectByName(req, res, next) {
-  const userQuery = { name: req.params.name };
+async function getOneStudentProjectById(req, res, next) {
+  const userQuery = { _id: new ObjectId(req.params.id) };
   res
     .status(200)
     .send(
@@ -141,8 +152,8 @@ async function getAllBusinessProjects(req, res, next) {
     .send(await appService.getAllBusinessFromDb(businessProjectCollection));
 }
 
-async function getOneBusinessProjectByName(req, res, next) {
-  const userQuery = { name: req.params.name };
+async function getOneBusinessProjectById(req, res, next) {
+  const userQuery = { _id: new ObjectId(req.params.id) };
   res
     .status(200)
     .send(
@@ -169,13 +180,12 @@ async function getAllApplications(req, res, next) {
     .send(await appService.getAllApplicationsFromDb(applicationsCollection));
 }
 
-// async function getOneApplicationById(req, res, next) {
-//   res.status(200).send(
-//     await appService.getOneApplicationFromDb(userCollection, {
-//       uid: req.params.uid,
-//     })
-//   );
-// }
+async function getOneApplicationById(req, res, next) {
+  const userQuery = { _id: new ObjectId(req.params.id) };
+  res.status(200).send(
+    await appService.getOneApplicationFromDb(userCollection, userQuery)
+  );
+}
 
 async function createOneApplication(req, res, next) {
   res
@@ -198,21 +208,24 @@ module.exports = {
   createOneStudent,
 
   getAllTeams,
+  getAllTeamsOfStudentById,
   getOneTeamByName,
   createOneTeam,
+  deleteOneTeamById,
 
   getAllBusiness,
   getOneBusinessByEmail,
   createOneBusiness,
 
   getAllStudentProjects,
-  getOneStudentProjectByName,
+  getOneStudentProjectById,
   createOneStudentProject,
 
   getAllBusinessProjects,
-  getOneBusinessProjectByName,
+  getOneBusinessProjectById,
   createOneBusinessProject,
 
   getAllApplications,
+  getOneApplicationById,
   createOneApplication,
 };
