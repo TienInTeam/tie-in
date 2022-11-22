@@ -8,6 +8,9 @@ import InputType from "../components/InputType";
 import validateTextInput from "../utils/validateTextInput";
 
 function UploadBusinessProject() {
+    const businessId = sessionStorage.getItem('userMongoId');
+    const businessName = sessionStorage.getItem('userName');
+
     const saveProject = useMutation(["businessProject"], () => saveBusinessProject({
         "name": projectName,
         "description": description,
@@ -18,11 +21,15 @@ function UploadBusinessProject() {
         "location": location,
         "budget": estimatedBudget,
         "category": category,
-        "technology": technology,
+        "technologies": technology,
         "additionalFields": additionalField,
         "file": additionalFile,
         "links": additionalLink,
-        "status": "available"
+        "status": "available",
+        "business": {
+            "business_id": businessId,
+            "business_name": businessName,
+        }
     }), {
         onSuccess: () => {
         },
@@ -46,8 +53,9 @@ function UploadBusinessProject() {
     const [additionalField, setAdditionalField] = useState("");
     const [additionalFile, setAdditionalFile] = useState("");
     const [additionalLink, setAdditionalLink] = useState("");
+    const [business, setBusiness] = useState({});
 
-const validateInput = () => {
+    const validateInput = () => {
   if (projectName === "" || description === "" || teamSize === "" || estimatedBudget === "" || teamRequirement === "") {
       alert('Enter all mandatory input field values');
       return false;
