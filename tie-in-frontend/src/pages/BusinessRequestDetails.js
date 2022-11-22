@@ -1,36 +1,36 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { useQuery } from "@tanstack/react-query";
+import {requestBusinessProjectsByID} from "../api/businessProject";
 import BusinessProjectDetails from '../components/BusinessProjectDetails';
-import { requestBusinessProjectsByID } from '../api/businessProject';
-import { getBusinessByID } from '../api/business';
+import {getBusinessByEmail} from '../api/business';
 
 const BusinessRequestDetails = () => {
 
     const location = useLocation();
-    const business_request_id = location.state.id;
-    const requestBusinessProjectByID = useQuery(["businessProjectById"], () => requestBusinessProjectsByID(business_request_id),
+    const businessProjectId = location.state.id;
+    const requestBusinessProjectByID = useQuery(["businessProjectById"], () => requestBusinessProjectsByID(businessProjectId),
         {
             onError: (error) => {
                 alert(error.message);
             }
         });
 
-    const businessId = requestBusinessProjectByID.data?.business_id;
-    const requestBusinessByID = useQuery(["businessById", businessId],
-        () => getBusinessByID(businessId),
+    const businessEmail= requestBusinessProjectByID.data?.email;
+
+    const requestBusinessByEmail = useQuery(["business"], () => getBusinessByEmail(businessEmail),
         {
+            enabled: !!businessEmail,
             onError: (error) => {
                 alert(error.message);
             }
         },
-        { enabled: !!businessId },
     );
 
     if (requestBusinessProjectByID.isLoading) {
         return <span>Loading...</span>
     }
-    if (requestBusinessByID.isLoading) {
+    if (requestBusinessByEmail.isLoading) {
         return <span>Loading...</span>
     }
 
@@ -41,7 +41,7 @@ const BusinessRequestDetails = () => {
         <>
             <BusinessProjectDetails
                 businessProject={requestBusinessProjectByID.data}
-                business={requestBusinessByID.data}
+                business={requestBusinessByEmail.data}
                 onApply={onApply}
             />
         </>
