@@ -47,7 +47,7 @@ function UploadStudentProject() {
     const [dateIsChecked, setDateIsChecked] = useState(false);
     const [description, setDescription] = useState("");
     const [projectLink, setProjectLink] = useState("");
-    const [projectCategory, setProjectCategory] = useState("");
+    const [projectCategory, setProjectCategory] = useState([]);
     const [instructorEmail, setInstructorEmail] = useState("");
     const [instructorLinkedIn, setInstructorLinkedIn] = useState("");
     const [additionalMessage, setAdditionalMessage] = useState("");
