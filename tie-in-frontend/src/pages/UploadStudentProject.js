@@ -12,7 +12,7 @@ import { isURLValid } from "../utils/validateURL";
 function UploadStudentProject() {
     const saveProject = useMutation(["studentProject"], () => saveStudentProject({
         "project_name": projectName,
-        "logo": imageLogo,
+        "logo_url": imageLogo,
         "description": description,
         "team_id": "",
         "approval_status": "Pending",
