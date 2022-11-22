@@ -16,12 +16,13 @@ const SignUpBusiness = () => {
     const navigate = useNavigate();
 
     const saveBusiness = useMutation(['business'], () => addBusiness({
-        company_name: businessName,
+        name: businessName,
         email: businessEmail,
         description: description,
-        websiteUrl: websiteUrl,
-        linkedInUrl: linkedInUrl,
+        website_url: websiteUrl,
+        linkedIn_url: linkedInUrl,
         location: businessLocation,
+        logo_url: logo,
     }),
         {
             onError: (error) => {
@@ -50,6 +51,7 @@ const SignUpBusiness = () => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [termsCondition, setTermsCondition] = useState(false);
+    const [logo, setLogo] = useState(null);
 
     const formValidation = () => {
         if (!validateTextInput(businessName)) {
@@ -99,6 +101,11 @@ const SignUpBusiness = () => {
                     label={"Company Name (required)"}
                     onChange={(e) => setBusinessName(e.target.value)}
                     value={businessName}
+                />
+                <InputType
+                    type={"file"}
+                    label={"Project Business Plan(optional) "}
+                    onChange={(e) => setLogo(e.target.value)}
                 />
                 <InputType
                     type={"text"}
