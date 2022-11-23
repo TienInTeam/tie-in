@@ -26,6 +26,7 @@ function UploadStudentProject() {
         "institution": institution,
         "additional_message": additionalMessage,
         "category": projectCategory,
+        "location": location
     }), {
         onSuccess: () => {
             alert("Project details updated Successfully");
