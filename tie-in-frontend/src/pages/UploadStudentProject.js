@@ -60,7 +60,7 @@ function UploadStudentProject() {
     };
 
     const validateInput = () => {
-        if (projectName === "" || institution === "" || projectCategory === "" || location === "" || imageLogo === "") {
+        if (projectName === "" || institution === "" || projectCategory.length < 0 || location === "" || imageLogo === "") {
             alert('Enter all mandatory input field values');
             return false;
         }
@@ -147,7 +147,7 @@ function UploadStudentProject() {
             </fieldset>
 
             <fieldset>
-                <InputType type={"text"} label={"Project Category (required)"} onChange={(e) => setProjectCategory(e.target.value)} />
+                <InputType type={"text"} label={"Project Category (required)"} onChange={(e) => setProjectCategory([e.target.value])} />
                 <label>
                     <span>Project Description (required)</span>
                     <textarea onChange={(e) => setDescription(e.target.value)} />

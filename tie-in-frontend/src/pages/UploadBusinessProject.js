@@ -103,12 +103,14 @@ function UploadBusinessProject() {
                 type={"text"}
                 placeHolder={"Enter your project name"}
                 onChange={(e) => setProjectName(e.target.value)}
+                value={projectName}
             />
             <label>
                 <span>Project Summary (Required)</span>
                 <textarea
                     placeholder="Enter your project summary"
                     onChange={(e) => setDescription(e.target.value)}
+                    value={description}
                 />
             </label>
             <fieldset>
@@ -143,23 +145,29 @@ function UploadBusinessProject() {
                 type={"text"}
                 placeHolder={"Enter your preferred team size"}
                 onChange={(e) => setTeamSize(e.target.value)}
+                value={teamSize}
             />
             <InputType
                 label={"Team Requirement (Required)"}
                 type={"text"}
                 placeHolder={"Enter your team requirements"}
-                onChange={(e) => setTeamRequirement(e.target.value)}/>
+                onChange={(e) => setTeamRequirement(e.target.value)}
+                value={teamRequirement}
+            />
             <InputType
                 label={"Estimated Budget (Required)"}
                 type={"text"}
                 placeHolder={"Please choose a budget range"}
-                onChange={(e) => setEstimatedBudget(e.target.value)}/>
+                onChange={(e) => setEstimatedBudget(e.target.value)}
+                value={estimatedBudget}
+            />
             <fieldset>
                 <InputType
                     label={"Location (Required)"}
                     type={"text"}
                     placeHolder={"Please choose a budget range"}
                     onChange={(e) => setLocation(e.target.value)}
+                    value={location}
                 />
                 <input
                     type="checkbox"
@@ -181,7 +189,7 @@ function UploadBusinessProject() {
             <select
                 id="category"
                 placeholder="Select a category related to your project"
-                onChange={(e) => setTechnology([e.target.value])}>
+                onChange={(e) => setCategory([e.target.value])}>
                 <option> ---Choose category---</option>
                 <option> Web Application</option>
                 <option> Mobile Application</option>
@@ -193,7 +201,7 @@ function UploadBusinessProject() {
             <select
                 id="technology"
                 placeholder="Select a technology related to your project"
-                onChange={(e) => setCategory([e.target.value])}>
+                onChange={(e) => setTechnology([e.target.value])}>
                 <option> ---Choose technology---</option>
                 <option> JS</option>
                 <option> React.JS</option>
