@@ -36,15 +36,11 @@ const Dashboard = () => {
                 <div>
                     <div className={"data-visualization"}>
                         <div className="visualization-component">
-                            <h1>Total Project Views</h1>
                             <DataVisualizationAreaChart inputPages={'c'}/>
                         </div>
                         <div className="visualization-component">
                             <DataVisualizationPieChart inputPage={''}/>
                         </div>
-                    </div><div className={"data-visualization"}>
-                        <h1>Data visualization 1</h1>
-                        <h1>Data visualization 2</h1>
                     </div>
                     <div className={"student-project-wrapper"}>
                         <div className={"title-wrapper"}>

@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import { PieChart, Pie, Legend, Sector, Cell, ResponsiveContainer } from 'recharts';
+import { PieChart, Pie, Legend, Label, Cell, ResponsiveContainer } from 'recharts';
 
 
-const DataVisualizationPieChart = ({inputPage}) => {
-    let data, text;
+const DataVisualizationPieChart = ({ inputPage }) => {
+    let data, text, total = 0;
+    const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const d = new Date();
+    let currentMonth = month[d.getMonth()];
     if (inputPage === 's') {
         data = [
             { name: 'AI', value: 400 },
@@ -23,13 +26,17 @@ const DataVisualizationPieChart = ({inputPage}) => {
         text = 'New Student Projects';
     }
 
-    const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+    data.map((entry, index) => {
+        total = total + entry.value;
+    });
+
+    const COLORS = ['#FCB51F', '#53E0DC', '#747373', '#0B938E'];
 
     const RADIAN = Math.PI / 180;
     const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
-        const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-        const x = cx + radius * Math.cos(-midAngle * RADIAN);
-        const y = cy + radius * Math.sin(-midAngle * RADIAN);
+        const radius = innerRadius + (outerRadius - innerRadius) * 0.30;
+        const x =5+ cx + radius * Math.cos(-midAngle * RADIAN);
+        const y = 5+ cy + radius * Math.sin(-midAngle * RADIAN);
 
         return (
             <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
@@ -40,30 +47,43 @@ const DataVisualizationPieChart = ({inputPage}) => {
 
     return (
         <>
-            <div className="">
-                <div className="new-project-component">
-                    <h1>{text}</h1>
-                    <ResponsiveContainer width={450} height={450} className="text-center">
-                        <PieChart >
+            <div className="new-project-component">
+                <h2>{text}</h2>
+                <h3>{currentMonth} project Uploads</h3>
+                <ResponsiveContainer width={440} height={310} className="text-center" >
+                    <PieChart >
+                        <Pie 
+                            data={data}
+                            cx="50%"
+                            cy="50%"
+                            innerRadius={70}
+                            outerRadius={110}
+                            labelLine={false}
+                            label={renderCustomizedLabel}
+                            dataKey="value"
+                            layout="vertical"
+                            verticalAlign="middle"
+                            align="left"
+                        >
+                            {data.map((entry, index) => (
+                                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                            ))}
+                            <Label
+                                value={total} position="center" className='label-center' fontSize='27px' fill="white"
+                            />
 
-                            <Pie
-                                data={data}
-                                cx="50%"
-                                cy="50%"
-                                labelLine={false}
-                                label={renderCustomizedLabel}
-                                outerRadius={80}
-                                fill="#8884d8"
-                                dataKey="value"
-                            >
-                                {data.map((entry, index) => (
-                                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                                ))}
-                            </Pie>
-                            <Legend layout="vertical" />
-                        </PieChart>
-                    </ResponsiveContainer>
-                </div>
+                        </Pie>
+
+                        <Legend iconType="circle"
+                            layout="vertical"
+                            verticalAlign="middle" align="right"
+                            iconSize={12}
+                            padding={10} />
+
+                    </PieChart >
+
+                </ResponsiveContainer>
+
             </div>
         </>
     )

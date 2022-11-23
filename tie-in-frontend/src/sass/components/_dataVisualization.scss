@@ -5,18 +5,49 @@
     background-color: $blue_card_background;
     border-radius: 20px;
 
-    g.recharts-cartesian-axis-tick text{
-        fill:white;
+    h2 {
+        text-align: center;
+        font-size: 2rem;
+    }
+
+    .project-upload-trajectory {
+        g.recharts-cartesian-axis-tick text {
+            fill: white;
+            font-weight: bold;
+            font-size: 1.15rem !important;
+        }
+    }
+
+    .new-project-component {
+       
+    
+        h3 {
+            margin: 1rem;
+            font-size: 1.5rem;
+        }
+    
+        text {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+    
+        .recharts-pie g.recharts-pie-sector {
+            stroke-width: 0;
+        }
+    
+        .label-center {
+            font-size: 2.5rem;
+        }
+    
+        .recharts-legend-wrapper {
+            li {
+                font-size: 1.25rem;
+            }
+        }
     }
 }
 
-.new-project-component {
 
-    .recharts-wrapper {
-        display: flex;
-        flex-flow: row wrap;
-    }
-}
 
 .data-visualization {
     background-color: $dark_blue_background;

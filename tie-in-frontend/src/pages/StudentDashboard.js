@@ -61,7 +61,6 @@ const StudentDashboard = () => {
       <div>
         <div className={"data-visualization"}>
           <div className="visualization-component">
-            <h1>Total Project Views</h1>
             <DataVisualizationAreaChart inputPages={'s'}/>
           </div>
           <div className="visualization-component">

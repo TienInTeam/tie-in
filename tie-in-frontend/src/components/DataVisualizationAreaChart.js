@@ -3,10 +3,8 @@ import { ResponsiveContainer, AreaChart, Area, CartesianGrid, XAxis, YAxis, Tool
 
 
 const DataVisualizationAreaChart = ({ inputPages }) => {
-
-    let data;
+    let data, text;
     const styles = {
-        fontFamily: 'sans-serif',
         textAlign: 'center',
     };
 
@@ -19,6 +17,7 @@ const DataVisualizationAreaChart = ({ inputPages }) => {
             { month: "Oct", value: 32 },
             { month: "Nov", value: 35 },
         ]
+        text = 'Business Project trends';
     }
     else {
         data = [
@@ -29,6 +28,7 @@ const DataVisualizationAreaChart = ({ inputPages }) => {
             { month: "Oct", value: 55 },
             { month: "Nov", value: 30 },
         ]
+        text = 'Student Project trends';
     }
 
     const CustomizedTick2 = ({ x, y, payload }) => {
@@ -37,7 +37,6 @@ const DataVisualizationAreaChart = ({ inputPages }) => {
             {payload.value}
         </text>
     }
-
 
     const renderTooltip = (props) => {
         if (props && props.payload[0]) {
@@ -51,7 +50,7 @@ const DataVisualizationAreaChart = ({ inputPages }) => {
 
     const args = {
         chartData: data,
-        gradientColor: "rgba(241, 91, 64)",
+        gradientColor: "rgba(221, 91, 64)",
         areaStrokeColor: "cyan",
         customizedTick: CustomizedTick2,
         // tickFormatter: null,
@@ -64,7 +63,8 @@ const DataVisualizationAreaChart = ({ inputPages }) => {
         )
     }
     return (
-        <div style={styles}>
+        <div className='project-upload-trajectory' style={styles}>
+            <h2>{text}</h2>
             <ResponsiveContainer width={450} height={350}>
                 <AreaChart data={args.chartData}
                     margin={{ top: 20, right: 10, left: -30, bottom: 0 }}>
@@ -81,7 +81,7 @@ const DataVisualizationAreaChart = ({ inputPages }) => {
                         domain={[1, 15]}
                         tickFormatter={args.tickFormatter}
                     />
-                    <CartesianGrid strokeDasharray="5 5" vertical="true" fill="#314A5B" horizontal={false} />
+                    <CartesianGrid strokeDasharray="5 5" vertical="true" fill="rgb(49, 74, 91)" horizontal={false} />
                     <Tooltip content={args.renderTooltip} />
                     <Area dot={{ fill: args.gradientColor, fillOpacity: 1 }} type="monotone" dataKey="value" stroke={args.gradientColor} fillOpacity={0.1} fill={"url(#colorUv" + args.uniqueId + ")"} />
                 </AreaChart>
