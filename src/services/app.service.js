@@ -237,6 +237,7 @@ async function buildApplicationModelResponse(application) {
     .then((y) => new BusinessId(y._id, y.name));
 
   const buildApplicationModelRequest = new ApplicationModelResponse(
+    application._id,
     application.business_request_id,
     teamIdInfo,
     businessIdInfo,
@@ -513,16 +514,11 @@ async function getAllAppMadeByStudentFromDb(collection, reqParam) {
 
   //get all teams which student belong
   const allTeamsStudentBelong = await getAllTeamsOfStudent(TEAM_COLLECTION, reqParam)
-  .then( x => x.map(team => team._id));
-
-  console.log(allTeamsStudentBelong);
-
+  .then( team => team.map(team => team._id.toString()));
 
   // Filtering array by member id
   const filteredArray = parsedApplications.filter((application) => {
-    // console.log(application);
-    console.log(application.team.team_id);
-    return allTeamsStudentBelong.includes(application.team.team_id)
+    return allTeamsStudentBelong.includes(application.team.team_id.toString())
   });
 
   return filteredArray;

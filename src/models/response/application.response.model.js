@@ -1,7 +1,5 @@
-const TeamId = require("../generic/teamId.generic.model");
-const BusinessId = require("../generic/businessId.generic.model")
-
 function Application(
+  id,
   businessRequestId,
   team,
   business,
@@ -9,6 +7,7 @@ function Application(
   uploadedFiles,
   createdAt
 ) {
+  this._id = id
   this.business_request_id = businessRequestId;
   this.team = team;
   this.business = business;
