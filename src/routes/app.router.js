@@ -29,25 +29,26 @@ router.get('/business', appController.getAllBusiness);
 router.get('/business/:email', appController.getOneBusinessByEmail);
 router.post('/business', appController.createOneBusiness);
 // router.put('/business/:email', appController.updateOneUser);
-router.delete('/business/:email', appController.deleteOneBusinessById);
+router.delete('/business/:id', appController.deleteOneBusinessById);
 
 ////////// STUDENT PROJECT ROUTES //////////
 router.get('/studentProjects', appController.getAllStudentProjects);
 router.get('/studentProjects/:id', appController.getOneStudentProjectById);
 router.post('/studentProjects', appController.createOneStudentProject);
 // router.put('/students/projects/:name', appController.updateOneUser);
-router.delete('/students/projects/:name', appController.deleteOneStudentProjectById);
+router.delete('/studentProjects/:id', appController.deleteOneStudentProjectById);
 
 ////////// BUSINESS PROJECT ROUTES //////////
 router.get('/businessProjects', appController.getAllBusinessProjects);
 router.get('/businessProjects/:id', appController.getOneBusinessProjectById);
 router.post('/businessProjects', appController.createOneBusinessProject);
 // router.put('/business/projects/:name', appController.updateOneUser);
-router.delete('/business/projects/:name', appController.deleteOneBusinessProjectById);
+router.delete('/businessProjects/:id', appController.deleteOneBusinessProjectById);
 
 ////////// APPLICATIONS ROUTES //////////
 router.get('/applications', appController.getAllApplications);
-router.get('/students/teams/applications/:id', appController.getOneApplicationById);
+router.get('/applications/student/:id', appController.getAllApplicationsMadeByStudentOrTeamByStudentId);
+router.get('/applications/business/:id', appController.getAllApplicationsCreatedByBusinessByBusinessId);
 router.post('/applications', appController.createOneApplication);
 // router.put('/students/teams/applications/:id', appController.updateOneUser);
 router.delete('/students/teams/applications/:id', appController.deleteOneApplicationById);

@@ -8,7 +8,6 @@ function BusinessProject(
   budget,
   teamSize,
   teamRequirements,
-  createdAt,
   endDate,
   subjects,
   designUrl,
@@ -25,7 +24,6 @@ function BusinessProject(
   this.budget = budget;
   this.team_size = teamSize;
   this.team_requirements = teamRequirements;
-  this.created_at = createdAt;
   this.end_date = endDate;
   this.subjects = subjects;
   this.design_url = designUrl;
@@ -34,6 +32,7 @@ function BusinessProject(
   this.technologies = technologies;
   this.file_urls = fileUrls;
   this.status = status;
+  this.created_at = Date();
 }
 
 module.exports = BusinessProject;

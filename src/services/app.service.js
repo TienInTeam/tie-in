@@ -2,6 +2,8 @@ const dbService = require("./db.service");
 const { ObjectId } = require("mongodb");
 
 const TeamMemberGeneric = require("../models/generic/teamMember.generic.model");
+const TeamId = require("../models/generic/teamId.generic.model");
+const BusinessId = require("../models/generic/businessId.generic.model");
 
 const UserModelRequest = require("../models/request/user.request.model");
 const StudentModelRequest = require("../models/request/student.request.model");
@@ -22,7 +24,7 @@ const USER_COLLECTION = "Users";
 const STUDENT_COLLECTION = "Students";
 const TEAM_COLLECTION = "Teams";
 const BUSINESS_COLLECTION = "Business";
-const STRUDENT_PROJECT_COLLECTION = "StudentProject";
+const STUDENT_PROJECT_COLLECTION = "StudentProject";
 const BUSINESS_PROJECT_COLLECTION = "BusinessProject";
 const APPLICATION_COLLECTION = "Applications";
 
@@ -161,7 +163,7 @@ async function buildTeamModelResponse(team) {
       return selectedInfo;
     })
   );
-  return new TeamModelResponse(team._id, team.team_name, teamMembers);
+  return new TeamModelResponse(team._id, team.name, teamMembers);
 }
 
 async function buildStudentProjectModelResponse(userInfo) {
@@ -213,13 +215,36 @@ async function buildBusinessProjectModelResponse(userInfo) {
   return buildBusinessProjectModelRequest;
 }
 
-async function buildApplicationModelResponse(userInfo) {
+async function buildApplicationModelResponse(application) {
+  //get teamId info
+  const teamIdInfo = await dbService
+    .getOneFromDb(TEAM_COLLECTION, {
+      _id: new ObjectId(application.team_id),
+    })
+    .then((team) => new TeamId(team._id, team.name));
+
+  //get businessId Info
+  const businessIdInfo = await dbService
+    .getOneFromDb(BUSINESS_PROJECT_COLLECTION, {
+      _id: new ObjectId(application.business_request_id),
+    })
+    .then(
+      async (request) =>
+        await dbService.getOneFromDb(BUSINESS_COLLECTION, {
+          _id: new ObjectId(request.business_id),
+        })
+    )
+    .then((y) => new BusinessId(y._id, y.name));
+
+    console.log(businessIdInfo);
+
   const buildApplicationModelRequest = new ApplicationModelResponse(
-    userInfo.team,
-    userInfo.business_request_id,
-    userInfo.application_status,
-    userInfo.uploaded_files,
-    userInfo.created_at
+    application.business_request_id,
+    teamIdInfo,
+    businessIdInfo,
+    application.application_status,
+    application.uploaded_files,
+    application.created_at
   );
 
   return buildApplicationModelRequest;
@@ -324,19 +349,17 @@ async function getAllTeamsOfStudent(collection, reqParam) {
   );
 
   //Filtering array by member id
-  const filteredArray = parsedTeams.filter(team =>
-    {
-      return team.members.some(member => member._id == reqParam)
-    }
-
-  );
+  const filteredArray = parsedTeams.filter((team) => {
+    return team.members.some((member) => member._id == reqParam);
+  });
 
   return filteredArray;
 }
 
 async function getOneTeamFromDb(collection, reqParam) {
-  const team = await dbService.getOneFromDb(collection, reqParam);
-  const parsedTeam =  buildTeamModelResponse(team)
+  const userQuery = { _id: new ObjectId(reqParam) };
+  const team = await dbService.getOneFromDb(collection, userQuery);
+  const parsedTeam = await buildTeamModelResponse(team);
   return parsedTeam;
 }
 
@@ -390,7 +413,8 @@ async function createOneBusinessInDb(collection, requestBody) {
 //   return response;
 // }
 
-async function deleteOneBusinessFromDb(collection, userQuery) {
+async function deleteOneBusinessFromDb(collection, reqParam) {
+  const userQuery = { _id: new ObjectId(reqParam) };
   const response = dbService.deleteOneFromDb(collection, userQuery);
 
   return response;
@@ -424,7 +448,8 @@ async function createOneStudentProjectInDb(collection, requestBody) {
 //   return response;
 // }
 
-async function deleteOneStudentProjectFromDb(collection, userQuery) {
+async function deleteOneStudentProjectFromDb(collection, reqParam) {
+  const userQuery = { _id: new ObjectId(reqParam) };
   const response = dbService.deleteOneFromDb(collection, userQuery);
 
   return response;
@@ -462,7 +487,8 @@ async function createOneBusinessProjectInDb(collection, requestBody) {
 //   return response;
 // }
 
-async function deleteOneBusinessProjectFromDb(collection, userQuery) {
+async function deleteOneBusinessProjectFromDb(collection, reqParam) {
+  const userQuery = { _id: new ObjectId(reqParam) };
   const response = dbService.deleteOneFromDb(collection, userQuery);
 
   return response;
@@ -470,6 +496,30 @@ async function deleteOneBusinessProjectFromDb(collection, userQuery) {
 
 ////////// APPLICATION //////////
 async function getAllApplicationsFromDb(collection) {
+  const response = dbService.getAllFromDb(collection);
+
+  return response;
+}
+
+async function getAllAppMadeByStudentFromDb(collection) {
+  const allApplications = await dbService.getAllFromDb(collection);
+  const parsedApplications = await Promise.all(
+    allApplications.map(async (application) => {
+      return await buildApplicationModelResponse(application);
+    })
+  );
+
+  //Filtering array by member id
+  // const filteredArray = allApplications.filter((applic) => {
+  //   return team.members.some((member) => member._id == reqParam);
+  // });
+
+  return parsedApplications;
+
+  // return response;
+}
+
+async function getAllAppCreatedByBusinessFromDb(collection) {
   const response = dbService.getAllFromDb(collection);
 
   return response;
@@ -534,13 +584,17 @@ module.exports = {
   // updateOneStudentProjectInDb,
   deleteOneStudentProjectFromDb,
 
+  //BUSINESS PROJECT
   getAllBusinessProjectsFromDb,
   getOneBusinessProjectFromDb,
   createOneBusinessProjectInDb,
   // updateOneBusinessProjectInDb,
   deleteOneBusinessProjectFromDb,
 
+  //APPLICATION
   getAllApplicationsFromDb,
+  getAllAppMadeByStudentFromDb,
+  getAllAppCreatedByBusinessFromDb,
   getOneApplicationFromDb,
   createOneApplicationInDb,
   // updateOneApplicationInDb,

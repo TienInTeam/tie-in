@@ -1,5 +1,5 @@
 function Team(name, members) {
-  this.team_name = name;
+  this.name = name;
   this.members = members;
 }
 
