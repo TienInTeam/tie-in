@@ -1,11 +1,13 @@
-import { useQuery } from "@tanstack/react-query";
-import { requestBusinessProjects } from "../api/businessProject";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { requestBusinessProjects, updateBusinessProject } from "../api/businessProject";
 import { getBusinessByEmail } from "../api/business";
-import React from "react";
+import { useState } from "react";
 import TeamApplication from "../components/TeamApplication";
 import SideMenu from "../components/SideMenu"
 
 function RequestStatus() {
+  const [close, setClose] = useState(false)
+
   const requestBusinessByEmail = useQuery(["businessByEmail"], () => getBusinessByEmail(sessionStorage.getItem("userEmail")),{
     enabled: !!sessionStorage.getItem("userEmail"),
   },
@@ -20,17 +22,20 @@ function RequestStatus() {
       alert(error.message);
     }
   });
+  const changeProjectStatus = useMutation(["applicationStatus"], () => updateBusinessProject({
+    "status": false
+  })
+  );
   if (requestBusinessProject.isLoading) {
     return <span>Loading...</span>
   }
   if (requestBusinessByEmail.isLoading) {
     return <span>Loading...</span>
   }
-
-  console.log(requestBusinessByEmail.data[0].logo_url);
-
+  
   const onClose = () => {
-    alert("close button clicked")
+    setClose(true)
+    changeProjectStatus.mutate()
   }
         {
           for(let i=0; i<requestBusinessProject.data.length; i++){
@@ -40,11 +45,11 @@ function RequestStatus() {
                   <SideMenu />
                   <div>
                     <h2>Request Status List</h2>
-                    <TeamApplication
+                    {!close && <TeamApplication
                     name={requestBusinessProject.data[i].name}
                     logo_url={requestBusinessByEmail.data[0].logo_url}
                     onClose={onClose}
-                    />
+                    />}
                   </div>
                 </div>
                 )

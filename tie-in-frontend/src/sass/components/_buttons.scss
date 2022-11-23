@@ -20,3 +20,10 @@ button:hover{
   padding: 5px 24px;
   color: $secondary_blue_color;
 }
+
+.tertiary {
+  color: white;
+  background-color: $blue_card_background;
+  border: none;
+  display: hidden;
+}

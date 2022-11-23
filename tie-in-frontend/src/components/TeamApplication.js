@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { getBusinessByEmail } from "../api/business";
 import { requestTeams } from "../api/teams";
 import TeamsBox from "../components/TeamsBox";
 import Button from "./Button";
@@ -9,30 +10,43 @@ function TeamApplication({ name, logo_url, onClose }) {
       alert(error.message);
     }
   });
+  const requestBusinessByEmail = useQuery(["businessByEmail"], () => getBusinessByEmail(sessionStorage.getItem("userEmail")),{
+    enabled: !!sessionStorage.getItem("userEmail"),
+  },
+  {
+      onError: (error) => {
+        alert(error.message);
+      }
+  });
   if (requestTeam.isLoading) {
     return <span>Loading...</span>
   }
+  if (requestBusinessByEmail.isLoading) {
+    return <span>Loading...</span>
+  }
 
-  return (
-    <div className="team-application">
-      <div className="title-wrapper">
-        <div className="logo-wrapper">
-          <img src={logo_url} alt="company's logo" />
-           <h2>{name}</h2>
+    if (requestBusinessByEmail.data.team_id === requestTeam.data.id) {
+      return (
+        <div className="team-application">
+          <div className="title-wrapper">
+            <div className="logo-wrapper">
+              <img src={logo_url} alt="company's logo" />
+              <h2>{name}</h2>
+            </div>
+            <Button label={"Close Project"} variant={"secondary"} onClick={onClose} />
+          </div>
+          <div>
+            {requestTeam.data.map((team, index) => (
+              <TeamsBox
+                name={team.name}
+                members={team.members}
+                key={index} />
+            ))}
+
+          </div>
         </div>
-        <Button label={"Close Project"} variant={"secondary"} onClick={onClose} />
-      </div>
-      <div>
-      {requestTeam.data.map((team, index) => (
-          <TeamsBox 
-          team_name={team.team_name} 
-          members={team.members}
-          key={index}/>
-        ))}
-       
-      </div>
-    </div>
-  )
-}
+      )
+    }
+  }
 
 export default TeamApplication
