@@ -236,8 +236,6 @@ async function buildApplicationModelResponse(application) {
     )
     .then((y) => new BusinessId(y._id, y.name));
 
-    console.log(businessIdInfo);
-
   const buildApplicationModelRequest = new ApplicationModelResponse(
     application.business_request_id,
     teamIdInfo,
@@ -496,12 +494,16 @@ async function deleteOneBusinessProjectFromDb(collection, reqParam) {
 
 ////////// APPLICATION //////////
 async function getAllApplicationsFromDb(collection) {
-  const response = dbService.getAllFromDb(collection);
-
-  return response;
+  const allApplications = await dbService.getAllFromDb(collection);
+  const parsedApplications = await Promise.all(
+    allApplications.map(async (application) => {
+      return await buildApplicationModelResponse(application);
+    })
+  );
+  return parsedApplications;
 }
 
-async function getAllAppMadeByStudentFromDb(collection) {
+async function getAllAppMadeByStudentFromDb(collection, reqParam) {
   const allApplications = await dbService.getAllFromDb(collection);
   const parsedApplications = await Promise.all(
     allApplications.map(async (application) => {
@@ -509,20 +511,37 @@ async function getAllAppMadeByStudentFromDb(collection) {
     })
   );
 
-  //Filtering array by member id
-  // const filteredArray = allApplications.filter((applic) => {
-  //   return team.members.some((member) => member._id == reqParam);
-  // });
+  //get all teams which student belong
+  const allTeamsStudentBelong = await getAllTeamsOfStudent(TEAM_COLLECTION, reqParam)
+  .then( x => x.map(team => team._id));
 
-  return parsedApplications;
+  console.log(allTeamsStudentBelong);
 
-  // return response;
+
+  // Filtering array by member id
+  const filteredArray = parsedApplications.filter((application) => {
+    // console.log(application);
+    console.log(application.team.team_id);
+    return allTeamsStudentBelong.includes(application.team.team_id)
+  });
+
+  return filteredArray;
 }
 
-async function getAllAppCreatedByBusinessFromDb(collection) {
-  const response = dbService.getAllFromDb(collection);
+async function getAllAppCreatedByBusinessFromDb(collection, reqParam) {
+  const allApplications = await dbService.getAllFromDb(collection);
+  const parsedApplications = await Promise.all(
+    allApplications.map(async (application) => {
+      return await buildApplicationModelResponse(application);
+    })
+  );
 
-  return response;
+    // Filtering array by member id
+  const filteredArray = parsedApplications.filter((application) => {
+    return application.business.business_id == reqParam;
+  });
+
+  return filteredArray;
 }
 
 async function getOneApplicationFromDb(collection, userQuery) {

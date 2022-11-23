@@ -216,17 +216,16 @@ async function getAllApplications(req, res, next) {
 async function getAllApplicationsMadeByStudentOrTeamByStudentId(req, res, next) {
   res
     .status(200)
-    .send(await appService.getAllAppMadeByStudentFromDb(APPLICATION_COLLECTION));
+    .send(await appService.getAllAppMadeByStudentFromDb(APPLICATION_COLLECTION, req.params.id));
 }
 
 async function getAllApplicationsCreatedByBusinessByBusinessId(req, res, next) {
   res
     .status(200)
-    .send(await appService.getAllAppMadeByStudentFromDb(APPLICATION_COLLECTION));
+    .send(await appService.getAllAppCreatedByBusinessFromDb(APPLICATION_COLLECTION, req.params.id));
 }
 
 async function getOneApplicationById(req, res, next) {
-  const userQuery = { _id: new ObjectId(req.params.id) };
   res
     .status(200)
     .send(await appService.getOneApplicationFromDb(USER_COLLECTION, req.params.id));
@@ -244,7 +243,6 @@ async function createOneApplication(req, res, next) {
 }
 
 async function deleteOneApplicationById(req, res, next) {
-  const userQuery = { _id: new ObjectId(req.params.id) };
   res
     .status(200)
     .send(await appService.deleteOneTeamFromDb(TEAM_COLLECTION, req.params.id));
