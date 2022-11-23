@@ -9,3 +9,9 @@ export const requestTeams = () => {
 export const addTeam = (postData) => project.post('/teams', postData).then((res) => {
     return res.data;
 });
+
+export const requestTeamByID = (id) => {
+    return project.get(`/teams/${id}`).then((res) => {
+        return res.data;
+    });
+}

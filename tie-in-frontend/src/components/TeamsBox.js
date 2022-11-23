@@ -1,15 +1,24 @@
 import { useState } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { updateApplicationStatuses } from "../api/studentApplications";
 import Button from "./Button";
+import { requestTeams } from "../api/teams";
 
-const TeamsBox = ({ team_name, members}) => {
+const TeamsBox = ({ name, members }) => {
   const [approve, setApprove] = useState(false)
 
   const changeStatus = useMutation(["applicationStatus"], () => updateApplicationStatuses({
     "application_status": "approved"
-})
+  })
   );
+  const requestTeam = useQuery(["teams"], () => requestTeams(), {
+    onError: (error) => {
+      alert(error.message);
+    }
+  });
+  if (requestTeam.isLoading) {
+    return <span>Loading...</span>
+  }
 
   const onApprove = () => {
     setApprove(!approve)
@@ -17,15 +26,21 @@ const TeamsBox = ({ team_name, members}) => {
   }
   return (
     <div className="team-box">
-      <h3>{team_name}</h3>
-      <div>
-        {members.map((member,index) => (
-        
-          <img src={member.member_photo} alt="student's photo" key={index} />
+      <h3>{name}</h3>
+      <div className="images">
+        {members.map((member, index) => {
+          // <img src={member.photo_url} alt="student's photo" key={index} />
+          if (index <= 2) {
+            return <img key={index} src={member.photo_url} alt="student" />
+          }
+          else if (index === members.length - 1) {
+            return <p key={index}>+<span >{index - 2}</span></p>
+          }
 
-        ))}
+        }
+        )}
       </div>
-      <Button label={approve?"Approved":"Accept"} variant={"primary"} onClick={onApprove} />
+      <Button label={approve ? "Approved" : "Accept"} variant={approve ? "tertiary" : "primary"} onClick={onApprove} />
     </div>
   )
 }

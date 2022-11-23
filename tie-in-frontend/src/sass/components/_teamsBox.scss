@@ -4,6 +4,15 @@
   border-bottom: 1px solid $white;
   align-items: center;
 
+  .images {
+    display: flex;
+    align-items: center;
+  }
+
+  .images p {
+    margin-left: .7rem;
+  }
+
   img{
     border-radius: 50%;
     width: 50px;

@@ -43,6 +43,7 @@ a {
 .grid-container {
   display: grid;
   grid-template-columns: 22% 77%;
+  height: 100vh;
 }
 
 #root {

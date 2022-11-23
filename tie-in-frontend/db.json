@@ -283,7 +283,7 @@
     {
       "name": "nannies for you",
       "team_name": "Power Puff kids",
-      "team_id": 113,
+      "team_id": 56,
       "application_status": "Pending",
       "tags": "Software Engineer, Web-App",
       "application_date": "2022-08-31",
@@ -297,7 +297,7 @@
       "id": 1,
       "name": "Piccle",
       "logo": "",
-      "team_id": 2323,
+      "team_id": 57,
       "description": "Test test ",
       "linkedIn_url": "https://test.com",
       "team_name": "Banana Banana",
@@ -568,55 +568,67 @@
   "teams":[
     {
     "id" : 56,
-    "team_name": "Luna",
+    "name": "Luna",
     "members":[
       {
         "id": 112,
-        "member_photo": "https://picsum.photos/id/476/200/300"
+        "photo_url": "https://picsum.photos/id/476/200/300"
       },
       {
         "id": 113,
-        "member_photo": "https://picsum.photos/id/532/200/300"
+        "photo_url": "https://picsum.photos/id/532/200/300"
       },
       {
         "id": 114,
-        "member_photo": "https://picsum.photos/id/782/200/300"
+        "photo_url": "https://picsum.photos/id/782/200/300"
+      }, 
+      {
+        "id": 120,
+        "photo_url": "https://picsum.photos/id/625/200/300"
       }  
     ]
   },
   {
     "id" : 57,
-    "team_name": "unito",
+    "name": "unito",
     "members":[
       {
         "id": 112,
-        "member_photo": "https://picsum.photos/id/145/200/300"
+        "photo_url": "https://picsum.photos/id/145/200/300"
       },
       {
         "id": 113,
-        "member_photo": "https://picsum.photos/id/261/200/300"
+        "photo_url": "https://picsum.photos/id/261/200/300"
       },
       {
         "id": 114,
-        "member_photo": "https://picsum.photos/id/123/200/300"
+        "photo_url": "https://picsum.photos/id/123/200/300"
       }  
     ]
   },
   {
     "id" : 58,
-    "team_name": "panthers",
+    "name": "panthers",
     "members":[
       {
         "id": 112,
-        "member_photo": "https://picsum.photos/id/621/200/300"
+        "photo_url": "https://picsum.photos/id/621/200/300"
       },
       {
         "id": 118,
-        "member_photo": "https://picsum.photos/id/351/200/300"
+        "photo_url": "https://picsum.photos/id/351/200/300"
       },
       {
         "id": 119,
-        "member_photo": "https://picsum.photos/id/742/200/300"
+        "photo_url": "https://picsum.photos/id/742/200/300"
+      },  
+      {
+        "id": 121,
+        "photo_url": "https://picsum.photos/id/862/200/300"
+      },  
+      {
+        "id": 122,
+        "photo_url": "https://picsum.photos/id/247/200/300"
       }  
     ]
   }

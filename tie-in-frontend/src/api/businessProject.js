@@ -17,3 +17,9 @@ export const requestBusinessProjectsByID = (id) => {
     });
 }
 
+export const updateBusinessProject = (id) => {
+    return project.get(`/businessProjects/${id}`).then((res) => {
+        return res.data;
+    });
+}
+
