@@ -14,11 +14,11 @@ function BusinessProjectsList() {
   const [locationFilter, setLocationFilter] = useState(null);
   const [searchFilter, setSearchFilter] = useState(null);
 
-  const requestFilteredBusinessProject = useQuery(["businessProject"], () => requestBusinessProjects(categoryFilter),
+  const requestFilteredBusinessProject = useQuery(["businessProject"], () => requestBusinessProjects(),
     {
       select: (businessProject) => (businessProject
         .filter(businessProject => {
-          return categoryFilter ? businessProject.category.includes(categoryFilter) : true
+          return categoryFilter ? businessProject.category?.includes(categoryFilter) : true
         })
         .filter(businessProject => {
           return sizeFilter ? businessProject.team_size === sizeFilter : true
@@ -27,7 +27,7 @@ function BusinessProjectsList() {
           return locationFilter ? businessProject.location.includes(locationFilter) : true
         })
         .filter(businessProject => {
-          return searchFilter ? businessProject.name.toLowerCase().includes(searchFilter.toLowerCase()) : true
+          return searchFilter ? businessProject.business.business_name.toLowerCase().includes(searchFilter.toLowerCase()) : true
         })
       )
     },

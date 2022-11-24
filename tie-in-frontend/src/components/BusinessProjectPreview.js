@@ -2,7 +2,7 @@ import React from 'react';
 import Button from './Button';
 
 function BusinessProjectPreview({businessProject, onSeeMore, onCheckStatus}) {
-    const {status, logo, company_name, description, team_size, dueDate, category, location} = businessProject;
+    const {status, logo, business, description, team_size, end_date, category, location} = businessProject;
 
     const renderCategory = () => {
         if (!category) {
@@ -23,7 +23,7 @@ function BusinessProjectPreview({businessProject, onSeeMore, onCheckStatus}) {
         <div className="business-project-preview">
             <div className="title-container">
                 <img src={logo} alt="project's logo"/>
-                <h2>{company_name}</h2>
+                <h2>{business.business_name}</h2>
                 <p>{status ? "You have already applied" : ""}</p>
             </div>
             <div className="body-container">
@@ -35,7 +35,7 @@ function BusinessProjectPreview({businessProject, onSeeMore, onCheckStatus}) {
                     <h3>Team Member</h3>
                     <p>{team_size}</p>
                     <h3>Due date</h3>
-                    <p>{dueDate}</p>
+                    <p>{end_date}</p>
                 </div>
                 <div>
                     <h3>Category</h3>
