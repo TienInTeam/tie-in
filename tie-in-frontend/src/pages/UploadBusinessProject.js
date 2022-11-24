@@ -26,10 +26,7 @@ function UploadBusinessProject() {
         "file": additionalFile,
         "links": additionalLink,
         "status": "available",
-        "business": {
-            "business_id": businessId,
-            "business_name": businessName,
-        }
+        "business_id": businessId,
     }), {
         onSuccess: () => {
         },
