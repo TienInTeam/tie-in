@@ -285,11 +285,11 @@ async function createOneUserInDb(collection, requestBody) {
   return response;
 }
 
-async function updateOneUserInDb(collection, reqParam, requestBody) {
-  const userQuery = { uid: reqParam };
-  const response = dbService.updateOneInDb(
+async function replaceOneUserInDb(collection, reqParam, requestBody) {
+  const userQuery = { _id: new ObjectId(reqParam) };
+  const response = dbService.replaceOneInDb(
     collection,
-    { uid: userQuery },
+    userQuery,
     buildUserModelRequest(requestBody)
   );
 
@@ -326,11 +326,16 @@ async function createOneStudentInDb(collection, requestBody) {
   return response;
 }
 
-// async function updateOneStudentInDb(collection, userQuery, requestBody) {
-//   const response = dbService.updateOneInDb(collection, userQuery, requestBody);
+async function replaceOneStudentInDb(collection, reqParam, requestBody) {
+  const userQuery = { _id: new ObjectId(reqParam) };
+  const response = dbService.replaceOneInDb(
+    collection,
+    userQuery,
+    buildStudentModelRequest(requestBody)
+  );
 
-//   return response;
-// }
+  return response;
+}
 
 async function deleteOneStudentFromDb(collection, reqParam) {
   const userQuery = { _id: new ObjectId(reqParam) };
@@ -384,11 +389,16 @@ async function createOneTeamInDb(collection, requestBody) {
   return response;
 }
 
-// async function updateOneTeamInDb(collection, userQuery, requestBody) {
-//   const response = dbService.updateOneInDb(collection, userQuery, requestBody);
+async function replaceOneTeamInDb(collection, reqParam, requestBody) {
+  const userQuery = { _id: new ObjectId(reqParam) };
+  const response = dbService.replaceOneInDb(
+    collection,
+    userQuery,
+    buildTeamModelRequest(requestBody)
+  );
 
-//   return response;
-// }
+  return response;
+}
 
 async function deleteOneTeamFromDb(collection, reqParam) {
   const userQuery = { _id: new ObjectId(reqParam) };
@@ -419,11 +429,16 @@ async function createOneBusinessInDb(collection, requestBody) {
   return response;
 }
 
-// async function updateOneBusinessInDb(collection, userQuery, requestBody) {
-//   const response = dbService.updateOneInDb(collection, userQuery, requestBody);
+async function replaceOneBusinessInDb(collection, reqParam, requestBody) {
+  const userQuery = { _id: new ObjectId(reqParam) };
+  const response = dbService.replaceOneInDb(
+    collection,
+    userQuery,
+    buildBusinessModelRequest(requestBody)
+  );
 
-//   return response;
-// }
+  return response;
+}
 
 async function deleteOneBusinessFromDb(collection, reqParam) {
   const userQuery = { _id: new ObjectId(reqParam) };
@@ -434,7 +449,7 @@ async function deleteOneBusinessFromDb(collection, reqParam) {
 
 ////////// STUDENT PROJECT //////////
 async function getAllStudentProjectsFromDb(collection) {
-  const allStudentProjects = await dbService.getAllFromDb(collection)
+  const allStudentProjects = await dbService.getAllFromDb(collection);
   const parsedStudentProjects = await Promise.all(
     allStudentProjects.map(async (project) => {
       return await buildStudentProjectModelResponse(project);
@@ -447,7 +462,7 @@ async function getAllStudentProjectsFromDb(collection) {
 async function getOneStudentProjectFromDb(collection, reqParam) {
   const userQuery = { _id: new ObjectId(reqParam) };
   const project = await dbService.getOneFromDb(collection, userQuery);
-  const parsedProject = await buildStudentProjectModelResponse(project)
+  const parsedProject = await buildStudentProjectModelResponse(project);
 
   return parsedProject;
 }
@@ -502,15 +517,22 @@ async function createOneBusinessProjectInDb(collection, requestBody) {
   return response;
 }
 
-// async function updateOneBusinessProjectInDb(
-//   collection,
-//   userQuery,
-//   requestBody
-// ) {
-//   const response = dbService.updateOneInDb(collection, userQuery, requestBody);
+async function updateOneBusinessProjectInDb(
+  collection,
+  userFilterQuery,
+  userUpdateQuery
+) {
+  const filterQuery = { _id: new ObjectId(userFilterQuery) };
+  const updateQuery = { $set: { status: userUpdateQuery} };
 
-//   return response;
-// }
+  const response = dbService.updateOneInDb(
+    collection,
+    filterQuery,
+    updateQuery
+  );
+
+  return response;
+}
 
 async function deleteOneBusinessProjectFromDb(collection, reqParam) {
   const userQuery = { _id: new ObjectId(reqParam) };
@@ -539,12 +561,14 @@ async function getAllAppMadeByStudentFromDb(collection, reqParam) {
   );
 
   //get all teams which student belong
-  const allTeamsStudentBelong = await getAllTeamsOfStudent(TEAM_COLLECTION, reqParam)
-  .then( team => team.map(team => team._id.toString()));
+  const allTeamsStudentBelong = await getAllTeamsOfStudent(
+    TEAM_COLLECTION,
+    reqParam
+  ).then((team) => team.map((team) => team._id.toString()));
 
   // Filtering array by member id
   const filteredArray = parsedApplications.filter((application) => {
-    return allTeamsStudentBelong.includes(application.team.team_id.toString())
+    return allTeamsStudentBelong.includes(application.team.team_id.toString());
   });
 
   return filteredArray;
@@ -558,7 +582,7 @@ async function getAllAppCreatedByBusinessFromDb(collection, reqParam) {
     })
   );
 
-    // Filtering array by member id
+  // Filtering array by member id
   const filteredArray = parsedApplications.filter((application) => {
     return application.business.business_id == reqParam;
   });
@@ -581,11 +605,22 @@ async function createOneApplicationInDb(collection, requestBody) {
   return response;
 }
 
-// async function updateOneApplicationInDb(collection, userQuery, requestBody) {
-//   const response = dbService.updateOneInDb(collection, userQuery, requestBody);
+async function updateOneApplicationInDb(
+  collection,
+  userFilterQuery,
+  userUpdateQuery
+) {
+  const filterQuery = { _id: new ObjectId(userFilterQuery) };
+  const updateQuery = { $set: { userUpdateQuery: userUpdateQuery} };
 
-//   return response;
-// }
+  const response = dbService.updateOneInDb(
+    collection,
+    filterQuery,
+    updateQuery
+  );
+
+  return response;
+}
 
 async function deleteOneApplicationFromDb(collection, reqParam) {
   const userQuery = { _id: new ObjectId(reqParam) };
@@ -598,26 +633,26 @@ module.exports = {
   getAllUsersFromDb,
   getOneUserFromDb,
   createOneUserInDb,
-  updateOneUserInDb,
+  replaceOneUserInDb,
   deleteOneUserFromDb,
 
   getAllStudentsFromDb,
   getOneStudentFromDb,
   createOneStudentInDb,
-  // updateOneStudentInDb,
+  replaceOneStudentInDb,
   deleteOneStudentFromDb,
 
   getAllTeamsFromDb,
   getAllTeamsOfStudent,
   getOneTeamFromDb,
   createOneTeamInDb,
-  // updateOneTeamInDb,
+  replaceOneTeamInDb,
   deleteOneTeamFromDb,
 
   getAllBusinessFromDb,
   getOneBusinessFromDb,
   createOneBusinessInDb,
-  // updateOneBusinessInDb,
+  replaceOneBusinessInDb,
   deleteOneBusinessFromDb,
 
   getAllStudentProjectsFromDb,
@@ -630,7 +665,7 @@ module.exports = {
   getAllBusinessProjectsFromDb,
   getOneBusinessProjectFromDb,
   createOneBusinessProjectInDb,
-  // updateOneBusinessProjectInDb,
+  updateOneBusinessProjectInDb,
   deleteOneBusinessProjectFromDb,
 
   //APPLICATION
@@ -639,6 +674,6 @@ module.exports = {
   getAllAppCreatedByBusinessFromDb,
   getOneApplicationFromDb,
   createOneApplicationInDb,
-  // updateOneApplicationInDb,
+  updateOneApplicationInDb,
   deleteOneApplicationFromDb,
 };

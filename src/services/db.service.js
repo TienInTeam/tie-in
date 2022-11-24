@@ -55,18 +55,33 @@ async function createOneInDb(collection, requestBody) {
   }
 }
 
-async function updateOneInDb(collection, userQuery, requestBody) {
+async function replaceOneInDb(collection, userFilterQuery, requestBody) {
   try {
-    await client.connect();
     const dbCollection = database.collection(collection);
-    const query = userQuery;
+    const filterQuery = userFilterQuery;
     const updateBody = requestBody;
-    const result = await dbCollection.findOneAndUpdate(query, updateBody);
+    const result = await dbCollection.findOneAndReplace(filterQuery, updateBody);
 
     return result;
   } catch (err) {
     console.error(
       "Operation: updateOneInDb ",
+      `An error was encountered: ${err}`
+    );
+  }
+}
+
+async function updateOneInDb(collection, userFilterQuery, userUpdateQuery) {
+  try {
+    const dbCollection = database.collection(collection);
+    const filterQuery = userFilterQuery;
+    const updateQuery = userUpdateQuery;
+    const result = await dbCollection.findOneAndUpdate(filterQuery, updateQuery);
+
+    return result;
+  } catch (err) {
+    console.error(
+      "Operation: replaceOneInDb ",
       `An error was encountered: ${err}`
     );
   }
@@ -92,5 +107,6 @@ module.exports = {
   getOneFromDb,
   createOneInDb,
   updateOneInDb,
+  replaceOneInDb,
   deleteOneFromDb,
 };

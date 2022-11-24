@@ -32,14 +32,13 @@ async function createOneUser(req, res, next) {
     .send(await appService.createOneUserInDb(USER_COLLECTION, req.body));
 }
 
-// async function updateOneUser(req, res, next) {
-//   const userQuery = { uid: req.params.uid };
-//   res
-//     .status(200)
-//     .send(
-//       await appService.updateOneStudentInDb(USER_COLLECTION, userQuery, req.body)
-//     );
-// }
+async function replaceOneUserById(req, res, next) {
+  res
+    .status(200)
+    .send(
+      await appService.replaceOneUserInDb(USER_COLLECTION, req.params.id, req.body)
+    );
+}
 
 async function deleteOneUserById(req, res, next) {
   res
@@ -69,6 +68,14 @@ async function createOneStudent(req, res, next) {
   res
     .status(200)
     .send(await appService.createOneStudentInDb(STUDENT_COLLECTION, req.body));
+}
+
+async function replaceOneStudentById(req, res, next) {
+  res
+    .status(200)
+    .send(
+      await appService.replaceOneStudentInDb(STUDENT_COLLECTION, req.params.id, req.body)
+    );
 }
 
 async function deleteOneStudentById(req, res, next) {
@@ -105,6 +112,14 @@ async function createOneTeam(req, res, next) {
     .send(await appService.createOneTeamInDb(TEAM_COLLECTION, req.body));
 }
 
+async function replaceOneTeamById(req, res, next) {
+  res
+    .status(200)
+    .send(
+      await appService.replaceOneTeamInDb(TEAM_COLLECTION, req.params.id, req.body)
+    );
+}
+
 async function deleteOneTeamById(req, res, next) {
   res
     .status(200)
@@ -130,6 +145,14 @@ async function createOneBusiness(req, res, next) {
     .status(200)
     .send(
       await appService.createOneBusinessInDb(BUSINESS_COLLECTION, req.body)
+    );
+}
+
+async function replaceOneBusinessById(req, res, next) {
+  res
+    .status(200)
+    .send(
+      await appService.replaceOneBusinessInDb(BUSINESS_COLLECTION, req.params.id, req.body)
     );
 }
 
@@ -173,6 +196,14 @@ async function createOneStudentProject(req, res, next) {
     );
 }
 
+// async function updateOneStudentProjectById(req, res, next) {
+//   res
+//     .status(200)
+//     .send(
+//       await appService.updateOneStudentProjectInDb(STUDENT_PROJECT_COLLECTION, req.params.id, req.query.status)
+//     );
+// }
+
 async function deleteOneStudentProjectById(req, res, next) {
   res
     .status(200)
@@ -211,6 +242,14 @@ async function createOneBusinessProject(req, res, next) {
         BUSINESS_PROJECT_COLLECTION,
         req.body
       )
+    );
+}
+
+async function updateOneBusinessProjectById(req, res, next) {
+  res
+    .status(200)
+    .send(
+      await appService.updateOneBusinessProjectInDb(BUSINESS_PROJECT_COLLECTION, req.params.id, req.query.status)
     );
 }
 
@@ -277,6 +316,14 @@ async function createOneApplication(req, res, next) {
     );
 }
 
+async function updateOneApplicationById(req, res, next) {
+  res
+    .status(200)
+    .send(
+      await appService.updateOneApplicationInDb(APPLICATION_COLLECTION, req.params.id, req.query.status)
+    );
+}
+
 async function deleteOneApplicationById(req, res, next) {
   res
     .status(200)
@@ -287,22 +334,26 @@ module.exports = {
   getAllUsers,
   getOneUserByUid,
   createOneUser,
+  replaceOneUserById,
   deleteOneUserById,
 
   getAllStudents,
   getOneStudentByEmail,
   createOneStudent,
+  replaceOneStudentById,
   deleteOneStudentById,
 
   getAllTeams,
   getAllTeamsOfStudentById,
   getOneTeamById,
   createOneTeam,
+  replaceOneTeamById,
   deleteOneTeamById,
 
   getAllBusiness,
   getOneBusinessByEmail,
   createOneBusiness,
+  replaceOneBusinessById,
   deleteOneBusinessById,
 
   getAllStudentProjects,
@@ -313,6 +364,7 @@ module.exports = {
   getAllBusinessProjects,
   getOneBusinessProjectById,
   createOneBusinessProject,
+  updateOneBusinessProjectById,
   deleteOneBusinessProjectById,
 
   getAllApplications,
@@ -320,5 +372,6 @@ module.exports = {
   getAllApplicationsCreatedByBusinessByBusinessId,
   getOneApplicationById,
   createOneApplication,
+  updateOneApplicationById,
   deleteOneApplicationById,
 };
