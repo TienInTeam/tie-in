@@ -11,7 +11,7 @@ function RequestStatusCard({ application }) {
         <h3>{team_name}</h3>
         <div className="team-images-wrapper" id={`team${team_id}`}>
           {
-            team_images.map((image, index) => {
+            team_images?.map((image, index) => {
               if (index <= 2) {
                 return <img key={index} src={image} alt="student" />
               }

@@ -9,3 +9,10 @@ export const requestStudents = () => {
 export const addStudent = (postData) => project.post('/students', postData).then((res) => {
     return res.data;
 });
+
+
+export const getStudentByEmail = (email) => {
+    return project.get(`/students/${email}`).then((res) => {
+        return res.data;
+    })
+}

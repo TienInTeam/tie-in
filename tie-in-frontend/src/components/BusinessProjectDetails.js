@@ -8,6 +8,15 @@ function BusinessProjectDetails({ businessProject, business, onApply }) {
   const { name, additional_file_url, location, description, budget, team_size, team_requirements, start_date, end_date, subjects, category, technology, additional_field, projectTitle, links, summary, file } = businessProject;
   const { logo, company_name } = business;
 
+  const renderAdditionalFiles = () => {
+    if (!additional_file_url) {
+      return null;
+    }
+    return additional_file_url.map((files, index) =>
+        <a key={index} href={files}><FileIcon /> <span>{files.split('/').pop()}</span></a>
+    )
+  }
+
   return (
     <div className="business-project-details">
       <div className="business-request-header">
@@ -36,11 +45,7 @@ function BusinessProjectDetails({ businessProject, business, onApply }) {
           <p>{additional_field ? additional_field : "No additional data available"}</p>
         </div>
         <div className='additional-files'>
-          {
-            additional_file_url.map((files, index) =>
-              <a key={index} href={files}><FileIcon /> <span>{files.split('/').pop()}</span></a>
-            )
-          }
+          {renderAdditionalFiles()}
         </div>
         <h3>Links</h3>
         <a href={links}>{links}</a>

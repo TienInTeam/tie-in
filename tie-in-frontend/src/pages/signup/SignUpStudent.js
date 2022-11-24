@@ -1,5 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import React, { useState } from 'react';
+import {useNavigate} from "react-router-dom";
 
 import { addStudent } from "../../api/student";
 import { addUser } from "../../api/user";
@@ -11,37 +12,44 @@ import validateTextInput from "../../utils/validateTextInput";
 
 const SignUpStudent = () => {
     const userType = "student";
-    const saveStudent = useMutation(["student"], () => addStudent({
-        uid: sessionStorage.getItem("userId"),
+    const uid = sessionStorage.getItem("userId");
+    const navigate = useNavigate();
+
+    const saveUser = useMutation(["user"], () => addUser({
+        uid: uid,
         email: email,
-        firstName: firstName,
-        lastName: lastName,
-        institution: institution,
-        linkedInURL: linkedInURL,
-        profileUrl: websiteURL,
-        location: location,
-    }),
+        type: userType,
+    }),{
+        enabled: !!uid,
+        onError: (error) => {
+            alert(error.message);
+        }
+    });
+
+    const saveStudent = useMutation(["student"], () => addStudent({
+            email: email,
+            first_name: firstName,
+            last_name: lastName,
+            institution: institution,
+            linkedIn_url: linkedInURL,
+            portfolio_url: websiteURL,
+            location: location,
+        }),
         {
             onError: (error) => {
                 alert(error.message);
             }
         });
 
-    const saveUser = useMutation(["user"], () => addUser({
-        uid: sessionStorage.getItem("userId"),
-        email: email,
-        type: userType,
-    }));
-
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
+    const [firstName, setFirstName] = useState("test");
+    const [lastName, setLastName] = useState("test");
     const [email, setEmail] = useState("");
-    const [institution, setInstitution] = useState("");
-    const [websiteURL, setWebsiteURL] = useState("");
+    const [institution, setInstitution] = useState("test");
+    const [websiteURL, setWebsiteURL] = useState("https://test.com");
     const [linkedInURL, setLinkedInURL] = useState("");
     const [location, setLocation] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
+    const [password, setPassword] = useState("testtest");
+    const [confirmPassword, setConfirmPassword] = useState("testtest");
     const [termsCondition, setTermsCondition] = useState(false);
 
     const formValidation = () => {
@@ -73,11 +81,13 @@ const SignUpStudent = () => {
     async function onSubmit(e) {
         e.preventDefault();
         if (formValidation()) {
-            await signUp(email, password)
-            await saveUser.mutate();
-            await saveStudent.mutate();
+            await signUp(email, password);
+            saveStudent.mutate();
+            saveUser.mutate();
+            sessionStorage.clear();
+            navigate("/login");
         } else
-            alert("not successfull")
+            alert("Sign up failed! Please try again later.")
     }
 
     return (
