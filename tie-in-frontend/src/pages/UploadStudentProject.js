@@ -168,8 +168,6 @@ function UploadStudentProject() {
                         <option> Sketch Up  </option>
                     </select><br />
                 </label>
-
-
                 <label><span>Development (optional)</span>
                     <select id="dev" onChange={(e) => setTechnology([...technology, e.target.value])}>
                         <option> ---Choose tool---</option>
