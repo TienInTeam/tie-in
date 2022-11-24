@@ -56,9 +56,9 @@
     },
     {
       "uid": null,
-      "id": 112,	
-      "email": "rojin@gmail.com",	
-      "first_name": "Rojin",	
+      "id": 112,
+      "email": "rojin@gmail.com",
+      "first_name": "Rojin",
       "last_name": "Taghadosi",
       "institution": "Langara",
       "linkedIn_url": "linkdin.com/rojin",
@@ -66,9 +66,9 @@
       "student_image": "https://picsum.photos/id/237/200/300"
     },
     {
-      "id": 113,	
-      "email": "rojin@gmail.com",	
-      "first_name": "Florida",	
+      "id": 113,
+      "email": "rojin@gmail.com",
+      "first_name": "Florida",
       "last_name": "Taghadosi",
       "institution": "Langara",
       "linkedIn_url": "linkdin.com/rojin",
@@ -77,9 +77,9 @@
     },
     {
       "uid": null,
-      "id": 114,	
-      "email": "rojin@gmail.com",	
-      "first_name": "Winall",	
+      "id": 114,
+      "email": "rojin@gmail.com",
+      "first_name": "Winall",
       "last_name": "Taghadosi",
       "institution": "Langara",
       "linkedIn_url": "linkdin.com/rojin",
@@ -88,9 +88,9 @@
     },
     {
       "uid": null,
-      "id": 115,	
-      "email": "rojin@gmail.com",	
-      "first_name": "Diego",	
+      "id": 115,
+      "email": "rojin@gmail.com",
+      "first_name": "Diego",
       "last_name": "Taghadosi",
       "institution": "Langara",
       "linkedIn_url": "linkdin.com/rojin",
@@ -99,9 +99,9 @@
     },
     {
       "uid": null,
-      "id": 116,	
-      "email": "rojin@gmail.com",	
-      "first_name": "Jasmin",	
+      "id": 116,
+      "email": "rojin@gmail.com",
+      "first_name": "Jasmin",
       "last_name": "Taghadosi",
       "institution": "Langara",
       "linkedIn_url": "linkdin.com/rojin",
@@ -110,9 +110,9 @@
     },
     {
       "uid": null,
-      "id": 117,	
-      "email": "rojin@gmail.com",	
-      "first_name": "Jane",	
+      "id": 117,
+      "email": "rojin@gmail.com",
+      "first_name": "Jane",
       "last_name": "Taghadosi",
       "institution": "Langara",
       "linkedIn_url": "linkdin.com/rojin",
@@ -121,9 +121,9 @@
     },
     {
       "uid": null,
-      "id": 118,	
-      "email": "rojin@gmail.com",	
-      "first_name": "Javier",	
+      "id": 118,
+      "email": "rojin@gmail.com",
+      "first_name": "Javier",
       "last_name": "Taghadosi",
       "institution": "Langara",
       "linkedIn_url": "linkdin.com/rojin",
@@ -132,9 +132,9 @@
     },
     {
       "uid": null,
-      "id": 119,	
-      "email": "rojin@gmail.com",	
-      "first_name": "Javier",	
+      "id": 119,
+      "email": "rojin@gmail.com",
+      "first_name": "Javier",
       "last_name": "Taghadosi",
       "institution": "Langara",
       "linkedIn_url": "linkdin.com/rojin",
@@ -225,7 +225,7 @@
       "product_link": "",
       "subject": "",
       "institution": "Langara",
-      "location":"Vancouver"
+      "location": "Vancouver"
     },
     {
       "id": 1,
@@ -247,8 +247,8 @@
       "instructor_email": "fjoca00@gmail.com",
       "product_link": "https://google.com",
       "institution": "Langara College",
-      "location":"Vancouver",
-      "image":[
+      "location": "Vancouver",
+      "image": [
         "https://picsum.photos/200/200"
       ]
     },
@@ -287,6 +287,7 @@
       "application_status": "Pending",
       "tags": "Software Engineer, Web-App",
       "application_date": "2022-08-31",
+      "business_id": 2,
       "team_images": [
         "https://picsum.photos/id/237/200/300",
         "https://picsum.photos/id/542/242/300",
@@ -305,6 +306,7 @@
       "tags": "Software Engineer, Web-App",
       "application_date": "2022-10-19",
       "business_model": "",
+      "business_id": 2,
       "technology": [
         "Adobe Illustrator",
         "JS",
@@ -328,20 +330,6 @@
         "https://picsum.photos/id/145/500/300",
         "https://picsum.photos/id/145/500/300",
         "https://picsum.photos/id/145/500/300"
-      ]
-    },
-    {
-      "id": 2,
-      "name": "Get A Tat",
-      "description": "Test 2",
-      "team_id": 345,
-      "team_name": "Mojo Rojo",
-      "application_status": "Pending",
-      "application_date": "2022-10-25",
-      "team_images": [
-        "https://picsum.photos/id/242/1200",
-        "https://picsum.photos/id/237/300",
-        "https://picsum.photos/id/534/500"
       ]
     }
   ],
@@ -565,72 +553,72 @@
       "id": 15
     }
   ],
-  "teams":[
+  "teams": [
     {
-    "id" : 56,
-    "name": "Luna",
-    "members":[
-      {
-        "id": 112,
-        "photo_url": "https://picsum.photos/id/476/200/300"
-      },
-      {
-        "id": 113,
-        "photo_url": "https://picsum.photos/id/532/200/300"
-      },
-      {
-        "id": 114,
-        "photo_url": "https://picsum.photos/id/782/200/300"
-      }, 
-      {
-        "id": 120,
-        "photo_url": "https://picsum.photos/id/625/200/300"
-      }  
-    ]
-  },
-  {
-    "id" : 57,
-    "name": "unito",
-    "members":[
-      {
-        "id": 112,
-        "photo_url": "https://picsum.photos/id/145/200/300"
-      },
-      {
-        "id": 113,
-        "photo_url": "https://picsum.photos/id/261/200/300"
-      },
-      {
-        "id": 114,
-        "photo_url": "https://picsum.photos/id/123/200/300"
-      }  
-    ]
-  },
-  {
-    "id" : 58,
-    "name": "panthers",
-    "members":[
-      {
-        "id": 112,
-        "photo_url": "https://picsum.photos/id/621/200/300"
-      },
-      {
-        "id": 118,
-        "photo_url": "https://picsum.photos/id/351/200/300"
-      },
-      {
-        "id": 119,
-        "photo_url": "https://picsum.photos/id/742/200/300"
-      },  
-      {
-        "id": 121,
-        "photo_url": "https://picsum.photos/id/862/200/300"
-      },  
-      {
-        "id": 122,
-        "photo_url": "https://picsum.photos/id/247/200/300"
-      }  
-    ]
-  }
+      "id": 56,
+      "name": "Luna",
+      "members": [
+        {
+          "id": 112,
+          "photo_url": "https://picsum.photos/id/476/200/300"
+        },
+        {
+          "id": 113,
+          "photo_url": "https://picsum.photos/id/532/200/300"
+        },
+        {
+          "id": 114,
+          "photo_url": "https://picsum.photos/id/782/200/300"
+        },
+        {
+          "id": 120,
+          "photo_url": "https://picsum.photos/id/625/200/300"
+        }
+      ]
+    },
+    {
+      "id": 57,
+      "name": "unito",
+      "members": [
+        {
+          "id": 112,
+          "photo_url": "https://picsum.photos/id/145/200/300"
+        },
+        {
+          "id": 113,
+          "photo_url": "https://picsum.photos/id/261/200/300"
+        },
+        {
+          "id": 114,
+          "photo_url": "https://picsum.photos/id/123/200/300"
+        }
+      ]
+    },
+    {
+      "id": 58,
+      "name": "panthers",
+      "members": [
+        {
+          "id": 112,
+          "photo_url": "https://picsum.photos/id/621/200/300"
+        },
+        {
+          "id": 118,
+          "photo_url": "https://picsum.photos/id/351/200/300"
+        },
+        {
+          "id": 119,
+          "photo_url": "https://picsum.photos/id/742/200/300"
+        },
+        {
+          "id": 121,
+          "photo_url": "https://picsum.photos/id/862/200/300"
+        },
+        {
+          "id": 122,
+          "photo_url": "https://picsum.photos/id/247/200/300"
+        }
+      ]
+    }
   ]
 }
