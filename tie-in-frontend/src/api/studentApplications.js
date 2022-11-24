@@ -11,6 +11,6 @@ export const saveApplicationStatuses = (postData) => project.post('/applicationS
 });
 
 
-export const updateApplicationStatuses = (postData, id) => project.post(`/applicationStatus/${id}`, postData, { 'Content-type': 'application/json' }).then((res) => {
+export const updateApplicationStatuses = (postData, id) => project.put(`/applicationStatus/${id}`, postData).then((res) => {
     return res.data;
 });

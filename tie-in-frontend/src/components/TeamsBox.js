@@ -6,10 +6,12 @@ import { requestTeams } from "../api/teams";
 
 const TeamsBox = ({ name, members }) => {
   const [approve, setApprove] = useState(false)
+  const id = 2;
 
-  const changeStatus = useMutation(["applicationStatus"], () => updateApplicationStatuses({
-    "application_status": "approved"
-  })
+  const changeStatus = useMutation(["applicationStatus", id], () => updateApplicationStatuses(
+    {
+      "application_status": "approved"
+    }, id)
   );
   const requestTeam = useQuery(["teams"], () => requestTeams(), {
     onError: (error) => {
