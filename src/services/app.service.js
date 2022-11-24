@@ -202,11 +202,11 @@ async function buildBusinessProjectModelResponse(businessProject) {
   //get teamId info
   const businessIdInfo = await dbService
     .getOneFromDb(BUSINESS_COLLECTION, {
-      _id: new ObjectId(businessProject.team_id),
+      _id: new ObjectId(businessProject.business_id),
     })
     .then((business) => new BusinessId(business._id, business.name));
 
-  const buildBusinessProjectModelRequest = new BusinessProjectResponse(
+  const buildBusinessProjectModelResponse = new BusinessProjectResponse(
     businessProject._id,
     businessProject.name,
     businessIdInfo,
@@ -226,7 +226,7 @@ async function buildBusinessProjectModelResponse(businessProject) {
     businessProject.status
   );
 
-  return buildBusinessProjectModelRequest;
+  return buildBusinessProjectModelResponse;
 }
 
 async function buildApplicationModelResponse(application) {
@@ -437,18 +437,20 @@ async function deleteOneBusinessFromDb(collection, reqParam) {
 async function getAllStudentProjectsFromDb(collection) {
   const allStudentProjects = await dbService.getAllFromDb(collection)
   const parsedStudentProjects = await Promise.all(
-    allApplications.map(async (application) => {
-      return await buildApplicationModelResponse(application);
+    allStudentProjects.map(async (project) => {
+      return await buildStudentProjectModelResponse(project);
     })
   );
 
-  return response;
+  return parsedStudentProjects;
 }
 
-async function getOneStudentProjectFromDb(collection, userQuery) {
-  const response = dbService.getOneFromDb(collection, userQuery);
+async function getOneStudentProjectFromDb(collection, reqParam) {
+  const userQuery = { _id: new ObjectId(reqParam) };
+  const project = await dbService.getOneFromDb(collection, userQuery);
+  const parsedProject = await buildStudentProjectModelResponse(project)
 
-  return response;
+  return parsedProject;
 }
 
 async function createOneStudentProjectInDb(collection, requestBody) {
@@ -475,9 +477,14 @@ async function deleteOneStudentProjectFromDb(collection, reqParam) {
 
 ////////// BUSINESS PROJECT //////////
 async function getAllBusinessProjectsFromDb(collection) {
-  const response = dbService.getAllFromDb(collection);
+  const allBusinessProjects = dbService.getAllFromDb(collection);
+  const parsedBusinessProjects = await Promise.all(
+    allBusinessProjects.map(async (project) => {
+      return await buildBusinessProjectModelResponse(project);
+    })
+  );
 
-  return response;
+  return parsedBusinessProjects;
 }
 
 async function getOneBusinessProjectFromDb(collection, userQuery) {
