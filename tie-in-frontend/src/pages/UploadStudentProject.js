@@ -1,8 +1,9 @@
-import { useMutation } from "@tanstack/react-query";
+import {useMutation, useQuery} from "@tanstack/react-query";
 import { useState } from "react";
 import Datepicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { saveStudentProject } from "../api/studentProject";
+import {getStudentTeam} from "../api/team";
 import Button from "../components/Button";
 import InputType from "../components/InputType";
 import { isEmailValid } from "../utils/email";
@@ -10,16 +11,21 @@ import validateTextInput from "../utils/validateTextInput";
 import { isURLValid } from "../utils/validateURL";
 
 function UploadStudentProject() {
+    const studentId = sessionStorage.getItem("userMongoId");
+
+    const teams = useQuery(["team"], () => getStudentTeam(studentId), {
+        enabled: !!studentId
+    });
     const saveProject = useMutation(["studentProject"], () => saveStudentProject({
         "project_name": projectName,
         "logo_url": imageLogo,
         "description": description,
-        "team_id": "",
+        "team_id": team,
         "approval_status": "Pending",
         "start_date": startDate,
         "end_date": endDate,
         "business_model": businessPlan,
-        "technology": technology,
+        "technologies": technology,
         "instructor_email": instructorEmail,
         "instructor_linkedIn": instructorLinkedIn,
         "project_link": projectLink,
@@ -53,6 +59,7 @@ function UploadStudentProject() {
     const [instructorLinkedIn, setInstructorLinkedIn] = useState("");
     const [additionalMessage, setAdditionalMessage] = useState("");
     const [technology, setTechnology] = useState([]);
+    const [team, setTeam] = useState("");
 
     const onChange = (dates) => {
         const [start, end] = dates;
@@ -112,6 +119,14 @@ function UploadStudentProject() {
         if (validateInput()) {
             saveProject.mutate();
         }
+    }
+
+    const renderTeam = () => {
+          return teams.data?.map((team, index) =>(<p key={index} onClick={() => {
+             console.log(team._id)
+             setTeam(team._id)
+         }}>{team.name}</p>))
+
     }
 
     return (
@@ -200,6 +215,10 @@ function UploadStudentProject() {
                     <textarea onChange={(e) => setAdditionalMessage(e.target.value)} />
                 </label>
                 <InputType type={"file"} label={"Additional files: "} onChange={(e) => setAddFile(e.target.value)} />
+            </fieldset>
+
+            <fieldset>
+                {renderTeam()}
             </fieldset>
 
             <fieldset>
