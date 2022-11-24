@@ -1,5 +1,3 @@
-const BusinessId = require("../generic/businessId.generic.model")
-
 function BusinessProject(
   name,
   businessId,

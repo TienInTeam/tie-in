@@ -7,14 +7,14 @@ router.get('/users', appController.getAllUsers);
 router.get('/users/:uid', appController.getOneUserByUid);
 router.post('/users', appController.createOneUser);
 // router.put('/users/:uid', appController.updateOneUser);
-router.delete('/users/:uid', appController.deleteOneUserById);
+router.delete('/users/:id', appController.deleteOneUserById);
 
 ////////// STUDENT ROUTES //////////
 router.get('/students', appController.getAllStudents);
 router.get('/students/:email', appController.getOneStudentByEmail);
 router.post('/students', appController.createOneStudent);
 // router.put('/students/:email', appController.updateOneUser);
-router.delete('/students/:email', appController.deleteOneStudentById);
+router.delete('/students/:id', appController.deleteOneStudentById);
 
 ////////// TEAMS ROUTES //////////
 router.get('/teams', appController.getAllTeams);
@@ -51,7 +51,7 @@ router.get('/applications/student/:id', appController.getAllApplicationsMadeBySt
 router.get('/applications/business/:id', appController.getAllApplicationsCreatedByBusinessByBusinessId);
 router.post('/applications', appController.createOneApplication);
 // router.put('/students/teams/applications/:id', appController.updateOneUser);
-router.delete('/students/teams/applications/:id', appController.deleteOneApplicationById);
+router.delete('/applications/:id', appController.deleteOneApplicationById);
 
 
 module.exports = router;

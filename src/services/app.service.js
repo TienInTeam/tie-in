@@ -61,7 +61,7 @@ function buildStudentModelRequest(userInfo) {
 
 function buildTeamModelRequest(userInfo) {
   const buildTeamModelRequest = new TeamModelRequest(
-    userInfo.team_name,
+    userInfo.name,
     userInfo.members
   );
 
@@ -117,7 +117,6 @@ function buildBusinessProjectModelRequest(userInfo) {
     userInfo.budget,
     userInfo.team_size,
     userInfo.team_requirements,
-    userInfo.created_at,
     userInfo.end_date,
     userInfo.subjects,
     userInfo.design_url,
@@ -136,8 +135,7 @@ function buildApplicationModelRequest(userInfo) {
     userInfo.team_id,
     userInfo.business_request_id,
     userInfo.application_status,
-    userInfo.uploaded_files,
-    userInfo.created_at
+    userInfo.uploaded_files
   );
 
   return buildApplicationModelRequest;
@@ -287,15 +285,16 @@ async function createOneUserInDb(collection, requestBody) {
   return response;
 }
 
-// async function updateOneUserInDb(collection, userQuery, requestBody) {
-//   const response = dbService.updateOneInDb(
-//     collection,
-//     { uid: userQuery },
-//     buildUserModelRequest(requestBody)
-//   );
+async function updateOneUserInDb(collection, reqParam, requestBody) {
+  const userQuery = { uid: reqParam };
+  const response = dbService.updateOneInDb(
+    collection,
+    { uid: userQuery },
+    buildUserModelRequest(requestBody)
+  );
 
-//   return response;
-// }
+  return response;
+}
 
 async function deleteOneUserFromDb(collection, reqParam) {
   const userQuery = { _id: new ObjectId(reqParam) };
@@ -334,7 +333,7 @@ async function createOneStudentInDb(collection, requestBody) {
 // }
 
 async function deleteOneStudentFromDb(collection, reqParam) {
-  const userQuery = { id: new ObjectId(reqParam) };
+  const userQuery = { _id: new ObjectId(reqParam) };
   const response = dbService.deleteOneFromDb(collection, userQuery);
 
   return response;
@@ -406,8 +405,8 @@ async function getAllBusinessFromDb(collection) {
 }
 
 async function getOneBusinessFromDb(collection, reqParam) {
-  const response = dbService.getOneFromDb(collection, reqParam);
-
+  const userQuery = { email: reqParam };
+  const response = await dbService.getOneFromDb(collection, userQuery);
   return response;
 }
 
@@ -477,7 +476,7 @@ async function deleteOneStudentProjectFromDb(collection, reqParam) {
 
 ////////// BUSINESS PROJECT //////////
 async function getAllBusinessProjectsFromDb(collection) {
-  const allBusinessProjects = dbService.getAllFromDb(collection);
+  const allBusinessProjects = await dbService.getAllFromDb(collection);
   const parsedBusinessProjects = await Promise.all(
     allBusinessProjects.map(async (project) => {
       return await buildBusinessProjectModelResponse(project);
@@ -487,10 +486,11 @@ async function getAllBusinessProjectsFromDb(collection) {
   return parsedBusinessProjects;
 }
 
-async function getOneBusinessProjectFromDb(collection, userQuery) {
-  const response = dbService.getOneFromDb(collection, userQuery);
-
-  return response;
+async function getOneBusinessProjectFromDb(collection, reqParam) {
+  const userQuery = { _id: new ObjectId(reqParam) };
+  const project = await dbService.getOneFromDb(collection, userQuery);
+  const parsedProject = await buildBusinessProjectModelResponse(project);
+  return parsedProject;
 }
 
 async function createOneBusinessProjectInDb(collection, requestBody) {
@@ -587,7 +587,8 @@ async function createOneApplicationInDb(collection, requestBody) {
 //   return response;
 // }
 
-async function deleteOneApplicationFromDb(collection, userQuery) {
+async function deleteOneApplicationFromDb(collection, reqParam) {
+  const userQuery = { _id: new ObjectId(reqParam) };
   const response = dbService.deleteOneFromDb(collection, userQuery);
 
   return response;
@@ -597,7 +598,7 @@ module.exports = {
   getAllUsersFromDb,
   getOneUserFromDb,
   createOneUserInDb,
-  // updateOneUserInDb,
+  updateOneUserInDb,
   deleteOneUserFromDb,
 
   getAllStudentsFromDb,

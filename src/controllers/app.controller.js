@@ -44,7 +44,9 @@ async function createOneUser(req, res, next) {
 async function deleteOneUserById(req, res, next) {
   res
     .status(200)
-    .send(await appService.deleteOneStudentFromDb(USER_COLLECTION, req.params.id));
+    .send(
+      await appService.deleteOneStudentFromDb(USER_COLLECTION, req.params.id)
+    );
 }
 
 ////////// STUDENT //////////
@@ -58,7 +60,9 @@ async function getAllStudents(req, res, next) {
 async function getOneStudentByEmail(req, res, next) {
   res
     .status(200)
-    .send(await appService.getOneStudentFromDb(STUDENT_COLLECTION, req.params.email));
+    .send(
+      await appService.getOneStudentFromDb(STUDENT_COLLECTION, req.params.email)
+    );
 }
 
 async function createOneStudent(req, res, next) {
@@ -70,7 +74,9 @@ async function createOneStudent(req, res, next) {
 async function deleteOneStudentById(req, res, next) {
   res
     .status(200)
-    .send(await appService.deleteOneStudentFromDb(USER_COLLECTION, req.params.id));
+    .send(
+      await appService.deleteOneStudentFromDb(STUDENT_COLLECTION, req.params.id)
+    );
 }
 
 ////////// TEAMS //////////
@@ -80,10 +86,11 @@ async function getAllTeams(req, res, next) {
 }
 
 async function getAllTeamsOfStudentById(req, res, next) {
-  const userQuery = { _id: new ObjectId(req.params.id) };
   res
     .status(200)
-    .send(await appService.getAllTeamsOfStudent(TEAM_COLLECTION, req.params.id));
+    .send(
+      await appService.getAllTeamsOfStudent(TEAM_COLLECTION, req.params.id)
+    );
 }
 
 async function getOneTeamById(req, res, next) {
@@ -99,7 +106,6 @@ async function createOneTeam(req, res, next) {
 }
 
 async function deleteOneTeamById(req, res, next) {
-  const userQuery = { _id: new ObjectId(req.params.id) };
   res
     .status(200)
     .send(await appService.deleteOneTeamFromDb(TEAM_COLLECTION, req.params.id));
@@ -112,22 +118,27 @@ async function getAllBusiness(req, res, next) {
 }
 
 async function getOneBusinessByEmail(req, res, next) {
-  const userQuery = { email: req.params.email };
   res
     .status(200)
-    .send(await appService.getOneUserFromDb(BUSINESS_COLLECTION, req.params.email));
+    .send(
+      await appService.getOneBusinessFromDb(BUSINESS_COLLECTION, req.params.email)
+    );
 }
 
 async function createOneBusiness(req, res, next) {
   res
     .status(200)
-    .send(await appService.createOneBusinessInDb(BUSINESS_COLLECTION, req.body));
+    .send(
+      await appService.createOneBusinessInDb(BUSINESS_COLLECTION, req.body)
+    );
 }
 
 async function deleteOneBusinessById(req, res, next) {
   res
     .status(200)
-    .send(await appService.deleteOneTeamFromDb(BUSINESS_COLLECTION, req.params.id));
+    .send(
+      await appService.deleteOneTeamFromDb(BUSINESS_COLLECTION, req.params.id)
+    );
 }
 
 ////////// STUDENT PROJECT //////////
@@ -141,7 +152,6 @@ async function getAllStudentProjects(req, res, next) {
 }
 
 async function getOneStudentProjectById(req, res, next) {
-  const userQuery = { _id: new ObjectId(req.params.id) };
   res
     .status(200)
     .send(
@@ -166,7 +176,12 @@ async function createOneStudentProject(req, res, next) {
 async function deleteOneStudentProjectById(req, res, next) {
   res
     .status(200)
-    .send(await appService.deleteOneTeamFromDb(STUDENT_PROJECT_COLLECTION, req.params.id));
+    .send(
+      await appService.deleteOneTeamFromDb(
+        STUDENT_PROJECT_COLLECTION,
+        req.params.id
+      )
+    );
 }
 
 ////////// BUSINESS PROJECT //////////
@@ -174,15 +189,14 @@ async function deleteOneStudentProjectById(req, res, next) {
 async function getAllBusinessProjects(req, res, next) {
   res
     .status(200)
-    .send(await appService.getAllBusinessFromDb(BUSINESS_PROJECT_COLLECTION));
+    .send(await appService.getAllBusinessProjectsFromDb(BUSINESS_PROJECT_COLLECTION));
 }
 
 async function getOneBusinessProjectById(req, res, next) {
-  const userQuery = { _id: new ObjectId(req.params.id) };
   res
     .status(200)
     .send(
-      await appService.getOneBusinessFromDb(
+      await appService.getOneBusinessProjectFromDb(
         BUSINESS_PROJECT_COLLECTION,
         req.params.id
       )
@@ -203,7 +217,12 @@ async function createOneBusinessProject(req, res, next) {
 async function deleteOneBusinessProjectById(req, res, next) {
   res
     .status(200)
-    .send(await appService.deleteOneTeamFromDb(BUSINESS_PROJECT_COLLECTION, req.params.id));
+    .send(
+      await appService.deleteOneTeamFromDb(
+        BUSINESS_PROJECT_COLLECTION,
+        req.params.id
+      )
+    );
 }
 ////////// APPLICATIONS //////////
 
@@ -213,22 +232,38 @@ async function getAllApplications(req, res, next) {
     .send(await appService.getAllApplicationsFromDb(APPLICATION_COLLECTION));
 }
 
-async function getAllApplicationsMadeByStudentOrTeamByStudentId(req, res, next) {
+async function getAllApplicationsMadeByStudentOrTeamByStudentId(
+  req,
+  res,
+  next
+) {
   res
     .status(200)
-    .send(await appService.getAllAppMadeByStudentFromDb(APPLICATION_COLLECTION, req.params.id));
+    .send(
+      await appService.getAllAppMadeByStudentFromDb(
+        APPLICATION_COLLECTION,
+        req.params.id
+      )
+    );
 }
 
 async function getAllApplicationsCreatedByBusinessByBusinessId(req, res, next) {
   res
     .status(200)
-    .send(await appService.getAllAppCreatedByBusinessFromDb(APPLICATION_COLLECTION, req.params.id));
+    .send(
+      await appService.getAllAppCreatedByBusinessFromDb(
+        APPLICATION_COLLECTION,
+        req.params.id
+      )
+    );
 }
 
 async function getOneApplicationById(req, res, next) {
   res
     .status(200)
-    .send(await appService.getOneApplicationFromDb(USER_COLLECTION, req.params.id));
+    .send(
+      await appService.getOneApplicationFromDb(APPLICATION_COLLECTION, req.params.id)
+    );
 }
 
 async function createOneApplication(req, res, next) {
@@ -245,7 +280,7 @@ async function createOneApplication(req, res, next) {
 async function deleteOneApplicationById(req, res, next) {
   res
     .status(200)
-    .send(await appService.deleteOneTeamFromDb(TEAM_COLLECTION, req.params.id));
+    .send(await appService.deleteOneTeamFromDb(APPLICATION_COLLECTION, req.params.id));
 }
 
 module.exports = {
