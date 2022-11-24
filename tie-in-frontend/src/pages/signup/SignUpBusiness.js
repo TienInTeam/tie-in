@@ -1,5 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import React, { useState } from "react";
+import {useNavigate} from "react-router-dom";
 
 import { addBusiness } from "../../api/business";
 import { addUser } from "../../api/user";
@@ -11,14 +12,17 @@ import validateTextInput from "../../utils/validateTextInput";
 
 const SignUpBusiness = () => {
     const userType = "business";
+    const uid = sessionStorage.getItem("userId");
+    const navigate = useNavigate();
+
     const saveBusiness = useMutation(['business'], () => addBusiness({
-        uid: sessionStorage.getItem("userId"),
         name: businessName,
         email: businessEmail,
         description: description,
-        websiteUrl: websiteUrl,
-        linkedInUrl: linkedInUrl,
+        website_url: websiteUrl,
+        linkedIn_url: linkedInUrl,
         location: businessLocation,
+        logo_url: logo,
     }),
         {
             onError: (error) => {
@@ -27,11 +31,12 @@ const SignUpBusiness = () => {
         });
 
     const saveUser = useMutation(["user"], () => addUser({
-        uid: sessionStorage.getItem("userId"),
+        uid: uid,
         email: businessEmail,
         type: userType,
     }),
         {
+            enabled: !!uid,
             onError: (error) => {
                 alert(error.message);
             }
@@ -46,6 +51,7 @@ const SignUpBusiness = () => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [termsCondition, setTermsCondition] = useState(false);
+    const [logo, setLogo] = useState(null);
 
     const formValidation = () => {
         if (!validateTextInput(businessName)) {
@@ -77,8 +83,10 @@ const SignUpBusiness = () => {
         e.preventDefault();
         if (formValidation()) {
             await signUp(businessEmail, password)
+            saveBusiness.mutate();
             saveUser.mutate();
-            await saveBusiness.mutate();
+            sessionStorage.clear();
+            navigate("/login")
         } else
             alert("Something went wrong! Please try again.")
     }
@@ -93,6 +101,11 @@ const SignUpBusiness = () => {
                     label={"Company Name (required)"}
                     onChange={(e) => setBusinessName(e.target.value)}
                     value={businessName}
+                />
+                <InputType
+                    type={"file"}
+                    label={"Project Business Plan(optional) "}
+                    onChange={(e) => setLogo(e.target.value)}
                 />
                 <InputType
                     type={"text"}

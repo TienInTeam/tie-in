@@ -1,8 +1,9 @@
-import { useMutation } from "@tanstack/react-query";
+import {useMutation, useQuery} from "@tanstack/react-query";
 import { useState } from "react";
 import Datepicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { saveStudentProject } from "../api/studentProject";
+import {getStudentTeam} from "../api/team";
 import Button from "../components/Button";
 import InputType from "../components/InputType";
 import { isEmailValid } from "../utils/email";
@@ -10,22 +11,28 @@ import validateTextInput from "../utils/validateTextInput";
 import { isURLValid } from "../utils/validateURL";
 
 function UploadStudentProject() {
+    const studentId = sessionStorage.getItem("userMongoId");
+
+    const teams = useQuery(["team"], () => getStudentTeam(studentId), {
+        enabled: !!studentId
+    });
     const saveProject = useMutation(["studentProject"], () => saveStudentProject({
-        "id": 36,
-        "name": projectName,
-        "logo": imageLogo,
+        "project_name": projectName,
+        "logo_url": imageLogo,
         "description": description,
-        "team_id": "",
+        "team_id": team,
         "approval_status": "Pending",
         "start_date": startDate,
         "end_date": endDate,
         "business_model": businessPlan,
-        "technology": technology,
+        "technologies": technology,
         "instructor_email": instructorEmail,
         "instructor_linkedIn": instructorLinkedIn,
         "project_link": projectLink,
         "institution": institution,
         "additional_message": additionalMessage,
+        "category": projectCategory,
+        "location": location
     }), {
         onSuccess: () => {
             alert("Project details updated Successfully");
@@ -47,11 +54,12 @@ function UploadStudentProject() {
     const [dateIsChecked, setDateIsChecked] = useState(false);
     const [description, setDescription] = useState("");
     const [projectLink, setProjectLink] = useState("");
-    const [projectCategory, setProjectCategory] = useState("");
+    const [projectCategory, setProjectCategory] = useState([]);
     const [instructorEmail, setInstructorEmail] = useState("");
     const [instructorLinkedIn, setInstructorLinkedIn] = useState("");
     const [additionalMessage, setAdditionalMessage] = useState("");
     const [technology, setTechnology] = useState([]);
+    const [team, setTeam] = useState("");
 
     const onChange = (dates) => {
         const [start, end] = dates;
@@ -60,7 +68,7 @@ function UploadStudentProject() {
     };
 
     const validateInput = () => {
-        if (projectName === "" || institution === "" || projectCategory === "" || location === "" || imageLogo === "") {
+        if (projectName === "" || institution === "" || projectCategory.length < 0 || location === "" || imageLogo === "") {
             alert('Enter all mandatory input field values');
             return false;
         }
@@ -113,6 +121,14 @@ function UploadStudentProject() {
         }
     }
 
+    const renderTeam = () => {
+          return teams.data?.map((team, index) =>(<p key={index} onClick={() => {
+             console.log(team._id)
+             setTeam(team._id)
+         }}>{team.name}</p>))
+
+    }
+
     return (
         <div className={"upload-project"}>
             <fieldset>
@@ -147,7 +163,7 @@ function UploadStudentProject() {
             </fieldset>
 
             <fieldset>
-                <InputType type={"text"} label={"Project Category (required)"} onChange={(e) => setProjectCategory(e.target.value)} />
+                <InputType type={"text"} label={"Project Category (required)"} onChange={(e) => setProjectCategory([e.target.value])} />
                 <label>
                     <span>Project Description (required)</span>
                     <textarea onChange={(e) => setDescription(e.target.value)} />
@@ -167,8 +183,6 @@ function UploadStudentProject() {
                         <option> Sketch Up  </option>
                     </select><br />
                 </label>
-
-
                 <label><span>Development (optional)</span>
                     <select id="dev" onChange={(e) => setTechnology([...technology, e.target.value])}>
                         <option> ---Choose tool---</option>
@@ -201,6 +215,10 @@ function UploadStudentProject() {
                     <textarea onChange={(e) => setAdditionalMessage(e.target.value)} />
                 </label>
                 <InputType type={"file"} label={"Additional files: "} onChange={(e) => setAddFile(e.target.value)} />
+            </fieldset>
+
+            <fieldset>
+                {renderTeam()}
             </fieldset>
 
             <fieldset>
