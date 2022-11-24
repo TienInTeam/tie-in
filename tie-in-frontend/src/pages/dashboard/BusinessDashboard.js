@@ -1,10 +1,21 @@
 import {useQuery} from "@tanstack/react-query";
 import React from "react";
+import {getBusinessByEmail} from "../../api/business";
 import {requestStudentProjects} from "../../api/studentProject";
 import HighlightedStudentProject from "../../components/HighlightedStudentProject";
 import SideMenu from "../../components/SideMenu";
 
 const BusinessDashboard = () => {
+
+    const userEmail = sessionStorage.getItem("userEmail");
+
+    useQuery(['business'], () => getBusinessByEmail(userEmail), {
+        onSuccess: (data) => {
+            sessionStorage.setItem("userMongoId", data._id);
+            sessionStorage.setItem("userName", data.name)
+        }
+    })
+
     const requestStudentProject = useQuery(["studentProject"], () => requestStudentProjects(),{
         onError: (error) => {
             alert(error.message);

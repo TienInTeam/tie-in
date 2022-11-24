@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React from 'react';
 import { useNavigate } from "react-router-dom";
 import { requestBusinessProjects } from "../../api/businessProject";
+import {getStudentByEmail} from "../../api/student";
 import { requestApplicationStatuses } from "../../api/studentApplications";
 import { getBusinesses } from '../../api/business';
 import HighlightedBusinessProject from "../../components/HighlightedBusinessProject";
@@ -10,6 +11,14 @@ import Button from "../../components/Button";
 import SideMenu from "../../components/SideMenu";
 
 function StudentDashboard() {
+  const userEmail = sessionStorage.getItem("userEmail");
+
+  useQuery(['student', userEmail], () => getStudentByEmail(userEmail), {
+    onSuccess: (data) => {
+      sessionStorage.setItem("userMongoId", data._id);
+      sessionStorage.setItem("userName", data.first_name)
+    }
+  })
 
   const requestBusinessProject = useQuery(["businessProject"], () => requestBusinessProjects(),
     {
