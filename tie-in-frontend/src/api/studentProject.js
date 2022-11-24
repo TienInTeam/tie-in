@@ -2,9 +2,7 @@ import project from "./baseURL";
 
 export const requestStudentProjects = () => {
     return project.get("/studentProjects").then((res) => {
-        if(!res.data) {
-            throw new Error("try again");
-        } return res.data;
+        return res.data;
     });
 }
 
