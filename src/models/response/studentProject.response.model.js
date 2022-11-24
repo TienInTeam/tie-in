@@ -1,6 +1,5 @@
-const TeamId = require("../generic/teamId.generic.model");
-
 function StudentProject(
+  id,
   projectName,
   description,
   team,
@@ -21,9 +20,10 @@ function StudentProject(
   instructorLinkedin,
   technology
 ) {
+  this._id = id,
   this.project_name = projectName;
   this.description = description;
-  this.team = new TeamId(team.team_id, team.team_name);
+  this.team = team;
   this.approval_status = approvalStatus;
   this.logo_url = logoUrl;
   this.development_url = developmentUrl;

@@ -146,8 +146,6 @@ function buildApplicationModelRequest(userInfo) {
 ////// RESPONSE //////
 
 async function buildTeamModelResponse(team) {
-  // const response = await Promise.all(
-  // allTeamsList.map(
   const teamMembers = await Promise.all(
     team.members.map(async (member) => {
       const memberInfo = await dbService.getOneFromDb(STUDENT_COLLECTION, {
@@ -166,50 +164,66 @@ async function buildTeamModelResponse(team) {
   return new TeamModelResponse(team._id, team.name, teamMembers);
 }
 
-async function buildStudentProjectModelResponse(userInfo) {
-  const buildStudentProjectModelResponse = new StudentProjectModelResponse(
-    userInfo.project_name,
-    userInfo.description,
-    userInfo.team_id,
-    userInfo.approval_status,
-    userInfo.logo_url,
-    userInfo.development_url,
-    userInfo.design_url,
-    userInfo.project_link,
-    userInfo.category,
-    userInfo.institution,
-    userInfo.location,
-    userInfo.message,
-    userInfo.start_date,
-    userInfo.end_date,
-    userInfo.business_model,
-    userInfo.image,
-    userInfo.instructor_email,
-    userInfo.instructor_linkedin,
-    userInfo.technologies
+async function buildStudentProjectModelResponse(studentProject) {
+  //get teamId info
+  const teamIdInfo = await dbService
+    .getOneFromDb(TEAM_COLLECTION, {
+      _id: new ObjectId(studentProject.team_id),
+    })
+    .then((team) => new TeamId(team._id, team.name));
+
+  const buildStudentProjectModelResponse = new StudentProjectResponse(
+    studentProject._id,
+    studentProject.project_name,
+    studentProject.description,
+    teamIdInfo,
+    studentProject.approval_status,
+    studentProject.logo_url,
+    studentProject.development_url,
+    studentProject.design_url,
+    studentProject.project_link,
+    studentProject.category,
+    studentProject.institution,
+    studentProject.location,
+    studentProject.message,
+    studentProject.start_date,
+    studentProject.end_date,
+    studentProject.business_model,
+    studentProject.image,
+    studentProject.instructor_email,
+    studentProject.instructor_linkedin,
+    studentProject.technologies
   );
 
   return buildStudentProjectModelResponse;
 }
 
-async function buildBusinessProjectModelResponse(userInfo) {
-  const buildBusinessProjectModelRequest = new BusinessProjectModelRequest(
-    userInfo.name,
-    userInfo.business_id,
-    userInfo.location,
-    userInfo.description,
-    userInfo.budget,
-    userInfo.team_size,
-    userInfo.team_requirements,
-    userInfo.created_at,
-    userInfo.end_date,
-    userInfo.subjects,
-    userInfo.design_url,
-    userInfo.project_link,
-    userInfo.category,
-    userInfo.technologies,
-    userInfo.file_urls,
-    userInfo.status
+async function buildBusinessProjectModelResponse(businessProject) {
+  //get teamId info
+  const businessIdInfo = await dbService
+    .getOneFromDb(BUSINESS_COLLECTION, {
+      _id: new ObjectId(businessProject.team_id),
+    })
+    .then((business) => new BusinessId(business._id, business.name));
+
+  const buildBusinessProjectModelRequest = new BusinessProjectResponse(
+    businessProject._id,
+    businessProject.name,
+    businessIdInfo,
+    businessProject.location,
+    businessProject.description,
+    businessProject.budget,
+    businessProject.team_size,
+    businessProject.team_requirements,
+    businessProject.created_at,
+    businessProject.end_date,
+    businessProject.subjects,
+    businessProject.design_url,
+    businessProject.project_link,
+    businessProject.category,
+    businessProject.technologies,
+    businessProject.file_urls,
+    businessProject.status
   );
 
   return buildBusinessProjectModelRequest;
@@ -421,7 +435,12 @@ async function deleteOneBusinessFromDb(collection, reqParam) {
 
 ////////// STUDENT PROJECT //////////
 async function getAllStudentProjectsFromDb(collection) {
-  const response = dbService.getAllFromDb(collection);
+  const allStudentProjects = await dbService.getAllFromDb(collection)
+  const parsedStudentProjects = await Promise.all(
+    allApplications.map(async (application) => {
+      return await buildApplicationModelResponse(application);
+    })
+  );
 
   return response;
 }

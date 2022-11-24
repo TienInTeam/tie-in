@@ -1,6 +1,5 @@
-const BusinessId = require("../generic/businessId.generic.model");
-
 function BusinessProject(
+  id,
   name,
   business,
   location,
@@ -18,8 +17,9 @@ function BusinessProject(
   fileUrls,
   status
 ) {
+  this._id = id,
   this.name = name;
-  this.business = new BusinessId(business.business_id, business.business_name);
+  this.business = business;
   this.location = location;
   this.description = description;
   this.budget = budget;
