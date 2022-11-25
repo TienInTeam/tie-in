@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React from 'react';
 import { requestStudentProjects } from "../api/studentProject";
 import { requestUser } from "../api/user";
+import { requestBusinessProjectUploadTrend, requestStudentProjectUploadTrend, requestStudentProjectByCategory, requestBusinessProjectByCategory } from "../api/dataVisualization";
 import HighlightedStudentProject from "../components/HighlightedStudentProject";
 import SideMenu from "../components/SideMenu";
 import StudentDashboard from "./StudentDashboard";
@@ -21,9 +22,47 @@ const Dashboard = () => {
             }
         });
 
+    // const requestBusinessProjectTrend = useQuery(["businessProjectTrend"], () => requestBusinessProjectUploadTrend(),
+    //     {
+    //         onError: (error) => {
+    //             alert(error.message);
+    //         }
+    //     });
+    // const requestStudentProjectTrend = useQuery(["studentProjectTrend"], () => requestStudentProjectUploadTrend(),
+    //     {
+    //         onError: (error) => {
+    //             alert(error.message);
+    //         }
+    //     });
+    // const requestStudentCategory = useQuery(["studentProjectCategory"], () => requestStudentProjectByCategory(),
+    //     {
+    //         onError: (error) => {
+    //             alert(error.message);
+    //         }
+    //     });
+    // const requestBusinessCategory = useQuery(["businessProjectCategory"], () => requestBusinessProjectByCategory(),
+    //     {
+    //         onError: (error) => {
+    //             alert(error.message);
+    //         }
+    //     });
+
     if (requestStudentProject.isLoading) {
         return <span>Loading...</span>
     }
+
+    // if (requestBusinessProjectTrend.isLoading) {
+    //     return <span>Loading...</span>
+    // }
+    // if (requestStudentProjectTrend.isLoading) {
+    //     return <span>Loading...</span>
+    // }
+    // if (requestStudentCategory.isLoading) {
+    //     return <span>Loading...</span>
+    // }
+    // if (requestBusinessCategory.isLoading) {
+    //     return <span>Loading...</span>
+    // }
 
     const onSeeMore = () => {
         alert("see more is clicked")
@@ -36,10 +75,10 @@ const Dashboard = () => {
                 <div>
                     <div className={"data-visualization"}>
                         <div className="visualization-component">
-                            <DataVisualizationAreaChart inputPages={'c'}/>
+                            <DataVisualizationAreaChart inputData={''} />
                         </div>
                         <div className="visualization-component">
-                            <DataVisualizationPieChart inputPage={''}/>
+                            <DataVisualizationPieChart inputData={''} />
                         </div>
                     </div>
                     <div className={"student-project-wrapper"}>

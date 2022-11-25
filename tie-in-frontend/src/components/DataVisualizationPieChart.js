@@ -7,7 +7,7 @@ const DataVisualizationPieChart = ({ inputPage }) => {
     const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const d = new Date();
     let currentMonth = month[d.getMonth()];
-    if (inputPage === 's') {
+    if (sessionStorage.getItem("userType") === "student")  {
         data = [
             { name: 'AI', value: 400 },
             { name: 'Web Development', value: 300 },
@@ -16,7 +16,7 @@ const DataVisualizationPieChart = ({ inputPage }) => {
         ];
         text = 'New Business Projects';
     }
-    else {
+    else if (sessionStorage.getItem("userType") === "business"){
         data = [
             { name: 'Ux Design', value: 140 },
             { name: 'Web Development', value: 550 },
@@ -71,7 +71,6 @@ const DataVisualizationPieChart = ({ inputPage }) => {
                             <Label
                                 value={total} position="center" className='label-center' fontSize='27px' fill="white"
                             />
-
                         </Pie>
 
                         <Legend iconType="circle"
