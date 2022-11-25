@@ -198,7 +198,7 @@ function UploadBusinessProject() {
             </div>
                 : null}
             <div className="buttons">
-                {currentStep < 3 ? <Button onClick={onSave} variant={"secondary"} label={"Save"} /> : <Button onClick={onSave} variant={"primary"} label={"Submit"} />}
+                {currentStep < 3 ? <Button onClick={onSave} variant={"secondary"} label={"Save"} /> : <Button onClick={onSubmit} variant={"primary"} label={"Submit"} />}
                 {currentStep < 3 ? <Button onClick={onNext} variant={"primary"} label={"Next"} /> : null}
             </div>
         </div>
