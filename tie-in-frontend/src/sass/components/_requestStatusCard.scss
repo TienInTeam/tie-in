@@ -1,4 +1,5 @@
-.request-status-list-wrapper {
+.request-status-card {
+  .request-status-list-wrapper {
   background-color: $darker_blue_card_background;
   border-radius: 1rem;
   margin-left: auto;
@@ -54,4 +55,5 @@
 
 .team-wrapper img:nth-child(3) {
   transform: translateX(-20px);
+}
 }

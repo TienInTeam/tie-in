@@ -54,20 +54,12 @@ function UploadStudentProject() {
     const [instructorLinkedIn, setInstructorLinkedIn] = useState("");
     const [additionalMessage, setAdditionalMessage] = useState("");
     const [technology, setTechnology] = useState([]);
-    const [currentStep, setCurrentStep] = useState(1);
 
     const onChange = (dates) => {
         const [start, end] = dates;
         setStartDate(start);
         setEndDate(end);
     };
-
-    const onNext = () => {
-        setCurrentStep(currentStep + 1)
-    }
-    const onBack = () => {
-        setCurrentStep(currentStep - 1)
-    }
 
     const validateInput = () => {
         if (projectName === "" || institution === "" || projectCategory === "" || location === "" || imageLogo === "") {
@@ -125,11 +117,9 @@ function UploadStudentProject() {
 
     return (
         <div className={"upload-project"}>
-            <div className="icon back-icon" onClick={onBack}><BackIcon /></div>
             <h1>Upload Your Project</h1>
 
-            <div className="first-step">
-                {currentStep === 1 ? <fieldset>
+               <fieldset>
                     <InputType type={"text"} label={"Project Name (required)"} onChange={(e) => setProjectName(e.target.value)} />
                     <InputType type={"file"} label={"Project Logo (required)"} onChange={(e) => setImageLogo(e.target.value)} />
                     <fieldset>
@@ -159,10 +149,7 @@ function UploadStudentProject() {
                     <InputType type={"text"} label={"Project Institution (required)"} onChange={(e) => setInstitution(e.target.value)} />
                     <InputType type={"text"} label={"Location (required)"} onChange={(e) => setLocation(e.target.value)} />
                 </fieldset>
-                    : null
-                }
-            </div>
-            <div className="second-step">
+                 
                 <fieldset>
                     <InputType type={"text"} label={"Project Category (required)"} onChange={(e) => setProjectCategory(e.target.value)} />
                     <label>
@@ -172,9 +159,7 @@ function UploadStudentProject() {
                     <InputType type={"file"} label={"Project Image (optional) "} onChange={(e) => setProjectImage(e.target.value)} />
                     <InputType type={"text"} label={"Project Link (optional) "} onChange={(e) => setProjectLink(e.target.value)} />
                 </fieldset>
-            </div>
 
-            <div className="third-step">
                 <fieldset>
                     <label><span>Design (optional)</span>
                         <select id="design" onChange={(e) => setTechnology([e.target.value])}>
@@ -210,9 +195,7 @@ function UploadStudentProject() {
                         </select><br />
                     </label>
                 </fieldset>
-            </div>
 
-            <div className="fourth-step">
                 <fieldset>
                     <label>
                         <span>Additional Message</span>
@@ -224,7 +207,6 @@ function UploadStudentProject() {
                     <InputType type={"email"} label={"Instructor Email (required)"} onChange={(e) => setInstructorEmail(e.target.value)} />
                     <InputType type={"text"} label={"Instructors' Linked Profile (optional) "} onChange={(e) => setInstructorLinkedIn(e.target.value)} />
                 </fieldset>
-            </div>
             <Button onClick={onSave} variant={"primary"} label={"Save"} />
         </div>
     );
