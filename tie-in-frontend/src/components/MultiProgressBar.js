@@ -8,44 +8,53 @@ function MultiProgressBar({ currentStep }) {
   if (currentStep === 1) {
     stepPercentage = 0;
   } else if (currentStep === 2) {
-    stepPercentage = 33;
+    stepPercentage = 50;
   } else if (currentStep === 3) {
-    stepPercentage = 66;
-  } else if (currentStep === 4) {
     stepPercentage = 100;
-  } else {
+  }  else {
     stepPercentage = 0;
   }
   return (
-    <ProgressBar percent={stepPercentage}>
-    <Step>
-      {({ accomplished, index }) => (
-        <div
-          className={`indexedStep ${accomplished ? "accomplished" : null}`}
-        >
-          {index + 1}
-        </div>
-      )}
-    </Step>
-    <Step>
-      {({ accomplished, index }) => (
-        <div
-          className={`indexedStep ${accomplished ? "accomplished" : null}`}
-        >
-          {index + 1}
-        </div>
-      )}
-    </Step>
-    <Step>
-      {({ accomplished, index }) => (
-        <div
-          className={`indexedStep ${accomplished ? "accomplished" : null}`}
-        >
-          {index + 1}
-        </div>
-      )}
-    </Step>
-  </ProgressBar>
+    <div className="progress-bar">
+      <ProgressBar percent={stepPercentage}>
+      <Step>
+        {({ accomplished, index }) => (
+          <div>
+            <div
+              className={`indexedStep ${accomplished ? "accomplished" : null}`}
+            >
+              {index + 1}
+            </div>
+            <p>Project Information</p>
+          </div>
+        )}
+      </Step>
+      <Step>
+        {({ accomplished, index }) => (
+          <div>
+            <div
+              className={`indexedStep ${accomplished ? "accomplished" : null}`}
+            >
+              {index + 1}
+            </div>
+            <p>Technology</p>
+          </div>
+        )}
+      </Step>
+      <Step>
+        {({ accomplished, index }) => (
+          <div>
+            <div
+              className={`indexedStep ${accomplished ? "accomplished" : null}`}
+            >
+              {index + 1}
+            </div>
+            <p>Additional Information</p>
+          </div>
+        )}
+      </Step>
+        </ProgressBar>
+    </div>
 )
 }
 
