@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Datepicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
-import { saveBusinessProject } from "../api/businessProject";
+import {saveBusinessProject} from "../api/businessProject";
 import Button from "../components/Button";
 import InputType from "../components/InputType";
 import validateTextInput from "../utils/validateTextInput";
@@ -13,20 +13,25 @@ import MultiStepProgressBar from "../components/MultiProgressBar";
 
 
 function UploadBusinessProject() {
+    const businessId = sessionStorage.getItem('userMongoId');
+    const businessName = sessionStorage.getItem('userName');
+
     const saveProject = useMutation(["businessProject"], () => saveBusinessProject({
-        "id": 42,
         "name": projectName,
         "description": description,
         "team_size": teamSize,
         "team_requirements": teamRequirement,
-        "expectedDeadline": date,
+        "start_date": startDate,
+        "end_date": endDate,
         "location": location,
         "budget": estimatedBudget,
         "category": category,
-        "technology": technology,
+        "technologies": technology,
         "additionalFields": additionalField,
-        "files": additionalFile,
-        "links": additionalLink
+        "file": additionalFile,
+        "links": additionalLink,
+        "status": "available",
+        "business_id": businessId,
     }), {
         onSuccess: () => {
         },
@@ -37,7 +42,8 @@ function UploadBusinessProject() {
     const navigate = useNavigate();
     const [projectName, setProjectName] = useState("");
     const [description, setDescription] = useState("");
-    const [date, setDate] = useState(null);
+    const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(null);
     const [dateIsChecked, setDateIsChecked] = useState(false);
     const [teamSize, setTeamSize] = useState("");
     const [teamRequirement, setTeamRequirement] = useState("");
@@ -49,6 +55,7 @@ function UploadBusinessProject() {
     const [additionalField, setAdditionalField] = useState("");
     const [additionalFile, setAdditionalFile] = useState("");
     const [additionalLink, setAdditionalLink] = useState("");
+    const [business, setBusiness] = useState({});
     const [currentStep, setCurrentStep] = useState(1);
 
     const onChange = (dates) => {
@@ -57,31 +64,31 @@ function UploadBusinessProject() {
     };
 
     const validateInput = () => {
-        if (projectName === "" || description === "" || teamSize === "" || estimatedBudget === "" || teamRequirement === "") {
-            alert('Enter all mandatory input field values');
-            return false;
-        }
-        if (!validateTextInput(projectName)) {
-            alert("Valid Project name is required.");
-            return false;
-        }
-        if (teamSize < 1) {
-            alert('Team size should be positive number.');
-            return false;
-        }
-        if (location) {
-            if (!validateTextInput(location)) {
-                alert("Enter Valid location");
-                return false;
-            }
-            else {
-                return true;
-            }
-        }
-        else {
-            return true;
-        }
-    }
+  if (projectName === "" || description === "" || teamSize === "" || estimatedBudget === "" || teamRequirement === "") {
+      alert('Enter all mandatory input field values');
+      return false;
+  }
+  if (!validateTextInput(projectName)) {
+      alert("Valid Project name is required.");
+      return false;
+  }
+  if(teamSize<1){
+    alert('Team size should be positive number.');
+    return false;
+  }
+  if (location) {
+      if (!validateTextInput(location)) {
+          alert("Enter Valid location");
+          return false;
+      }
+      else {
+          return true;
+      }
+  }
+  else {
+      return true;
+  }
+}
 
     const onSubmit = () => {
         if (validateInput()) {
@@ -100,6 +107,12 @@ function UploadBusinessProject() {
     const onLocation = () => {
         navigate("/dashboard")
     }
+
+    const onChange = (dates) => {
+        const [start, end] = dates;
+        setStartDate(start);
+        setEndDate(end);
+    };
 
     return (
         <div className="upload-business-project">
@@ -202,7 +215,7 @@ function UploadBusinessProject() {
                 {currentStep < 3 ? <Button onClick={onNext} variant={"primary"} label={"Next"} /> : null}
             </div>
         </div>
-    )
+    );
 }
 
 export default UploadBusinessProject;
