@@ -1,9 +1,12 @@
-import {useQuery} from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import {getBusinessByEmail} from "../../api/business";
-import {requestStudentProjects} from "../../api/studentProject";
+import { getBusinessByEmail } from "../../api/business";
+import { requestStudentProjects } from "../../api/studentProject";
 import HighlightedStudentProject from "../../components/HighlightedStudentProject";
 import SideMenu from "../../components/SideMenu";
+import DataVisualizationPieChart from "../../components/DataVisualizationPieChart";
+import DataVisualizationAreaChart from "../../components/DataVisualizationAreaChart";
+import { requestStudentProjectUploadTrend, requestStudentProjectByCategory } from "../../api/dataVisualization";
 
 const BusinessDashboard = () => {
 
@@ -16,7 +19,7 @@ const BusinessDashboard = () => {
         }
     })
 
-    const requestStudentProject = useQuery(["studentProject"], () => requestStudentProjects(),{
+    const requestStudentProject = useQuery(["studentProject"], () => requestStudentProjects(), {
         onError: (error) => {
             alert(error.message);
         }
@@ -34,8 +37,12 @@ const BusinessDashboard = () => {
             <SideMenu />
             <div>
                 <div className={"data-visualization"}>
-                    <h1>Data visualization 1</h1>
-                    <h1>Data visualization 2</h1>
+                    <div className="visualization-component">
+                        <DataVisualizationAreaChart inputData={''} />
+                    </div>
+                    <div className="visualization-component">
+                        <DataVisualizationPieChart inputData={''} />
+                    </div>
                 </div>
                 <div className={"student-project-wrapper"}>
                     <div className={"title-wrapper"}>
