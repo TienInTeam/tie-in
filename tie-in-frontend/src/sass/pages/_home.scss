@@ -69,4 +69,11 @@
     align-items: center;
     justify-content: center;
   }
+
+  .home-intro {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    margin-top: 3rem;
+  }
 }
