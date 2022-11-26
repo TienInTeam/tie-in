@@ -8,19 +8,19 @@ const DataVisualizationPieChart = ({ inputPage }) => {
     let currentMonth = month[d.getMonth()];
     if (sessionStorage.getItem("userType") === "student") {
         data = [
-            { name: 'AI', value: 400 },
-            { name: 'Web Development', value: 300 },
-            { name: 'Robotics', value: 300 },
-            { name: 'E-ommerce', value: 200 },
+            { name: 'AI', value: 5 },
+            { name: 'Web Development', value: 10 },
+            { name: 'Robotics', value: 21 },
+            { name: 'E-ommerce', value: 11 },
         ];
         text = 'New Business Projects';
     }
     else if (sessionStorage.getItem("userType") === "business") {
         data = [
-            { name: 'Ux Design', value: 140 },
-            { name: 'Web Development', value: 550 },
-            { name: 'Marketing', value: 100 },
-            { name: 'E-ommerce', value: 250 },
+            { name: 'Ux Design', value: 14 },
+            { name: 'Web Development', value: 5 },
+            { name: 'Marketing', value: 10 },
+            { name: 'E-ommerce', value: 20 },
         ];
         text = 'New Student Projects';
     }
