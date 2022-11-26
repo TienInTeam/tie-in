@@ -9,6 +9,9 @@ import HighlightedBusinessProject from "../../components/HighlightedBusinessProj
 import RequestStatusCard from "../../components/RequestStatusCard";
 import Button from "../../components/Button";
 import SideMenu from "../../components/SideMenu";
+import DataVisualizationPieChart from "../../components/DataVisualizationPieChart";
+import DataVisualizationAreaChart from "../../components/DataVisualizationAreaChart";
+import { requestBusinessProjectUploadTrend, requestBusinessProjectByCategory } from "../../api/dataVisualization";
 
 function StudentDashboard() {
   const userEmail = sessionStorage.getItem("userEmail");
@@ -95,13 +98,12 @@ function StudentDashboard() {
     <div className="grid-container">
       <SideMenu />
       <div>
-        <div className={"data-visualization"}>
+      <div className={"data-visualization"}>
           <div className="visualization-component">
-            <h1>Total Project View</h1>
+            <DataVisualizationAreaChart inputPages={'s'}/>
           </div>
           <div className="visualization-component">
-            <h1>Projects Applied</h1>
-            <h1>Conversion Rate</h1>
+            <DataVisualizationPieChart inputPage={'s'}/>
           </div>
         </div>
 
