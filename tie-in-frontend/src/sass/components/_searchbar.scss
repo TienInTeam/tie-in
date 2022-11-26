@@ -17,6 +17,15 @@
     position: relative;
   }
 
+.search-wrapper .input-type  label  input[type=text] {
+padding-left: 1rem;
+}
+
+.search-wrapper .input-type  label  input[type=text]::placeholder {
+  color: black;
+  text-align: left;
+}
+
   .search-icon {
     position: absolute;
     right: 0;
@@ -37,7 +46,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 1.2rem;
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
   }
 
   .filter-wrapper select{
@@ -45,5 +54,10 @@
     height: 2rem;
     border-radius: 8px;
     padding: .3rem;
+  }
+
+  .check-application {
+    display: flex;
+    align-items: center;
   }
 }
