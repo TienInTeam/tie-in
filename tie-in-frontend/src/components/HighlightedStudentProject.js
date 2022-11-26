@@ -2,7 +2,7 @@ import React from 'react'
 import Button from './Button';
 
 function HighlightedStudentProject({studentProject, onSeeMore}) {
-    const {name, institution, category, location} = studentProject;
+    const {project_name, institution, category, location} = studentProject;
 
     const renderCategory = () => {
         if (!category) {
@@ -13,7 +13,7 @@ function HighlightedStudentProject({studentProject, onSeeMore}) {
     }
     return (
             <div className={"highlightStudentProject"}>
-                <h2>{name}</h2>
+                <h2>{project_name}</h2>
                 <div>
                     {renderCategory()}
                 </div>
