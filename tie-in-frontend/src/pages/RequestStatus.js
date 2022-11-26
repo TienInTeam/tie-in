@@ -7,20 +7,19 @@ import SideMenu from "../components/SideMenu"
 
 function RequestStatus(options) {
     const businessId = sessionStorage.getItem("userMongoId");
-    const [businessProjectId, setBusinessProjectId] = useState(null);
-    // const [applicationId, setApplicationId] = useState(null);
-    const applicationId = "637d74df3851c065fe214692"
 
     const requestBusinessApplications = useQuery(["applicationBusiness"],
         () => getBusinessApplication(businessId));
 
     const requestBusinessProject = useQuery(["business"], () => requestBusinessProjects())
 
-    const closeBusinessProject = useMutation(["businessProjects"], () => updateBusinessProject(), {
-        enabled: !!businessProjectId
+    const closeBusinessProject = useMutation(["businessProjects"], (id) => updateBusinessProject(id), {
+        onSuccess: () => {
+            requestBusinessProject.refetch();
+        }
     })
 
-    const updateApplication = useMutation(["application"], () => updateApplicationStatus(applicationId), {
+    const updateApplication = useMutation(["application"], (id) => updateApplicationStatus(id), {
         onSuccess: () => {
             requestBusinessApplications.refetch();
         }
@@ -35,24 +34,19 @@ function RequestStatus(options) {
 
 
     const onClose = (businessProjectId) => {
-        setBusinessProjectId(businessProjectId)
-        console.log(businessProjectId);
-        closeBusinessProject.mutate();
+        closeBusinessProject.mutate(businessProjectId);
     }
 
     const onApprove = (id) => {
-        // setApplicationId(id);
-        updateApplication.mutate();
+        updateApplication.mutate(id);
     }
-    console.log(applicationId)
 
     const renderTeamApplication = () => {
         if (!requestBusinessApplications?.data) {
             return null;
         }
         return requestBusinessApplications.data.map((application) => {
-                return requestBusinessProject.data
-                    .filter((business) =>( business._id === application.business_request_id))
+                return requestBusinessProject?.data?.filter((businessProject) =>( businessProject._id === application.business_request_id && application.application_status === "open"))
                     .map((filteredBusinessProject, index) =>
                         <TeamApplication
                             key={index}
@@ -61,6 +55,7 @@ function RequestStatus(options) {
                             onClose={() => onClose(application.business_request_id)}
                             status={application.application_status}
                             teamId={application.team.team_id}
+                            businessProjectStatus={filteredBusinessProject.status}
                             onApprove={() => onApprove(application._id)}
                         />
                     );
