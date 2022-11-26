@@ -60,12 +60,12 @@
       "id": 2,
       "name": "App to create time travel",
       "description": "test test",
-      "budget" : "300k",
+      "budget": "300k",
       "team_requirements": "3 desingers",
-      "team_size": "2-4",
+      "team_size": "4",
       "linkedIn_url": "https://test.com",
       "team_id": "",
-      "location": "Vancouver, BC",
+      "location": "Vancouver",
       "tags": "Software Engineer, Web-App",
       "start_date": "10 Jan 2022",
       "end_date": "13-Jun-2031",
@@ -73,12 +73,14 @@
       "links": "www.pwrtech.com",
       "business_model": "",
       "status": false,
-      "additional_file_url": 
-      ["http://africau.edu/images/default/sample.pdf",
-      "http://africau.edu/images/default/sample.pdf"],
+      "additional_file_url": [
+        "http://africau.edu/images/default/sample.pdf",
+        "http://africau.edu/images/default/sample.pdf"
+      ],
       "category": [
         "mobililty",
-        "AI"
+        "UI/UX",
+        "Commercial"
       ],
       "instructor_email": "",
       "product_link": "",
@@ -89,12 +91,12 @@
       "id": 1,
       "name": "Reservation App",
       "description": "Test test ",
-      "budget" : "3400k",
+      "budget": "3400k",
       "team_requirements": "2 developers, no designers",
-      "team_size": "2-4",
+      "team_size": "5",
       "linkedIn_url": "https://test.com",
       "team_id": "",
-      "location": "Vancouver, BC",
+      "location": "Vancouver",
       "business_id": 1,
       "tags": "Software Engineer, Web-App",
       "start_date": "2022-10-19",
@@ -102,8 +104,8 @@
       "business_model": "",
       "status": true,
       "category": [
-        "Web",
-        "UI"
+        "Web Development",
+        "UI/UX"
       ],
       "instructor_email": "fjoca00@gmail.com",
       "product_link": "https://google.com",
@@ -113,12 +115,14 @@
       "id": 42,
       "name": "Test",
       "summary": "test",
-      "teamSize": "5",
+      "teamSize": "3",
       "teamrequirement": "2devs",
       "expectedDeadline": "2022-11-09T08:00:00.000Z",
       "location": "test",
       "budget": "3000",
-      "category": [],
+      "category": [
+        "Marketing"
+      ],
       "technology": [],
       "additionalFields": "",
       "files": "",
@@ -142,7 +146,7 @@
       "product_link": "",
       "subject": "",
       "institution": "Langara",
-      "location":"Vancouver"
+      "location": "Vancouver"
     },
     {
       "id": 1,
@@ -163,8 +167,8 @@
       "instructor_email": "fjoca00@gmail.com",
       "product_link": "https://google.com",
       "institution": "Langara College",
-      "location":"Vancouver",
-      "image":[
+      "location": "Vancouver",
+      "image": [
         "https://picsum.photos/200/200"
       ]
     },
@@ -194,7 +198,7 @@
       "institution": "Langara College"
     }
   ],
-  "applicationStatus": [
+  "applications": [
     {
       "name": "nannies for you",
       "team_name": "Power Puff kids",
@@ -478,6 +482,489 @@
       "linkedInUrl": "ww.wdwew.wpomc",
       "location": "wd",
       "id": 15
+    }
+  ],
+  "teams": [
+    {
+      "id": 56,
+      "student_id": "112",
+      "team_name": "Luna",
+      "members": [
+        112,
+        113,
+        114,
+        115
+      ]
+    },
+    {
+      "id": 57,
+      "student_id": "116",
+      "team_name": "unito",
+      "members": [
+        116,
+        117
+      ]
+    },
+    {
+      "id": 58,
+      "student_id": "116",
+      "team_name": "panthers",
+      "members": [
+        118,
+        119,
+        116
+      ]
+    },
+    {
+      "id": 59,
+      "student_id": "113",
+      "team_name": "panthers",
+      "members": [
+        114,
+        113,
+        116
+      ]
+    },
+    {
+      "id": 60,
+      "student_id": "249",
+      "team_name": "panthers",
+      "members": [
+        249,
+        119
+      ]
+    },
+    {
+      "id": 60,
+      "student_id": "116",
+      "team_name": "panthers",
+      "members": [
+        249,
+        119,
+        116
+      ]
+    }
+  ],
+  "applications": [
+    {
+      "_id": "6365c9048152b12d49d1106d",
+      "team_id": "123456345",
+      "request_id": "9652314578",
+      "application_status": "pending",
+      "uploaded_files": null,
+      "application_date": "2022-11-10"
+    },
+    {
+      "_id": "6365d21f3407640145fcf0ad",
+      "team_id": "123456345",
+      "request_id": "9652314578",
+      "application_status": "pending",
+      "uploaded_files": null,
+      "application_date": "2022-11-10"
+    },
+    {
+      "_id": "636613d80ebd8b4cf5daa8f6",
+      "team_id": "159487263",
+      "request_id": "895623147",
+      "application_status": "open",
+      "uploaded_files": null,
+      "application_date": "2020-15-05"
+    },
+    {
+      "id": 2,
+      "team_id": [
+        "panthers"
+      ],
+      "team_name": "unito",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "2022-11-18T10:20:21.229Z"
+    },
+    {
+      "_id": 2,
+      "team_id": [
+        "panthers"
+      ],
+      "team_name": "unito",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "2022-11-18T10:30:48.008Z",
+      "id": 3
+    },
+    {
+      "_id": 2,
+      "team_id": [
+        "panthers"
+      ],
+      "team_name": "unito",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "",
+      "id": 4
+    },
+    {
+      "_id": 2,
+      "team_id": null,
+      "team_name": "unito",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "2022-11-18T19:53:00.952Z",
+      "id": 5
+    },
+    {
+      "_id": 2,
+      "team_id": null,
+      "team_name": "unito",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "2022-11-18T19:53:27.341Z",
+      "id": 6
+    },
+    {
+      "_id": 2,
+      "team_id": null,
+      "team_name": "unito",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "2022-11-18T20:01:07.355Z",
+      "id": 7
+    },
+    {
+      "_id": 2,
+      "team_id": [
+        "57"
+      ],
+      "team_name": "unito",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "2022-11-18T20:05:59.189Z",
+      "id": 8
+    },
+    {
+      "_id": 2,
+      "team_id": [
+        "57"
+      ],
+      "team_name": "unito",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "2022-11-18T20:28:31.123Z",
+      "id": 9
+    },
+    {
+      "_id": 2,
+      "team_id": [
+        "57"
+      ],
+      "team_name": "unito",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "2022-11-18T20:29:42.857Z",
+      "id": 10
+    },
+    {
+      "_id": 2,
+      "team_id": "58",
+      "team_name": "unito",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "",
+      "id": 11
+    },
+    {
+      "_id": 2,
+      "team_id": null,
+      "team_name": "unito",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "",
+      "id": 12
+    },
+    {
+      "_id": 2,
+      "team_id": "57",
+      "team_name": "unito",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "",
+      "id": 13
+    },
+    {
+      "_id": 2,
+      "team_id": "60",
+      "team_name": "unito",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "2022-11-18T23:01:47.660Z",
+      "id": 14
+    },
+    {
+      "_id": 2,
+      "team_id": "60",
+      "student_id": "116",
+      "team_name": "panthers",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "2022-11-18T23:03:02.812Z",
+      "id": 15
+    },
+    {
+      "_id": 2,
+      "team_id": "",
+      "student_id": "",
+      "team_name": "",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "",
+      "id": 16
+    },
+    {
+      "_id": 2,
+      "team_id": "",
+      "student_id": "",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "2022-11-18T23:13:44.831Z",
+      "id": 17
+    },
+    {
+      "_id": 2,
+      "team_id": "",
+      "student_id": "",
+      "team_name": "",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "",
+      "id": 18
+    },
+    {
+      "_id": 2,
+      "team_id": "",
+      "team_name": "",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "",
+      "id": 19
+    },
+    {
+      "_id": 2,
+      "team_id": "60",
+      "student_id": "",
+      "team_name": "",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "",
+      "id": 20
+    },
+    {
+      "_id": 2,
+      "team_id": "60",
+      "student_id": "",
+      "team_name": "",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "",
+      "id": 21
+    },
+    {
+      "_id": 2,
+      "team_id": "60",
+      "student_id": "",
+      "team_name": "",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "2022-11-18T23:34:02.483Z",
+      "id": 22
+    },
+    {
+      "_id": 2,
+      "team_id": "60",
+      "student_id": "",
+      "team_name": "",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "2022-11-18T23:34:14.325Z",
+      "id": 23
+    },
+    {
+      "_id": 2,
+      "team_id": "60",
+      "student_id": "",
+      "team_name": "",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "2022-11-18T23:34:38.199Z",
+      "id": 24
+    },
+    {
+      "_id": 2,
+      "team_id": "60",
+      "student_id": "",
+      "team_name": "",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "2022-11-18T23:35:11.907Z",
+      "id": 25
+    },
+    {
+      "_id": 2,
+      "team_id": "60",
+      "student_id": "",
+      "team_name": "",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "2022-11-18T23:35:28.147Z",
+      "id": 26
+    },
+    {
+      "_id": 2,
+      "team_id": "60",
+      "student_id": "",
+      "team_name": "",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "2022-11-18T23:35:32.115Z",
+      "id": 27
+    },
+    {
+      "_id": 2,
+      "team_id": "60",
+      "student_id": "",
+      "team_name": "",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "2022-11-18T23:35:59.159Z",
+      "id": 28
+    },
+    {
+      "_id": 2,
+      "team_id": "60",
+      "student_id": "",
+      "team_name": "",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "",
+      "id": 29
+    },
+    {
+      "_id": 2,
+      "team_id": "60",
+      "student_id": "",
+      "team_name": "",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "",
+      "id": 30
+    },
+    {
+      "_id": 2,
+      "team_id": "60",
+      "student_id": "",
+      "team_name": "",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "2022-11-18T23:39:20.305Z",
+      "id": 31
+    },
+    {
+      "_id": 2,
+      "team_id": "60",
+      "student_id": "",
+      "team_name": "",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "2022-11-18T23:40:16.818Z",
+      "id": 32
+    },
+    {
+      "_id": 2,
+      "team_id": "60",
+      "student_id": "",
+      "team_name": "",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "2022-11-18T23:40:56.410Z",
+      "id": 33
+    },
+    {
+      "_id": 2,
+      "team_id": "60",
+      "student_id": "",
+      "team_name": "panthers",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "2022-11-18T23:42:05.118Z",
+      "id": 34
+    },
+    {
+      "_id": 2,
+      "team_id": "60",
+      "student_id": "",
+      "team_name": "panthers",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "2022-11-18T23:43:13.110Z",
+      "id": 35
+    },
+    {
+      "_id": 2,
+      "team_id": "60",
+      "student_id": "",
+      "team_name": "panthers",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "2022-11-18T23:43:30.734Z",
+      "id": 36
+    },
+    {
+      "_id": 2,
+      "team_id": "58",
+      "student_id": "",
+      "team_name": "panthers",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "2022-11-18T23:45:40.288Z",
+      "id": 37
+    },
+    {
+      "_id": 2,
+      "team_id": "57",
+      "student_id": "",
+      "team_name": "panthers",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "2022-11-18T23:45:50.724Z",
+      "id": 38
+    },
+    {
+      "_id": 2,
+      "team_id": "57",
+      "student_id": "",
+      "team_name": "unito",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "2022-11-18T23:46:02.848Z",
+      "id": 39
+    },
+    {
+      "_id": 2,
+      "team_id": "60",
+      "student_id": "",
+      "team_name": "unito",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "2022-11-18T23:46:18.599Z",
+      "id": 40
+    },
+    {
+      "_id": 2,
+      "team_id": "58",
+      "student_id": "",
+      "team_name": "",
+      "business_request_id": "2",
+      "application_status": "pending",
+      "created_at": "",
+      "id": 41
     }
   ]
 }

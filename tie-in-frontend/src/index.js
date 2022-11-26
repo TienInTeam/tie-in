@@ -2,19 +2,21 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.scss';
+import BusinessDashboard from "./pages/dashboard/BusinessDashboard";
 import BusinessProjectsList from "./pages/BusinessProjectsList";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/dashboard/Dashboard";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUpBusiness from "./pages/signup/SignUpBusiness";
 import SignUpStudent from "./pages/signup/SignUpStudent";
 import SignUpLandingPage from "./pages/signup/SignUpLandingPage";
-import StudentDashboard from "./pages/StudentDashboard";
+import StudentDashboard from "./pages/dashboard/StudentDashboard";
 import StudentProjectsList from "./pages/StudentProjectsList";
 import UploadBusinessProject from "./pages/UploadBusinessProject";
 import UploadStudentProject from "./pages/UploadStudentProject";
 import BusinessRequestDetails from "./pages/BusinessRequestDetails";
+import ApplyBusinessProject from "./pages/ApplyBusinessProject";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
@@ -37,9 +39,11 @@ root.render(
                         <Route path='/uploadstudentproject' element={<UploadStudentProject />} />
                         <Route path='/uploadbusinessproject' element={<UploadBusinessProject />} />
                         <Route path='/studentdashboard' element={<StudentDashboard />} />
+                        <Route path='/businessDashboard' element={<BusinessDashboard />} />
                         <Route path='/studentprojectslist' element={<StudentProjectsList/>}/>
                         <Route path='/businessprojectslist' element={<BusinessProjectsList/>}/>
                         <Route path='/businessrequestdetails' element={<BusinessRequestDetails/>}/>
+                        <Route path='/applybusinessproject' element={<ApplyBusinessProject />} />
                         <Route
                             path="*"
                             element={
