@@ -21,7 +21,6 @@ function UploadBusinessProject() {
         "description": description,
         "team_size": teamSize,
         "team_requirements": teamRequirement,
-        "start_date": startDate,
         "end_date": endDate,
         "location": location,
         "budget": estimatedBudget,
@@ -30,7 +29,7 @@ function UploadBusinessProject() {
         "additionalFields": additionalField,
         "file": additionalFile,
         "links": additionalLink,
-        "status": "available",
+        "status": "open",
         "business_id": businessId,
     }), {
         onSuccess: () => {
@@ -42,7 +41,6 @@ function UploadBusinessProject() {
     const navigate = useNavigate();
     const [projectName, setProjectName] = useState("");
     const [description, setDescription] = useState("");
-    const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(null);
     const [dateIsChecked, setDateIsChecked] = useState(false);
     const [teamSize, setTeamSize] = useState("");
@@ -57,11 +55,6 @@ function UploadBusinessProject() {
     const [additionalLink, setAdditionalLink] = useState("");
     const [business, setBusiness] = useState({});
     const [currentStep, setCurrentStep] = useState(1);
-
-    const onChange = (dates) => {
-        const date = dates;
-        setDate(date);
-    };
 
     const validateInput = () => {
   if (projectName === "" || description === "" || teamSize === "" || estimatedBudget === "" || teamRequirement === "") {
@@ -108,10 +101,8 @@ function UploadBusinessProject() {
         navigate("/dashboard")
     }
 
-    const onChange = (dates) => {
-        const [start, end] = dates;
-        setStartDate(start);
-        setEndDate(end);
+    const onChange = (date) => {
+        setEndDate(date);
     };
 
     return (
@@ -130,8 +121,8 @@ function UploadBusinessProject() {
                     </label>
                     <label>Expected Deadline (Required)</label>
                     <Datepicker
-                        selected={date}
-                        date={!dateIsChecked ? date : null}
+                        selected={endDate}
+                        date={!dateIsChecked ? endDate : null}
                         onChange={(date) => onChange(date)}
                     />
                     <div className="date-checkbox">
@@ -139,10 +130,10 @@ function UploadBusinessProject() {
                             onChange={() => {
                                 setDateIsChecked(!dateIsChecked);
                                 if (dateIsChecked) {
-                                    setDate(new Date());
+                                    setEndDate(new Date());
                                 }
                                 else {
-                                    setDate(null);
+                                    setEndDate(null);
                                 }
                             }} />
                         <label htmlFor="notSpecifiedDate">Not Specified Yet</label>
