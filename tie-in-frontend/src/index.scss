@@ -1,5 +1,6 @@
 @import "sass/abstracts/variables";
 @import "sass/core/colors";
+@import "sass/core/typography";
 @import "sass/pages/main";
 @import "sass/components/buttons";
 @import "sass/components/highlightStudentProject";
@@ -15,6 +16,11 @@
 @import "sass/pages/businessProjectRequest";
 @import "sass/components/sideMenu";
 @import "sass/pages/home";
+@import "sass/pages/uploadBusinessProject";
+@import "sass/components/MultiProgressBar";
+@import "sass/pages/businessProjectDetails";
+@import "sass/components/searchbar";
+@import "sass/components/dataVisualization";
 @import "sass/components/teamApplication";
 @import "sass/components/teamsBox";
 @import "sass/pages/requestStatus";

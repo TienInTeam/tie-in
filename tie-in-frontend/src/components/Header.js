@@ -58,8 +58,8 @@ export default function Header() {
 
             <div className={displayMenu ? 'top-menu show' : 'top-menu'}>
                 <ul>
-                    <li><p>{sessionStorage.getItem('userName')}</p>
-                        <p>{sessionStorage.getItem('userType')}</p>
+                    <li>
+                        <p>{sessionStorage.getItem('userName')}</p>
                     </li>
                     <li><a href="#editProfile">Edit Profile</a></li>
                     <li><a href="#settings">Settings</a></li>

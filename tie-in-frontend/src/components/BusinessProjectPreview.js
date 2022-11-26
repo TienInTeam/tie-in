@@ -1,54 +1,71 @@
 import React from 'react';
 import Button from './Button';
 
-function BusinessProjectPreview({ businessProject, onSeeMore, onCheckStatus }) {
-  const { status, logo, company_name, description, team_member, dueDate, category, location } = businessProject;
+function BusinessProjectPreview({businessProject, onSeeMore, onCheckStatus}) {
+    const {status, logo, business, description, team_size, end_date,  created_at, category, location} = businessProject;
 
-  return (
-    <div className="business-project-preview">
-      <div className="title-container">
-        <img src={logo} alt="project's logo" />
-        <h2>{company_name}</h2>
-        <p>{status ? "You have already applied" : ""}</p>
-      </div>
-      <div className="body-container">
-        <div>
-          <h3>Description</h3>
-          <p>{description}</p>
-        </div>
-        <div>
-          <h3>Team Member</h3>
-          <p>{team_member}</p>
-          <h3>Due date</h3>
-          <p>{dueDate}</p>
-        </div>
-        <div>
-          <h3>Category</h3>
-          {category ? category.map((cat, index) => {
+    const renderCategory = () => {
+        if (!category) {
+            return null;
+        }
+        return category.map((cat, index) => {
             return (
                 <div
                     key={index}
                     className="category"
                 >
-                  {cat}
-                </div>) }) : <p>-</p>}
+                    {cat}
+                </div>)
+        })
+    }
+
+    const renderStatus = () => {
+        if ( status !== 'open') {
+            return <Button
+                label={"Check Status"}
+                variant={"secondary"}
+                onClick={onCheckStatus}
+            />
+    }}
+
+    const renderStatusLabel = () => {
+        if ( status !== 'open') {
+            return <p>"You have already applied"</p>
+    }}
+
+    return (
+        <div className="business-project-preview">
+            <div className="title-container">
+                <img src={logo} alt="project's logo"/>
+                <h2>{business.business_name}</h2>
+                {renderStatusLabel()}
+            </div>
+            <div className="body-container">
+                <div>
+                    <h3>Description</h3>
+                    <p>{description}</p>
+                </div>
+                <div>
+                    <h3>Team Member</h3>
+                    <p>{team_size}</p>
+                    <h3>Due date</h3>
+                    <p>{new Date(created_at).toDateString()}</p>
+                </div>
+                <div>
+                    <h3>Category</h3>
+                    {renderCategory()}
+                </div>
+                <div className="button-container">
+                    <h3>Location</h3>
+                    <p>{location}</p>
+                    <div className={"button-wrapper"}>
+                        {renderStatus()}
+                        <Button label={"See More"} variant={"primary"} onClick={onSeeMore}/>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div className="button-container">
-          <h3>Location</h3>
-          <p>{location}</p>
-          <div className={"button-wrapper"}>
-            {status ?
-                <Button
-                    label={"Check Status"}
-                    variant={"secondary"}
-                    onClick={onCheckStatus}
-                /> : "" }
-          <Button label={"See More"} variant={"primary"} onClick={onSeeMore} />
-          </div>
-        </div>
-      </div>
-    </div>
-  )
+    )
 }
 
 export default BusinessProjectPreview;

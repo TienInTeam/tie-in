@@ -8,17 +8,17 @@ button:hover{
   background-color: $primary_yellow;
   border-radius: 10px;
   appearance: unset;
-  border: none;
+  border: 2px solid $primary_yellow;
   padding: 5px 24px;
 }
 
 .secondary {
-  background-color: $blue_card_background;
+  background-color: $dark_blue_background;
   border-radius: 10px;
   appearance: unset;
   border: 3px solid $secondary_blue_color;
   padding: 5px 24px;
-  color: $secondary_blue_color;
+  color: white;
 }
 
 .tertiary {
