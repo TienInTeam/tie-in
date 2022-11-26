@@ -1,8 +1,11 @@
-import React from 'react';
+import { useQuery } from '@tanstack/react-query';
 import Button from './Button';
+import { ReactComponent as CheckIcon } from '../assets/icons/others/check-icon.svg';
 
-function BusinessProjectPreview({businessProject, onSeeMore, onCheckStatus}) {
-    const {status, logo, business, description, team_size, end_date, category, location} = businessProject;
+
+
+function BusinessProjectPreview({ businessProject, businessImage, onSeeMore, onCheckStatus }) {
+    const { status, business, description, team_size, end_date, category, location } = businessProject;
 
     const renderCategory = () => {
         if (!category) {
@@ -22,9 +25,14 @@ function BusinessProjectPreview({businessProject, onSeeMore, onCheckStatus}) {
     return (
         <div className="business-project-preview">
             <div className="title-container">
-                <img src={logo} alt="project's logo"/>
-                <h2>{business.business_name}</h2>
-                <p>{status ? "You have already applied" : ""}</p>
+                <div>
+                    <img src={businessImage} alt="project's logo" />
+                    <h2>{business.business_name}</h2>
+                </div>
+                <div>
+                    <div className="icon check-icon"><CheckIcon /></div>
+                    <h3>{status ? "You have already applied" : ""}</h3>
+                </div>
             </div>
             <div className="body-container">
                 <div>
@@ -41,9 +49,11 @@ function BusinessProjectPreview({businessProject, onSeeMore, onCheckStatus}) {
                     <h3>Category</h3>
                     {renderCategory()}
                 </div>
-                <div className="button-container">
-                    <h3>Location</h3>
-                    <p>{location}</p>
+                <div  className="button-container">
+                    <div>
+                        <h3>Location</h3>
+                        <p>{location}</p>
+                    </div>
                     <div className={"button-wrapper"}>
                         {status ?
                             <Button
@@ -51,7 +61,7 @@ function BusinessProjectPreview({businessProject, onSeeMore, onCheckStatus}) {
                                 variant={"secondary"}
                                 onClick={onCheckStatus}
                             /> : ""}
-                        <Button label={"See More"} variant={"primary"} onClick={onSeeMore}/>
+                        <Button label={"See More"} variant={"primary"} onClick={onSeeMore} />
                     </div>
                 </div>
             </div>
