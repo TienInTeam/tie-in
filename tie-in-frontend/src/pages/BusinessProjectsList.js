@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import {useNavigate} from "react-router-dom";
 import { requestBusinessProjects } from "../api/businessProject";
+import { getBusinessByEmail, getBusinesses } from "../api/business";
 import BusinessProjectPreview from "../components/BusinessProjectPreview";
 import Searchbar from "../components/Searchbar";
 import SideMenu from "../components/SideMenu";
@@ -43,6 +44,16 @@ function BusinessProjectsList() {
         alert(error.message);
       }
     });
+    const requestBusiness = useQuery(["business"], () => getBusinesses(),
+    {
+      onError: (error) => {
+        alert(error.message);
+      }
+    });
+
+  if (requestBusiness.isLoading) {
+    return <span>Loading...</span>
+  }
 
   if (requestFilteredBusinessProject.isLoading) {
     return <span>Loading...</span>
@@ -73,16 +84,16 @@ function BusinessProjectsList() {
   const searchHandle = (value) => {
     setSearchFilter(value);
   }
-
   return (
     <div className="grid-container">
       <SideMenu />
-      <div>
+      <div className="business-project-list">
         <Searchbar onCategory={onCategoryChange} onSize={onSizeChange} onLocation={onLocationChange} onSearch={searchHandle} />
         {searchFilter || categoryFilter || sizeFilter || locationFilter ? requestFilteredBusinessProject.data.map((business, index) =>
           <BusinessProjectPreview
             businessProject={business}
             key={index}
+            businessImage={requestBusiness.data.logo_url}
             onSeeMore={() => onSeeMore(business._id)}
             onCheckStatus={onCheckStatus}
           />
@@ -91,6 +102,7 @@ function BusinessProjectsList() {
             <BusinessProjectPreview
               businessProject={business}
               key={index}
+              businessImage={requestBusiness.data.map((business) => business.logo_url)}
               onSeeMore={() => onSeeMore(business._id)}
               onCheckStatus={onCheckStatus}
             />
