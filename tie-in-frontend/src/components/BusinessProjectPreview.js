@@ -2,7 +2,7 @@ import React from 'react';
 import Button from './Button';
 
 function BusinessProjectPreview({businessProject, onSeeMore, onCheckStatus}) {
-    const {status, logo, business, description, team_size, end_date, category, location} = businessProject;
+    const {status, logo, business, description, team_size, end_date,  created_at, category, location} = businessProject;
 
     const renderCategory = () => {
         if (!category) {
@@ -49,7 +49,7 @@ function BusinessProjectPreview({businessProject, onSeeMore, onCheckStatus}) {
                     <h3>Team Member</h3>
                     <p>{team_size}</p>
                     <h3>Due date</h3>
-                    <p>{end_date}</p>
+                    <p>{new Date(created_at).toDateString()}</p>
                 </div>
                 <div>
                     <h3>Category</h3>

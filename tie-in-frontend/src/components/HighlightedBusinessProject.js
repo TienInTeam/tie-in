@@ -16,7 +16,7 @@ function HighlightedBusinessProject({ businessProject, company_name, onSeeMore})
     <div className={"highlightBusinessProject"}>
         <h2>{company_name}</h2>
         <p>{renderCategory()}</p>
-        <p>{end_date ? end_date: "N/A"}</p>
+        <p>{end_date ? new Date(end_date).toDateString() : "N/A"}</p>
         <p>{location}</p>
         <Button label={"See More"} variant={"primary"} onClick={onSeeMore}/>
     </div>
