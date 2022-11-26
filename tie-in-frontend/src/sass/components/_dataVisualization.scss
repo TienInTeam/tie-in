@@ -1,0 +1,63 @@
+@import "../core/colors";
+
+.visualization-component {
+    margin: 2rem 0;
+    background-color: $blue_card_background;
+    border-radius: 20px;
+
+    h2 {
+        text-align: center;
+        font-size: 2rem;
+    }
+
+    .project-upload-trajectory {
+        g.recharts-cartesian-axis-tick text {
+            fill: white;
+            font-weight: bold;
+            font-size: 1.15rem !important;
+        }
+        .recharts-layer{
+            .recharts-area-curve{
+                fill-opacity: 1  !important;
+                stroke: #FCB51F !important;
+                stroke-width: 3;
+            }
+            .recharts-area-area{
+                fill-opacity: 1;
+            }
+        } 
+    }
+
+    .new-project-component {
+       
+    
+        h3 {
+            margin: 1rem;
+            font-size: 1.5rem;
+        }
+    
+        text {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+    
+        .recharts-pie g.recharts-pie-sector {
+            stroke-width: 0;
+        }
+    
+        .label-center {
+            font-size: 2.5rem;
+        }
+    
+        .recharts-legend-wrapper {
+            li {
+                font-size: 1.25rem;
+            }
+        }
+    }
+}
+
+.data-visualization {
+    background-color: $dark_blue_background;
+}
+

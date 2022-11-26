@@ -8,14 +8,8 @@ export const addBusiness = (postData) => project.post("/business", postData).the
     return res.data;
 });
 
-// export const getBusinessLogoByID = (id) => {
-//     return project.get(`/business/${id}`).then((res) => {
-//         return res.data;
-//     });
-// }
-
 export const getBusinessByEmail = (email) => {
-    return project.get(`/business/?email=${email}`).then((res) => {
+    return project.get(`/business/${email}`).then((res) => {
         return res.data;
-});
+    });
 }
