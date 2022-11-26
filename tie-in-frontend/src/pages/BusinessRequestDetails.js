@@ -3,12 +3,10 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useQuery } from "@tanstack/react-query";
 import {requestBusinessProjectsByID} from "../api/businessProject";
 import BusinessProjectDetails from '../components/BusinessProjectDetails';
-import { requestBusinessProjectsByID } from '../api/businessProject';
 import { ReactComponent as BackIcon } from '../assets/icons/navigation/back-icon.svg';
 import {getBusinessByEmail} from '../api/business';
 
 const BusinessRequestDetails = () => {
-
     const location = useLocation();
     const navigate = useNavigate();
     const businessProjectId = location.state.id;
@@ -37,10 +35,10 @@ const BusinessRequestDetails = () => {
         return <span>Loading...</span>
     }
 
-    const onApply = (id) => {
+    const onApply = () => {
         navigate('/applybusinessproject', {
             state: {
-                id: `${id}`
+                id: `${businessProjectId}`
             }
         });
     }

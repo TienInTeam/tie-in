@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
+import {useLocation, useNavigate} from "react-router-dom";
 import Button from "../components/Button";
 import InputType from "../components/InputType";
 import { isEmailValid } from "../utils/email";
@@ -7,18 +8,15 @@ import validateTextInput from "../utils/validateTextInput";
 import validateContact from "../utils/validateContact";
 import { saveStudentApplication } from "../api/studentApplications";
 
-function ApplicationForm({ companyProjectName, onClose, team, status, studentTeamByID }) {
+function ApplicationForm({ studentTeam }) {
+
+  const location = useLocation();
+  const businessProjectId = location.state.id;
 
   const saveApplication = useMutation(["studentProject"], () => saveStudentApplication({
-    
-    //to be updated
-    "_id": 2,
     "team_id": teamId,
-    "student_id": individualId,    //to be updated
-    "team_name": teamName, 
-    "business_request_id": sessionStorage.getItem('BusinessProjectViewed'),
-    "application_status": 'pending',
-    "created_at": applicationDate,
+    "business_request_id": businessProjectId,
+    "application_status": "open",
   }), {
     onSuccess: () => {
       alert("Application Completed");
@@ -28,17 +26,14 @@ function ApplicationForm({ companyProjectName, onClose, team, status, studentTea
     }
   });
 
-  // const {name, image} = team;
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [contact, setContact] = useState("");
   const [teamId, setTeamId] = useState(null);
-  const [teamName, setTeamName] = useState("");
   const [individualId, setIndividualId] = useState("");
   const [message, setMessage] = useState("");
   const [individualIsSelected, setIndividualIsSelected] = useState(false);
-  const [applicationDate, setApplicationDate] = useState("");
 
   const validateInput = () => {
     if (firstName === "" || lastName === "" || email === "") {
@@ -46,20 +41,20 @@ function ApplicationForm({ companyProjectName, onClose, team, status, studentTea
       return false;
     }
     if (!validateTextInput(firstName)) {
-      alert("Valid first name is required.");
+      alert("First name is required.");
       return false;
     }
     if (!validateTextInput(lastName)) {
-      alert("Valid last name is required.");
+      alert("Please enter a valid last name");
       return false;
     }
     if (!isEmailValid(email) || !email || email === "") {
-      alert("Enter a valid Email");
+      alert("Please enter a valid email");
       return false;
     }
     if (contact) {
       if (!validateContact(contact)) {
-        alert("Enter Valid Contact info");
+        alert("Please enter a valid contact number");
         return false;
       }
 
@@ -76,11 +71,8 @@ function ApplicationForm({ companyProjectName, onClose, team, status, studentTea
     }
   }
 
-  const apply = () => {
+  const onApply = () => {
     if (validateInput()) {
-      setApplicationDate(new Date())
-      let team= studentTeamByID.find(item => item.id ==teamId);
-      setTeamName(team.team_name);
       saveApplication.mutate();
     }
   }
@@ -98,8 +90,8 @@ function ApplicationForm({ companyProjectName, onClose, team, status, studentTea
         <select id="SelectedTeam" onChange={(e) => setTeamId(e.target.value)} disabled={individualIsSelected}>
           <option value={teamId}>None</option>;
           ({
-            studentTeamByID ? studentTeamByID.map((team, index) => {
-              return <option key={index} value={team.id}>{team.team_name}</option>;
+            studentTeam ? studentTeam.map((team, index) => {
+              return <option key={index} value={team._id}>{team.name}</option>;
             }
             ) : ''
           })
@@ -121,7 +113,7 @@ function ApplicationForm({ companyProjectName, onClose, team, status, studentTea
         <span>Message</span>
         <textarea onChange={(e) => setMessage(e.target.value)} />
       </label>
-      <Button onClick={apply} variant={"primary"} label={"Submit"} />
+      <Button onClick={onApply} variant={"primary"} label={"Submit"} />
     </div>
   )
 }
