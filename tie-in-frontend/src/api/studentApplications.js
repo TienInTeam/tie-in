@@ -13,5 +13,18 @@ export const saveStudentApplication = (postData) => project.post('/applications'
 export const getStudentApplication = (studentId) => {
     return project.get(`/applications/student/${studentId}`).then((res) => {
         return res.data;
-    })
+    });
  }
+
+export const updateApplicationStatus = (id) => {
+    return project.patch(`/applications/${id}?status="Closed"`).then((res) => {
+        return res.data;
+    });
+}
+
+
+export const getBusinessApplication = (businessId) => {
+    return project.get(`/applications/business/${businessId}`).then((res) => {
+        return res.data;
+    })
+}
