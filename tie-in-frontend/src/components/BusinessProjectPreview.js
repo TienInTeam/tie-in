@@ -3,7 +3,7 @@ import Button from './Button';
 import { ReactComponent as CheckIcon } from '../assets/icons/others/check-icon.svg';
 
 
-function BusinessProjectPreview({businessProject, , businessImage, onSeeMore, onCheckStatus}) {
+function BusinessProjectPreview({businessProject, businessImage, onSeeMore, onCheckStatus}) {
     const {status, logo, business, description, team_size, end_date,  created_at, category, location} = businessProject;
 
     const renderCategory = () => {
