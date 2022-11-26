@@ -103,7 +103,7 @@ function BusinessProjectsList() {
               businessProject={business}
               key={index}
               businessImage={requestBusiness.data.map((business) => business.logo_url)}
-              onSeeMore={onSeeMore}
+              onSeeMore={() => onSeeMore(business._id)}
               onCheckStatus={onCheckStatus}
             />
           )
