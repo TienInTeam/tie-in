@@ -11,7 +11,7 @@ export const saveStudentApplication = (postData) => project.post('/applications'
 });
 
 export const getStudentApplication = (studentId) => {
-    project.get(`/applications/student/${studentId}`).then((res) => {
+    return project.get(`/applications/student/${studentId}`).then((res) => {
         return res.data;
     })
-}
+ }
