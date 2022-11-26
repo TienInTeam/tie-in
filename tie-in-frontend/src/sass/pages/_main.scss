@@ -1,5 +1,12 @@
 body {
   margin: 0;
+  font-family: $body_font;
+}
+
+h1,
+h2,
+h3 {
+  font-family: $headline_font;
 }
 
 .upload-project {
