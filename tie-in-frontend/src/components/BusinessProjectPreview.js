@@ -1,7 +1,9 @@
-import React from 'react';
+import { useQuery } from '@tanstack/react-query';
 import Button from './Button';
+import { ReactComponent as CheckIcon } from '../assets/icons/others/check-icon.svg';
 
-function BusinessProjectPreview({businessProject, onSeeMore, onCheckStatus}) {
+
+function BusinessProjectPreview({businessProject, businessImage, onSeeMore, onCheckStatus}) {
     const {status, logo, business, description, team_size, end_date,  created_at, category, location} = businessProject;
 
     const renderCategory = () => {
@@ -30,13 +32,18 @@ function BusinessProjectPreview({businessProject, onSeeMore, onCheckStatus}) {
 
     const renderStatusLabel = () => {
         if ( status !== 'open') {
-            return <p>"You have already applied"</p>
+            return (
+                <div>
+                    <div className="icon check-icon"><CheckIcon /></div>
+                    <h3>"You have already applied"</h3>
+                </div>
+        )
     }}
 
     return (
         <div className="business-project-preview">
             <div className="title-container">
-                <img src={logo} alt="project's logo"/>
+                <img src={businessImage} alt="project's logo"/>
                 <h2>{business.business_name}</h2>
                 {renderStatusLabel()}
             </div>
@@ -55,9 +62,11 @@ function BusinessProjectPreview({businessProject, onSeeMore, onCheckStatus}) {
                     <h3>Category</h3>
                     {renderCategory()}
                 </div>
-                <div className="button-container">
-                    <h3>Location</h3>
-                    <p>{location}</p>
+                <div  className="button-container">
+                    <div>
+                        <h3>Location</h3>
+                        <p>{location}</p>
+                    </div>
                     <div className={"button-wrapper"}>
                         {renderStatus()}
                         <Button label={"See More"} variant={"primary"} onClick={onSeeMore}/>
