@@ -6,7 +6,7 @@ const DataVisualizationPieChart = ({ inputPage }) => {
     const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const d = new Date();
     let currentMonth = month[d.getMonth()];
-    if (sessionStorage.getItem("userType") === "student")  {
+    if (sessionStorage.getItem("userType") === "student") {
         data = [
             { name: 'AI', value: 400 },
             { name: 'Web Development', value: 300 },
@@ -15,7 +15,7 @@ const DataVisualizationPieChart = ({ inputPage }) => {
         ];
         text = 'New Business Projects';
     }
-    else if (sessionStorage.getItem("userType") === "business"){
+    else if (sessionStorage.getItem("userType") === "business") {
         data = [
             { name: 'Ux Design', value: 140 },
             { name: 'Web Development', value: 550 },
@@ -30,12 +30,11 @@ const DataVisualizationPieChart = ({ inputPage }) => {
     });
 
     const COLORS = ['#FCB51F', '#53E0DC', '#747373', '#0B938E'];
-
     const RADIAN = Math.PI / 180;
     const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
         const radius = innerRadius + (outerRadius - innerRadius) * 0.30;
-        const x =5+ cx + radius * Math.cos(-midAngle * RADIAN);
-        const y = 5+ cy + radius * Math.sin(-midAngle * RADIAN);
+        const x = 5 + cx + radius * Math.cos(-midAngle * RADIAN);
+        const y = 5 + cy + radius * Math.sin(-midAngle * RADIAN);
 
         return (
             <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
@@ -51,7 +50,7 @@ const DataVisualizationPieChart = ({ inputPage }) => {
                 <h3>{currentMonth} project Uploads</h3>
                 <ResponsiveContainer width={440} height={310} className="text-center" >
                     <PieChart >
-                        <Pie 
+                        <Pie
                             data={data}
                             cx="50%"
                             cy="50%"
@@ -77,7 +76,6 @@ const DataVisualizationPieChart = ({ inputPage }) => {
                             verticalAlign="middle" align="right"
                             iconSize={12}
                             padding={10} />
-
                     </PieChart >
 
                 </ResponsiveContainer>

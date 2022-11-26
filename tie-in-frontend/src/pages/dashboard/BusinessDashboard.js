@@ -6,6 +6,7 @@ import HighlightedStudentProject from "../../components/HighlightedStudentProjec
 import SideMenu from "../../components/SideMenu";
 import DataVisualizationPieChart from "../../components/DataVisualizationPieChart";
 import DataVisualizationAreaChart from "../../components/DataVisualizationAreaChart";
+import { requestStudentProjectUploadTrend, requestStudentProjectByCategory } from "../../api/dataVisualization";
 
 const BusinessDashboard = () => {
 
