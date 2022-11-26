@@ -13,7 +13,7 @@ function RequestStatus(options) {
 
     const requestBusinessProject = useQuery(["business"], () => requestBusinessProjects())
 
-    const closeBusinessProject = useMutation(["businessProjects"], (id) => updateBusinessProject(id), {
+    const updateBusinessProjectById = useMutation(["businessProjects"], (id) => updateBusinessProject(id), {
         onSuccess: () => {
             requestBusinessProject.refetch();
         }
@@ -34,11 +34,11 @@ function RequestStatus(options) {
 
 
     const onClose = (businessProjectId) => {
-        closeBusinessProject.mutate(businessProjectId);
+        updateApplication.mutate(businessProjectId);
     }
 
     const onApprove = (id) => {
-        updateApplication.mutate(id);
+        updateBusinessProjectById.mutate(id);
     }
 
     const renderTeamApplication = () => {
@@ -46,17 +46,17 @@ function RequestStatus(options) {
             return null;
         }
         return requestBusinessApplications.data.map((application) => {
-                return requestBusinessProject?.data?.filter((businessProject) =>( businessProject._id === application.business_request_id && application.application_status === "open"))
+                return requestBusinessProject.data.filter((businessProject) =>( businessProject._id === application.business_request_id && application.application_status === "open"))
                     .map((filteredBusinessProject, index) =>
                         <TeamApplication
                             key={index}
                             name={filteredBusinessProject.name}
                             logo_url={filteredBusinessProject.logo_url}
-                            onClose={() => onClose(application.business_request_id)}
+                            onClose={() => onClose(application._id)}
                             status={application.application_status}
                             teamId={application.team.team_id}
                             businessProjectStatus={filteredBusinessProject.status}
-                            onApprove={() => onApprove(application._id)}
+                            onApprove={() => onApprove(application.business_request_id)}
                         />
                     );
             }
