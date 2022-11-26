@@ -3,7 +3,7 @@ import { requestTeamsByTeamId} from "../api/teams";
 import TeamsBox from "../components/TeamsBox";
 import Button from "./Button";
 
-function TeamApplication({name, logo_url, teamId, status,  onClose, onApprove}) {
+function TeamApplication({name, logo_url, teamId, status,  onClose, onApprove, businessProjectStatus}) {
     const businessId = sessionStorage.getItem("userMongoId");
 
     const requestTeam = useQuery(["teams"], () => requestTeamsByTeamId(teamId), {
@@ -22,8 +22,7 @@ function TeamApplication({name, logo_url, teamId, status,  onClose, onApprove}) 
         <div className="team-application">
             <div className="title-wrapper">
                 <div className="logo-wrapper">
-                    <img src={logo_url} alt="company's logo"/>
-                    <h2>{name}</h2>
+                     <h2>{name}</h2>
                 </div>
                 <Button label={"Close Project"} variant={"secondary"} onClick={onClose}/>
             </div>
@@ -32,6 +31,7 @@ function TeamApplication({name, logo_url, teamId, status,  onClose, onApprove}) 
                       name={requestTeam.data?.name}
                     // members={team.members}
                     status={status}
+                      businessProjectStatus={businessProjectStatus}
                     teamId={teamId}
                     onApprove={onApprove}
                   />
