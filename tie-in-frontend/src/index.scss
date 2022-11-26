@@ -1,6 +1,8 @@
 @import "sass/abstracts/variables";
 @import "sass/core/colors";
+@import "sass/core/typography";
 @import "sass/pages/main";
+@import "sass/components/homeSection";
 @import "sass/components/buttons";
 @import "sass/components/highlightStudentProject";
 @import "sass/pages/dashboard";
@@ -17,4 +19,3 @@
 @import "sass/pages/home";
 @import "sass/pages/businessProjectDetails";
 @import "sass/components/searchbar";
-@import "sass/components/homeSection";

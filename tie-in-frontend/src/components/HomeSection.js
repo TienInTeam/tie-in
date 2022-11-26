@@ -3,7 +3,7 @@ import Button from "./Button";
 const HomeSection = ({ subtitle, step1, step2, step3, onTryNowClick}) => {
     return (
         <>
-            <div className={"section1"}>
+            <div className={"home-section"}>
                 <div>
                     <h3>{subtitle}</h3>
                     <p>{step1}</p>
