@@ -16,14 +16,9 @@ export const requestBusinessProjectsByID = (id) => {
         return res.data;
     });
 }
-export const requestBusinessProjectsByQuery = (query) => {
-    return project.get(`/businessProjects/?q=${query}`).then((res) => {
-        return res.data;
-    });
-}
 
 export const updateBusinessProject = (id) => {
-    return project.get(`/businessProjects/${id}`).then((res) => {
+    return project.patch(`/businessProjects/${id}?status=Closed`).then((res) => {
         return res.data;
     });
 }

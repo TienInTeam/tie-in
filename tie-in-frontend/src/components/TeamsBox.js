@@ -1,50 +1,54 @@
-import { useState } from "react";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { updateApplicationStatuses } from "../api/studentApplications";
+import {useQuery} from "@tanstack/react-query";
 import Button from "./Button";
-import { requestTeams } from "../api/teams";
+import {requestTeamsByTeamId} from "../api/teams";
 
-const TeamsBox = ({ name, members }) => {
-  const [approve, setApprove] = useState(false)
-  const id = 2;
-
-  const changeStatus = useMutation(["applicationStatus", id], () => updateApplicationStatuses(
-    {
-      "application_status": "approved"
-    }, id)
-  );
-  const requestTeam = useQuery(["teams"], () => requestTeams(), {
-    onError: (error) => {
-      alert(error.message);
-    }
-  });
-  if (requestTeam.isLoading) {
-    return <span>Loading...</span>
-  }
-
-  const onApprove = () => {
-    setApprove(!approve)
-    changeStatus.mutate()
-  }
-  return (
-    <div className="team-box">
-      <h3>{name}</h3>
-      <div className="images">
-        {members.map((member, index) => {
-          // <img src={member.photo_url} alt="student's photo" key={index} />
-          if (index <= 2) {
-            return <img key={index} src={member.photo_url} alt="student" />
-          }
-          else if (index === members.length - 1) {
-            return <p key={index}>+<span >{index - 2}</span></p>
-          }
-
+const TeamsBox = ({name, members, status, teamId, onApprove}) => {
+    const requestTeam = useQuery(["teams"], () => requestTeamsByTeamId(teamId), {
+        onError: (error) => {
+            alert(error.message);
         }
-        )}
-      </div>
-      <Button label={approve ? "Approved" : "Accept"} variant={approve ? "tertiary" : "primary"} onClick={onApprove} />
-    </div>
-  )
+    });
+
+    const renderMembers = () => {
+        return requestTeam.data?.members.map((member, index) => {
+                if (index <= 2) {
+                    return <img key={index} src={member.photo_url} alt="student"/>
+                } else if (index === members.length - 1) {
+                    return <p key={index}>+<span>{index - 2}</span></p>
+                }
+            }
+        )
+    }
+
+    const renderButton = () => {
+        if (status === "open") {
+           return <Button
+                label={"Accept"}
+                variant={"primary"}
+                onClick={onApprove}
+            />
+        } else {
+            return <Button
+                label={"Approved"}
+                variant={"tertiary"}
+                onClick={onApproved}
+            />
+        }
+    }
+
+    const onApproved = () => {
+        alert("You already approved!")
+    }
+
+    return (
+        <div className="team-box">
+            <h3>{name}</h3>
+            <div className="images">
+                {renderMembers()}
+            </div>
+            {renderButton()}
+        </div>
+    )
 }
 
 export default TeamsBox;
