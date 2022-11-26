@@ -91,7 +91,7 @@ function BusinessProjectsList() {
             <BusinessProjectPreview
               businessProject={business}
               key={index}
-              onSeeMore={onSeeMore}
+              onSeeMore={() => onSeeMore(business._id)}
               onCheckStatus={onCheckStatus}
             />
           )

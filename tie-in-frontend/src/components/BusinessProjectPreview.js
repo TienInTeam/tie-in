@@ -19,12 +19,26 @@ function BusinessProjectPreview({businessProject, onSeeMore, onCheckStatus}) {
         })
     }
 
+    const renderStatus = () => {
+        if ( status !== 'open') {
+            return <Button
+                label={"Check Status"}
+                variant={"secondary"}
+                onClick={onCheckStatus}
+            />
+    }}
+
+    const renderStatusLabel = () => {
+        if ( status !== 'open') {
+            return <p>"You have already applied"</p>
+    }}
+
     return (
         <div className="business-project-preview">
             <div className="title-container">
                 <img src={logo} alt="project's logo"/>
                 <h2>{business.business_name}</h2>
-                <p>{status ? "You have already applied" : ""}</p>
+                {renderStatusLabel()}
             </div>
             <div className="body-container">
                 <div>
@@ -45,12 +59,7 @@ function BusinessProjectPreview({businessProject, onSeeMore, onCheckStatus}) {
                     <h3>Location</h3>
                     <p>{location}</p>
                     <div className={"button-wrapper"}>
-                        {status ?
-                            <Button
-                                label={"Check Status"}
-                                variant={"secondary"}
-                                onClick={onCheckStatus}
-                            /> : ""}
+                        {renderStatus()}
                         <Button label={"See More"} variant={"primary"} onClick={onSeeMore}/>
                     </div>
                 </div>
