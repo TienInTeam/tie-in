@@ -45,6 +45,7 @@ const BusinessDashboard = () => {
                     </div>
                 </div>
                 <div className={"student-project-wrapper"}>
+                    <h2>Student Projects</h2>
                     <div className={"title-wrapper"}>
                         <h2>Name</h2>
                         <h2>Category</h2>
