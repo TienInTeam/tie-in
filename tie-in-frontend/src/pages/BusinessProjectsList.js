@@ -84,7 +84,6 @@ function BusinessProjectsList() {
   const searchHandle = (value) => {
     setSearchFilter(value);
   }
-console.log(requestBusiness.data[0].logo_url);
   return (
     <div className="grid-container">
       <SideMenu />
