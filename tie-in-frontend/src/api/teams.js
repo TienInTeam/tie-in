@@ -12,7 +12,7 @@ export const createTeams = (postData) => {
 });}
 
 
-export const getStudentTeamsBystudentID = (studentID) => { 
+export const getStudentTeamsByStudentId = (studentID) => { 
     return project.get(`/teams?student_id=${studentID}`).then((res) => {
     return res.data;
 });}
