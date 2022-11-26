@@ -1,70 +1,82 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { requestBusinessProjects, updateBusinessProject } from "../api/businessProject";
-import { getBusinessByEmail } from "../api/business";
-import { useState } from "react";
+import {useMutation, useQuery} from "@tanstack/react-query";
+import {requestBusinessProjects, updateBusinessProject} from "../api/businessProject";
+import {useState} from "react";
+import {getBusinessApplication, updateApplicationStatus} from "../api/studentApplications";
 import TeamApplication from "../components/TeamApplication";
 import SideMenu from "../components/SideMenu"
 
-function RequestStatus() {
-  const [close, setClose] = useState(false)
+function RequestStatus(options) {
+    const businessId = sessionStorage.getItem("userMongoId");
+    const [businessProjectId, setBusinessProjectId] = useState(null);
+    // const [applicationId, setApplicationId] = useState(null);
+    const applicationId = "637d74df3851c065fe214692"
 
-  const requestBusinessByEmail = useQuery(["businessByEmail"], () => getBusinessByEmail(sessionStorage.getItem("userEmail")), {
-    enabled: !!sessionStorage.getItem("userEmail"),
-  },
-    {
-      onError: (error) => {
-        alert(error.message);
-      }
-    });
+    const requestBusinessApplications = useQuery(["applicationBusiness"],
+        () => getBusinessApplication(businessId));
 
-  const requestBusinessProject = useQuery(["businessProject"], () => requestBusinessProjects(), {
-    onError: (error) => {
-      alert(error.message);
+    const requestBusinessProject = useQuery(["business"], () => requestBusinessProjects())
+
+    const closeBusinessProject = useMutation(["businessProjects"], () => updateBusinessProject(), {
+        enabled: !!businessProjectId
+    })
+
+    const updateApplication = useMutation(["application"], () => updateApplicationStatus(applicationId), {
+        onSuccess: () => {
+            requestBusinessApplications.refetch();
+        }
+    })
+
+    if (requestBusinessApplications.isLoading) {
+        return <span>Loading...</span>
     }
-  });
-  const changeProjectStatus = useMutation(["applicationStatus"], () => updateBusinessProject({
-    "status": false
-  })
-  );
-  if (requestBusinessProject.isLoading) {
-    return <span>Loading...</span>
-  }
-  if (requestBusinessByEmail.isLoading) {
-    return <span>Loading...</span>
-  }
+    if (requestBusinessProject.isLoading) {
+        return <span>Loading...</span>
+    }
 
-  const onClose = () => {
-    setClose(true)
-    changeProjectStatus.mutate()
-  }
-  {
-    for (let i = 0; i < requestBusinessProject.data.length; i++) {
-      if (requestBusinessProject.data[i].business_id === requestBusinessByEmail.data[0].id) {
-        return (
-          <div className="grid-container">
-            <SideMenu />
+
+    const onClose = (businessProjectId) => {
+        setBusinessProjectId(businessProjectId)
+        console.log(businessProjectId);
+        closeBusinessProject.mutate();
+    }
+
+    const onApprove = (id) => {
+        // setApplicationId(id);
+        updateApplication.mutate();
+    }
+    console.log(applicationId)
+
+    const renderTeamApplication = () => {
+        if (!requestBusinessApplications?.data) {
+            return null;
+        }
+        return requestBusinessApplications.data.map((application) => {
+                return requestBusinessProject.data
+                    .filter((business) =>( business._id === application.business_request_id))
+                    .map((filteredBusinessProject, index) =>
+                        <TeamApplication
+                            key={index}
+                            name={filteredBusinessProject.name}
+                            logo_url={filteredBusinessProject.logo_url}
+                            onClose={() => onClose(application.business_request_id)}
+                            status={application.application_status}
+                            teamId={application.team.team_id}
+                            onApprove={() => onApprove(application._id)}
+                        />
+                    );
+            }
+        )
+    }
+
+    return (
+        <div className="grid-container">
+            <SideMenu/>
             <div>
-              <h2>Request Status List</h2>
-              {!close && <TeamApplication
-                name={requestBusinessProject.data[i].name}
-                logo_url={requestBusinessByEmail.data[0].logo_url}
-                onClose={onClose}
-              />}
+                <h2>Request Status List</h2>
+                {renderTeamApplication()}
             </div>
-          </div>
-        )
-
-      } else {
-        return (
-          <div>
-            <SideMenu className="grid-container" />
-            <h2>Request Status List</h2>
-          </div>
-        )
-      }
-
-    }
-  }
+        </div>
+    );
 }
 
 export default RequestStatus;

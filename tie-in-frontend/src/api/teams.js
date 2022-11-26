@@ -1,7 +1,7 @@
 import project from "./baseURL";
 
-export const requestTeams = (uid) => {
-    return project.get(`/teams/${uid}`).then((res) => {
+export const requestTeamsByTeamId = (teamId) => {
+    return project.get(`/teams/${teamId}`).then((res) => {
         return res.data;
     });
 }
