@@ -11,5 +11,5 @@ export const addBusiness = (postData) => project.post("/business", postData).the
 export const getBusinessByEmail = (email) => {
     return project.get(`/business/${email}`).then((res) => {
         return res.data;
-    })
+    });
 }

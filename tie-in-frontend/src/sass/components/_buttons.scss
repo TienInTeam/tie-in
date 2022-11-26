@@ -21,3 +21,10 @@ button:hover{
   padding: 5px 24px;
   color: white;
 }
+
+.tertiary {
+  color: white;
+  background-color: $blue_card_background;
+  border: none;
+  display: hidden;
+}

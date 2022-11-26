@@ -1,0 +1,26 @@
+.team-box {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid $white;
+  align-items: center;
+
+  .images {
+    display: flex;
+    align-items: center;
+  }
+
+  .images p {
+    margin-left: .7rem;
+  }
+
+  img{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 0.5rem -.3rem;
+    
+  }
+}
+.team-box:nth-last-of-type(1){
+  border-bottom: none;
+}

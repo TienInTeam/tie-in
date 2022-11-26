@@ -3,7 +3,7 @@ import { useState } from "react";
 import Datepicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { saveStudentProject } from "../api/studentProject";
-import {getStudentTeam} from "../api/team";
+import {getStudentTeamsByStudentId} from "../api/teams";
 import Button from "../components/Button";
 import InputType from "../components/InputType";
 import { isEmailValid } from "../utils/email";
@@ -15,7 +15,7 @@ import { ReactComponent as BackIcon } from '../assets/icons/navigation/back-icon
 function UploadStudentProject() {
     const studentId = sessionStorage.getItem("userMongoId");
 
-    const teams = useQuery(["team"], () => getStudentTeam(studentId), {
+    const teams = useQuery(["team"], () => getStudentTeamsByStudentId(studentId), {
         enabled: !!studentId
     });
     const saveProject = useMutation(["studentProject"], () => saveStudentProject({
