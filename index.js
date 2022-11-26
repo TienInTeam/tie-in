@@ -10,7 +10,13 @@ const appRoutes = require("./src/routes/app.router");
 app.listen(process.env.PORT || 2000);
 
 // CORS Middleware
-app.use(cors({ origin: "https://tiein.ca" }));
+const corsOptions = {
+  origin: ["https://tiein.ca", "http://localhost:3000"],
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+};
+app.use(cors(corsOptions));
 
 // Middleware for json reading.
 app.use(express.json());
