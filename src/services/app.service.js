@@ -134,7 +134,7 @@ function buildApplicationModelRequest(userInfo) {
   const buildApplicationModelRequest = new ApplicationModelRequest(
     userInfo.team_id,
     userInfo.business_request_id,
-    userInfo.application_status,
+    userInfo.status,
     userInfo.uploaded_files
   );
 
@@ -253,7 +253,7 @@ async function buildApplicationModelResponse(application) {
     application.business_request_id,
     teamIdInfo,
     businessIdInfo,
-    application.application_status,
+    application.status,
     application.uploaded_files,
     application.created_at
   );
@@ -611,7 +611,7 @@ async function updateOneApplicationInDb(
   userUpdateQuery
 ) {
   const filterQuery = { _id: new ObjectId(userFilterQuery) };
-  const updateQuery = { $set: { userUpdateQuery: userUpdateQuery} };
+  const updateQuery = { $set: { status: userUpdateQuery} };
 
   const response = dbService.updateOneInDb(
     collection,
