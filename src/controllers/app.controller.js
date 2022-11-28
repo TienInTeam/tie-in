@@ -330,6 +330,36 @@ async function deleteOneApplicationById(req, res, next) {
     .send(await appService.deleteOneTeamFromDb(APPLICATION_COLLECTION, req.params.id));
 }
 
+
+////////// Data Visualiazation ROUTES //////////
+
+async function getBusinessProjectTrend(req, res, next) {
+  res
+    .status(200)
+    .send(await appService.getBusinessProjectTrendFromDB(BUSINESS_PROJECT_COLLECTION));
+}
+
+// async function getBusinessProjectCategory(req, res, next) {
+//   res
+//     .status(200)
+//     .send(await appService.getBusinessProjectCategoryFromDB(BUSINESS_PROJECT_COLLECTION));
+// }
+
+// async function getStudentProjectTrend(req, res, next) {
+//   res
+//     .status(200)
+//     .send(await appService.getStudentProjectTrendFromDB(STUDENT_PROJECT_COLLECTION));
+// }
+
+// async function getStudentProjectCategory(req, res, next) {
+//   res
+//     .status(200)
+//     .send(await appService.getStudentProjectCategoryFromDB(STUDENT_PROJECT_COLLECTION));
+// }
+
+
+
+
 module.exports = {
   getAllUsers,
   getOneUserByUid,
@@ -374,4 +404,9 @@ module.exports = {
   createOneApplication,
   updateOneApplicationById,
   deleteOneApplicationById,
+
+  getBusinessProjectTrend,
+  // getBusinessProjectCategory,
+  // getStudentProjectTrend,
+  // getStudentProjectCategory,
 };
