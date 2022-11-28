@@ -11,7 +11,7 @@ function Application(
   this.business_request_id = businessRequestId;
   this.team = team;
   this.business = business;
-  this.application_status = applicationStatus;
+  this.status = applicationStatus;
   this.uploaded_files = uploadedFiles;
   this.created_at = createdAt;
 }

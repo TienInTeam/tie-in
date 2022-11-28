@@ -339,23 +339,23 @@ async function getBusinessProjectTrend(req, res, next) {
     .send(await appService.getBusinessProjectTrendFromDB(BUSINESS_PROJECT_COLLECTION));
 }
 
-// async function getBusinessProjectCategory(req, res, next) {
-//   res
-//     .status(200)
-//     .send(await appService.getBusinessProjectCategoryFromDB(BUSINESS_PROJECT_COLLECTION));
-// }
+async function getBusinessProjectCategory(req, res, next) {
+  res
+    .status(200)
+    .send(await appService.getBusinessProjectCategoryFromDB(BUSINESS_PROJECT_COLLECTION));
+}
 
-// async function getStudentProjectTrend(req, res, next) {
-//   res
-//     .status(200)
-//     .send(await appService.getStudentProjectTrendFromDB(STUDENT_PROJECT_COLLECTION));
-// }
+async function getStudentProjectTrend(req, res, next) {
+  res
+    .status(200)
+    .send(await appService.getStudentProjectTrendFromDB(STUDENT_PROJECT_COLLECTION));
+}
 
-// async function getStudentProjectCategory(req, res, next) {
-//   res
-//     .status(200)
-//     .send(await appService.getStudentProjectCategoryFromDB(STUDENT_PROJECT_COLLECTION));
-// }
+async function getStudentProjectCategory(req, res, next) {
+  res
+    .status(200)
+    .send(await appService.getStudentProjectCategoryFromDB(STUDENT_PROJECT_COLLECTION));
+}
 
 
 
@@ -406,7 +406,7 @@ module.exports = {
   deleteOneApplicationById,
 
   getBusinessProjectTrend,
-  // getBusinessProjectCategory,
-  // getStudentProjectTrend,
-  // getStudentProjectCategory,
+  getBusinessProjectCategory,
+  getStudentProjectTrend,
+  getStudentProjectCategory,
 };

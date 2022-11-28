@@ -134,7 +134,7 @@ function buildApplicationModelRequest(userInfo) {
   const buildApplicationModelRequest = new ApplicationModelRequest(
     userInfo.team_id,
     userInfo.business_request_id,
-    userInfo.application_status,
+    userInfo.status,
     userInfo.uploaded_files
   );
 
@@ -253,7 +253,7 @@ async function buildApplicationModelResponse(application) {
     application.business_request_id,
     teamIdInfo,
     businessIdInfo,
-    application.application_status,
+    application.status,
     application.uploaded_files,
     application.created_at
   );
@@ -611,7 +611,7 @@ async function updateOneApplicationInDb(
   userUpdateQuery
 ) {
   const filterQuery = { _id: new ObjectId(userFilterQuery) };
-  const updateQuery = { $set: { userUpdateQuery: userUpdateQuery } };
+  const updateQuery = { $set: { status: userUpdateQuery } };
 
   const response = dbService.updateOneInDb(
     collection,
@@ -641,24 +641,19 @@ async function deleteOneApplicationFromDb(collection, reqParam) {
 
 async function getBusinessProjectTrendFromDB(collection) {
   const allProjects = await dbService.getAllFromDb(collection);
-  // const result = allProjects.reduce(
-  //   (businessProject, o) =>
-  //     (businessProject[o.category] = (businessProject[o.category] || 0) + 1, businessProject),
-  //   {}
-  // );
   var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
   const result2 = allProjects.reduce((categories, o) => {
     let created_date = new Date(o.created_at);
-    let created_month=months[created_date.getMonth()];
-    let created_year=created_date.getFullYear();
+    let created_month = months[created_date.getMonth()];
+    let created_year = created_date.getFullYear();
     let categoryArray = o.category;
     let current_date = new Date();
     let current_month = months[current_date.getMonth()];
-    let current_year=current_date.getFullYear();
-    if (current_month === created_month && created_year ===current_year) {
+    let current_year = current_date.getFullYear();
+    if (current_month === created_month && created_year === current_year) {
       if (categoryArray != null) {
-        console.log("Current month "+ current_month + current_year + "Created month "+ created_month + created_year);
+        console.log("Current month " + current_month + current_year + "Created month " + created_month + created_year);
         for (let item of categoryArray) {
           categories[item] = categories[item] !== undefined ? categories[item] + 1 : 1
         }
@@ -674,7 +669,95 @@ async function getBusinessProjectTrendFromDB(collection) {
   return sorted;
 }
 
+async function getBusinessProjectCategoryFromDB(collection) {
+  const allProjects = await dbService.getAllFromDb(collection);
+  var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
+  const result2 = allProjects.reduce((categories, o) => {
+    let created_date = new Date(o.created_at);
+    let created_month = months[created_date.getMonth()];
+    let created_year = created_date.getFullYear();
+    let categoryArray = o.category;
+    let current_date = new Date();
+    let current_month = months[current_date.getMonth()];
+    let current_year = current_date.getFullYear();
+    if (current_month === created_month && created_year === current_year) {
+      if (categoryArray != null) {
+        console.log("Current month " + current_month + current_year + "Created month " + created_month + created_year);
+        for (let item of categoryArray) {
+          categories[item] = categories[item] !== undefined ? categories[item] + 1 : 1
+        }
+      }
+    }
+    return categories
+  }, {})
+
+  const sorted = Object.entries(result2)
+    .sort(([, a], [, b]) => b - a)
+    .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
+
+  return sorted;
+}
+
+async function getStudentProjectCategoryFromDB(collection) {
+  const allProjects = await dbService.getAllFromDb(collection);
+  var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+  const result2 = allProjects.reduce((categories, o) => {
+    let created_date = new Date(o.created_at);
+    let created_month = months[created_date.getMonth()];
+    let created_year = created_date.getFullYear();
+    let categoryArray = o.category;
+    let current_date = new Date();
+    let current_month = months[current_date.getMonth()];
+    let current_year = current_date.getFullYear();
+    if (current_month === created_month && created_year === current_year) {
+      if (categoryArray != null) {
+        console.log("Current month " + current_month + current_year + "Created month " + created_month + created_year);
+        for (let item of categoryArray) {
+          categories[item] = categories[item] !== undefined ? categories[item] + 1 : 1
+        }
+      }
+    }
+    return categories
+  }, {})
+
+  const sorted = Object.entries(result2)
+    .sort(([, a], [, b]) => b - a)
+    .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
+
+  return sorted;
+}
+
+async function getStudentProjectTrendFromDB(collection) {
+  const allProjects = await dbService.getAllFromDb(collection);
+  var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+  const result2 = allProjects.reduce((categories, o) => {
+    let created_date = new Date(o.created_at);
+    let created_month = months[created_date.getMonth()];
+    let created_year = created_date.getFullYear();
+    let categoryArray = o.category;
+    let current_date = new Date();
+    let current_month = months[current_date.getMonth()];
+    let current_year = current_date.getFullYear();
+    if (current_month === created_month && created_year === current_year) {
+      if (categoryArray != null) {
+        console.log("Current month " + current_month + current_year + "Created month " + created_month + created_year);
+        for (let item of categoryArray) {
+          categories[item] = categories[item] !== undefined ? categories[item] + 1 : 1
+        }
+      }
+    }
+    return categories
+  }, {})
+
+  const sorted = Object.entries(result2)
+    .sort(([, a], [, b]) => b - a)
+    .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
+
+  return sorted;
+}
 
 module.exports = {
   getAllUsersFromDb,
@@ -726,6 +809,8 @@ module.exports = {
 
   //Data Visualization
   getBusinessProjectTrendFromDB,
-
+  getBusinessProjectCategoryFromDB,
+  getStudentProjectTrendFromDB,
+  getStudentProjectCategoryFromDB,
 
 };

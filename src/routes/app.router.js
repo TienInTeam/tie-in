@@ -56,9 +56,9 @@ router.delete('/applications/:id', appController.deleteOneApplicationById);
 
 ////////// Data Visualiazation ROUTES //////////
 router.get('/businessProjectTrend', appController.getBusinessProjectTrend);
-// router.get('/businessProjectCategory', appController.getBusinessProjectCategory);
-// router.get('/studentProjectTrend', appController.getStudentProjectTrend);
-// router.get('/studentProjectCategory', appController.getStudentProjectCategory);
+router.get('/businessProjectCategory', appController.getBusinessProjectCategory);
+router.get('/studentProjectTrend', appController.getStudentProjectTrend);
+router.get('/studentProjectCategory', appController.getStudentProjectCategory);
 
 
 module.exports = router;
