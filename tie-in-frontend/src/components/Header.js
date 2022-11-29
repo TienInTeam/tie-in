@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as Logo } from '../assets/tie-in-logo.svg';
 import { ReactComponent as ProfileIcon } from '../assets/icons/navigation/profile-icon.svg';
+import { ReactComponent as MenuIcon } from '../assets/icons/navigation/menu-icon.svg';
 import Button from "../components/Button";
 
 export default function Header() {
@@ -19,6 +20,9 @@ export default function Header() {
     }
     const changeDisplayMenu = () => {
         setDisplayMenu(!displayMenu);
+    }
+    const changeHamburgerMenu = () => {
+        setHamburgerMenu(!hamburgerMenu);
     }
     const login = () => {
         navigate("/login");
@@ -42,10 +46,14 @@ export default function Header() {
 }
 
     const [displayMenu, setDisplayMenu] = useState(false);
+    const [hamburgerMenu, setHamburgerMenu] = useState(false);
     let Menu;
     const RenderLoginMenu = () => {
         return <div className="site-header-main">
             <div className="site-header-top">
+            <div className="icon hamburger-menu" onClick={changeHamburgerMenu}>
+                    <MenuIcon/>
+                </div>
                 <a onClick={onLogo} className='site-logo'>
                     <Logo />
                     <h2>Tie-in</h2>

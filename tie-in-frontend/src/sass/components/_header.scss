@@ -71,6 +71,10 @@
     justify-content: space-between;
     padding: 0 1rem 0 1rem;
 
+    .hamburger-menu {
+        display: none;
+    }
+
     .site-logo {
         display: flex;
         align-items: center;
@@ -115,4 +119,24 @@
         color: $white;
         padding-left: 5px;
     }
+
+    @media screen and (max-width: 600px) {
+        align-items: center;
+        .button, 
+        a h2{
+            display: none;
+        }
+
+        .hamburger-menu,
+        .site-logo,
+        .site-header-cta-menu {
+            display: flex;
+            flex-basis: 33%;
+            margin: auto;
+        }
+
+        .site-logo {
+            justify-content: center;
+        }
+        }
 }
