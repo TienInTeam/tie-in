@@ -50,8 +50,7 @@ function Searchbar({ onCategory, onSize, onLocation, onSearch, onCheck }) {
                       id="submitted-application"
                       name="submittedApplication"
                       value="Check Submkitted Application"
-                      // checked={applicationIsChecked}
-                      onCheck={onCheck}
+                      onClick={onCheck}
                   />
                   <label>Check Submitted Application</label>
       </div>
