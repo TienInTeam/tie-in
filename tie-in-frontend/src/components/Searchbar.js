@@ -3,12 +3,7 @@ import InputType from "./InputType";
 import { ReactComponent as SearchIcon } from '../assets/icons/actions/actions-search.svg';
 
 
-function Searchbar({ onCategory, onSize, onLocation, onSearch }) {
-  const [applicationIsChecked, setApplicationIsChecked] = useState(null);
-
-  const checkApplication = () => {
-
-  }
+function Searchbar({ onCategory, onSize, onLocation, onSearch, onCheck }) {
   return (
     <div className="search-bar">
       <div className="text-wrapper">
@@ -55,13 +50,8 @@ function Searchbar({ onCategory, onSize, onLocation, onSearch }) {
                       id="submitted-application"
                       name="submittedApplication"
                       value="Check Submkitted Application"
-                      checked={applicationIsChecked}
-                      onChange={() => {
-                          setApplicationIsChecked(!applicationIsChecked);
-                          if (applicationIsChecked) {
-                              checkApplication();
-                          }
-                      }}
+                      // checked={applicationIsChecked}
+                      onCheck={onCheck}
                   />
                   <label>Check Submitted Application</label>
       </div>

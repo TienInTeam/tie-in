@@ -4,7 +4,6 @@ body {
 .body {
   margin: 0;
   font-family: $body_font;
-  overflow: auto !important;
   min-height: 100vh;
 }
 h1,
@@ -52,7 +51,6 @@ a {
 .grid-container {
   display: grid;
   grid-template-columns: 22% 77%;
-  height: 100vh;
 }
 
 #root {
