@@ -4,7 +4,7 @@ import { ReactComponent as CheckIcon } from '../assets/icons/others/check-icon.s
 
 
 function BusinessProjectPreview({businessProject, businessImage, onSeeMore, onCheckStatus}) {
-    const {status, logo, business, description, team_size, end_date,  created_at, category, location} = businessProject;
+    const {status, name, description, team_size,  created_at, category, location} = businessProject;
 
     const renderCategory = () => {
         if (!category) {
@@ -43,8 +43,10 @@ function BusinessProjectPreview({businessProject, businessImage, onSeeMore, onCh
     return (
         <div className="business-project-preview">
             <div className="title-container">
-                <img src={businessImage} alt="project's logo"/>
-                <h2>{business.business_name}</h2>
+                <div>
+                    <img src={businessImage} alt="project's logo"/>
+                    <h2>{name}</h2>
+                </div>
                 {renderStatusLabel()}
             </div>
             <div className="body-container">
@@ -62,7 +64,6 @@ function BusinessProjectPreview({businessProject, businessImage, onSeeMore, onCh
                     <h3>Category</h3>
                     {renderCategory()}
                 </div>
-                <div  className="button-container">
                     <div>
                         <h3>Location</h3>
                         <p>{location}</p>
@@ -71,7 +72,6 @@ function BusinessProjectPreview({businessProject, businessImage, onSeeMore, onCh
                         {renderStatus()}
                         <Button label={"See More"} variant={"primary"} onClick={onSeeMore}/>
                     </div>
-                </div>
             </div>
         </div>
     )
