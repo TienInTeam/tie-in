@@ -6,7 +6,6 @@
 
 .site-header-main {
     position: relative;
-    // padding-bottom: 2rem;
 
     li {
         list-style-type: none;
@@ -106,6 +105,11 @@
 
         .site-header-top .site-header-menu li {
             border-bottom: 1px solid white;
+        }
+
+        .show-menu li {
+            display: grid;
+            justify-content: center;
         }
 
         .home-header {
