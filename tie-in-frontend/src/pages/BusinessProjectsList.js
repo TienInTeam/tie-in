@@ -33,7 +33,7 @@ function BusinessProjectsList() {
           return searchFilter ? businessProject.name.toLowerCase().includes(searchFilter.toLowerCase()) : true
         })
         .filter(businessProject => {
-          return checkFilter ? businessProject.status.includes('open') : true
+          return checkFilter ? businessProject.status !== 'open' : false
         })
       )
     },
@@ -89,9 +89,7 @@ function BusinessProjectsList() {
   const searchHandle = (value) => {
     setSearchFilter(value);
   }
-  const checkApplication = () => {
-    setCheckFilter(true);
-  }
+  
 
   return (
     <div className="grid-container">
@@ -100,11 +98,8 @@ function BusinessProjectsList() {
       </div>
       <div className="business-project-list">
         <Searchbar onCategory={onCategoryChange} onSize={onSizeChange} onLocation={onLocationChange} onSearch={searchHandle} onCheck={() => {
-                          setApplicationIsChecked(!applicationIsChecked);
-                          if (applicationIsChecked) {
-                              checkApplication();
-                              console.log('click');
-                          }
+                              setCheckFilter(!checkFilter);
+                              console.log(checkFilter);
                       }} />
         {searchFilter || categoryFilter || sizeFilter || locationFilter || checkFilter ? requestFilteredBusinessProject.data.map((business, index) =>
           <BusinessProjectPreview
