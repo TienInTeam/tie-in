@@ -28,7 +28,7 @@ function BusinessProjectsList() {
           return locationFilter ? businessProject.location.includes(locationFilter) : true
         })
         .filter(businessProject => {
-          return searchFilter ? businessProject.business.business_name.toLowerCase().includes(searchFilter.toLowerCase()) : true
+          return searchFilter ? businessProject.name.toLowerCase().includes(searchFilter.toLowerCase()) : true
         })
       )
     },
@@ -84,6 +84,8 @@ function BusinessProjectsList() {
   const searchHandle = (value) => {
     setSearchFilter(value);
   }
+  console.log('here');
+  console.log(requestBusiness.data._id);
   return (
     <div className="grid-container">
       <SideMenu />
@@ -93,7 +95,8 @@ function BusinessProjectsList() {
           <BusinessProjectPreview
             businessProject={business}
             key={index}
-            businessImage={requestBusiness.data.logo_url}
+            businessImage={requestBusiness.data.map((business) => {return business.logo_url})
+            .filter(businessProject => requestBusiness.data._id === requestBusinessProject.data.business_id)}
             onSeeMore={() => onSeeMore(business._id)}
             onCheckStatus={onCheckStatus}
           />
@@ -102,7 +105,8 @@ function BusinessProjectsList() {
             <BusinessProjectPreview
               businessProject={business}
               key={index}
-              businessImage={requestBusiness.data.map((business) => business.logo_url)}
+              businessImage={requestBusiness.data.map((business) => {return business.logo_url})
+              .filter(businessProject => requestBusiness.data.id === requestBusinessProject.data.business_id)}
               onSeeMore={() => onSeeMore(business._id)}
               onCheckStatus={onCheckStatus}
             />
