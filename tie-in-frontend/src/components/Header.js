@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { ReactComponent as Logo } from '../assets/tie-in-logo.svg';
 import { ReactComponent as ProfileIcon } from '../assets/icons/navigation/profile-icon.svg';
 import { ReactComponent as MenuIcon } from '../assets/icons/navigation/menu-icon.svg';
-// import { ReactComponent as BackIcon } from '../assets/icons/navigation/back-icon.svg';
 import Button from "../components/Button";
 import SideMenu from "./SideMenu";
 
@@ -29,9 +28,6 @@ export default function Header() {
     const changeHamburgerMenu = () => {
         setHamburgerMenu(!hamburgerMenu);
     }
-    // const backClick = () => {
-    //     setHamburgerMenu(false)
-    // }
     const login = () => {
         navigate("/login");
     }
@@ -81,7 +77,6 @@ export default function Header() {
                 </ul>
             </div>
             <div className={hamburgerMenu ? "mobile-side-menu show-menu" : "mobile-side-menu"}>
-                {/* <div className="icon back-icon" onClick={backClick}><BackIcon /></div> */}
                 <SideMenu />
             </div>
         </div>;
@@ -89,18 +84,25 @@ export default function Header() {
 
     const RenderLogoutMenu = () => {
         return <div className="site-header-main">
-            <div className="site-header-top">
+            <div className="site-header-top home-header">
+                <div className="icon hamburger-menu" onClick={changeHamburgerMenu}>
+                    <MenuIcon />
+                </div>
                 <div className='site-logo'>
                     <Logo />
                     <h2>Tie-in</h2>
                 </div>
                 <div className={'site-header-menu'}>
-                    <ul>
-                        <li><a href="#studentTeam">Student Team</a></li>
-                        <li><a href="#logout">Company</a></li>
-                        <li><a href="#whyUs">Why Us</a></li>
-                        <li><a href="#contactUs">Contact Us</a></li>
-                    </ul>
+                    <div className={hamburgerMenu ? "mobile-side-menu show-home-menu" : "mobile-side-menu"}>
+                        <ul>
+                            <li><a href="#studentTeam">Student Team</a></li>
+                            <li><a href="#logout">Company</a></li>
+                            <li><a href="#whyUs">Why Us</a></li>
+                            <li><a href="#contactUs">Contact Us</a></li>
+                            <li className="mobile-login" onClick={login}><a href="#login">Login</a></li>
+                            <li className="mobile-login" onClick={signUp}><a href="#signUp">Sign Up</a></li>
+                        </ul>
+                    </div>
                 </div>
                 <div className="site-header-buttons">
                     <Button label={"Login"} variant={"secondary"} onClick={login} />
