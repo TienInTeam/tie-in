@@ -14,7 +14,9 @@ export default function Footer() {
         <>
             <div className="site-footer-main">
                 <div className='site-footer-logo'>
-                    <Logo />
+                    <Logo onClick={() => {
+          window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+        }} />
                 </div>
                 <div className="site-footer-copyright">
                     <span className="copyright">&copy;</span> <p>2022 Tie-in</p>
