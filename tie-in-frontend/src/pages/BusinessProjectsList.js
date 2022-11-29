@@ -14,6 +14,8 @@ function BusinessProjectsList() {
   const [sizeFilter, setSizeFilter] = useState(null);
   const [locationFilter, setLocationFilter] = useState(null);
   const [searchFilter, setSearchFilter] = useState(null);
+  const [applicationIsChecked, setApplicationIsChecked] = useState(false);
+  const [checkFilter, setCheckFilter] = useState(false);
 
   const requestFilteredBusinessProject = useQuery(["businessProject"], () => requestBusinessProjects(),
     {
@@ -29,6 +31,9 @@ function BusinessProjectsList() {
         })
         .filter(businessProject => {
           return searchFilter ? businessProject.name.toLowerCase().includes(searchFilter.toLowerCase()) : true
+        })
+        .filter(businessProject => {
+          return checkFilter ? businessProject.status.includes('open') : true
         })
       )
     },
@@ -84,14 +89,22 @@ function BusinessProjectsList() {
   const searchHandle = (value) => {
     setSearchFilter(value);
   }
-  console.log('here');
-  console.log(requestBusiness.data._id);
+  const checkApplication = () => {
+    setCheckFilter(true);
+  }
+
   return (
     <div className="grid-container">
       <SideMenu />
       <div className="business-project-list">
-        <Searchbar onCategory={onCategoryChange} onSize={onSizeChange} onLocation={onLocationChange} onSearch={searchHandle} />
-        {searchFilter || categoryFilter || sizeFilter || locationFilter ? requestFilteredBusinessProject.data.map((business, index) =>
+        <Searchbar onCategory={onCategoryChange} onSize={onSizeChange} onLocation={onLocationChange} onSearch={searchHandle} onCheck={() => {
+                          setApplicationIsChecked(!applicationIsChecked);
+                          if (applicationIsChecked) {
+                              checkApplication();
+                              console.log('click');
+                          }
+                      }} />
+        {searchFilter || categoryFilter || sizeFilter || locationFilter || checkFilter ? requestFilteredBusinessProject.data.map((business, index) =>
           <BusinessProjectPreview
             businessProject={business}
             key={index}
