@@ -3,12 +3,17 @@ import { useNavigate } from "react-router-dom";
 import { ReactComponent as Logo } from '../assets/tie-in-logo.svg';
 import { ReactComponent as ProfileIcon } from '../assets/icons/navigation/profile-icon.svg';
 import { ReactComponent as MenuIcon } from '../assets/icons/navigation/menu-icon.svg';
+// import { ReactComponent as BackIcon } from '../assets/icons/navigation/back-icon.svg';
 import Button from "../components/Button";
+import SideMenu from "./SideMenu";
 
 export default function Header() {
     const navigate = useNavigate();
     const userType = sessionStorage.getItem("userType");
     const isLoggedIn = sessionStorage.getItem("userLoggedIn");
+
+    const [displayMenu, setDisplayMenu] = useState(false);
+    const [hamburgerMenu, setHamburgerMenu] = useState(false);
 
     const uploadProject = () => {
         if (sessionStorage.getItem('userType') === 'student') {
@@ -24,6 +29,9 @@ export default function Header() {
     const changeHamburgerMenu = () => {
         setHamburgerMenu(!hamburgerMenu);
     }
+    // const backClick = () => {
+    //     setHamburgerMenu(false)
+    // }
     const login = () => {
         navigate("/login");
     }
@@ -42,17 +50,15 @@ export default function Header() {
             } else {
                 navigate("/studentdashboard")
             }
+        }
     }
-}
 
-    const [displayMenu, setDisplayMenu] = useState(false);
-    const [hamburgerMenu, setHamburgerMenu] = useState(false);
     let Menu;
     const RenderLoginMenu = () => {
         return <div className="site-header-main">
             <div className="site-header-top">
-            <div className="icon hamburger-menu" onClick={changeHamburgerMenu}>
-                    <MenuIcon/>
+                <div className="icon hamburger-menu" onClick={changeHamburgerMenu}>
+                    <MenuIcon />
                 </div>
                 <a onClick={onLogo} className='site-logo'>
                     <Logo />
@@ -73,6 +79,10 @@ export default function Header() {
                     <li><a href="#settings">Settings</a></li>
                     <li><a href="/" onClick={logout}>Logout</a></li>
                 </ul>
+            </div>
+            <div className={hamburgerMenu ? "mobile-side-menu show-menu" : "mobile-side-menu"}>
+                {/* <div className="icon back-icon" onClick={backClick}><BackIcon /></div> */}
+                <SideMenu />
             </div>
         </div>;
     }
@@ -111,5 +121,5 @@ export default function Header() {
             <Menu />
         </>
     )
-    
+
 }

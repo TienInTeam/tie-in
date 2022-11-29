@@ -95,7 +95,9 @@ function BusinessProjectsList() {
 
   return (
     <div className="grid-container">
-      <SideMenu />
+      <div className="desktop-menu">
+        <SideMenu />
+      </div>
       <div className="business-project-list">
         <Searchbar onCategory={onCategoryChange} onSize={onSizeChange} onLocation={onLocationChange} onSearch={searchHandle} onCheck={() => {
                           setApplicationIsChecked(!applicationIsChecked);
