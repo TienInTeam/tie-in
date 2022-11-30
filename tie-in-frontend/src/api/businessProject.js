@@ -18,7 +18,7 @@ export const requestBusinessProjectsByID = (id) => {
 }
 
 export const updateBusinessProject = (id) => {
-    return project.patch(`/businessProjects/${id}?status="Closed"`).then((res) => {
+    return project.patch(`/businessProjects/${id}?status=Closed`).then((res) => {
         return res.data;
     });
 }
