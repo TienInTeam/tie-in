@@ -2,8 +2,6 @@ import React from 'react';
 import Button from './Button';
 import { ReactComponent as FileIcon } from '../assets/icons/others/file-icon.svg';
 
-
-
 function BusinessProjectDetails({ businessProject, business, onApply }) {
   const { name, additional_file_url, location, description, budget, team_size, team_requirements, start_date, end_date, subjects, category, technology, additional_field, projectTitle, links, summary, file } = businessProject;
   const { logo, company_name } = business;
