@@ -30,9 +30,11 @@ export default function Header() {
     }
     const login = () => {
         navigate("/login");
+        setHamburgerMenu(!hamburgerMenu)
     }
     const signUp = () => {
         navigate("/signuplanding");
+        setHamburgerMenu(!hamburgerMenu)
     }
     const logout = () => {
         sessionStorage.clear();
@@ -77,7 +79,7 @@ export default function Header() {
                 </ul>
             </div>
             <div className={hamburgerMenu ? "mobile-side-menu show-menu" : "mobile-side-menu"}>
-                <SideMenu />
+                <SideMenu setHamburgerMenu={setHamburgerMenu}/>
             </div>
         </div>;
     }
@@ -95,10 +97,10 @@ export default function Header() {
                 <div className={'site-header-menu'}>
                     <div className={hamburgerMenu ? "mobile-side-menu show-home-menu" : "mobile-side-menu"}>
                         <ul>
-                            <li><a href="#studentTeam">Student Team</a></li>
-                            <li><a href="#logout">Company</a></li>
-                            <li><a href="#whyUs">Why Us</a></li>
-                            <li><a href="#contactUs">Contact Us</a></li>
+                            <li onClick={() => setHamburgerMenu(!hamburgerMenu)}><a href="#studentTeam">Student Team</a></li>
+                            <li onClick={() => setHamburgerMenu(!hamburgerMenu)}><a href="#logout">Company</a></li>
+                            <li onClick={() => setHamburgerMenu(!hamburgerMenu)}><a href="#whyUs">Why Us</a></li>
+                            <li onClick={() => setHamburgerMenu(!hamburgerMenu)}><a href="#contactUs">Contact Us</a></li>
                             <li className="mobile-login" onClick={login}><a href="#login">Login</a></li>
                             <li className="mobile-login" onClick={signUp}><a href="#signUp">Sign Up</a></li>
                         </ul>

@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Link, Outlet } from 'react-router-dom';
 import { getStudentByEmail } from '../api/student';
 
-function SideMenuStudent() {
+function SideMenuStudent({ setHamburgerMenu }) {
   const email = sessionStorage.getItem("userEmail");
 
   const requestStudent = useQuery(["student"], () => getStudentByEmail(email),
@@ -25,16 +25,16 @@ function SideMenuStudent() {
         <nav>
           <ul>
             <li>
-              <Link to="/uploadstudentproject">Upload student project</Link>
+              <Link to="/uploadstudentproject" onClick={() => {setHamburgerMenu(false)}}>Upload student project</Link>
             </li>
             <li>
-              <Link to="/studentdashboard">Student Dashboard</Link>
+              <Link to="/studentdashboard" onClick={() => {setHamburgerMenu(false)}}>Student Dashboard</Link>
             </li>
             <li>
-              <Link to="/studentprojectslist">Student Projects</Link>
+              <Link to="/studentprojectslist" onClick={() => {setHamburgerMenu(false)}}>Student Projects</Link>
             </li>
             <li>
-              <Link to="/businessprojectslist">Business Projects</Link>
+              <Link to="/businessprojectslist" onClick={() => {setHamburgerMenu(false)}}>Business Projects</Link>
             </li>
           </ul>
         </nav>
