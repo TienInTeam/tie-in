@@ -29,7 +29,7 @@ function UploadBusinessProject() {
         "additionalFields": additionalField,
         "file": additionalFile,
         "links": additionalLink,
-        "status": "open",
+        "status": "Open",
         "business_id": businessId,
     }), {
         onSuccess: () => {
