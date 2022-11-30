@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Datepicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
-import {saveBusinessProject} from "../api/businessProject";
+import { saveBusinessProject } from "../api/businessProject";
 import Button from "../components/Button";
 import InputType from "../components/InputType";
 import validateTextInput from "../utils/validateTextInput";
@@ -57,31 +57,31 @@ function UploadBusinessProject() {
     const [currentStep, setCurrentStep] = useState(1);
 
     const validateInput = () => {
-  if (projectName === "" || description === "" || teamSize === "" || estimatedBudget === "" || teamRequirement === "") {
-      alert('Enter all mandatory input field values');
-      return false;
-  }
-  if (!validateTextInput(projectName)) {
-      alert("Valid Project name is required.");
-      return false;
-  }
-  if(teamSize<1){
-    alert('Team size should be positive number.');
-    return false;
-  }
-  if (location) {
-      if (!validateTextInput(location)) {
-          alert("Enter Valid location");
-          return false;
-      }
-      else {
-          return true;
-      }
-  }
-  else {
-      return true;
-  }
-}
+        if (projectName === "" || description === "" || teamSize === "" || estimatedBudget === "" || teamRequirement === "") {
+            alert('Enter all mandatory input field values');
+            return false;
+        }
+        if (!validateTextInput(projectName)) {
+            alert("Valid Project name is required.");
+            return false;
+        }
+        if (teamSize < 1) {
+            alert('Team size should be positive number.');
+            return false;
+        }
+        if (location) {
+            if (!validateTextInput(location)) {
+                alert("Enter Valid location");
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+        else {
+            return true;
+        }
+    }
 
     const onSubmit = () => {
         if (validateInput()) {
@@ -140,19 +140,39 @@ function UploadBusinessProject() {
                     </div>
                     <InputType label={"Team Size (Required)"} type={"number"} placeHolder={"Enter your preferred team size"} min={1} onChange={(e) => setTeamSize(e.target.value)} />
                     <InputType label={"Team Requirement (Required)"} type={"text"} placeHolder={"Enter your team requirements"} onChange={(e) => setTeamRequirement(e.target.value)} />
-                    <InputType label={"Estimated Budget (Required)"} type={"text"} placeHolder={"Please choose a budget range"} onChange={(e) => setEstimatedBudget(e.target.value)} />
-                    <InputType label={"Location (Required)"} type={"text"} placeHolder={"Please choose a budget range"} onChange={(e) => setLocation(e.target.value)} />
-                    <div className="location-checkbox">
-                        <input type="checkbox" id="notSpecifiedLocation" name="notSpecifiedCheck" value="notSpecifiedLocation" checked={locationIsChecked}
-                            onChange={() => {
-                                setLocationIsChecked(!locationIsChecked);
-                                if (locationIsChecked) {
-                                    setLocation(onChange);
-                                } else {
-                                    setLocation(null);
-                                }
-                            }} />
-                        <label htmlFor="notSpecifiedLocation">Not Specified Yet</label>
+                    <div className="budget-input">
+                        <label htmlFor="budget">Estimated Budget (Required)</label>
+                        <select id="budget" aria-label="budget" placeHolder="Please choose a budget range" onChange={(e) => setEstimatedBudget(e.target.value)}>
+                        <option value="" disabled>Please choose the budget</option>
+                                <option value="5000-10000">5000-10000</option>
+                                <option value="10000-15000">10000-15000</option>
+                                <option value="15000-20000">15000-20000</option>
+                                <option value="20000-25000">20000-25000</option>
+                                <option value="other">other</option>
+                        </select>
+                    </div>
+                    <div className="location-input">
+                        <label htmlFor="location">Location (Required)</label>
+                        <select id="location" aria-label="Location" onChange={(e) => onLocation(e.target.value)} defaultValue="">
+                            <option value="" disabled>Please choose your location</option>
+                            <option value="Vancouver">Vancouver</option>
+                            <option value="Burnaby">Burnaby</option>
+                            <option value="North Vancouver">North Vancouver</option>
+                            <option value="Remotely">Remotely</option>
+                            <option value="Out of BC">Out of BC</option>
+                        </select>
+                        <div className="location-checkbox">
+                            <input type="checkbox" id="notSpecifiedLocation" name="notSpecifiedCheck" value="notSpecifiedLocation" checked={locationIsChecked}
+                                onChange={() => {
+                                    setLocationIsChecked(!locationIsChecked);
+                                    if (locationIsChecked) {
+                                        setLocation(onChange);
+                                    } else {
+                                        setLocation(null);
+                                    }
+                                }} />
+                            <label htmlFor="notSpecifiedLocation">Not Specified Yet</label>
+                        </div>
                     </div>
                 </div>
                 : null}
@@ -161,11 +181,12 @@ function UploadBusinessProject() {
                     <label htmlFor="category">Project Category (Optional)</label>
                     <select id="category" placeholder="Select a category related to your project" onChange={(e) => setTechnology([e.target.value])}>
                         <option> ---Choose category---</option>
-                        <option> Web Application</option>
-                        <option> Mobile Application</option>
-                        <option> Wordpress</option>
-                        <option> Ceo </option>
-                        <option> Digital Ads  </option>
+                        <option value="UI/UX">UI/UX</option>
+                        <option value="Mobile Application">Mobile Application</option>
+                        <option value="System Architecture">System Architecture</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="Commercial">Commercial</option>
+                        <option value="Marketing">Marketing</option>
                     </select>
                 </div>
                 <div className="technology-input">
@@ -187,16 +208,16 @@ function UploadBusinessProject() {
                 : null}
             {currentStep === 3 ? <div className="third-step">
                 <InputType label={"Additional Field (Optional)"} type={"text"} placeHolder={"You can add and customize additional fields for extra project request information "} onChange={(e) => setAdditionalField(e.target.value)} />
-                    <label htmlFor="upload-file">
-                        Additional File (Optional)
-                    </label>
+                <label htmlFor="upload-file">
+                    Additional File (Optional)
+                </label>
                 <div className="upload-box">
+                    <input type="file" placeHolder={" (Maximum file size 2mb)"} id="upload-file" onChange={(e) => setAdditionalFile(e.target.value)} />
                     <div className="upload-button" onClick={(e) => setAdditionalFile(e.target.value)}>
                         <p>choose file</p>
                         <div className="icon upload-icon"><UploadIcon /></div>
                     </div>
                     <p>(Maximum file size 2mb)</p>
-                    <input type="file" placeHolder={" (Maximum file size 2mb)"} id="upload-file" onChange={(e) => setAdditionalFile(e.target.value)} />
                 </div>
                 <InputType label={"Additional Link (Optional)"} type={"text"} placeHolder={" You can add and customize additional link for your request "} onChange={(e) => setAdditionalLink(e.target.value)} />
             </div>

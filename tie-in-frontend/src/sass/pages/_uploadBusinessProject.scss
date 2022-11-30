@@ -24,6 +24,13 @@
     text-align: left;
   }
 
+  input::placeholder,
+  textarea::placeholder {
+    text-align: left;
+    color: black;
+    font-size: $body_font;
+  }
+
   input {
     margin-bottom: 1rem;
   }
@@ -35,6 +42,12 @@
     margin-bottom: 1rem;
   }
 
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 1px solid $primary_yellow;
+    border-radius: 3px;
+  }
   .date-checkbox {
     margin-bottom: 1rem;
     display: flex;
@@ -67,6 +80,10 @@
   .first-step div:nth-child(11) {
     margin-bottom: 0;
   }
+
+.progress-bar > div > div:nth-child(3) > div > div {
+  margin-top: 2.4rem;
+}
 
   .location-checkbox {
     margin-bottom: 1rem;
@@ -102,14 +119,18 @@
   }
 
   .category-input,
-  .technology-input {
+  .technology-input,
+  .location-input,
+  .budget-input {
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
   }
 
   .category-input select,
-  .technology-input select {
+  .technology-input select,
+  .location-input select,
+  .budget-input select {
     height: 30px;
     border-radius: 5px;
   }
@@ -139,6 +160,11 @@
     padding: 0 .5rem;
     width: 25%;
     height: 50px;
+  }
+
+  #upload-file:focus + .upload-button,
+  .upload-box:hover .upload-button{
+    border: 3px solid $primary_yellow !important;
   }
 
   .upload-icon svg {

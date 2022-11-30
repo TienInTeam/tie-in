@@ -38,6 +38,8 @@ function Searchbar({ onCategory, onSize, onLocation, onSearch }) {
             <option value="4">4</option>
             <option value="5">5</option>
             <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
           </select>
           <select id="location" aria-label="Choose location" onChange={(e) => onLocation(e.target.value)} defaultValue="">
             <option value="" disabled>Location</option>
