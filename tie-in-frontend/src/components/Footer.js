@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Footer() {
     const navigate = useNavigate()
-    const backHome = () => {
+    const onBackHomeClick = () => {
         navigate("/")
     }
     return (
@@ -23,8 +23,8 @@ export default function Footer() {
                 </div>
                 <div className="site-footer-nav">
                     <ul>
-                        <li><a href="#aboutUs" onClick={backHome}>About Us</a></li>
-                        <li><a href="#contactUs" onClick={backHome}>Contact Us</a></li>
+                        <li><a href="#aboutUs" onClick={onBackHomeClick}>About Us</a></li>
+                        <li><a href="#contactUs" onClick={onBackHomeClick}>Contact Us</a></li>
                     </ul>
                 </div>
             </div>
