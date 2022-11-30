@@ -109,7 +109,7 @@ function UploadBusinessProject() {
         <div className="upload-business-project">
             <div className="header-wrapper">
                 {currentStep > 1 ? <div className="icon back-icon" onClick={onBack}><BackIcon /></div> : <div className="icon back-icon" onClick={onLocation}><BackIcon /></div>}
-                <div><h2>Business Project Request</h2></div>
+                <div><h2>Upload Business Project</h2></div>
             </div>
             <MultiStepProgressBar currentStep={currentStep} />
             {currentStep === 1 ?
