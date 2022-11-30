@@ -114,9 +114,14 @@
     background-color: $primary_yellow;
   }
 
-  .react-datepicker__day--selected:hover {
+  .react-datepicker__day--selected:hover,
+  .react-datepicker__day--selected::selection{
     background-color: $primary_yellow;
   }
+
+ .react-datepicker__day.react-datepicker__day--029.react-datepicker__day--keyboard-selected.react-datepicker__day--today {
+  background-color: $primary_yellow;
+ }
 
   .category-input,
   .technology-input,
@@ -127,12 +132,21 @@
     margin-bottom: 1rem;
   }
 
+option:hover,
+option:checked{
+  background-color: $primary_yellow !important;
+  box-shadow: 0 0 1px $primary_yellow;
+}
   .category-input select,
   .technology-input select,
   .location-input select,
   .budget-input select {
     height: 30px;
     border-radius: 5px;
+  }
+
+  option {
+    color: black;
   }
 
   .category-input {
