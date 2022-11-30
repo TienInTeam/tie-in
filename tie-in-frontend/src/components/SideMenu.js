@@ -2,21 +2,22 @@ import { Link, Outlet } from 'react-router-dom';
 import SideMenuBusiness from './SideMenuBusiness';
 import SideMenuStudent from './SideMenuStudent';
 
-function SideMenu() {
+function SideMenu({hamburgerMenu, setHamburgerMenu}) {
   const userType = sessionStorage.getItem("userType");
   const isLoggedIn = sessionStorage.getItem("userLoggedIn");
+  
 
   if (isLoggedIn === "true") {
     if (userType === "business") {
       return (
         <div className="side-menu">
-         <SideMenuBusiness /> 
+         <SideMenuBusiness setHamburgerMenu={setHamburgerMenu}/> 
         </div>
       )
     } else {
       return (
         <div className="side-menu">
-         <SideMenuStudent />
+         <SideMenuStudent setHamburgerMenu={setHamburgerMenu}/>
         </div>
       );
     }

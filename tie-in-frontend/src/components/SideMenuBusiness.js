@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Link, Outlet } from 'react-router-dom';
 import { getBusinessByEmail } from '../api/business';
 
-function SideMenuBusiness() {
+function SideMenuBusiness({ setHamburgerMenu }) {
   const email = sessionStorage.getItem("userEmail");
   const requestBusiness = useQuery(["business"], () => getBusinessByEmail(email),
     {
@@ -24,16 +24,16 @@ function SideMenuBusiness() {
         <nav>
           <ul>
             <li>
-              <Link to="/dashboard">Dashboard Company</Link>
+              <Link to="/dashboard" onClick={() => {setHamburgerMenu(false)}}>Dashboard Company</Link>
             </li>
             <li>
-              <Link to="/uploadbusinessproject">Upload business project</Link>
+              <Link to="/uploadbusinessproject" onClick={() => {setHamburgerMenu(false)}}>Upload business project</Link>
             </li>
             <li>
-              <Link to="/studentprojectslist">Student Projects</Link>
+              <Link to="/studentprojectslist" onClick={() => {setHamburgerMenu(false)}}>Student Projects</Link>
             </li>
             <li>
-              <Link to="/requeststatus">Request Status</Link>
+              <Link to="/requeststatus" onClick={() => {setHamburgerMenu(false)}}>Request Status</Link>
             </li>
           </ul>
         </nav>
