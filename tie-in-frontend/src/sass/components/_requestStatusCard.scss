@@ -8,12 +8,10 @@
 
 .request-status-card {
   background-color: $blue_card_background;
-  border-radius: 1rem;
-  margin-bottom: 1rem;
-  padding-left: 1rem;
-  display: flex;
-  align-items: baseline;
-  justify-content: space-evenly;
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
   color: $white;
 }
 

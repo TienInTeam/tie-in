@@ -14,7 +14,7 @@
 }
 
 .title-wrapper h2{
-  font-size: 23px;
+  font-size: 20px;
 }
 
 .student-project-wrapper {
@@ -25,14 +25,15 @@
   max-width: 950px;
 }
 
-.projects-container {
+.projects-container,
+.app-status-container {
   background-color: $blue_card_background;
   padding: 0 0.8rem;
+  border-radius: 0 0 1rem 1rem;
 }
 
 .highlightStudentProject {
   background-color: $blue_card_background;
-  margin-bottom: 1rem;
   display: grid;
   justify-items: center;
 }
@@ -48,12 +49,14 @@
   border-radius: 50px;
   padding: .2rem .5rem;
   font-size: 12px;
+  text-align: center;
 }
 
 .projects-container .primary {
   font-family: $headline_font;
   font-weight: 800px;
   font-size: 12px;
+  width: 130px;
 }
 
 .project-title {
