@@ -16,7 +16,7 @@ function ApplicationForm({ studentTeam }) {
   const saveApplication = useMutation(["studentProject"], () => saveStudentApplication({
     "team_id": teamId,
     "business_request_id": businessProjectId,
-    "status": "open",
+    "status": "Open",
   }), {
     onSuccess: () => {
       alert("Application Completed");

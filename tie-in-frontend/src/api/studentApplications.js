@@ -17,7 +17,7 @@ export const getStudentApplication = (studentId) => {
  }
 
 export const updateApplicationStatus = (id) => {
-    return project.patch(`/applications/${id}?status="Closed"`).then((res) => {
+    return project.patch(`/applications/${id}?status=Closed`).then((res) => {
         return res.data;
     });
 }
