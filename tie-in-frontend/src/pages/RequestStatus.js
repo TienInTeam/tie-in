@@ -43,7 +43,7 @@ function RequestStatus(options) {
         }
         return requestBusinessApplications.data.map((application) => {
                 return requestBusinessProject.data.filter((businessProject) => (
-                    businessProject._id === application.business_request_id && application.status === "open"))
+                    businessProject._id === application.business_request_id && application.status === "Open"))
                     .map((filteredBusinessProject, index) => (
                             <TeamApplication
                                 key={index}

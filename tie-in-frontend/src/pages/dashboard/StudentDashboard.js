@@ -41,11 +41,7 @@ function StudentDashboard() {
     });
 
 
-   const requestApplications = useQuery(["applications", {id: studentId}], () => getStudentApplication(studentId), {
-     onSuccess: (data) => {
-       console.log("DATA IS HERE " + JSON.stringify(data))
-     }
-   })
+   const requestApplications = useQuery(["applications", {id: studentId}], () => getStudentApplication(studentId))
 
   if (requestBusinessProject.isLoading) {
     return <span>Loading...</span>
