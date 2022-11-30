@@ -63,7 +63,7 @@ function StudentDashboard() {
     if (!requestBusinessProject?.data) {
       return null;
     }
-    return requestBusinessProject.data.map((businessProject) => {
+    return requestBusinessProject.data.slice(requestBusinessProject.data.length-6, requestBusinessProject.data.length-1).map((businessProject) => {
         return requestBusiness.data.filter((business) => (
           businessProject.business.business_id === business._id
         )).map((filteredBusiness, index) =>
@@ -114,14 +114,16 @@ function StudentDashboard() {
         </div>
 
         <div className={"business-project-wrapper"}>
-          <h2>Recent Company Requests</h2>
-          <div className={"recent-requests-title-wrapper"}>
-            <h2>Company Name</h2>
-            <h2>Category</h2>
-            <h2>Due Date</h2>
-            <h2>Location</h2>
+          <h2 className="project-title">Recent Business Projects</h2>
+          <div className="projects-container">
+            <div className={"title-wrapper"}>
+              <h2>Company:</h2>
+              <h2>Category:</h2>
+              <h2>Due Date:</h2>
+              <h2>Location:</h2>
+            </div>
+            {renderHighlightedBusinessProjects()}
           </div>
-          {renderHighlightedBusinessProjects()}
         </div>
 
       <div className={"request-status-list-wrapper"}>
@@ -129,13 +131,15 @@ function StudentDashboard() {
           <h2>Applications Status</h2>
           <Button label={"See More"} variant={"secondary"} onClick={onApplicationSeeMore} />
         </div>
-        <div className={"title-wrapper"}>
-          <h2>Company:</h2>
-          <h2 className="team-wrapper">Team:</h2>
-          <h2>Date:</h2>
-          <h2>Status:</h2>
+        <div className="app-status-container">
+          <div className={"title-wrapper"}>
+            <h2>Company:</h2>
+            <h2 className="team-wrapper">Team:</h2>
+            <h2>Date:</h2>
+            <h2>Status:</h2>
+          </div>
+            {renderApplicationStatus()}
         </div>
-          {renderApplicationStatus()}
       </div>
       </div>
     </div>

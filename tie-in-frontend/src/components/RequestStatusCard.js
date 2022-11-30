@@ -3,7 +3,7 @@
 import React from 'react';
 
 function RequestStatusCard({ application }) {
-  const { team, team_images, name, created_at, application_status, business } = application;
+  const { team, team_images, name, created_at, status, business } = application;
   return (
     <div className="request-status-card">
       <p>{business.business_name}</p>
@@ -23,7 +23,7 @@ function RequestStatusCard({ application }) {
         </div>
       </div>
       <p>{new Date(created_at).toDateString()}</p>
-      <p>{application_status}</p>
+      <p>{status}</p>
     </div>
   );
 }
