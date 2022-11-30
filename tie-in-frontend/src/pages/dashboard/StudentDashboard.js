@@ -11,7 +11,6 @@ import Button from "../../components/Button";
 import SideMenu from "../../components/SideMenu";
 import DataVisualizationPieChart from "../../components/DataVisualizationPieChart";
 import DataVisualizationAreaChart from "../../components/DataVisualizationAreaChart";
-import { requestBusinessProjectUploadTrend, requestBusinessProjectByCategory } from "../../api/dataVisualization";
 
 function StudentDashboard() {
   const navigate = useNavigate();
@@ -98,7 +97,9 @@ function StudentDashboard() {
 
   return (
     <div className="grid-container">
-      <SideMenu />
+      <div className="desktop-menu">
+        <SideMenu />
+      </div>
       <div>
       <div className={"data-visualization"}>
           <div className="visualization-component">

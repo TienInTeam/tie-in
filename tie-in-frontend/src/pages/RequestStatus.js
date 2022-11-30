@@ -63,7 +63,9 @@ function RequestStatus(options) {
 
     return (
         <div className="grid-container">
-            <SideMenu/>
+            <div className="desktop-menu">
+                <SideMenu/>
+                </div>
             <div>
                 <h2>Request Status List</h2>
                 {renderTeamApplication()}
