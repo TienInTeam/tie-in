@@ -11,7 +11,6 @@ import { ReactComponent as BackIcon } from '../assets/icons/navigation/back-icon
 import { ReactComponent as UploadIcon } from '../assets/icons/actions/actions-upload.svg';
 import MultiStepProgressBar from "../components/MultiProgressBar";
 
-
 function UploadBusinessProject() {
     const businessId = sessionStorage.getItem('userMongoId');
     const businessName = sessionStorage.getItem('userName');
@@ -117,7 +116,7 @@ function UploadBusinessProject() {
                     <InputType label={"Project Title (Required)"} type={"text"} placeHolder={"Enter your project name"} onChange={(e) => setProjectName(e.target.value)} />
                     <label>
                         <span>Project Summary (Required)</span>
-                        <textarea placeholder="Enter your project summary" onChange={(e) => setDescription(e.target.value)} />
+                        <textarea placeHolder="Enter your project summary" onChange={(e) => setDescription(e.target.value)} />
                     </label>
                     <label>Expected Deadline (Required)</label>
                     <Datepicker
@@ -153,7 +152,7 @@ function UploadBusinessProject() {
                     </div>
                     <div className="location-input">
                         <label htmlFor="location">Location (Required)</label>
-                        <select id="location" aria-label="Location" onChange={(e) => onLocation(e.target.value)} defaultValue="">
+                        <select id="location" aria-label="Location" onChange={(e) => setLocation(e.target.value)} defaultValue="">
                             <option value="" disabled>Please choose your location</option>
                             <option value="Vancouver">Vancouver</option>
                             <option value="Burnaby">Burnaby</option>
@@ -179,7 +178,7 @@ function UploadBusinessProject() {
             {currentStep === 2 ? <div className="second-step">
                 <div className="category-input">
                     <label htmlFor="category">Project Category (Optional)</label>
-                    <select id="category" placeholder="Select a category related to your project" onChange={(e) => setTechnology([e.target.value])}>
+                    <select id="category" placeHolder="Select a category related to your project" onChange={(e) => setCategory([...category,e.target.value])}>
                         <option> ---Choose category---</option>
                         <option value="UI/UX">UI/UX</option>
                         <option value="Mobile Application">Mobile Application</option>
@@ -191,7 +190,7 @@ function UploadBusinessProject() {
                 </div>
                 <div className="technology-input">
                     <label htmlFor="technology">Technology (Optional)</label>
-                    <select id="technology" placeholder="Select a technology related to your project" onChange={(e) => setCategory([e.target.value])}>
+                    <select id="technology" placeHolder="Select a technology related to your project" onChange={(e) => setTechnology([...technology,e.target.value])}>
                         <option> ---Choose technology---</option>
                         <option> JS </option>
                         <option> React.JS </option>
