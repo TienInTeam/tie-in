@@ -14,6 +14,8 @@ function BusinessProjectsList() {
   const [sizeFilter, setSizeFilter] = useState(null);
   const [locationFilter, setLocationFilter] = useState(null);
   const [searchFilter, setSearchFilter] = useState(null);
+  const [applicationIsChecked, setApplicationIsChecked] = useState(false);
+  const [checkFilter, setCheckFilter] = useState(false);
 
   const requestFilteredBusinessProject = useQuery(["businessProject"], () => requestBusinessProjects(),
     {
@@ -28,7 +30,10 @@ function BusinessProjectsList() {
           return locationFilter ? businessProject.location.includes(locationFilter) : true
         })
         .filter(businessProject => {
-          return searchFilter ? businessProject.business.business_name.toLowerCase().includes(searchFilter.toLowerCase()) : true
+          return searchFilter ? businessProject.name.toLowerCase().includes(searchFilter.toLowerCase()) : true
+        })
+        .filter(businessProject => {
+          return checkFilter ? businessProject.status !== 'open' : false
         })
       )
     },
@@ -84,16 +89,24 @@ function BusinessProjectsList() {
   const searchHandle = (value) => {
     setSearchFilter(value);
   }
+  
+
   return (
     <div className="grid-container">
-      <SideMenu />
+      <div className="desktop-menu">
+        <SideMenu />
+      </div>
       <div className="business-project-list">
-        <Searchbar onCategory={onCategoryChange} onSize={onSizeChange} onLocation={onLocationChange} onSearch={searchHandle} />
-        {searchFilter || categoryFilter || sizeFilter || locationFilter ? requestFilteredBusinessProject.data.map((business, index) =>
+        <Searchbar onCategory={onCategoryChange} onSize={onSizeChange} onLocation={onLocationChange} onSearch={searchHandle} onCheck={() => {
+                              setCheckFilter(!checkFilter);
+                              console.log(checkFilter);
+                      }} />
+        {searchFilter || categoryFilter || sizeFilter || locationFilter || checkFilter ? requestFilteredBusinessProject.data.map((business, index) =>
           <BusinessProjectPreview
             businessProject={business}
             key={index}
-            businessImage={requestBusiness.data.logo_url}
+            businessImage={requestBusiness.data.map((business) => {return business.logo_url})
+            .filter(businessProject => requestBusiness.data._id === requestBusinessProject.data.business_id)}
             onSeeMore={() => onSeeMore(business._id)}
             onCheckStatus={onCheckStatus}
           />
@@ -102,7 +115,8 @@ function BusinessProjectsList() {
             <BusinessProjectPreview
               businessProject={business}
               key={index}
-              businessImage={requestBusiness.data.map((business) => business.logo_url)}
+              businessImage={requestBusiness.data.map((business) => {return business.logo_url})
+              .filter(businessProject => requestBusiness.data.id === requestBusinessProject.data.business_id)}
               onSeeMore={() => onSeeMore(business._id)}
               onCheckStatus={onCheckStatus}
             />

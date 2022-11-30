@@ -6,7 +6,6 @@
 
 .site-header-main {
     position: relative;
-    // padding-bottom: 2rem;
 
     li {
         list-style-type: none;
@@ -17,10 +16,14 @@
         }
     }
 
+    .mobile-side-menu {
+        display: none;
+    }
+
     .top-menu {
         color: white;
         background-color: $darker_blue_card_background;
-        opacity: 0.7;
+        opacity: 0.97;
         border-bottom-left-radius: 30px;
         border-bottom-right-radius: 30px;
         text-align: left;
@@ -63,6 +66,60 @@
         transform: translateY(0%);
         z-index: 1;
     }
+
+    .mobil-login {
+        display: none;
+    }
+
+    @media screen and (max-width: 600px) {
+        .mobile-side-menu {
+            display: flex;
+            position: absolute;
+            left: 0;
+            transform: translateX(-100%);
+            z-index: -1;
+            transition: transform 0.5s ease-in-out;
+            background-color: $darker_blue_card_background;
+            width: 100%;
+            height: 100%;
+        }
+
+        .show-menu,
+        .show-home-menu {
+            transform: translateX(0%);
+            z-index: 100;
+            opacity: 1;
+            position: fixed;
+            top: 54px;
+            left: 0;
+            height: 100vh;
+            justify-content: center;
+        }
+
+        .site-header-top .site-header-menu ul {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .site-header-top .site-header-menu li {
+            border-bottom: 1px solid white;
+        }
+
+        .show-menu li {
+            display: grid;
+            justify-content: center;
+        }
+
+        .home-header {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+
+    }
+
 }
 
 .site-header-top {
@@ -71,10 +128,17 @@
     justify-content: space-between;
     padding: 0 1rem 0 1rem;
 
+    .hamburger-menu {
+        display: none;
+    }
+
+    .mobil-login {
+        display: none;
+    }
+
     .site-logo {
         display: flex;
         align-items: center;
-        flex: 1 0 25%;
         cursor: pointer;
     }
 
@@ -85,6 +149,10 @@
         justify-content: flex-end;
         flex: 1 1 30%;
         gap: 1rem;
+
+        .profile-icon {
+            display: block;
+        }
     }
 
     .site-header-menu {
@@ -100,12 +168,21 @@
             justify-content: space-between;
             gap: 0.75rem;
         }
+
+        .mobile-login {
+            display: none;
+
+            @media screen and (max-width: 600px) {
+                display: block;
+            }
+        }
+
     }
 
     .site-header-buttons {
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: end;
         flex: 1 0 40%;
         gap: 1rem;
     }
@@ -114,5 +191,31 @@
     h2 {
         color: $white;
         padding-left: 5px;
+    }
+
+    @media screen and (max-width: 600px) {
+        align-items: center;
+
+        .button,
+        a h2 {
+            display: none;
+        }
+
+        .hamburger-menu,
+        .site-logo,
+        .site-header-cta-menu {
+            display: flex;
+            flex-basis: 33%;
+        }
+
+        .site-logo {
+            justify-content: center;
+        }
+
+        .site-logo h2 {
+            display: none;
+        }
+
+
     }
 }

@@ -1,8 +1,10 @@
 import {useQuery} from "@tanstack/react-query";
+import {useState} from "react";
 import Button from "./Button";
 import {requestTeamsByTeamId} from "../api/teams";
 
-const TeamsBox = ({name, members, businessProjectStatus, teamId, onApprove}) => {
+const TeamsBox = ({name, members, teamId, onApprove}) => {
+    const [closed, setClosed] = useState(false);
     const requestTeam = useQuery(["teams"], () => requestTeamsByTeamId(teamId), {
         onError: (error) => {
             alert(error.message);
@@ -20,12 +22,17 @@ const TeamsBox = ({name, members, businessProjectStatus, teamId, onApprove}) => 
         )
     }
 
+    const onApproveClicked = () => {
+        onApprove();
+        setClosed(true);
+    }
+
     const renderButton = () => {
-        if (businessProjectStatus === "open") {
+        if (!closed) {
            return <Button
                 label={"Accept"}
                 variant={"primary"}
-                onClick={onApprove}
+                onClick={onApproveClicked}
             />
         } else {
             return <Button
