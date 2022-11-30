@@ -6,12 +6,7 @@ import { getBusinessByEmail } from '../api/business'
 
 function BusinessProjectPreview({businessProject, businessImage, onSeeMore, onCheckStatus}) {
     const {status, name, description, team_size,  created_at, category, location} = businessProject;
-    // const requestBusiness = useQuery(["business"], () => getBusinessByEmail(),
-    // {
-    //   onError: (error) => {
-    //     alert(error.message);
-    //   }
-    // });
+
     const renderCategory = () => {
         if (!category) {
             return null;
