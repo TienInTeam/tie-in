@@ -8,7 +8,9 @@ function BusinessProjectPreview({businessProject, businessImage, onSeeMore, onCh
 
     const renderCategory = () => {
         if (!category) {
-            return null;
+            return (
+                <div className="category">no category</div>
+                );
         }
         return category.map((cat, index) => {
             return (

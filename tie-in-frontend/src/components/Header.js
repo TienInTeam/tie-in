@@ -78,8 +78,8 @@ export default function Header() {
                 </div>
                 <div className={'site-header-menu'}>
                     <ul>
-                        <li><a href="#studentTeam">Student Team</a></li>
-                        <li><a href="#logout">Company</a></li>
+                        <li><a href="#studentTeam">Student</a></li>
+                        <li><a href="#logout">Business</a></li>
                         <li><a href="#whyUs">Why Us</a></li>
                         <li><a href="#contactUs">Contact Us</a></li>
                     </ul>
