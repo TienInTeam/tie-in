@@ -39,13 +39,3 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
 }
-
-.title-wrapper {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  align-items: baseline;
-  justify-content: space-evenly;
-  color: $white;
-  padding: 0 0 0 1rem;
-
-}

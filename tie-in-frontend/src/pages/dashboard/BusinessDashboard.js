@@ -33,7 +33,7 @@ const BusinessDashboard = () => {
         alert("see more is clicked")
     }
     return (
-        <div className="grid-container">
+        <div className="grid-container business-dashboard">
             <SideMenu />
             <div>
                 <div className={"data-visualization"}>
@@ -45,16 +45,18 @@ const BusinessDashboard = () => {
                     </div>
                 </div>
                 <div className={"student-project-wrapper"}>
-                    <h2>Student Projects</h2>
-                    <div className={"title-wrapper"}>
-                        <h2>Name</h2>
-                        <h2>Category</h2>
-                        <h2>Institution</h2>
-                        <h2>Location</h2>
+                    <h2 className="project-title">Recent Student Projects</h2>
+                    <div className="projects-container">
+                        <div className={"title-wrapper"}>
+                            <h2>Name</h2>
+                            <h2>Category</h2>
+                            <h2>Institution</h2>
+                            <h2>Location</h2>
+                        </div>
+                        {requestStudentProject.data.slice(requestStudentProject.data.length-6, requestStudentProject.data.length-1).map((student, index) => (
+                            <HighlightedStudentProject key={index} studentProject={student} onSeeMore={onSeeMore} />
+                        ))}
                     </div>
-                    {requestStudentProject.data.map((student, index) => (
-                        <HighlightedStudentProject key={index} studentProject={student} onSeeMore={onSeeMore} />
-                    ))}
                 </div>
             </div>
         </div>

@@ -3,7 +3,7 @@
   grid-template-columns: repeat(5, 1fr);
   align-items: center;
   color: $white;
-}
+
 .business-project-wrapper {
   background-color: $darker_blue_card_background;
   border-radius: 1rem;
@@ -20,4 +20,5 @@
 
 .highlightBusinessProject h2{
   padding: 0 0 0 1rem;
+}
 }

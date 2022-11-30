@@ -9,7 +9,7 @@ function HighlightedStudentProject({studentProject, onSeeMore}) {
             return null;
         }
         return category?.map((category, index) =>
-            <span key={index}> {category} </span> )
+            <span className="category" key={index}> {category} </span> )
     }
     return (
             <div className={"highlightStudentProject"}>
