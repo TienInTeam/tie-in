@@ -101,7 +101,7 @@ function StudentDashboard() {
   }
 
   return (
-    <div className="grid-container">
+    <div className="grid-container student-dashboard">
       <SideMenu />
       <div>
       <div className={"data-visualization"}>
