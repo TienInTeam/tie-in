@@ -219,7 +219,7 @@ function UploadBusinessProject() {
                 <div className="upload-box">
                     <input type="file" placeholder={" (Maximum file size 2mb)"} id="upload-file" onChange={(e) => setAdditionalFile(e.target.value)} />
                     <div className="upload-button" onClick={(e) => setAdditionalFile(e.target.value)}>
-                        <p>choose file</p>
+                        <p>Choose File</p>
                         <div className="icon upload-icon"><UploadIcon /></div>
                     </div>
                     <p>(Maximum file size 2mb)</p>
