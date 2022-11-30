@@ -1,6 +1,11 @@
 // Student Dashboard Application Status
 
+import {useQuery} from "@tanstack/react-query";
 import React from 'react';
+import {requestTeamsByTeamId} from "../api/teams";
+
+function RequestStatusCard({application}) {
+    const {team, created_at, status, business} = application;
 
     const requestTeam = useQuery(["teams"], () => requestTeamsByTeamId(team.team_id))
     return (
