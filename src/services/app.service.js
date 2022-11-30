@@ -184,6 +184,7 @@ async function buildStudentProjectModelResponse(studentProject) {
     studentProject.institution,
     studentProject.location,
     studentProject.message,
+    studentProject.created_at,
     studentProject.start_date,
     studentProject.end_date,
     studentProject.business_model,
@@ -523,7 +524,7 @@ async function updateOneBusinessProjectInDb(
   userUpdateQuery
 ) {
   const filterQuery = { _id: new ObjectId(userFilterQuery) };
-  const updateQuery = { $set: { status: userUpdateQuery} };
+  const updateQuery = { $set: { status: userUpdateQuery } };
 
   const response = dbService.updateOneInDb(
     collection,
@@ -611,7 +612,7 @@ async function updateOneApplicationInDb(
   userUpdateQuery
 ) {
   const filterQuery = { _id: new ObjectId(userFilterQuery) };
-  const updateQuery = { $set: { status: userUpdateQuery} };
+  const updateQuery = { $set: { status: userUpdateQuery } };
 
   const response = dbService.updateOneInDb(
     collection,
@@ -627,6 +628,137 @@ async function deleteOneApplicationFromDb(collection, reqParam) {
   const response = dbService.deleteOneFromDb(collection, userQuery);
 
   return response;
+}
+
+
+
+////////// Data Visualization //////////
+
+async function getBusinessProjectTrendFromDB(collection) {
+
+  let datesObj = {}
+  for (let i = 0; i < 7; i++) {
+    let d = new Date()
+    d.setDate(d.getDate() - i)
+    datesObj[d.toISOString().split('T')[0]] = 0;
+  }
+
+  const allProjects = await dbService.getAllFromDb(collection);
+
+  //Get all dates from projects
+  const allProjectDates = allProjects.map((project) => {
+    return new Date(project.created_at);
+  }
+  );
+
+  //filtering the last 7 days from all projects
+  const filterDates = allProjectDates.filter((projectDate) => {
+    const currentDate = new Date();
+    currentDate.setDate(currentDate.getDate() - 6);
+    return projectDate > currentDate
+  });
+
+  //count all dates
+  const countDates = filterDates.reduce((datesObj, days) => {
+    formattedDate = days.toISOString().split('T')[0];
+    datesObj[formattedDate] = datesObj[formattedDate] !== undefined ? datesObj[formattedDate] + 1 : 1;
+    return datesObj;
+  }, datesObj
+  )
+
+  return countDates;
+}
+
+async function getBusinessProjectCategoryFromDB(collection) {
+  const allProjects = await dbService.getAllFromDb(collection);
+  var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const result2 = allProjects.reduce((categories, o) => {
+    let created_date = new Date(o.created_at);
+    let created_month = months[created_date.getMonth()];
+    let created_year = created_date.getFullYear();
+    let categoryArray = o.category;
+    let current_date = new Date();
+    let current_month = months[current_date.getMonth()];
+    let current_year = current_date.getFullYear();
+    if (current_month === created_month && created_year === current_year) {
+      if (categoryArray != null) {
+        for (let item of categoryArray) {
+          categories[item] = categories[item] !== undefined ? categories[item] + 1 : 1
+        }
+      }
+    }
+    return categories
+  }, {})
+
+  const sorted = Object.entries(result2)
+    .sort(([, a], [, b]) => b - a)
+    .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
+
+  return sorted;
+}
+
+async function getStudentProjectTrendFromDB(collection) {
+  
+  let datesObj = {}
+  for (let i = 0; i < 7; i++) {
+    let d = new Date()
+    d.setDate(d.getDate() - i)
+    datesObj[d.toISOString().split('T')[0]] = 0;
+  }
+
+  const allProjects = await dbService.getAllFromDb(collection);
+
+  //Get all dates from projects
+  const allProjectDates = allProjects.map((project) => {
+    return new Date(project.created_at);
+  }
+  );
+
+  //filtering the last 7 days from all projects
+  const filterDates = allProjectDates.filter((projectDate) => {
+    const currentDate = new Date();
+    currentDate.setDate(currentDate.getDate() - 6);
+    return projectDate > currentDate
+  });
+
+  //count all dates
+  const countDates = filterDates.reduce((datesObj, days) => {
+    formattedDate = days.toISOString().split('T')[0];
+    datesObj[formattedDate] = datesObj[formattedDate] !== undefined ? datesObj[formattedDate] + 1 : 1;
+    return datesObj;
+  }, datesObj
+  )
+
+  return countDates;
+}
+
+async function getStudentProjectCategoryFromDB(collection) {
+  const allProjects = await dbService.getAllFromDb(collection);
+  var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+  const result2 = allProjects.reduce((categories, o) => {
+    let created_date = new Date(o.created_at);
+    let created_month = months[created_date.getMonth()];
+    let created_year = created_date.getFullYear();
+    let categoryArray = o.category;
+    let current_date = new Date();
+    let current_month = months[current_date.getMonth()];
+    let current_year = current_date.getFullYear();
+    if (current_month === created_month && created_year === current_year) {
+      if (categoryArray != null) {
+        for (let item of categoryArray) {
+          categories[item] = categories[item] !== undefined ? categories[item] + 1 : 1
+        }
+      }
+    }
+    return categories
+  }, {})
+
+  const sorted = Object.entries(result2)
+    .sort(([, a], [, b]) => b - a)
+    .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
+
+  return sorted;
 }
 
 module.exports = {
@@ -676,4 +808,11 @@ module.exports = {
   createOneApplicationInDb,
   updateOneApplicationInDb,
   deleteOneApplicationFromDb,
+
+  //Data Visualization
+  getBusinessProjectTrendFromDB,
+  getBusinessProjectCategoryFromDB,
+  getStudentProjectTrendFromDB,
+  getStudentProjectCategoryFromDB,
+
 };

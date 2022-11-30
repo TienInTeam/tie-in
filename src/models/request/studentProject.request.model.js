@@ -40,6 +40,7 @@ function StudentProject(
   this.instructor_email = instructorEmail;
   this.instructor_linkedin = instructorLinkedin;
   this.technologies = technologies;
+  this.created_at = Date();
 }
 
 module.exports = StudentProject;
