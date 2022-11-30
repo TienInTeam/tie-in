@@ -116,7 +116,7 @@ function UploadBusinessProject() {
                     <InputType label={"Project Title (Required)"} type={"text"} placeHolder={"Enter your project name"} onChange={(e) => setProjectName(e.target.value)} />
                     <label>
                         <span>Project Summary (Required)</span>
-                        <textarea placeHolder="Enter your project summary" onChange={(e) => setDescription(e.target.value)} />
+                        <textarea placeholder="Enter your project summary" onChange={(e) => setDescription(e.target.value)} />
                     </label>
                     <label>Expected Deadline (Required)</label>
                     <Datepicker
@@ -141,7 +141,13 @@ function UploadBusinessProject() {
                     <InputType label={"Team Requirement (Required)"} type={"text"} placeHolder={"Enter your team requirements"} onChange={(e) => setTeamRequirement(e.target.value)} />
                     <div className="budget-input">
                         <label htmlFor="budget">Estimated Budget (Required)</label>
-                        <select id="budget" aria-label="budget" placeHolder="Please choose a budget range" onChange={(e) => setEstimatedBudget(e.target.value)}>
+                        <select
+                            id="budget"
+                            aria-label="budget"
+                            placeholder="Please choose a budget range"
+                            onChange={(e) => setEstimatedBudget(e.target.value)}
+                            defaultValue=""
+                        >
                         <option value="" disabled>Please choose the budget</option>
                                 <option value="5000-10000">5000-10000</option>
                                 <option value="10000-15000">10000-15000</option>
@@ -178,7 +184,7 @@ function UploadBusinessProject() {
             {currentStep === 2 ? <div className="second-step">
                 <div className="category-input">
                     <label htmlFor="category">Project Category (Optional)</label>
-                    <select id="category" placeHolder="Select a category related to your project" onChange={(e) => setCategory([...category,e.target.value])}>
+                    <select id="category" placeholder="Select a category related to your project" onChange={(e) => setCategory([...category,e.target.value])}>
                         <option> ---Choose category---</option>
                         <option value="UI/UX">UI/UX</option>
                         <option value="Mobile Application">Mobile Application</option>
@@ -190,7 +196,7 @@ function UploadBusinessProject() {
                 </div>
                 <div className="technology-input">
                     <label htmlFor="technology">Technology (Optional)</label>
-                    <select id="technology" placeHolder="Select a technology related to your project" onChange={(e) => setTechnology([...technology,e.target.value])}>
+                    <select id="technology" placeholder="Select a technology related to your project" onChange={(e) => setTechnology([...technology,e.target.value])}>
                         <option> ---Choose technology---</option>
                         <option> JS </option>
                         <option> React.JS </option>
@@ -211,7 +217,7 @@ function UploadBusinessProject() {
                     Additional File (Optional)
                 </label>
                 <div className="upload-box">
-                    <input type="file" placeHolder={" (Maximum file size 2mb)"} id="upload-file" onChange={(e) => setAdditionalFile(e.target.value)} />
+                    <input type="file" placeholder={" (Maximum file size 2mb)"} id="upload-file" onChange={(e) => setAdditionalFile(e.target.value)} />
                     <div className="upload-button" onClick={(e) => setAdditionalFile(e.target.value)}>
                         <p>choose file</p>
                         <div className="icon upload-icon"><UploadIcon /></div>
