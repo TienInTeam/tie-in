@@ -114,7 +114,7 @@ function StudentDashboard() {
         </div>
 
         <div className={"business-project-wrapper"}>
-          <h2>Recent Company Requests</h2>
+          <h2>Recent Business Projects</h2>
           <div className={"recent-requests-title-wrapper"}>
             <h2>Company Name</h2>
             <h2>Category</h2>
