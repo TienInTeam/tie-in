@@ -22,7 +22,7 @@ function BusinessProjectPreview({businessProject, businessImage, onSeeMore, onCh
     }
 
     const renderStatus = () => {
-        if ( status !== 'open') {
+        if ( status !== 'Open') {
             return <Button
                 label={"Check Status"}
                 variant={"secondary"}
@@ -31,7 +31,7 @@ function BusinessProjectPreview({businessProject, businessImage, onSeeMore, onCh
     }}
 
     const renderStatusLabel = () => {
-        if ( status !== 'open') {
+        if ( status !== 'Open') {
             return (
                 <div>
                     <div className="icon check-icon"><CheckIcon /></div>

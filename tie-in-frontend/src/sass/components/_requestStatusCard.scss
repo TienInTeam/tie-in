@@ -11,9 +11,11 @@
   border-radius: 1rem;
   margin-bottom: 1rem;
   padding-left: 1rem;
-  display: flex;
+  display: grid;
   align-items: baseline;
-  justify-content: space-evenly;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  text-align: start;
   color: $white;
 }
 
