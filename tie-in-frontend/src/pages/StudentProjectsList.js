@@ -20,7 +20,9 @@ function StudentProjectsList() {
   }
   return (
     <div className="student-projects-list grid-container">
-      <SideMenu />
+      <div className="desktop-menu">
+        <SideMenu />
+      </div>
       <div>
         {requestStudentProject.data.map((student, index) => (
           <StudentProjectPreview studentProject={student} key={index} onSeeMore={() => onSeeMore(index)} />
