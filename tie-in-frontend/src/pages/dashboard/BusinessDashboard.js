@@ -47,7 +47,9 @@ const BusinessDashboard = () => {
                     </div>
                 </div>
                 <div className={"student-project-wrapper"}>
-                    <h2 className="project-title">Recent Student Projects</h2>
+                    <div>
+                        <h2 className="project-title">Recent Student Projects</h2>
+                    </div>
                     <div className="projects-container">
                         <div className={"title-wrapper"}>
                             <h2>Name:</h2>
@@ -55,7 +57,7 @@ const BusinessDashboard = () => {
                             <h2>Institution:</h2>
                             <h2>Location:</h2>
                         </div>
-                        {requestStudentProject.data.slice(requestStudentProject.data.length-6, requestStudentProject.data.length-1).map((student, index) => (
+                        {requestStudentProject.data.map((student, index) => (
                             <HighlightedStudentProject key={index} studentProject={student} onSeeMore={onSeeMore} />
                         ))}
                     </div>

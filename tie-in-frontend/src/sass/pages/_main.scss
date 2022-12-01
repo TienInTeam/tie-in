@@ -50,19 +50,22 @@ a {
 
 .grid-container {
   display: grid;
-  grid-template-columns: 22% 77%;
+  grid-template-columns: 18% 80%;
 }
 
 #root {
   background-color: $dark_blue_background;
   color: $white;
-  min-height: 100%;
+  min-height: 96%;
   position: relative;
   display: block;
   overflow: auto;
 }
 
 @media screen and (max-width: 600px) {
+  .body {
+    padding: 0.5rem;
+  }
   .desktop-menu {
     display: none;
   }

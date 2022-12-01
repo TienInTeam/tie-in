@@ -3,7 +3,7 @@
   border-radius: 1rem;
   margin-left: auto;
   margin-right: auto;
-  max-width: 1100px;
+  max-width: 1300px;
 }
 
 .request-status-card {
@@ -13,6 +13,10 @@
   grid-template-columns: repeat(5, 1fr);
   align-items: center;
   color: $white;
+}
+
+.request-status-card h2 {
+  font-size: 18px;
 }
 
 .request-status-card *,
@@ -52,4 +56,52 @@
 
 .team-wrapper img:nth-child(3) {
   transform: translateX(-20px);
+}
+
+.request-status-header .secondary {
+  width: 120px;
+}
+
+@media screen and (max-width: 600px) {
+  .team-images-wrapper {
+    display: none;
+  }
+
+  .request-status-card h2::before {
+    content: "Company:";
+  }
+
+  .app-status-container .request-status-card div p::before {
+    content: "Team:";
+  }
+
+  .request-status-card p:nth-of-type(1)::before {
+    content: "Date:";
+  }
+
+  .request-status-card p:nth-of-type(2)::before {
+    content: "Status:";
+  }
+
+  .request-status-card h2::before,
+  .request-status-card p::before {
+    font-family: $headline_font;
+    font-size: 23px;
+  }
+
+  .request-status-card h2,
+  .request-status-card p {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .request-status-card {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
+    align-items: start;
+    padding-bottom: 1rem;
+  }
 }
