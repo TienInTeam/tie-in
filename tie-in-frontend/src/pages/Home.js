@@ -1,3 +1,4 @@
+import {useNavigate} from "react-router-dom";
 import Button from "../components/Button";
 import ContactFrom from "../components/ContactFrom";
 import ContactProfile from "../components/ContactProfile";
@@ -22,9 +23,17 @@ import rojinProfilePic from "../assets/icons/profiles/rojin_pic.png";
 import andrewProfilePic from "../assets/icons/profiles/andrew_pic.png";
 
 const Home = () => {
-  const onTryNow = () => {};
+  const navigate = useNavigate();
+  const onTryNowStudent = () => {
+    navigate('/signup/student')
+  };
+  const onTryNowBusiness = () => {
+    navigate('/signup/business')
+  };
   const onSend = () => {};
-  const onClick = () => {};
+  const onClick = () => {
+    navigate('/signuplanding')
+  };
 
   return (
     <div className="home">
@@ -49,7 +58,7 @@ const Home = () => {
           <HomeSection
             title={"Student Team"}
             subtitle={"How to upload your project?"}
-            onTryNowClick={onTryNow}
+            onTryNowClick={onTryNowStudent}
             step1={
               "Step 1: Fill in related documents and information of your project."
             }
@@ -66,7 +75,7 @@ const Home = () => {
           <StudentImage2 />
           <HomeSection
             subtitle={"How to apply projects from company?"}
-            onTryNowClick={onTryNow}
+            onTryNowClick={onTryNowBusiness}
             step1={
               "Step 1: Search for the business projects that match your interests and skillsets."
             }
@@ -85,7 +94,7 @@ const Home = () => {
         <div className={"text-info-wrapper business-wrapper-one"}>
           <HomeSection
             subtitle={"How to request a project?"}
-            onTryNowClick={onTryNow}
+            onTryNowClick={onClick}
             step1={
               "Step 1: Fill in related documents and information of your project."
             }
@@ -99,7 +108,7 @@ const Home = () => {
           <BusinessImage2 />
           <HomeSection
             subtitle={"How to find your ideal team?"}
-            onTryNowClick={onTryNow}
+            onTryNowClick={onClick}
             step1={
               "Step 1: Search for student projects that match your business ambition and goal."
             }
