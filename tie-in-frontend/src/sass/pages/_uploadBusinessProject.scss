@@ -207,6 +207,30 @@ option:checked{
     align-items: center;
   }
 
+  .selectedOption {
+    display: flex;
+    justify-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(83, 224, 220, .5);
+    margin-top: 10px;
+    color: $light_grey;
+    width: 11rem;
+    padding: 5px;
+    height: 15px;
+    border-radius: 15px;
+
+    p {
+      margin: 5px;
+    }
+  }
+
+  .selectedOption .remove {
+    width: 17px;
+    height: 17px;
+  }
+
   @media screen and (max-width: 600px) {
     .buttons button {
       width: 100px;

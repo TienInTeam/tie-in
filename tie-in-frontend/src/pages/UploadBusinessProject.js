@@ -10,10 +10,11 @@ import validateTextInput from "../utils/validateTextInput";
 import { ReactComponent as BackIcon } from '../assets/icons/navigation/back-icon.svg';
 import { ReactComponent as UploadIcon } from '../assets/icons/actions/actions-upload.svg';
 import MultiStepProgressBar from "../components/MultiProgressBar";
+import { ReactComponent as RemoveIcon } from '../assets/icons/others/close-icon.svg';
+
 
 function UploadBusinessProject() {
     const businessId = sessionStorage.getItem('userMongoId');
-    const businessName = sessionStorage.getItem('userName');
 
     const saveProject = useMutation(["businessProject"], () => saveBusinessProject({
         "name": projectName,
@@ -23,8 +24,8 @@ function UploadBusinessProject() {
         "end_date": endDate,
         "location": location,
         "budget": estimatedBudget,
-        "category": category,
-        "technologies": technology,
+        "category": categories,
+        "technologies": technologies,
         "additionalFields": additionalField,
         "file": additionalFile,
         "links": additionalLink,
@@ -47,8 +48,8 @@ function UploadBusinessProject() {
     const [estimatedBudget, setEstimatedBudget] = useState("");
     const [location, setLocation] = useState("");
     const [locationIsChecked, setLocationIsChecked] = useState(false);
-    const [technology, setTechnology] = useState([]);
-    const [category, setCategory] = useState([]);
+    const [technologies, setTechnologies] = useState([]);
+    const [categories, setCategories] = useState([]);
     const [additionalField, setAdditionalField] = useState("");
     const [additionalFile, setAdditionalFile] = useState("");
     const [additionalLink, setAdditionalLink] = useState("");
@@ -77,7 +78,10 @@ function UploadBusinessProject() {
                 return true;
             }
         }
-        else {
+        if (categories.length < 0) {
+            alert("Category is required.");
+            return false;
+        } else {
             return true;
         }
     }
@@ -103,6 +107,44 @@ function UploadBusinessProject() {
     const onChange = (date) => {
         setEndDate(date);
     };
+
+    const onTechnologyRemove = (index) => {
+      alert("technology ")
+   }
+   const onCategoryRemove = (index) => {
+      alert("category ")
+   }
+
+    const renderTechnologies = () => {
+        if(technologies.length > 0) {
+            return technologies.map((technology, index) => {
+                return(
+                    <div key={index} className={"selectedOption"}>
+                        <p>{technology}</p>
+                        <RemoveIcon className={"remove"} onClick={() => onTechnologyRemove(index)}/>
+                    </div>
+                )
+            })
+        } else {
+            return null;
+        }
+    }
+
+    const renderCategories = () => {
+        if(categories.length > 0) {
+            return categories.map((category, index) => {
+                return(
+                    <div key={index} className={"selectedOption"}>
+                        <p>{category}</p>
+                        <RemoveIcon className={"remove"} onClick={() => onCategoryRemove(index)}/>
+                    </div>
+                )
+            })
+        } else {
+            return null;
+        }
+    }
+
 
     return (
         <div className="upload-business-project">
@@ -183,8 +225,8 @@ function UploadBusinessProject() {
                 : null}
             {currentStep === 2 ? <div className="second-step">
                 <div className="category-input">
-                    <label htmlFor="category">Project Category (Optional)</label>
-                    <select id="category" placeholder="Select a category related to your project" onChange={(e) => setCategory([...category,e.target.value])}>
+                    <label htmlFor="category">Project Category (Required)</label>
+                    <select id="category" placeholder="Select a category related to your project" onChange={(e) => setCategories([...categories,e.target.value])}>
                         <option> ---Choose category---</option>
                         <option value="UI/UX">UI/UX</option>
                         <option value="Mobile Application">Mobile Application</option>
@@ -193,10 +235,11 @@ function UploadBusinessProject() {
                         <option value="Commercial">Commercial</option>
                         <option value="Marketing">Marketing</option>
                     </select>
+                    {renderCategories()}
                 </div>
                 <div className="technology-input">
                     <label htmlFor="technology">Technology (Optional)</label>
-                    <select id="technology" placeholder="Select a technology related to your project" onChange={(e) => setTechnology([...technology,e.target.value])}>
+                    <select id="technology" placeholder="Select a technology related to your project" onChange={(e) => setTechnologies([...technologies,e.target.value])}>
                         <option> ---Choose technology---</option>
                         <option> JS </option>
                         <option> React.JS </option>
@@ -208,6 +251,7 @@ function UploadBusinessProject() {
                         <option> Adobe Illustrator</option>
                         <option> Adobe Photoshop </option>
                     </select>
+                    {renderTechnologies()}
                 </div>
             </div>
                 : null}
