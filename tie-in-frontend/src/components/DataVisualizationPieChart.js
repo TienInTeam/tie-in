@@ -49,7 +49,7 @@ const DataVisualizationPieChart = ({ inputData }) => {
         <>
             <div className="new-project-component">
                 <h2>{text}</h2>
-                <h3>{currentMonth} project Uploads by Category</h3>
+                <h3>{currentMonth} Uploaded Project By Category</h3>
                 <ResponsiveContainer width={440} height={310} className="text-center" >
                     <PieChart >
                         <Pie
