@@ -58,7 +58,7 @@ function StudentDashboard() {
     if (!requestBusinessProject?.data) {
       return null;
     }
-    return requestBusinessProject.data.slice(requestBusinessProject.data.length-6, requestBusinessProject.data.length-1).map((businessProject) => {
+    return requestBusinessProject.data.map((businessProject) => {
         return requestBusiness.data.filter((business) => (
           businessProject.business.business_id === business._id
         )).map((filteredBusiness, index) =>
@@ -111,7 +111,9 @@ function StudentDashboard() {
         </div>
 
         <div className={"business-project-wrapper"}>
-          <h2 className="project-title">Recent Business Projects</h2>
+          <div>
+            <h2 className="project-title">Recent Business Projects</h2>
+          </div>
           <div className="projects-container">
             <div className={"title-wrapper"}>
               <h2>Company:</h2>

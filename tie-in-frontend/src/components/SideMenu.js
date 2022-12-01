@@ -10,15 +10,11 @@ function SideMenu({hamburgerMenu, setHamburgerMenu}) {
   if (isLoggedIn === "true") {
     if (userType === "business") {
       return (
-        <div className="side-menu">
          <SideMenuBusiness setHamburgerMenu={setHamburgerMenu}/> 
-        </div>
       )
     } else {
       return (
-        <div className="side-menu">
          <SideMenuStudent setHamburgerMenu={setHamburgerMenu}/>
-        </div>
       );
     }
   } else {
