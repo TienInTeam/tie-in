@@ -3,7 +3,7 @@ import Button from "../components/Button";
 import ContactFrom from "../components/ContactFrom";
 import ContactProfile from "../components/ContactProfile";
 import HomeSection from "../components/HomeSection";
-import SignUpUserType from "../components/SignUpUserType";
+
 import { ReactComponent as IntroImage } from "../assets/icons/home/intro_image.svg";
 import { ReactComponent as StudentImage1 } from "../assets/icons/home/student_image_1.svg";
 import { ReactComponent as StudentImage2 } from "../assets/icons/home/student_image_2.svg";
