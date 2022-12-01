@@ -282,4 +282,104 @@
       }
     }
   }
+
+  @media (max-width: 600px) {
+    .intro-section {
+      display: grid;
+      grid-template-columns: 1fr;
+      padding: 2rem 3rem;
+
+      svg {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .steps-section {
+      display: grid;
+      padding: 2rem 3rem;
+
+      .text-info-wrapper {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .student-wrapper-one {
+        .text-button-wrapper {
+          order: 2;
+        }
+
+        svg {
+          order: 1;
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      .student-wrapper-two {
+        svg {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      .business-wrapper-one {
+        .text-button-wrapper {
+          order: 2;
+        }
+
+        svg {
+          order: 1;
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      .business-wrapper-two {
+        margin: 8rem 0 4rem 0;
+
+        svg {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      .text-button-wrapper {
+        .text-wrapper {
+          p {
+            @include desktop_body_text;
+            margin: 0.5rem 0;
+          }
+        }
+      }
+    }
+
+    .why-us-section {
+      margin: 0;
+      padding: 2rem 3rem;
+
+      .info-wrapper {
+        grid-template-columns: 1fr;
+        row-gap: 2rem;
+
+        .image-text-wrapper {
+          @include desktop_body_text;
+
+          svg {
+            width: 100%;
+            height: auto;
+            padding: 0.5rem;
+          }
+        }
+      }
+    }
+
+    .contact-us-section {
+      padding: 1rem;
+
+      .profiles-wrapper {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
 }
