@@ -11,7 +11,6 @@ import Button from "../../components/Button";
 import SideMenu from "../../components/SideMenu";
 import DataVisualizationPieChart from "../../components/DataVisualizationPieChart";
 import DataVisualizationAreaChart from "../../components/DataVisualizationAreaChart";
-import { requestBusinessProjectUploadTrend, requestBusinessProjectByCategory } from "../../api/dataVisualization";
 
 function StudentDashboard() {
   const navigate = useNavigate();
@@ -41,11 +40,7 @@ function StudentDashboard() {
     });
 
 
-   const requestApplications = useQuery(["applications", {id: studentId}], () => getStudentApplication(studentId), {
-     onSuccess: (data) => {
-       console.log("DATA IS HERE " + JSON.stringify(data))
-     }
-   })
+   const requestApplications = useQuery(["applications", {id: studentId}], () => getStudentApplication(studentId))
 
   if (requestBusinessProject.isLoading) {
     return <span>Loading...</span>
@@ -102,7 +97,9 @@ function StudentDashboard() {
 
   return (
     <div className="grid-container">
-      <SideMenu />
+      <div className="desktop-menu">
+        <SideMenu />
+      </div>
       <div>
       <div className={"data-visualization"}>
           <div className="visualization-component">
@@ -114,7 +111,7 @@ function StudentDashboard() {
         </div>
 
         <div className={"business-project-wrapper"}>
-          <h2>Recent Company Requests</h2>
+          <h2>Recent Business Projects</h2>
           <div className={"recent-requests-title-wrapper"}>
             <h2>Company Name</h2>
             <h2>Category</h2>
