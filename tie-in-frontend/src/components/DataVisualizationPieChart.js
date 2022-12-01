@@ -2,7 +2,7 @@ import { PieChart, Pie, Legend, Label, Cell, ResponsiveContainer } from 'rechart
 
 
 const DataVisualizationPieChart = ({ inputData }) => {
-    let data, text, total = 0;
+    let dataArray, text, total = 0;
     const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const d = new Date();
     let currentMonth = month[d.getMonth()];
@@ -12,28 +12,21 @@ const DataVisualizationPieChart = ({ inputData }) => {
     else if (sessionStorage.getItem("userType") === "business") {
         text = 'New Student Projects';
     }
-    data = Object.entries(inputData).map(([name, value]) => ({ name, value }))
-    console.log("pie data" + JSON.stringify(data));
-
-    // data = data.map((index) => (
-    //     {
-    //         name: `${index.name.substring(5, 10)}`, value: index.value
-    //     }
-    // ));
-
-    let data1 = [];
+    dataArray = Object.entries(inputData).map(([name, value]) => ({ name, value }))
+    let data = [];
     let count = 0;
-
-    const sum = data.reduce((datas, object) => {
-
-
-        if (count > 3) {
-            
+    dataArray.map((key, index) => {
+        if(index <3 )
+        {
+           data[index] = ({ name: key.name, value: key.value})
         }
-    }, 0);
 
-    console.log("new data" + JSON.stringify(sum));
-
+        if(index >=3 ){
+            count = count +  key.value
+            data[3] = ({ name: "others", value: count})
+        }
+      });
+ 
     data.map((entry, index) => {
         total = total + entry.value;
     });
@@ -56,7 +49,7 @@ const DataVisualizationPieChart = ({ inputData }) => {
         <>
             <div className="new-project-component">
                 <h2>{text}</h2>
-                <h3>{currentMonth} project Uploads</h3>
+                <h3>{currentMonth} project Uploads by Category</h3>
                 <ResponsiveContainer width={440} height={310} className="text-center" >
                     <PieChart >
                         <Pie
