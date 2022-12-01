@@ -125,6 +125,7 @@ function UploadStudentProject() {
 
     const renderTeam = () => {
           return teams.data?.map((team, index) =>(<p key={index} onClick={() => {
+             console.log(team._id)
              setTeam(team._id)
          }}>{team.name}</p>))
 

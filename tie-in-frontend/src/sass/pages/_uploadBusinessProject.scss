@@ -24,13 +24,6 @@
     text-align: left;
   }
 
-  input::placeholder,
-  textarea::placeholder {
-    text-align: left;
-    color: black;
-    font-size: $body_font;
-  }
-
   input {
     margin-bottom: 1rem;
   }
@@ -42,12 +35,6 @@
     margin-bottom: 1rem;
   }
 
-  input:focus-visible,
-  textarea:focus-visible,
-  select:focus-visible {
-    outline: 1px solid $primary_yellow;
-    border-radius: 3px;
-  }
   .date-checkbox {
     margin-bottom: 1rem;
     display: flex;
@@ -81,10 +68,6 @@
     margin-bottom: 0;
   }
 
-.progress-bar > div > div:nth-child(3) > div > div {
-  margin-top: 2.4rem;
-}
-
   .location-checkbox {
     margin-bottom: 1rem;
     display: flex;
@@ -114,40 +97,21 @@
     background-color: $primary_yellow;
   }
 
-  .react-datepicker__day--selected:hover,
-  .react-datepicker__day--selected::selection{
+  .react-datepicker__day--selected:hover {
     background-color: $primary_yellow;
   }
 
- .react-datepicker__day.react-datepicker__day--029.react-datepicker__day--keyboard-selected.react-datepicker__day--today {
-  background-color: $primary_yellow;
- }
-
   .category-input,
-  .technology-input,
-  .location-input,
-  .budget-input {
+  .technology-input {
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
   }
 
-option:hover,
-option:focus,
-option:checked{
-  background-color: $primary_yellow !important;
-  box-shadow: 0 0 1px $primary_yellow !important;
-}
   .category-input select,
-  .technology-input select,
-  .location-input select,
-  .budget-input select {
+  .technology-input select {
     height: 30px;
     border-radius: 5px;
-  }
-
-  option {
-    color: black;
   }
 
   .category-input {
@@ -177,11 +141,6 @@ option:checked{
     height: 50px;
   }
 
-  #upload-file:focus + .upload-button,
-  .upload-box:hover .upload-button{
-    border: 3px solid $primary_yellow !important;
-  }
-
   .upload-icon svg {
     width: 20px;
     height: 20px;
@@ -206,30 +165,6 @@ option:checked{
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
-  }
-
-  .selectedOption {
-    display: flex;
-    justify-items: center;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgba(83, 224, 220, .5);
-    margin-top: 10px;
-    color: $light_grey;
-    width: 11rem;
-    padding: 5px;
-    height: 15px;
-    border-radius: 15px;
-
-    p {
-      margin: 5px;
-    }
-  }
-
-  .selectedOption .remove {
-    width: 17px;
-    height: 17px;
   }
 
   @media screen and (max-width: 600px) {

@@ -9,9 +9,7 @@ function BusinessProjectPreview({businessProject, businessImage, onSeeMore, onCh
 
     const renderCategory = () => {
         if (!category) {
-            return (
-                <div className="category">no category</div>
-                );
+            return null;
         }
         return category.map((cat, index) => {
             return (
@@ -38,7 +36,7 @@ function BusinessProjectPreview({businessProject, businessImage, onSeeMore, onCh
             return (
                 <div>
                     <div className="icon check-icon"><CheckIcon /></div>
-                    <h3>You have already applied</h3>
+                    <h3>"You have already applied"</h3>
                 </div>
         )
     }}
@@ -58,13 +56,13 @@ function BusinessProjectPreview({businessProject, businessImage, onSeeMore, onCh
                     <p>{description}</p>
                 </div>
                 <div>
-                    <h3>Team Members</h3>
+                    <h3>Team Member</h3>
                     <p>{team_size}</p>
                     <h3>Due date</h3>
                     <p>{new Date(created_at).toDateString()}</p>
                 </div>
                 <div>
-                    <h3>Categories</h3>
+                    <h3>Category</h3>
                     {renderCategory()}
                 </div>
                     <div>

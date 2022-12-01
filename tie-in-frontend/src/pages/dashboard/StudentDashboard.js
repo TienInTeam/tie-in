@@ -25,7 +25,7 @@ function StudentDashboard() {
     }
   })
 
-  const requestBusinessProject = useQuery(["businessProjects"], () => requestBusinessProjects(),
+  const requestBusinessProject = useQuery(["businessProject"], () => requestBusinessProjects(),
     {
       onError: (error) => {
         alert(error.message);
@@ -92,6 +92,7 @@ function StudentDashboard() {
   };
 
   const onApplicationSeeMore = () => {
+    console.log("here");
   }
 
   return (
