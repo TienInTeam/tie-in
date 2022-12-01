@@ -28,7 +28,6 @@ function BusinessProjectsList() {
                         return locationFilter ? businessProject.location.includes(locationFilter) : true
                     })
                     .filter(businessProject => {
-                        console.log("inside filter: " + businessProject.name)
                         return searchFilter ? businessProject.name.toLowerCase().includes(searchFilter.toLowerCase()) : true
                     })
                     .filter(businessProject => {

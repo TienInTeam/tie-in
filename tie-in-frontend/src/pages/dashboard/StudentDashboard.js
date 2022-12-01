@@ -92,7 +92,6 @@ function StudentDashboard() {
   };
 
   const onApplicationSeeMore = () => {
-    console.log("here");
   }
 
   return (
