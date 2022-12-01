@@ -26,7 +26,7 @@ function StudentDashboard() {
     }
   })
 
-  const requestBusinessProject = useQuery(["businessProject"], () => requestBusinessProjects(),
+  const requestBusinessProject = useQuery(["businessProjects"], () => requestBusinessProjects(),
     {
       onError: (error) => {
         alert(error.message);
@@ -41,11 +41,7 @@ function StudentDashboard() {
     });
 
 
-  const requestApplications = useQuery(["applications", { id: studentId }], () => getStudentApplication(studentId), {
-    onSuccess: (data) => {
-      console.log("DATA IS HERE " + JSON.stringify(data))
-    }
-  })
+   const requestApplications = useQuery(["applications", {id: studentId}], () => getStudentApplication(studentId))
 
   //Data Visualization query
   const businessProjectUploadTrend = useQuery(["businessProjectTrends"], () => requestBusinessProjectUploadTrend(), {
@@ -117,12 +113,13 @@ function StudentDashboard() {
   };
 
   const onApplicationSeeMore = () => {
-    console.log("here");
   }
 
   return (
     <div className="grid-container">
-      <SideMenu />
+      <div className="desktop-menu">
+        <SideMenu />
+      </div>
       <div>
         <div className={"data-visualization"}>
           <div className="visualization-component">
@@ -134,7 +131,7 @@ function StudentDashboard() {
         </div>
 
         <div className={"business-project-wrapper"}>
-          <h2>Recent Company Requests</h2>
+          <h2>Recent Business Projects</h2>
           <div className={"recent-requests-title-wrapper"}>
             <h2>Company Name</h2>
             <h2>Category</h2>

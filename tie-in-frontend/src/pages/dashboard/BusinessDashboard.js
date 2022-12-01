@@ -52,7 +52,9 @@ const BusinessDashboard = () => {
     }
     return (
         <div className="grid-container">
-            <SideMenu />
+            <div className="desktop-menu">
+                <SideMenu />
+            </div>
             <div>
                 <div className={"data-visualization"}>
                     <div className="visualization-component">

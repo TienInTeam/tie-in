@@ -1,14 +1,17 @@
 import { useQuery } from '@tanstack/react-query';
 import Button from './Button';
 import { ReactComponent as CheckIcon } from '../assets/icons/others/check-icon.svg';
+import { getBusinessByEmail } from '../api/business'
 
 
 function BusinessProjectPreview({businessProject, businessImage, onSeeMore, onCheckStatus}) {
-    const {status, logo, business, description, team_size, end_date,  created_at, category, location} = businessProject;
+    const {status, name, description, team_size,  created_at, category, location} = businessProject;
 
     const renderCategory = () => {
         if (!category) {
-            return null;
+            return (
+                <div className="category">no category</div>
+                );
         }
         return category.map((cat, index) => {
             return (
@@ -22,7 +25,7 @@ function BusinessProjectPreview({businessProject, businessImage, onSeeMore, onCh
     }
 
     const renderStatus = () => {
-        if ( status !== 'open') {
+        if ( status !== 'Open') {
             return <Button
                 label={"Check Status"}
                 variant={"secondary"}
@@ -31,11 +34,11 @@ function BusinessProjectPreview({businessProject, businessImage, onSeeMore, onCh
     }}
 
     const renderStatusLabel = () => {
-        if ( status !== 'open') {
+        if ( status !== 'Open') {
             return (
                 <div>
                     <div className="icon check-icon"><CheckIcon /></div>
-                    <h3>"You have already applied"</h3>
+                    <h3>You have already applied</h3>
                 </div>
         )
     }}
@@ -43,8 +46,10 @@ function BusinessProjectPreview({businessProject, businessImage, onSeeMore, onCh
     return (
         <div className="business-project-preview">
             <div className="title-container">
-                <img src={businessImage} alt="project's logo"/>
-                <h2>{business.business_name}</h2>
+                <div>
+                    <img src={businessImage} alt="project's logo"/>
+                    <h2>{name}</h2>
+                </div>
                 {renderStatusLabel()}
             </div>
             <div className="body-container">
@@ -53,16 +58,15 @@ function BusinessProjectPreview({businessProject, businessImage, onSeeMore, onCh
                     <p>{description}</p>
                 </div>
                 <div>
-                    <h3>Team Member</h3>
+                    <h3>Team Members</h3>
                     <p>{team_size}</p>
                     <h3>Due date</h3>
                     <p>{new Date(created_at).toDateString()}</p>
                 </div>
                 <div>
-                    <h3>Category</h3>
+                    <h3>Categories</h3>
                     {renderCategory()}
                 </div>
-                <div  className="button-container">
                     <div>
                         <h3>Location</h3>
                         <p>{location}</p>
@@ -71,7 +75,6 @@ function BusinessProjectPreview({businessProject, businessImage, onSeeMore, onCh
                         {renderStatus()}
                         <Button label={"See More"} variant={"primary"} onClick={onSeeMore}/>
                     </div>
-                </div>
             </div>
         </div>
     )

@@ -1,79 +1,285 @@
 .home {
-  max-width: 1500px;
-  margin-right: auto;
   display: flex;
-  margin-left: auto;
   flex-direction: column;
-  h1 {
-    align-self: center;
-    margin: 3rem 0 3rem 0;
-  }
-  .section-wrapper {
+
+  .intro-section {
     display: grid;
-    align-items: center;
-    justify-content: space-evenly;
     grid-template-columns: 1fr 1fr;
-  }
-  h2 {
-    grid-column: 1/-1;
-  }
+    padding: 3rem 10rem 2rem 10rem;
 
-  .section2-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    align-items: center;
-    justify-items: center;
-    justify-content: space-evenly;
-    margin-top: 3rem;
-  }
+    h1 {
+      display: flex;
+      align-items: center;
+    }
 
-  .section {
-    margin-right: 1.2rem;
-  }
+    svg {
+      width: 658px;
+      height: 518px;
+    }
 
-  .button {
-    align-self: center;
-    margin-top: 1rem;
-  }
-
-  .section1{
-    display: flex;
-    flex-direction: column;
-    margin: 2rem;
-
-  }
-
-  svg {
-    justify-self: center;
-  }
-
-  .contact-wrapper {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    margin-bottom: 2rem;
-  }
-
-  .contact-profile {
-    img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
+    .intro-text-wrapper {
+      display: flex;
+      flex-flow: column nowrap;
       justify-content: center;
+
+      h1 {
+        @include desktop_h1_heading;
+      }
+
+      p {
+        @include desktop_body_text;
+      }
+
+      .button {
+        display: grid;
+        justify-items: end;
+        padding: 1rem 0;
+
+        button {
+          @include desktop_button_text;
+          padding: 0.5rem 4rem;
+        }
+      }
     }
   }
 
-  .contact-form-wrapper {
-    background-color: $blue_card_background;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .steps-section {
+    display: grid;
+    padding: 3rem 10rem 2rem 10rem;
+
+    h2 {
+      grid-column: 1/-1;
+      text-align: center;
+      @include desktop_h2_heading;
+    }
+
+    .text-info-wrapper {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      justify-items: center;
+      align-items: center;
+    }
+
+    .student-wrapper-one {
+      svg {
+        width: 409px;
+        height: 424px;
+      }
+    }
+
+    .student-wrapper-two {
+      margin: 8rem 0 4rem 0;
+      svg {
+        width: 427px;
+        height: 444px;
+      }
+    }
+
+    .business-wrapper-one {
+      svg {
+        width: 380px;
+        height: 437px;
+      }
+    }
+
+    .business-wrapper-two {
+      margin: 8rem 0 4rem 0;
+
+      svg {
+        width: 438px;
+        height: 359px;
+      }
+    }
+
+    .text-button-wrapper {
+      display: flex;
+      flex-flow: column nowrap;
+      align-self: stretch;
+
+      .text-wrapper {
+        display: flex;
+        flex-flow: column nowrap;
+        flex: 1 1 auto;
+        justify-content: space-evenly;
+
+        h3 {
+          @include desktop_h3_heading;
+        }
+
+        p {
+          @include desktop_body_text;
+          margin: 0.5rem 0;
+        }
+      }
+
+      .button {
+        align-self: center;
+        button {
+          @include desktop_button_text;
+          padding: 0.5rem 4rem;
+        }
+      }
+    }
   }
 
-  .home-intro {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    align-items: center;
-    margin-top: 3rem;
+  .student-steps-section {
+    background-color: $blue_card_background;
+  }
+
+  .why-us-section {
+    margin: 5rem 0 0 0;
+    display: flex;
+    flex-flow: column nowrap;
+    background-color: $blue_card_background;
+    padding: 3rem 10rem 2rem 10rem;
+
+    .why-us-title {
+      text-align: center;
+      @include desktop_h3_heading;
+    }
+
+    .info-wrapper {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: stretch;
+      justify-items: stretch;
+      column-gap: 1rem;
+
+      .image-text-wrapper {
+        display: grid;
+        grid-template-rows: 350px 50px;
+        align-items: stretch;
+        justify-content: stretch;
+
+        svg {
+          width: 100%;
+          height: auto;
+          padding: 0.5rem;
+        }
+
+        p {
+          flex: 1 0 auto;
+          text-align: center;
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  .contact-us-section {
+    padding: 3rem 10rem 2rem 10rem;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: stretch;
+
+    .contact-us-title {
+      text-align: center;
+      @include desktop_h3_heading;
+    }
+
+    .profiles-wrapper {
+      // margin: 2rem 0 5rem 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 2rem 5rem 5rem 5rem;
+
+      .contact-profile {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        padding: 2rem 2rem;
+
+        .profile-photo-name-wrapper {
+          display: flex;
+          flex-flow: column nowrap;
+          align-items: center;
+
+          img {
+            width: 150px;
+            height: 150px;
+          }
+
+          h3 {
+            @include desktop_h3_heading;
+            margin: 0.5rem;
+          }
+        }
+
+        .profile-title-wrapper {
+          display: flex;
+          flex-flow: column nowrap;
+          align-items: center;
+          min-height: 48px;
+          justify-content: center;
+          padding: 1rem 0 1rem 0;
+          p {
+            @include desktop_caption_bold;
+            margin: 0;
+          }
+        }
+
+        .profile-linkedin-wrapper {
+          display: flex;
+          flex-flow: row nowrap;
+          // align-self: start;
+          a {
+            @include desktop_link_text;
+            vertical-align: text-bottom;
+            padding: 0.25rem 0 0 0.5rem;
+          }
+        }
+
+        .profile-email-wrapper {
+          display: flex;
+          flex-flow: row nowrap;
+          // align-self: start;
+          a {
+            @include desktop_link_text;
+            padding: 0.25rem 0 0 0.5rem;
+          }
+        }
+      }
+    }
+    .contact-form-section {
+      p {
+        @include desktop_caption_normal;
+        color: #fcb51f;
+        margin: 0;
+      }
+      .contact-form-wrapper {
+        background-color: $blue_card_background;
+        border-radius: 10px;
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        .contact-form {
+          .button {
+            display: flex;
+            justify-content: center;
+            button {
+              @include desktop_button_text;
+              padding: 0.5rem 4rem;
+            }
+          }
+
+          .input-type {
+            input {
+              border: none;
+              height: auto;
+              line-height: 2rem;
+            }
+
+            input[type="textarea"] {
+              height: 150px;
+              padding: 12px 20px;
+              box-sizing: border-box;
+              resize: none;
+            }
+          }
+        }
+      }
+    }
   }
 }
