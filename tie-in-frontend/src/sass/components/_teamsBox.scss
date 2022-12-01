@@ -1,26 +1,30 @@
 .team-box {
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
   border-bottom: 1px solid $white;
   align-items: center;
+  text-align: center;
 
   .images {
     display: flex;
     align-items: center;
+    margin: auto;
   }
 
   .images p {
     margin-left: .7rem;
   }
 
-  img{
+  img {
     border-radius: 50%;
     width: 50px;
     height: 50px;
     margin: 0.5rem -.3rem;
-    
+
   }
 }
-.team-box:nth-last-of-type(1){
+
+.team-box:nth-last-of-type(1) {
   border-bottom: none;
 }

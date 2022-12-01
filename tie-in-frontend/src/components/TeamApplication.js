@@ -12,6 +12,11 @@ function TeamApplication({name, logo, team, applicationStatus, onClose, onApprov
                 <Button label={"Close Project"} variant={"secondary"} onClick={onClose}/>
             </div>
             <div>
+            <div className="header-wrapper">
+                <h3>Team</h3>
+                <h3>Applicant</h3>
+                <h3>Status</h3>
+            </div>
                 <TeamsBox
                     name={team.team_name}
                     members={team.members}
