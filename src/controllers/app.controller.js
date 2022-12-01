@@ -36,7 +36,11 @@ async function replaceOneUserById(req, res, next) {
   res
     .status(200)
     .send(
-      await appService.replaceOneUserInDb(USER_COLLECTION, req.params.id, req.body)
+      await appService.replaceOneUserInDb(
+        USER_COLLECTION,
+        req.params.id,
+        req.body
+      )
     );
 }
 
@@ -74,7 +78,11 @@ async function replaceOneStudentById(req, res, next) {
   res
     .status(200)
     .send(
-      await appService.replaceOneStudentInDb(STUDENT_COLLECTION, req.params.id, req.body)
+      await appService.replaceOneStudentInDb(
+        STUDENT_COLLECTION,
+        req.params.id,
+        req.body
+      )
     );
 }
 
@@ -116,7 +124,11 @@ async function replaceOneTeamById(req, res, next) {
   res
     .status(200)
     .send(
-      await appService.replaceOneTeamInDb(TEAM_COLLECTION, req.params.id, req.body)
+      await appService.replaceOneTeamInDb(
+        TEAM_COLLECTION,
+        req.params.id,
+        req.body
+      )
     );
 }
 
@@ -136,7 +148,10 @@ async function getOneBusinessByEmail(req, res, next) {
   res
     .status(200)
     .send(
-      await appService.getOneBusinessFromDb(BUSINESS_COLLECTION, req.params.email)
+      await appService.getOneBusinessFromDb(
+        BUSINESS_COLLECTION,
+        req.params.email
+      )
     );
 }
 
@@ -152,7 +167,11 @@ async function replaceOneBusinessById(req, res, next) {
   res
     .status(200)
     .send(
-      await appService.replaceOneBusinessInDb(BUSINESS_COLLECTION, req.params.id, req.body)
+      await appService.replaceOneBusinessInDb(
+        BUSINESS_COLLECTION,
+        req.params.id,
+        req.body
+      )
     );
 }
 
@@ -220,7 +239,9 @@ async function deleteOneStudentProjectById(req, res, next) {
 async function getAllBusinessProjects(req, res, next) {
   res
     .status(200)
-    .send(await appService.getAllBusinessProjectsFromDb(BUSINESS_PROJECT_COLLECTION));
+    .send(
+      await appService.getAllBusinessProjectsFromDb(BUSINESS_PROJECT_COLLECTION)
+    );
 }
 
 async function getOneBusinessProjectById(req, res, next) {
@@ -231,6 +252,14 @@ async function getOneBusinessProjectById(req, res, next) {
         BUSINESS_PROJECT_COLLECTION,
         req.params.id
       )
+    );
+}
+
+async function getAllBusinessProjects(req, res, next) {
+  res
+    .status(200)
+    .send(
+      await appService.getAllBusinessProjectsFromDb(BUSINESS_PROJECT_COLLECTION)
     );
 }
 
@@ -249,7 +278,11 @@ async function updateOneBusinessProjectById(req, res, next) {
   res
     .status(200)
     .send(
-      await appService.updateOneBusinessProjectInDb(BUSINESS_PROJECT_COLLECTION, req.params.id, req.query.status)
+      await appService.updateOneBusinessProjectInDb(
+        BUSINESS_PROJECT_COLLECTION,
+        req.params.id,
+        req.query.status
+      )
     );
 }
 
@@ -301,7 +334,21 @@ async function getOneApplicationById(req, res, next) {
   res
     .status(200)
     .send(
-      await appService.getOneApplicationFromDb(APPLICATION_COLLECTION, req.params.id)
+      await appService.getOneApplicationFromDb(
+        APPLICATION_COLLECTION,
+        req.params.id
+      )
+    );
+}
+
+async function getQtyApplicationsToBusinessProjectByBusinessProjectId(req, res, next) {
+  res
+    .status(200)
+    .send(
+      await appService.getQtyApplicationsToBusinessProjectFromDb(
+        APPLICATION_COLLECTION,
+        req.params.id
+      )
     );
 }
 
@@ -320,45 +367,64 @@ async function updateOneApplicationById(req, res, next) {
   res
     .status(200)
     .send(
-      await appService.updateOneApplicationInDb(APPLICATION_COLLECTION, req.params.id, req.query.status)
+      await appService.updateOneApplicationInDb(
+        APPLICATION_COLLECTION,
+        req.params.id,
+        req.query.status
+      )
     );
 }
 
 async function deleteOneApplicationById(req, res, next) {
   res
     .status(200)
-    .send(await appService.deleteOneTeamFromDb(APPLICATION_COLLECTION, req.params.id));
+    .send(
+      await appService.deleteOneTeamFromDb(
+        APPLICATION_COLLECTION,
+        req.params.id
+      )
+    );
 }
-
 
 ////////// Data Visualiazation ROUTES //////////
 
 async function getBusinessProjectTrend(req, res, next) {
   res
     .status(200)
-    .send(await appService.getBusinessProjectTrendFromDB(BUSINESS_PROJECT_COLLECTION));
+    .send(
+      await appService.getBusinessProjectTrendFromDB(
+        BUSINESS_PROJECT_COLLECTION
+      )
+    );
 }
 
 async function getBusinessProjectCategory(req, res, next) {
   res
     .status(200)
-    .send(await appService.getBusinessProjectCategoryFromDB(BUSINESS_PROJECT_COLLECTION));
+    .send(
+      await appService.getBusinessProjectCategoryFromDB(
+        BUSINESS_PROJECT_COLLECTION
+      )
+    );
 }
 
 async function getStudentProjectTrend(req, res, next) {
   res
     .status(200)
-    .send(await appService.getStudentProjectTrendFromDB(STUDENT_PROJECT_COLLECTION));
+    .send(
+      await appService.getStudentProjectTrendFromDB(STUDENT_PROJECT_COLLECTION)
+    );
 }
 
 async function getStudentProjectCategory(req, res, next) {
   res
     .status(200)
-    .send(await appService.getStudentProjectCategoryFromDB(STUDENT_PROJECT_COLLECTION));
+    .send(
+      await appService.getStudentProjectCategoryFromDB(
+        STUDENT_PROJECT_COLLECTION
+      )
+    );
 }
-
-
-
 
 module.exports = {
   getAllUsers,
@@ -401,6 +467,7 @@ module.exports = {
   getAllApplicationsMadeByStudentOrTeamByStudentId,
   getAllApplicationsCreatedByBusinessByBusinessId,
   getOneApplicationById,
+  getQtyApplicationsToBusinessProjectByBusinessProjectId,
   createOneApplication,
   updateOneApplicationById,
   deleteOneApplicationById,

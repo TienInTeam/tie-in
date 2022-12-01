@@ -41,6 +41,7 @@ router.delete('/studentProjects/:id', appController.deleteOneStudentProjectById)
 ////////// BUSINESS PROJECT ROUTES //////////
 router.get('/businessProjects', appController.getAllBusinessProjects);
 router.get('/businessProjects/:id', appController.getOneBusinessProjectById);
+
 router.post('/businessProjects', appController.createOneBusinessProject);
 router.patch('/businessProjects/:id', appController.updateOneBusinessProjectById);
 router.delete('/businessProjects/:id', appController.deleteOneBusinessProjectById);
@@ -49,10 +50,11 @@ router.delete('/businessProjects/:id', appController.deleteOneBusinessProjectByI
 router.get('/applications', appController.getAllApplications);
 router.get('/applications/student/:id', appController.getAllApplicationsMadeByStudentOrTeamByStudentId);
 router.get('/applications/business/:id', appController.getAllApplicationsCreatedByBusinessByBusinessId);
+router.get('/applications/:id', appController.getOneApplicationById);
+router.get('/applications/appliedQty/:id', appController.getQtyApplicationsToBusinessProjectByBusinessProjectId);
 router.post('/applications', appController.createOneApplication);
 router.patch('/applications/:id', appController.updateOneApplicationById);
 router.delete('/applications/:id', appController.deleteOneApplicationById);
-
 
 ////////// Data Visualiazation ROUTES //////////
 router.get('/businessProjectTrend', appController.getBusinessProjectTrend);
