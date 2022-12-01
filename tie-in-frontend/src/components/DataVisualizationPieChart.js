@@ -1,29 +1,38 @@
 import { PieChart, Pie, Legend, Label, Cell, ResponsiveContainer } from 'recharts';
 
 
-const DataVisualizationPieChart = ({ inputPage }) => {
+const DataVisualizationPieChart = ({ inputData }) => {
     let data, text, total = 0;
     const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const d = new Date();
     let currentMonth = month[d.getMonth()];
     if (sessionStorage.getItem("userType") === "student") {
-        data = [
-            { name: 'AI', value: 5 },
-            { name: 'Web Development', value: 10 },
-            { name: 'Robotics', value: 21 },
-            { name: 'E-ommerce', value: 11 },
-        ];
         text = 'New Business Projects';
     }
     else if (sessionStorage.getItem("userType") === "business") {
-        data = [
-            { name: 'Ux Design', value: 14 },
-            { name: 'Web Development', value: 5 },
-            { name: 'Marketing', value: 10 },
-            { name: 'E-ommerce', value: 20 },
-        ];
         text = 'New Student Projects';
     }
+    data = Object.entries(inputData).map(([name, value]) => ({ name, value }))
+    console.log("pie data" + JSON.stringify(data));
+
+    // data = data.map((index) => (
+    //     {
+    //         name: `${index.name.substring(5, 10)}`, value: index.value
+    //     }
+    // ));
+
+    let data1 = [];
+    let count = 0;
+
+    const sum = data.reduce((datas, object) => {
+
+
+        if (count > 3) {
+            
+        }
+    }, 0);
+
+    console.log("new data" + JSON.stringify(sum));
 
     data.map((entry, index) => {
         total = total + entry.value;
