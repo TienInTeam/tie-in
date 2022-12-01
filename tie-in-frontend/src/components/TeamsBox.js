@@ -49,7 +49,7 @@ const TeamsBox = ({name, members, teamId, onApprove}) => {
 
     return (
         <div className="team-box">
-            <h3>{name}</h3>
+            <p>{name}</p>
             <div className="images">
                 {renderMembers()}
             </div>
