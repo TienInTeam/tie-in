@@ -48,6 +48,8 @@ export default function Header() {
             } else {
                 navigate("/studentdashboard")
             }
+        } else {
+            navigate('/');
         }
     }
 
@@ -90,10 +92,10 @@ export default function Header() {
                 <div className="icon hamburger-menu" onClick={changeHamburgerMenu}>
                     <MenuIcon />
                 </div>
-                <div className='site-logo'>
+                <a onClick={onLogo} className='site-logo'>
                     <Logo />
                     <h2>Tie-in</h2>
-                </div>
+                </a>
                 <div className={'site-header-menu'}>
                     <div className={hamburgerMenu ? "mobile-side-menu show-home-menu" : "mobile-side-menu"}>
                         <ul>
