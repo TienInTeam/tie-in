@@ -133,9 +133,10 @@
   }
 
 option:hover,
+option:focus,
 option:checked{
   background-color: $primary_yellow !important;
-  box-shadow: 0 0 1px $primary_yellow;
+  box-shadow: 0 0 1px $primary_yellow !important;
 }
   .category-input select,
   .technology-input select,
