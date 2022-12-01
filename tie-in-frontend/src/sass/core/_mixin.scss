@@ -1,0 +1,66 @@
+//Typography
+
+@mixin desktop_bold {
+  font-style: normal;
+  font-weight: 700;
+}
+
+@mixin desktop_normal {
+  font-style: normal;
+  font-weight: 400;
+}
+
+@mixin desktop_h1_heading {
+  @include desktop_bold;
+  font-size: 41px;
+  line-height: 49px;
+}
+
+@mixin desktop_h2_heading {
+  @include desktop_bold;
+  font-size: 41px;
+  line-height: 49px;
+}
+
+@mixin desktop_h3_heading {
+  @include desktop_bold;
+  font-size: 28px;
+  line-height: 35px;
+}
+
+@mixin desktop_body_text {
+  @include desktop_normal;
+  font-size: 23px;
+  line-height: 28px;
+}
+
+@mixin desktop_subtitle {
+  @include desktop_bold;
+  font-size: 28px;
+  line-height: 34px;
+}
+
+@mixin desktop_caption_bold {
+  @include desktop_bold;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+@mixin desktop_caption_normal {
+  @include desktop_normal;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+@mixin desktop_link_text {
+  @include desktop_normal;
+  font-size: 16px;
+  line-height: 20px;
+  text-decoration-line: underline;
+}
+
+@mixin desktop_button_text {
+  @include desktop_bold;
+  font-size: 18px;
+  line-height: 21px;
+} ;

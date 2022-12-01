@@ -1,6 +1,6 @@
 import React from 'react'
 
-function InputType({ placeHolder, label, type, min, onChange, value}) {
+function InputType({ placeHolder, label, requiredField, type, min, onChange, value}) {
 
   return (
     <div className="input-type">

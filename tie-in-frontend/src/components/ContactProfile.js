@@ -1,24 +1,34 @@
-import {ReactComponent as Email} from "../assets/icons/others/email.svg";
-import {ReactComponent as LinkedIn} from "../assets/icons/others/linkedin.svg";
+import { ReactComponent as Email } from "../assets/icons/others/email.svg";
+import { ReactComponent as LinkedIn } from "../assets/icons/others/linkedin.svg";
 
-const ContactProfile = ({name, title, linkedIn, email, photo}) => {
-    return (
-        <div className={"contact-profile"}>
-            <div className={"person-wrapper"}>
-                <img src={photo} alt={"Photo of the team member"}/>
-                <h3>{name}</h3>
-                <p>{title}</p>
-            </div>
-            <div className={"email-wrapper"}>
-                <LinkedIn/>
-                <a href={""}>{linkedIn}</a>
-            </div>
-            <div className={"email-wrapper"}>
-                <Email/>
-                <a href={"mailto: fjoca00@mylangara.ca"}>{email}</a>
-            </div>
-        </div>
-    );
-}
+const ContactProfile = ({
+  name,
+  titleOne,
+  titleTwo,
+  linkedIn,
+  email,
+  photo,
+}) => {
+  return (
+    <div className={"contact-profile"}>
+      <div className="profile-photo-name-wrapper">
+        <img src={photo} alt={"Team member"} />
+        <h3>{name}</h3>
+      </div>
+      <div className="profile-title-wrapper">
+        <p>{titleOne}</p>
+        {titleTwo != undefined && <p>{titleTwo}</p>}
+      </div>
+      <div className="profile-linkedin-wrapper">
+        <LinkedIn />
+        <a href={""}>{linkedIn}</a>
+      </div>
+      <div className="profile-email-wrapper">
+        <Email />
+        <a href={`mailto: ${email}`}>{email}</a>
+      </div>
+    </div>
+  );
+};
 
 export default ContactProfile;
