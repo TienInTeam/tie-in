@@ -25,10 +25,28 @@ const BusinessDashboard = () => {
         }
     });
 
+    //Data Visualization query
+    const studentProjectUploadTrend = useQuery(["studentProjectTrend"], () => requestStudentProjectUploadTrend(), {
+        onError: (error) => {
+            alert(error.message);
+        }
+    });
+
+    const studentProjectByCategory = useQuery(["studentProjectCategory"], () => requestStudentProjectByCategory(), {
+        onError: (error) => {
+            alert(error.message);
+        }
+    });
+
     if (requestStudentProject.isLoading) {
         return <span>Loading...</span>
     }
-
+    if (studentProjectUploadTrend.isLoading) {
+        return <span>Loading...</span>
+    }
+    if (studentProjectByCategory.isLoading) {
+        return <span>Loading...</span>
+    }
     const onSeeMore = () => {
         alert("see more is clicked")
     }
@@ -40,10 +58,10 @@ const BusinessDashboard = () => {
             <div>
                 <div className={"data-visualization"}>
                     <div className="visualization-component">
-                        <DataVisualizationAreaChart inputData={''} />
+                        <DataVisualizationAreaChart inputData={studentProjectUploadTrend.data} />
                     </div>
                     <div className="visualization-component">
-                        <DataVisualizationPieChart inputData={''} />
+                        <DataVisualizationPieChart inputData={studentProjectByCategory.data} />
                     </div>
                 </div>
                 <div className={"student-project-wrapper"}>
