@@ -73,7 +73,7 @@ function RequestStatus(options) {
                 <SideMenu/>
                 </div>
             <div>
-                <h2>Request Status List</h2>
+                <h2 className="request-status-title">Request Status List</h2>
                 {renderTeamApplication()}
             </div>
         </div>
