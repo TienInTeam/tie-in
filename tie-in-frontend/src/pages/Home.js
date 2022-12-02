@@ -13,6 +13,8 @@ import { ReactComponent as WhyUsImage1 } from "../assets/icons/home/why-us_image
 import { ReactComponent as WhyUsImage2 } from "../assets/icons/home/why-us_image_2.svg";
 import { ReactComponent as WhyUsImage3 } from "../assets/icons/home/why-us_image_3.svg";
 
+
+
 import floridaProfilePic from "../assets/icons/profiles/florida_pic.png";
 import diegoProfilePic from "../assets/icons/profiles/diego_pic.png";
 import jasminProfilePic from "../assets/icons/profiles/jasmin_pic.png";
@@ -41,7 +43,7 @@ const Home = () => {
         <IntroImage />
         <div className="intro-text-wrapper">
           <h1>
-            “Projects to be sponsored, ideas to be created, Simply Tie-in.”
+            Projects to be sponsored, ideas to be created, Simply Tie-in.
           </h1>
           <p>
             Tie-in is a collaborated-driven responsive web platform for
