@@ -23,7 +23,7 @@ button:hover{
 }
 
 .secondary {
-  background-color: rgba(1,1,1,0);
+  background-color: $blue_card_background;
   border-radius: 10px;
   appearance: unset;
   border: 3px solid $secondary_blue_color;
