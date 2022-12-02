@@ -90,7 +90,7 @@ function UploadBusinessProject() {
 
     const onSubmit = () => {
         if (validateInput()) {
-            // saveProject.mutate();
+            saveProject.mutate();
             setSuccess(true)
         }
     }
