@@ -80,36 +80,40 @@ function ApplicationForm({ studentTeam }) {
   return (
     <div className="application-card">
       <div className="name">
-        <InputType label={"First Name(Required)"} type={"text"} placeholder={"Enter your first name"} onChange={(e) => setFirstName(e.target.value)} />
-        <InputType label={"Last Name (Required)"} type={"text"} placeholder={"Enter your last name"} onChange={(e) => setLastName(e.target.value)} />
+        <div className="name-wrapper">
+          <InputType label={"First Name"} type={"text"} placeholder={"Enter your first name"} onChange={(e) => setFirstName(e.target.value)} />
+          <InputType label={"Last Name"} type={"text"} placeholder={"Enter your last name"} onChange={(e) => setLastName(e.target.value)} />
+        </div>
       </div>
-      <InputType type={"email"} label={"Email (required)"} onChange={(e) => setEmail(e.target.value)} />
-      <InputType label={"Phone number"} onChange={(e) => setContact(e.target.value)} />
-      <fieldset>
-        <label>Select Team (required): </label>
-        <select id="SelectedTeam" onChange={(e) => setTeamId(e.target.value)} disabled={individualIsSelected}>
-          <option value={teamId}>None</option>;
-          ({
-            studentTeam ? studentTeam.map((team, index) => {
-              return <option key={index} value={team._id}>{team.name}</option>;
-            }
-            ) : ''
-          })
-        </select><br />
-        <input type="checkbox" id="individualProjectCheck" name="individualProjectCheck" value="individualProject" checked={individualIsSelected}
-          onChange={() => {
-            setTeamId(null);
-            document.getElementById("SelectedTeam").selectedIndex = "0";
-            setIndividualIsSelected(!individualIsSelected);
-            if (individualIsSelected) {
-              //to be updated
-              setIndividualId('116');
-              //setIndividualId(sessionStorage.getItem('student_id'));
-            }
-          }} />
-        <label htmlFor="individualProjectCheck">Applying as an individual</label>
-      </fieldset>
-      <label>
+      <InputType type={"email"} label={"Email"} placeholder={"Enter your email address"} onChange={(e) => setEmail(e.target.value)} />
+      <InputType label={"Phone number"} placeholder={"Enter your phone number"} onChange={(e) => setContact(e.target.value)} />
+        <div className="select-team">
+          <label>Select Team (required): </label>
+          <select id="SelectedTeam" onChange={(e) => setTeamId(e.target.value)} disabled={individualIsSelected}>
+            <option value={teamId}>None</option>;
+            ({
+              studentTeam ? studentTeam.map((team, index) => {
+                return <option key={index} value={team._id}>{team.name}</option>;
+              }
+              ) : ''
+            })
+          </select>
+          <div className="checkbox">
+            <input type="checkbox" id="individualProjectCheck" name="individualProjectCheck" value="individualProject" checked={individualIsSelected}
+              onChange={() => {
+                setTeamId(null);
+                document.getElementById("SelectedTeam").selectedIndex = "0";
+                setIndividualIsSelected(!individualIsSelected);
+                if (individualIsSelected) {
+                  //to be updated
+                  setIndividualId('116');
+                  //setIndividualId(sessionStorage.getItem('student_id'));
+                }
+              }} />
+                    <label htmlFor="individualProjectCheck">Applying as an individual</label>
+          </div>
+        </div>
+      <label className="message">
         <span>Message</span>
         <textarea onChange={(e) => setMessage(e.target.value)} />
       </label>
