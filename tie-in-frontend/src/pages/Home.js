@@ -6,9 +6,9 @@ import HomeSection from "../components/HomeSection";
 
 import { ReactComponent as IntroImage } from "../assets/icons/home/intro_image.svg";
 import { ReactComponent as StudentImage1 } from "../assets/icons/home/student_image_1.svg";
-import { ReactComponent as StudentImage2 } from "../assets/icons/home/student_image_2.svg";
+import { ReactComponent as StudentImage2 } from "../assets/icons/home/student_image.svg";
 import { ReactComponent as BusinessImage1 } from "../assets/icons/home/business_image_1.svg";
-import { ReactComponent as BusinessImage2 } from "../assets/icons/home/business-type.svg";
+import { ReactComponent as BusinessImage2 } from "../assets/icons/home/business_image_2.svg";
 import { ReactComponent as WhyUsImage1 } from "../assets/icons/home/why-us_image_1.svg";
 import { ReactComponent as WhyUsImage2 } from "../assets/icons/home/why-us_image_2.svg";
 import { ReactComponent as WhyUsImage3 } from "../assets/icons/home/why-us_image_3.svg";
