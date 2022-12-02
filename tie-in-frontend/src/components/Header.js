@@ -29,12 +29,10 @@ export default function Header() {
         setHamburgerMenu(!hamburgerMenu);
     }
     const login = () => {
-        sessionStorage.clear();
         navigate("/login");
         setHamburgerMenu(!hamburgerMenu)
     }
     const signUp = () => {
-        sessionStorage.clear();
         navigate("/signuplanding");
         setHamburgerMenu(!hamburgerMenu)
     }
