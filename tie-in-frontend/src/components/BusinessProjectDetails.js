@@ -4,7 +4,6 @@ import { ReactComponent as FileIcon } from '../assets/icons/others/file-icon.svg
 
 function BusinessProjectDetails({ businessProject, business, onApply }) {
   const { name, additional_file_url, location, description, budget, team_size, team_requirements, start_date, end_date, subjects, category, technology, additional_field, projectTitle, links, summary, file } = businessProject;
-  const { logo, company_name } = business;
 
   const renderAdditionalFiles = () => {
     if (!additional_file_url) {
@@ -20,8 +19,8 @@ function BusinessProjectDetails({ businessProject, business, onApply }) {
     <div className="business-project-details">
       <div className="business-request-header">
         <div className="company-branding">
-          <div className="company-logo"><img src={logo} alt="company's logo" /></div>
-          <h2>{company_name}</h2>
+          <div className="company-logo"><img src={business.logo_url} alt="company's logo" /></div>
+          <h2>{business.name}</h2>
         </div>
         <h2>{location}</h2>
       </div>
