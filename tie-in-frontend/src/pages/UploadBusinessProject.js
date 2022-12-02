@@ -155,7 +155,7 @@ function UploadBusinessProject() {
             <MultiStepProgressBar currentStep={currentStep} />
             {currentStep === 1 ?
                 <div className="first-step">
-                    <InputType label={"Project Title (Required)"} type={"text"} placeHolder={"Enter your project name"} onChange={(e) => setProjectName(e.target.value)} />
+                    <InputType label={"Project Title (Required)"} type={"text"} placeholder={"Enter your project name"} onChange={(e) => setProjectName(e.target.value)} />
                     <label>
                         <span>Project Summary (Required)</span>
                         <textarea placeholder="Enter your project summary" onChange={(e) => setDescription(e.target.value)} />
@@ -179,8 +179,8 @@ function UploadBusinessProject() {
                             }} />
                         <label htmlFor="notSpecifiedDate">Not Specified Yet</label>
                     </div>
-                    <InputType label={"Team Size (Required)"} type={"number"} placeHolder={"Enter your preferred team size"} min={1} onChange={(e) => setTeamSize(e.target.value)} />
-                    <InputType label={"Team Requirement (Required)"} type={"text"} placeHolder={"Enter your team requirements"} onChange={(e) => setTeamRequirement(e.target.value)} />
+                    <InputType label={"Team Size (Required)"} type={"number"} placeholder={"Enter your preferred team size"} min={1} onChange={(e) => setTeamSize(e.target.value)} />
+                    <InputType label={"Team Requirement (Required)"} type={"text"} placeholder={"Enter your team requirements"} onChange={(e) => setTeamRequirement(e.target.value)} />
                     <div className="budget-input">
                         <label htmlFor="budget">Estimated Budget (Required)</label>
                         <select
@@ -256,7 +256,7 @@ function UploadBusinessProject() {
             </div>
                 : null}
             {currentStep === 3 ? <div className="third-step">
-                <InputType label={"Additional Field (Optional)"} type={"text"} placeHolder={"You can add and customize additional fields for extra project request information "} onChange={(e) => setAdditionalField(e.target.value)} />
+                <InputType label={"Additional Field (Optional)"} type={"text"} placeholder={"You can add and customize additional fields for extra project request information "} onChange={(e) => setAdditionalField(e.target.value)} />
                 <label htmlFor="upload-file">
                     Additional File (Optional)
                 </label>
@@ -268,7 +268,7 @@ function UploadBusinessProject() {
                     </div>
                     <p>(Maximum file size 2mb)</p>
                 </div>
-                <InputType label={"Additional Link (Optional)"} type={"text"} placeHolder={" You can add and customize additional link for your request "} onChange={(e) => setAdditionalLink(e.target.value)} />
+                <InputType label={"Additional Link (Optional)"} type={"text"} placeholder={" You can add and customize additional link for your request "} onChange={(e) => setAdditionalLink(e.target.value)} />
             </div>
                 : null}
             <div className="buttons">

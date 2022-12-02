@@ -24,7 +24,7 @@ function SideMenuBusiness({ setHamburgerMenu }) {
         <nav>
           <ul>
             <li>
-              <Link to="/dashboard" onClick={() => {setHamburgerMenu(false)}}>Dashboard Company</Link>
+              <Link to="/dashboard" onClick={() => {setHamburgerMenu(false)}}>Dashboard</Link>
             </li>
             <li>
               <Link to="/uploadbusinessproject" onClick={() => {setHamburgerMenu(false)}}>Upload business project</Link>

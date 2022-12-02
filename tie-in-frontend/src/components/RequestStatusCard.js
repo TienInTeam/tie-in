@@ -10,9 +10,9 @@ function RequestStatusCard({application}) {
     const requestTeam = useQuery(["teams"], () => requestTeamsByTeamId(team.team_id))
     return (
         <div className="request-status-card">
-            <p>{business.business_name}</p>
+            <h2>{business.business_name}</h2>
             <div className="team-wrapper team-wrapper-content">
-                <h3>{team.team_name}</h3>
+                <p>{team.team_name}</p>
                 <div className="team-images-wrapper" id={`${team.team_id}`}>
                     {
                         requestTeam.data?.members?.map((member, index) => {

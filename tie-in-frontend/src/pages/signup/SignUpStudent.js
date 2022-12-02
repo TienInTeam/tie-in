@@ -96,20 +96,20 @@ const SignUpStudent = () => {
             <form name='registration_form' onSubmit={onSubmit}>
                 <InputType
                     type={"text"}
-                    placeHolder={"Enter your first name"}
+                    placeholder={"Enter your first name"}
                     label={"First Name (required)"}
                     onChange={(e) => setFirstName(e.target.value)}
                     value={firstName}
                 />
                 <InputType
                     type={"text"}
-                    placeHolder={"Enter your last name"}
+                    placeholder={"Enter your last name"}
                     label={"Last Name (required)"}
                     onChange={(e) => setLastName(e.target.value)}
                     value={lastName}
                 />
                 <InputType
-                    placeHolder={"Enter a valid email"}
+                    placeholder={"Enter a valid email"}
                     label={"Email"}
                     onChange={(e) => setEmail(e.target.value)}
                     type={"text"}
@@ -117,38 +117,38 @@ const SignUpStudent = () => {
                 />
                 <InputType
                     type={"text"}
-                    placeHolder={"Select your institution"}
+                    placeholder={"Select your institution"}
                     label={"Please select your academic institution (required)"}
                     onChange={(e) => setInstitution(e.target.value)}
                     value={institution}
                 />
                 <InputType
                     type={"text"}
-                    placeHolder={"Please enter your location"}
+                    placeholder={"Please enter your location"}
                     label={"Location (optional)"}
                     onChange={(e) => setLocation(e.target.value)}
                 />
                 <InputType
                     type={"text"}
-                    placeHolder={"Enter your portfolio URL"}
+                    placeholder={"Enter your portfolio URL"}
                     label={"Website Url (optional)"}
                     onChange={(e) => setWebsiteURL(e.target.value)}
                 />
                 <InputType
                     type={"text"}
-                    placeHolder={"Enter your LinkedIn / Github URL (optional)"}
+                    placeholder={"Enter your LinkedIn / Github URL (optional)"}
                     label={"LinkedIn / Github URL (optional)"}
                     onChange={(e) => setLinkedInURL(e.target.value)}
                 />
                 <InputType
-                    placeHolder={"Password"}
+                    placeholder={"Password"}
                     label={"Password"}
                     onChange={(e) => setPassword(e.target.value)}
                     type={"text"}
                     value={password}
                 />
                 <InputType
-                    placeHolder={"Confirm Password"}
+                    placeholder={"Confirm Password"}
                     label={"Confirm Password"}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     type={"text"}

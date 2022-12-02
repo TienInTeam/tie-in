@@ -6,10 +6,10 @@ function HighlightedBusinessProject({ businessProject, company_name, onSeeMore})
 
     const renderCategory = () => {
         if (!category) {
-            return null;
+            return <div className='category'>No Category</div>;
         }
         return category.map((category, index) =>
-            <span key={index}> {category} </span> )
+            <div className="category" key={index}> {category} </div> )
     }
 
   return (

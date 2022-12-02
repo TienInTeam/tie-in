@@ -17,6 +17,8 @@
     width: 190px;
     height: 190px;
     border-radius: 50%;
+    object-fit: cover;
+    max-width: 100%;
   }
 
   h3{
@@ -57,6 +59,10 @@
     li a {
       font-size: 20px;
       margin-left: .5rem;
+    }
+
+    li:hover a {
+      color: $secondary_blue_color;
     }
   }
 }
