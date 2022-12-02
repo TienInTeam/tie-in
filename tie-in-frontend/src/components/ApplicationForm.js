@@ -77,9 +77,8 @@ function ApplicationForm({ studentTeam }) {
 
   const onApply = () => {
     if (validateInput()) {
-      // saveApplication.mutate();
+      saveApplication.mutate();
       setSuccess(true)
-
     }
   }
   const onClickSuccess = () => {
