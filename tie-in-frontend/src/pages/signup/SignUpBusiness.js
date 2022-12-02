@@ -97,7 +97,7 @@ const SignUpBusiness = () => {
             <form name='registration_form' onSubmit={onSubmit}>
                 <InputType
                     type={"text"}
-                    placeHolder={"Enter your company name"}
+                    placeholder={"Enter your company name"}
                     label={"Company Name (required)"}
                     onChange={(e) => setBusinessName(e.target.value)}
                     value={businessName}
@@ -109,20 +109,20 @@ const SignUpBusiness = () => {
                 />
                 <InputType
                     type={"text"}
-                    placeHolder={"Enter company location"}
+                    placeholder={"Enter company location"}
                     label={"Company Location (required)"}
                     onChange={(e) => setBusinessLocation(e.target.value)}
                     value={businessLocation}
                 />
                 <InputType
                     type={"text"}
-                    placeHolder={"Enter your company description"}
+                    placeholder={"Enter your company description"}
                     label={"Company Description (required)"}
                     onChange={(e) => setDescription(e.target.value)}
                     value={description}
                 />
                 <InputType
-                    placeHolder={"Enter your company email"}
+                    placeholder={"Enter your company email"}
                     label={"Email"}
                     onChange={(e) => setBusinessEmail(e.target.value)}
                     type={"text"}
@@ -130,27 +130,27 @@ const SignUpBusiness = () => {
                 />
                 <InputType
                     type={"text"}
-                    placeHolder={"Enter company website URL"}
+                    placeholder={"Enter company website URL"}
                     label={"Company Website Url (optional)"}
                     onChange={(e) => setWebsiteUrl(e.target.value)}
                     value={websiteUrl}
                 />
                 <InputType
                     type={"text"}
-                    placeHolder={"Enter company linkedIn URL"}
+                    placeholder={"Enter company linkedIn URL"}
                     label={"LinkedIn Url (optional)"}
                     onChange={(e) => setLinkedInUrl(e.target.value)}
                     value={linkedInUrl}
                 />
                 <InputType
-                    placeHolder={"Enter your password"}
+                    placeholder={"Enter your password"}
                     label={"Password"}
                     onChange={(e) => setPassword(e.target.value)}
                     type={"text"}
                     value={password}
                 />
                 <InputType
-                    placeHolder={"Confirm your  Password"}
+                    placeholder={"Confirm your  Password"}
                     label={"Confirm Password"}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     type={"text"}
