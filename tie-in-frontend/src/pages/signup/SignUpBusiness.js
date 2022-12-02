@@ -12,8 +12,8 @@ import validateTextInput from "../../utils/validateTextInput";
 
 const SignUpBusiness = () => {
     const userType = "business";
-    const uid = sessionStorage.getItem("userId");
     const navigate = useNavigate();
+    let uid;
 
     const saveBusiness = useMutation(['business'], () => addBusiness({
         name: businessName,
@@ -42,15 +42,15 @@ const SignUpBusiness = () => {
             }
         })
 
-    const [businessName, setBusinessName] = useState("");
-    const [businessLocation, setBusinessLocation] = useState("");
-    const [description, setDescription] = useState("");
-    const [businessEmail, setBusinessEmail] = useState("");
+    const [businessName, setBusinessName] = useState("testComapny");
+    const [businessLocation, setBusinessLocation] = useState("testComapny");
+    const [description, setDescription] = useState("testComapny");
+    const [businessEmail, setBusinessEmail] = useState("testComapny@gmail.com");
     const [websiteUrl, setWebsiteUrl] = useState("");
     const [linkedInUrl, setLinkedInUrl] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
-    const [termsCondition, setTermsCondition] = useState(false);
+    const [password, setPassword] = useState("testtest");
+    const [confirmPassword, setConfirmPassword] = useState("testtest");
+    const [termsCondition, setTermsCondition] = useState(true);
     const [logo, setLogo] = useState(null);
 
     const formValidation = () => {
@@ -83,9 +83,9 @@ const SignUpBusiness = () => {
         e.preventDefault();
         if (formValidation()) {
             await signUp(businessEmail, password)
+            uid = sessionStorage.getItem("userId");
             saveBusiness.mutate();
             saveUser.mutate();
-            sessionStorage.clear();
             navigate("/login")
         } else
             alert("Something went wrong! Please try again.")
