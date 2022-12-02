@@ -4,12 +4,15 @@ import {requestBusinessProjects, updateBusinessProject} from "../api/businessPro
 import {getBusinessApplication, updateApplicationStatus} from "../api/studentApplications";
 import TeamApplication from "../components/TeamApplication";
 import SideMenu from "../components/SideMenu"
+import { getBusinesses } from "../api/business";
 
 function RequestStatus(options) {
     const businessId = sessionStorage.getItem("userMongoId");
 
     const requestBusinessApplications = useQuery(["applicationBusiness"],
         () => getBusinessApplication(businessId));
+
+    const requestBusiness = useQuery(["business"], () => getBusinesses())
 
     const requestBusinessProject = useQuery(["businessProjects"], () => requestBusinessProjects())
 
@@ -26,6 +29,9 @@ function RequestStatus(options) {
         return <span>Loading...</span>
     }
     if (requestBusinessProject.isLoading) {
+        return <span>Loading...</span>
+    }
+    if (requestBusiness.isLoading) {
         return <span>Loading...</span>
     }
 
@@ -48,7 +54,7 @@ function RequestStatus(options) {
                             <TeamApplication
                                 key={index}
                                 name={filteredBusinessProject.name}
-                                logo_url={filteredBusinessProject.logo_url}
+                                logo={requestBusiness.data._id === filteredBusinessProject.business.business_id ? requestBusiness.data.logo_url : null}
                                 onClose={() => onClose(application.business_request_id)}
                                 applicationStatus={application.status}
                                 team={application.team}
@@ -67,7 +73,7 @@ function RequestStatus(options) {
                 <SideMenu/>
                 </div>
             <div>
-                <h2>Request Status List</h2>
+                <h2 className="request-status-title">Request Status List</h2>
                 {renderTeamApplication()}
             </div>
         </div>
