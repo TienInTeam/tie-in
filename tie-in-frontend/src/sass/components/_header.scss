@@ -119,6 +119,13 @@
             border-bottom: 1px solid white;
         }
 
+        .site-header-top {
+            position: fixed;
+            left: 0;
+            right: 0;
+            z-index: 1;
+        }
+
         .show-menu li {
             display: grid;
             justify-content: center;
@@ -129,7 +136,9 @@
             grid-template-columns: repeat(3, 1fr);
         }
 
-
+        .top-menu.show {
+            top: 3rem;
+        }
     }
 
 }
@@ -139,6 +148,8 @@
     display: flex;
     justify-content: space-between;
     padding: 0 1rem 0 1rem;
+
+
 
     .hamburger-menu {
         display: none;

@@ -1,4 +1,4 @@
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import ContactFrom from "../components/ContactFrom";
 import ContactProfile from "../components/ContactProfile";
@@ -6,7 +6,7 @@ import HomeSection from "../components/HomeSection";
 
 import { ReactComponent as IntroImage } from "../assets/icons/home/intro_image.svg";
 import { ReactComponent as StudentImage1 } from "../assets/icons/home/student_image_1.svg";
-import { ReactComponent as StudentImage2 } from "../assets/icons/home/student_image_2.svg";
+import { ReactComponent as StudentImage2 } from "../assets/icons/home/student_image.svg";
 import { ReactComponent as BusinessImage1 } from "../assets/icons/home/business_image_1.svg";
 import { ReactComponent as BusinessImage2 } from "../assets/icons/home/business_image_2.svg";
 import { ReactComponent as WhyUsImage1 } from "../assets/icons/home/why-us_image_1.svg";
@@ -25,14 +25,16 @@ import andrewProfilePic from "../assets/icons/profiles/andrew_pic.png";
 const Home = () => {
   const navigate = useNavigate();
   const onTryNowStudent = () => {
-    navigate('/signup/student')
+    navigate("/signup/student");
   };
   const onTryNowBusiness = () => {
-    navigate('/signup/business')
+    navigate("/signup/business");
   };
-  const onSend = () => {};
+  const onSend = () => {
+      alert("Something failed: Try again!");
+  };
   const onClick = () => {
-    navigate('/signuplanding')
+    navigate("/signuplanding");
   };
 
   return (
@@ -40,9 +42,7 @@ const Home = () => {
       <section className="intro-section">
         <IntroImage />
         <div className="intro-text-wrapper">
-          <h1>
-            “Projects to be sponsored, ideas to be created, Simply Tie-in.”
-          </h1>
+          <h1>Projects to be sponsored, ideas to be created, Simply Tie-in.</h1>
           <p>
             Tie-in is a collaborated-driven responsive web platform for
             businesses to support projects and for students to work on business
@@ -75,7 +75,7 @@ const Home = () => {
           <StudentImage2 />
           <HomeSection
             subtitle={"How to apply projects from company?"}
-            onTryNowClick={onTryNowBusiness}
+            onTryNowClick={onTryNowStudent}
             step1={
               "Step 1: Search for the business projects that match your interests and skillsets."
             }
@@ -94,7 +94,7 @@ const Home = () => {
         <div className={"text-info-wrapper business-wrapper-one"}>
           <HomeSection
             subtitle={"How to request a project?"}
-            onTryNowClick={onClick}
+            onTryNowClick={onTryNowBusiness}
             step1={
               "Step 1: Fill in related documents and information of your project."
             }
@@ -108,7 +108,7 @@ const Home = () => {
           <BusinessImage2 />
           <HomeSection
             subtitle={"How to find your ideal team?"}
-            onTryNowClick={onClick}
+            onTryNowClick={onTryNowBusiness}
             step1={
               "Step 1: Search for student projects that match your business ambition and goal."
             }
@@ -125,20 +125,20 @@ const Home = () => {
       <section className="why-us-section">
         <h2 className="why-us-title">Why Us?</h2>
         <div className="info-wrapper">
-          <div className="image-text-wrapper">
+          <div className="image-text-wrapper why-us-wrapper-1">
             <WhyUsImage1 />
             <p>
-              Business will get vertification from the academic institutions.
+              Business will get verification from the academic institutions.
             </p>
           </div>
-          <div className="image-text-wrapper">
+          <div className="image-text-wrapper why-us-wrapper-2">
             <WhyUsImage2 />
             <p>
               Students can form a team in the platform, which gives them more
               bargaining power.
             </p>
           </div>
-          <div className="image-text-wrapper">
+          <div className="image-text-wrapper why-us-wrapper-3">
             <WhyUsImage3 />
             <p>It is interactive platform for business and student team.</p>
           </div>
@@ -209,9 +209,8 @@ const Home = () => {
           />
         </div>
         <div className="contact-form-section">
-          <p className="mandatory-field-text">*Mandatory Fields</p>
           <div className={"contact-form-wrapper"}>
-            <ContactFrom onSend={onSend} />
+            <ContactFrom onSend={() => onSend()} />
           </div>
         </div>
       </section>

@@ -37,6 +37,9 @@ function SideMenuBusiness({ setHamburgerMenu }) {
             <li>
               <Link className={currentRoute.includes("requeststatus") ? "tab active" : "tab"} to="/requeststatus" onClick={() => {setHamburgerMenu(false)}}>Request Status</Link>
             </li>
+            <li>
+              <Link className={currentRoute.includes("myprojects") ? "tab active" : "tab"} to="/myprojects" onClick={() => {setHamburgerMenu(false)}}>My Projects</Link>
+            </li>
           </ul>
         </nav>
         <Outlet />
