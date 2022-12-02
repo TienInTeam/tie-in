@@ -99,7 +99,7 @@ export default function Header() {
                     </a>
                 </div>
                 <div className={'site-header-menu'}>
-                    <div className={hamburgerMenu ? "mobile-home-menu show-home-menu" : "mobile-home-menu"}>
+                    <div className={hamburgerMenu ? "home-menu show-home-menu" : "home-menu"}>
                         <ul>
                             <li onClick={() => setHamburgerMenu(!hamburgerMenu)}><a href="#studentTeam">Student</a></li>
                             <li onClick={() => setHamburgerMenu(!hamburgerMenu)}><a href="#logout">Business</a></li>
