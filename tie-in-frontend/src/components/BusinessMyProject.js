@@ -1,9 +1,7 @@
 import Button from './Button';
-import { ReactComponent as CheckIcon } from '../assets/icons/others/check-icon.svg';
 
-
-function BusinessProjectPreview({ businessProject, businessImage, onSeeMore, onCheckStatus }) {
-    const { status, name, description, team_size, created_at, category, location } = businessProject;
+function BusinessMyProject({ businessProject, businessImage, onSeeMore }) {
+    const { name, description, team_size, created_at, category, location } = businessProject;
 
     const renderCategory = () => {
         if (!category) {
@@ -22,37 +20,12 @@ function BusinessProjectPreview({ businessProject, businessImage, onSeeMore, onC
         })
     }
 
-    const renderStatus = () => {
-        if (status !== 'Open') {
-            return <div className={`${status}`}>
-                <Button
-                    label={"Check Status"}
-                    variant={"secondary"}
-                    onClick={onCheckStatus}
-                />
-            </div>
-        }
-    }
-
-    const renderStatusLabel = () => {
-        if (status !== 'Open') {
-            return (
-                <div className='check-icon-wrapper'>
-                    <div className="icon check-icon"><CheckIcon /></div>
-                    <h3>You have already applied</h3>
-                </div>
-            )
-        }
-    }
-
     return (
         <div className="business-project-preview">
             <div className="title-container">
                 <div>
-                    <img src={businessImage} alt="project's logo" />
                     <h2>{name}</h2>
                 </div>
-                {renderStatusLabel()}
             </div>
             <div className="body-container">
                 <div className='description'>
@@ -78,7 +51,6 @@ function BusinessProjectPreview({ businessProject, businessImage, onSeeMore, onC
                     <p>{location}</p>
                 </div>
                 <div className={"button-wrapper"}>
-                    {renderStatus()}
                     <Button label={"See More"} variant={"primary"} onClick={onSeeMore} />
                 </div>
             </div>
@@ -86,4 +58,4 @@ function BusinessProjectPreview({ businessProject, businessImage, onSeeMore, onC
     )
 }
 
-export default BusinessProjectPreview;
+export default BusinessMyProject;

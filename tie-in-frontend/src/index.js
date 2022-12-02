@@ -8,6 +8,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import MyProjects from "./pages/MyProjects";
 import SignUpBusiness from "./pages/signup/SignUpBusiness";
 import SignUpStudent from "./pages/signup/SignUpStudent";
 import SignUpLandingPage from "./pages/signup/SignUpLandingPage";
@@ -46,6 +47,7 @@ root.render(
                         <Route path='/requeststatus' element={<RequestStatus />} />
                         <Route path='/applybusinessproject' element={<ApplyBusinessProject />} />
                         <Route path='/businessDashboard' element={<BusinessDashboard />} />
+                        <Route path='/myprojects' element={<MyProjects />} />
                         <Route
                             path="*"
                             element={
