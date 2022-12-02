@@ -1,16 +1,23 @@
-import { useQuery } from "@tanstack/react-query";
-import React from "react";
-import { getBusinessByEmail } from "../../api/business";
-import { requestStudentProjects } from "../../api/studentProject";
+import {useQuery} from "@tanstack/react-query";
+import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
+import {getBusinessByEmail} from "../../api/business";
+import {
+    requestBusinessProjects,
+} from "../../api/businessProject";
+import {requestStudentProjectByCategory, requestStudentProjectUploadTrend} from "../../api/dataVisualization";
+import {requestStudentProjects} from "../../api/studentProject";
 import HighlightedStudentProject from "../../components/HighlightedStudentProject";
+import RequestStatusCompany from "../../components/RequestStatusCompany";
 import SideMenu from "../../components/SideMenu";
 import DataVisualizationPieChart from "../../components/DataVisualizationPieChart";
 import DataVisualizationAreaChart from "../../components/DataVisualizationAreaChart";
-import { requestStudentProjectUploadTrend, requestStudentProjectByCategory } from "../../api/dataVisualization";
 
 const BusinessDashboard = () => {
 
     const userEmail = sessionStorage.getItem("userEmail");
+    const businessId = sessionStorage.getItem("userMongoId");
+    const navigate = useNavigate();
 
     useQuery(['business'], () => getBusinessByEmail(userEmail), {
         onSuccess: (data) => {
@@ -38,6 +45,8 @@ const BusinessDashboard = () => {
         }
     });
 
+    const requestBusinessProject = useQuery(["businessProjects"], () => requestBusinessProjects())
+
     if (requestStudentProject.isLoading) {
         return <span>Loading...</span>
     }
@@ -47,13 +56,18 @@ const BusinessDashboard = () => {
     if (studentProjectByCategory.isLoading) {
         return <span>Loading...</span>
     }
-    const onSeeMore = () => {
-        alert("see more is clicked")
+    if (requestBusinessProject.isLoading) {
+        return <span>Loading...</span>
     }
+
+    const onSeeMore = () => {
+      navigate('/requeststatus')
+    }
+
     return (
         <div className="grid-container business-dashboard">
             <div className="desktop-menu">
-                <SideMenu />
+                <SideMenu/>
             </div>
             <div>
                 <div className={"data-visualization"}>
@@ -79,6 +93,27 @@ const BusinessDashboard = () => {
                             <HighlightedStudentProject key={index} studentProject={student} onSeeMore={onSeeMore} />
                         ))}
                     </div>
+                </div>
+                <div className={"business-project-wrapper"}>
+                    <h2>Request Status List</h2>
+                    <div className={"title-wrapper"}>
+                        <h2>Request</h2>
+                        <h2>Applications</h2>
+                        <h2>Deadline</h2>
+                        <h2>Status</h2>
+                    </div>
+                     {requestBusinessProject.data?.filter((businessProject) => businessProject.business.business_id === businessId)
+                         .map((filteredBusinessProject, index) => (
+                            <RequestStatusCompany
+                                id={filteredBusinessProject._id}
+                                key={index}
+                                status={filteredBusinessProject.status}
+                                onSeeMoreClick={onSeeMore}
+                                deadline={new Date(filteredBusinessProject.end_date).toDateString()}
+                                projectTitle={filteredBusinessProject.name}
+                            />
+                        ))
+                    }
                 </div>
             </div>
         </div>

@@ -23,3 +23,8 @@ export const updateBusinessProject = (id) => {
     });
 }
 
+export const getApplicationForBusinessProject = (businessProjectId) => {
+    return project.get(`/applications/appliedQty/${businessProjectId}`).then((res) =>  {
+        return res.data;
+    })
+}
