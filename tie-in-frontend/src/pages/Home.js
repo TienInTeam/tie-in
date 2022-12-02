@@ -1,4 +1,4 @@
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import ContactFrom from "../components/ContactFrom";
 import ContactProfile from "../components/ContactProfile";
@@ -13,8 +13,6 @@ import { ReactComponent as WhyUsImage1 } from "../assets/icons/home/why-us_image
 import { ReactComponent as WhyUsImage2 } from "../assets/icons/home/why-us_image_2.svg";
 import { ReactComponent as WhyUsImage3 } from "../assets/icons/home/why-us_image_3.svg";
 
-
-
 import floridaProfilePic from "../assets/icons/profiles/florida_pic.png";
 import diegoProfilePic from "../assets/icons/profiles/diego_pic.png";
 import jasminProfilePic from "../assets/icons/profiles/jasmin_pic.png";
@@ -27,14 +25,14 @@ import andrewProfilePic from "../assets/icons/profiles/andrew_pic.png";
 const Home = () => {
   const navigate = useNavigate();
   const onTryNowStudent = () => {
-    navigate('/signup/student')
+    navigate("/signup/student");
   };
   const onTryNowBusiness = () => {
-    navigate('/signup/business')
+    navigate("/signup/business");
   };
   const onSend = () => {};
   const onClick = () => {
-    navigate('/signuplanding')
+    navigate("/signuplanding");
   };
 
   return (
@@ -42,9 +40,7 @@ const Home = () => {
       <section className="intro-section">
         <IntroImage />
         <div className="intro-text-wrapper">
-          <h1>
-            Projects to be sponsored, ideas to be created, Simply Tie-in.
-          </h1>
+          <h1>Projects to be sponsored, ideas to be created, Simply Tie-in.</h1>
           <p>
             Tie-in is a collaborated-driven responsive web platform for
             businesses to support projects and for students to work on business
@@ -127,20 +123,20 @@ const Home = () => {
       <section className="why-us-section">
         <h2 className="why-us-title">Why Us?</h2>
         <div className="info-wrapper">
-          <div className="image-text-wrapper">
+          <div className="image-text-wrapper why-us-wrapper-1">
             <WhyUsImage1 />
             <p>
               Business will get vertification from the academic institutions.
             </p>
           </div>
-          <div className="image-text-wrapper">
+          <div className="image-text-wrapper why-us-wrapper-2">
             <WhyUsImage2 />
             <p>
               Students can form a team in the platform, which gives them more
               bargaining power.
             </p>
           </div>
-          <div className="image-text-wrapper">
+          <div className="image-text-wrapper why-us-wrapper-3">
             <WhyUsImage3 />
             <p>It is interactive platform for business and student team.</p>
           </div>
@@ -211,7 +207,6 @@ const Home = () => {
           />
         </div>
         <div className="contact-form-section">
-          <p className="mandatory-field-text">*Mandatory Fields</p>
           <div className={"contact-form-wrapper"}>
             <ContactFrom onSend={onSend} />
           </div>
