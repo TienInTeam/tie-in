@@ -78,7 +78,12 @@
         display: none;
     }
 
+    // .home-menu {
+    //     display: block;
+    // }
+
     @media screen and (max-width: 600px) {
+        .home-menu,
         .mobile-side-menu {
             display: flex;
             position: absolute;
