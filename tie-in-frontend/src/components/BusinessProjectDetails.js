@@ -23,7 +23,7 @@ function BusinessProjectDetails({ businessProject, business, onApply }) {
           <div className="company-logo"><img src={logo} alt="company's logo" /></div>
           <h2>{company_name}</h2>
         </div>
-        <p>{location}</p>
+        <h2>{location}</h2>
       </div>
       <div className="business-request-body">
         <div className="request-body-top">
