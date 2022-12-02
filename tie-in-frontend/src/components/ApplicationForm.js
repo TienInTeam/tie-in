@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import {useLocation, useNavigate} from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import InputType from "../components/InputType";
 import { isEmailValid } from "../utils/email";
 import validateTextInput from "../utils/validateTextInput";
 import validateContact from "../utils/validateContact";
 import { saveStudentApplication } from "../api/studentApplications";
+import SuccessPopUp from "./SuccessPopUp";
 
 function ApplicationForm({ studentTeam }) {
 
@@ -26,6 +27,7 @@ function ApplicationForm({ studentTeam }) {
     }
   });
 
+  const navigate = useNavigate();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -34,6 +36,8 @@ function ApplicationForm({ studentTeam }) {
   const [individualId, setIndividualId] = useState("");
   const [message, setMessage] = useState("");
   const [individualIsSelected, setIndividualIsSelected] = useState(false);
+  const [success, setSuccess] = useState(false);
+
 
   const validateInput = () => {
     if (firstName === "" || lastName === "" || email === "") {
@@ -74,11 +78,18 @@ function ApplicationForm({ studentTeam }) {
   const onApply = () => {
     if (validateInput()) {
       saveApplication.mutate();
+      setSuccess(true)
     }
+  }
+  const onClickSuccess = () => {
+    navigate("/businessprojectslist")
   }
 
   return (
     <div className="application-card">
+      <div className={!success ? "success-pop-up" : "success-pop-up dark"}>
+        {success && <SuccessPopUp title={"Success!"} label={"Go to Project Search"} subtitle={"Your application has been submitted successfully"} onClickSuccess={onClickSuccess} />}
+      </div>
       <div className="name">
         <div className="name-wrapper">
           <InputType label={"First Name"} type={"text"} placeholder={"Enter your first name"} onChange={(e) => setFirstName(e.target.value)} />
@@ -87,32 +98,32 @@ function ApplicationForm({ studentTeam }) {
       </div>
       <InputType type={"email"} label={"Email"} placeholder={"Enter your email address"} onChange={(e) => setEmail(e.target.value)} />
       <InputType label={"Phone number"} placeholder={"Enter your phone number"} onChange={(e) => setContact(e.target.value)} />
-        <div className="select-team">
-          <label>Select Team (required): </label>
-          <select id="SelectedTeam" onChange={(e) => setTeamId(e.target.value)} disabled={individualIsSelected}>
-            <option value={teamId}>None</option>;
-            ({
-              studentTeam ? studentTeam.map((team, index) => {
-                return <option key={index} value={team._id}>{team.name}</option>;
+      <div className="select-team">
+        <label>Select Team (required): </label>
+        <select id="SelectedTeam" onChange={(e) => setTeamId(e.target.value)} disabled={individualIsSelected}>
+          <option value={teamId}>None</option>;
+          ({
+            studentTeam ? studentTeam.map((team, index) => {
+              return <option key={index} value={team._id}>{team.name}</option>;
+            }
+            ) : ''
+          })
+        </select>
+        <div className="checkbox">
+          <input type="checkbox" id="individualProjectCheck" name="individualProjectCheck" value="individualProject" checked={individualIsSelected}
+            onChange={() => {
+              setTeamId(null);
+              document.getElementById("SelectedTeam").selectedIndex = "0";
+              setIndividualIsSelected(!individualIsSelected);
+              if (individualIsSelected) {
+                //to be updated
+                setIndividualId('116');
+                //setIndividualId(sessionStorage.getItem('student_id'));
               }
-              ) : ''
-            })
-          </select>
-          <div className="checkbox">
-            <input type="checkbox" id="individualProjectCheck" name="individualProjectCheck" value="individualProject" checked={individualIsSelected}
-              onChange={() => {
-                setTeamId(null);
-                document.getElementById("SelectedTeam").selectedIndex = "0";
-                setIndividualIsSelected(!individualIsSelected);
-                if (individualIsSelected) {
-                  //to be updated
-                  setIndividualId('116');
-                  //setIndividualId(sessionStorage.getItem('student_id'));
-                }
-              }} />
-                    <label htmlFor="individualProjectCheck">Applying as an individual</label>
-          </div>
+            }} />
+          <label htmlFor="individualProjectCheck">Applying as an individual</label>
         </div>
+      </div>
       <label className="message">
         <span>Message</span>
         <textarea onChange={(e) => setMessage(e.target.value)} />
