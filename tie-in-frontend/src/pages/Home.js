@@ -8,7 +8,7 @@ import { ReactComponent as IntroImage } from "../assets/icons/home/intro_image.s
 import { ReactComponent as StudentImage1 } from "../assets/icons/home/student_image_1.svg";
 import { ReactComponent as StudentImage2 } from "../assets/icons/home/student_image_2.svg";
 import { ReactComponent as BusinessImage1 } from "../assets/icons/home/business_image_1.svg";
-import { ReactComponent as BusinessImage2 } from "../assets/icons/home/business_image_2.svg";
+import { ReactComponent as BusinessImage2 } from "../assets/icons/home/business-type.svg";
 import { ReactComponent as WhyUsImage1 } from "../assets/icons/home/why-us_image_1.svg";
 import { ReactComponent as WhyUsImage2 } from "../assets/icons/home/why-us_image_2.svg";
 import { ReactComponent as WhyUsImage3 } from "../assets/icons/home/why-us_image_3.svg";
@@ -75,7 +75,7 @@ const Home = () => {
           <StudentImage2 />
           <HomeSection
             subtitle={"How to apply projects from company?"}
-            onTryNowClick={onTryNowBusiness}
+            onTryNowClick={onTryNowStudent}
             step1={
               "Step 1: Search for the business projects that match your interests and skillsets."
             }
@@ -94,7 +94,7 @@ const Home = () => {
         <div className={"text-info-wrapper business-wrapper-one"}>
           <HomeSection
             subtitle={"How to request a project?"}
-            onTryNowClick={onClick}
+            onTryNowClick={onTryNowBusiness}
             step1={
               "Step 1: Fill in related documents and information of your project."
             }
@@ -108,7 +108,7 @@ const Home = () => {
           <BusinessImage2 />
           <HomeSection
             subtitle={"How to find your ideal team?"}
-            onTryNowClick={onClick}
+            onTryNowClick={onTryNowBusiness}
             step1={
               "Step 1: Search for student projects that match your business ambition and goal."
             }
@@ -128,7 +128,7 @@ const Home = () => {
           <div className="image-text-wrapper why-us-wrapper-1">
             <WhyUsImage1 />
             <p>
-              Business will get vertification from the academic institutions.
+              Business will get verification from the academic institutions.
             </p>
           </div>
           <div className="image-text-wrapper why-us-wrapper-2">
