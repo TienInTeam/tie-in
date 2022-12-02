@@ -16,48 +16,61 @@
             font-weight: bold;
             font-size: 1.15rem !important;
         }
-        .recharts-layer{
-            .recharts-area-curve{
-                fill-opacity: 1  !important;
+
+        .recharts-layer {
+            .recharts-area-curve {
+                fill-opacity: 1 !important;
                 stroke: #FCB51F !important;
                 stroke-width: 3;
             }
-            .recharts-area-area{
+
+            .recharts-area-area {
                 fill-opacity: 1;
             }
-        } 
+        }
     }
 
     .new-project-component {
-       
-    
+
+
         h3 {
             margin: 1rem;
-            font-size: 1.5rem;
+            text-align: center;
         }
-    
+
         text {
-            font-size: 1.25rem;
             font-weight: bold;
         }
-    
+
         .recharts-pie g.recharts-pie-sector {
             stroke-width: 0;
         }
-    
+
         .label-center {
             font-size: 2.5rem;
         }
-    
+
         .recharts-legend-wrapper {
             li {
                 font-size: 1.25rem;
             }
         }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        width: 96vw;
+        margin: 0;
     }
 }
 
 .data-visualization {
     background-color: $dark_blue_background;
-}
 
+    @media screen and (max-width: 600px) {
+        display: flex;
+        flex-direction: column;
+        width: 96%;
+        margin-top: 2.5rem;
+    }
+}

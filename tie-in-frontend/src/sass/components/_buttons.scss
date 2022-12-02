@@ -13,6 +13,15 @@ button:hover{
   border: 3px solid $primary_yellow;
 }
 
+.primary:hover {
+  color: white;
+  background-color: rgba(0,0,0,0);
+}
+
+.primary:focus {
+  background-color: $primary_lighter;
+}
+
 .secondary {
   background-color: $blue_card_background;
   border-radius: 10px;
@@ -22,9 +31,23 @@ button:hover{
   color: white;
 }
 
+.secondary:hover {
+  color: black;
+  background-color: $secondary_blue_color;
+}
+
+.secondary:focus {
+  color: black;
+  background-color: $secondary_green;
+}
+
 .tertiary {
   color: white;
   background-color: $blue_card_background;
   border: none;
   display: hidden;
+}
+
+a:hover {
+  color: $primary_yellow;
 }
