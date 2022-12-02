@@ -210,7 +210,7 @@ const Home = () => {
         </div>
         <div className="contact-form-section">
           <div className={"contact-form-wrapper"}>
-            <ContactFrom onSend={onSend} />
+            <ContactFrom onSend={() => onSend()} />
           </div>
         </div>
       </section>
