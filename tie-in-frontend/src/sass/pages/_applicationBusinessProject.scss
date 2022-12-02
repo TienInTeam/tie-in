@@ -1,0 +1,28 @@
+.business-project-main-form {
+  display: grid;
+  justify-content: center;
+
+  h2 {
+    font-size: 2rem;
+  }
+  .business-project-main-title {
+    display: flex;
+    margin-top: 2rem;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .form-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-top: 2rem;
+  }
+
+  .mandatory-fields {
+    color: $primary_yellow;
+    margin: 0;
+    margin-left: 1rem;
+    margin-bottom: .3rem;
+  }
+}
