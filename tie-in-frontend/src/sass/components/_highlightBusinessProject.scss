@@ -1,7 +1,6 @@
 .highlightBusinessProject {
   background-color: $blue_card_background;
   display: grid;
-  justify-items: center;
   grid-template-columns: repeat(5, 1fr);
   align-items: center;
   color: $white;
@@ -17,13 +16,11 @@
 }
 
 .highlightBusinessProject h2 {
-  padding: 0 0 0 1rem;
   font-size: 18px;
 }
 
 .category {
   background-color: $quaternary_background_color;
-  margin: auto;
   margin-top: .4rem;
   border-radius: 50px;
   padding: .2rem 1rem;

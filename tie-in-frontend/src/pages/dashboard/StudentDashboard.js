@@ -131,7 +131,7 @@ function StudentDashboard() {
           <Button label={"See More"} variant={"secondary"} onClick={onApplicationSeeMore} />
         </div>
         <div className="app-status-container">
-          <div className={"title-wrapper"}>
+          <div className={"title-wrapper-second"}>
             <h2>Company:</h2>
             <h2 className="team-wrapper">Team:</h2>
             <h2>Date:</h2>

@@ -13,9 +13,6 @@
 .highlightStudentProject h2 {
   font-size: 18px;
 }
-.title-wrapper {
-  justify-items: center;
-}
 
 .title-wrapper h2{
   font-size: 23px;
@@ -32,7 +29,7 @@
 .projects-container,
 .app-status-container {
   background-color: $blue_card_background;
-  padding: 0 0.8rem;
+  padding: 0 2rem;
   border-radius: 0 0 1rem 1rem;
   border-top: 1px solid $white;
   height: 600px;
@@ -55,7 +52,6 @@
 .highlightStudentProject {
   background-color: $blue_card_background;
   display: grid;
-  justify-items: center;
 }
 
 .highlightStudentProject:not(:nth-last-of-type(1)) {
@@ -77,22 +73,26 @@
 
 .projects-container .primary {
   font-family: $headline_font;
-  font-weight: 800px;
+  font-weight: 800;
   font-size: 12px;
   width: 130px;
 }
 
 .project-title {
   padding-top: 1.5rem;
-  padding-left: 2.5rem;
+  padding-left: 2rem;
+}
+
+.title-wrapper-second {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  color: #FFFFFF;
 }
 
 @media screen and (max-width: 600px) {
   .title-wrapper {
     display: none;
   }
-
-
-
 
 }
