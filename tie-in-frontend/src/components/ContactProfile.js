@@ -22,7 +22,7 @@ const ContactProfile = ({
       <div class="profile-link-wrapper">
         <div className="profile-linkedin-wrapper">
           <LinkedIn />
-          <a href={""}>{linkedIn}</a>
+          <a href={`https://www.linkedin.com/in/${linkedIn}`}>{linkedIn}</a>
         </div>
         <div className="profile-email-wrapper">
           <Email />
