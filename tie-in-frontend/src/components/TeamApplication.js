@@ -14,7 +14,7 @@ function TeamApplication({name, logo, team, applicationStatus, onClose, onApprov
             <div>
             <div className="header-wrapper">
                 <h3>Team</h3>
-                <h3>Applicant</h3>
+                <h3>Members</h3>
                 <h3>Status</h3>
             </div>
                 <TeamsBox
