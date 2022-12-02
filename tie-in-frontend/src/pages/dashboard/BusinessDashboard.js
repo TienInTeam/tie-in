@@ -25,38 +25,60 @@ const BusinessDashboard = () => {
         }
     });
 
+    //Data Visualization query
+    const studentProjectUploadTrend = useQuery(["studentProjectTrend"], () => requestStudentProjectUploadTrend(), {
+        onError: (error) => {
+            alert(error.message);
+        }
+    });
+
+    const studentProjectByCategory = useQuery(["studentProjectCategory"], () => requestStudentProjectByCategory(), {
+        onError: (error) => {
+            alert(error.message);
+        }
+    });
+
     if (requestStudentProject.isLoading) {
         return <span>Loading...</span>
     }
-
+    if (studentProjectUploadTrend.isLoading) {
+        return <span>Loading...</span>
+    }
+    if (studentProjectByCategory.isLoading) {
+        return <span>Loading...</span>
+    }
     const onSeeMore = () => {
         alert("see more is clicked")
     }
     return (
-        <div className="grid-container">
+        <div className="grid-container business-dashboard">
             <div className="desktop-menu">
                 <SideMenu />
             </div>
             <div>
                 <div className={"data-visualization"}>
                     <div className="visualization-component">
-                        <DataVisualizationAreaChart inputData={''} />
+                        <DataVisualizationAreaChart inputData={studentProjectUploadTrend.data} />
                     </div>
                     <div className="visualization-component">
-                        <DataVisualizationPieChart inputData={''} />
+                        <DataVisualizationPieChart inputData={studentProjectByCategory.data} />
                     </div>
                 </div>
                 <div className={"student-project-wrapper"}>
-                    <h2>Student Projects</h2>
-                    <div className={"title-wrapper"}>
-                        <h2>Name</h2>
-                        <h2>Category</h2>
-                        <h2>Institution</h2>
-                        <h2>Location</h2>
+                    <div>
+                        <h2 className="project-title">Recent Student Projects</h2>
                     </div>
-                    {requestStudentProject.data.map((student, index) => (
-                        <HighlightedStudentProject key={index} studentProject={student} onSeeMore={onSeeMore} />
-                    ))}
+                    <div className="projects-container">
+                        <div className={"title-wrapper"}>
+                            <h2>Name:</h2>
+                            <h2>Category:</h2>
+                            <h2>Institution:</h2>
+                            <h2>Location:</h2>
+                        </div>
+                        {requestStudentProject.data.map((student, index) => (
+                            <HighlightedStudentProject key={index} studentProject={student} onSeeMore={onSeeMore} />
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
