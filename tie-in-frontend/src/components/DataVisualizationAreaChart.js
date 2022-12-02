@@ -77,15 +77,17 @@ const DataVisualizationAreaChart = ({ inputData }) => {
             <ResponsiveContainer width={450} height={290}>
                 <AreaChart
                     data={args.chartData}
-                    margin={{ top: 20, right: 30, left: -30, bottom: 0 }}>
+                    margin={{ top: 10, right: 30, left: -40, bottom: 10 }}>
                     <defs>
-                        <linearGradient id={"colorUv" + args.uniqueId} x1="0" y1="0" x2="0" y2="1">
+                        <linearGradient id={"colorUv" + args.uniqueId} x1="0" y1="0" x2="0" y2="0">
                             <stop offset="100%" stopColor={args.gradientColor} />
                         </linearGradient>
                     </defs>
                     <XAxis dataKey="day" interval={1} domain ={0}
-                    height={40}/>
+                    height={30} 
+                    />
                     <YAxis
+                    allowDataOverflow = "false"
                     dataKey="value"
                         width={80}
                         tick={args.customizedTick}
