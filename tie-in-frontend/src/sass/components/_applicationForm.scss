@@ -92,4 +92,10 @@
   .primary {
     width: 110px;
   }
+
+  @media screen and (max-width: 600px) {
+    .name-wrapper {
+      flex-direction: column;
+    }
+  }
 }
