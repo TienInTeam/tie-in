@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import React from 'react';
+import React, {useState} from 'react';
 import { useNavigate } from "react-router-dom";
 import { requestBusinessProjects } from "../../api/businessProject";
 import { getStudentByEmail } from "../../api/student";
@@ -16,13 +16,13 @@ import { requestBusinessProjectUploadTrend, requestBusinessProjectByCategory } f
 function StudentDashboard() {
   const navigate = useNavigate();
   const userEmail = sessionStorage.getItem("userEmail");
-  let studentId = "6371e56d065b8314879d2fab";
+  const [studentId, setStudentId] = useState(null);
 
   useQuery(['student', userEmail], () => getStudentByEmail(userEmail), {
     onSuccess: (data) => {
       sessionStorage.setItem("userMongoId", data._id);
       sessionStorage.setItem("userName", data.first_name);
-      studentId = sessionStorage.getItem("useMongoId");
+      setStudentId(sessionStorage.getItem("userMongoId"));
     }
   })
 
@@ -40,8 +40,9 @@ function StudentDashboard() {
       }
     });
 
-
-   const requestApplications = useQuery(["applications", {id: studentId}], () => getStudentApplication(studentId))
+   const requestApplications = useQuery(["applications"], () => getStudentApplication(studentId), {
+     enabled: !!studentId,
+   });
 
   //Data Visualization query
   const businessProjectUploadTrend = useQuery(["businessProjectTrends"], () => requestBusinessProjectUploadTrend(), {
@@ -55,7 +56,6 @@ function StudentDashboard() {
       alert(error.message);
     }
   });
-
 
   if (requestBusinessProject.isLoading) {
     return <span>Loading...</span>
