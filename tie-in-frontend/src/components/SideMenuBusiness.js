@@ -35,6 +35,9 @@ function SideMenuBusiness({ setHamburgerMenu }) {
             <li>
               <Link to="/requeststatus" onClick={() => {setHamburgerMenu(false)}}>Request Status</Link>
             </li>
+            <li>
+              <Link to="/myprojects" onClick={() => {setHamburgerMenu(false)}}>My Projects</Link>
+            </li>
           </ul>
         </nav>
         <Outlet />
