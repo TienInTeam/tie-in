@@ -5,6 +5,7 @@ body {
   margin: 0;
   font-family: $body_font;
   min-height: 100vh;
+  z-index: 10;
 }
 h1,
 h2,
@@ -62,11 +63,28 @@ a {
   overflow: auto;
 }
 
+#root > div.site-header-main > div.site-header-top > a > svg > g > path:nth-child(1),
+#root > div.site-header-main > div.site-header-top > a > svg > g > path:nth-child(4),
+#root > div.site-footer-main > div.site-footer-logo > svg > g > path:nth-child(1),
+#root > div.site-footer-main > div.site-footer-logo > svg > g > path:nth-child(4) {
+  fill: #53E0DC;
+}
+
 @media screen and (max-width: 600px) {
   .body {
     padding: 0.5rem;
   }
   .desktop-menu {
     display: none;
+  }
+
+}
+
+@media screen and (min-width: 600px) {
+ 
+  .grid-container 
+  {
+    display: grid;
+    gap: 1rem;
   }
 }

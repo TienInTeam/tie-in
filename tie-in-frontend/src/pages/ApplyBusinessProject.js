@@ -23,7 +23,7 @@ export default function ApplyBusinessProject() {
     );
     
     return (
-        <div className="business-project-main">
+        <div className="business-project-main-form">
             <div className="business-project-main-title">
                 <a href="" onClick={(e) => {
                     e.preventDefault();
@@ -37,9 +37,12 @@ export default function ApplyBusinessProject() {
                 </a>
                 <h2>Application Form</h2>
             </div>
-            <div className="business-project-details-main">
-                <div>Apply Business Project
-                 <ApplicationForm studentID={studentID} studentTeam = {requestTeamByStudentId.data}/>
+            <div className="form-wrapper">
+                <p className="mandatory-fields">*Mandatory Fields</p>
+                <div className="business-project-details-main">
+                    <div>
+                     <ApplicationForm studentID={studentID} studentTeam = {requestTeamByStudentId.data}/>
+                    </div>
                 </div>
             </div>
         </div>
