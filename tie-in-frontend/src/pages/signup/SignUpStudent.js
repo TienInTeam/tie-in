@@ -12,7 +12,7 @@ import validateTextInput from "../../utils/validateTextInput";
 
 const SignUpStudent = () => {
     const userType = "student";
-    const uid = sessionStorage.getItem("userId");
+    let uid;
     const navigate = useNavigate();
 
     const saveUser = useMutation(["user"], () => addUser({
@@ -82,9 +82,9 @@ const SignUpStudent = () => {
         e.preventDefault();
         if (formValidation()) {
             await signUp(email, password);
+            uid = sessionStorage.getItem("userId");
             saveStudent.mutate();
             saveUser.mutate();
-            sessionStorage.clear();
             navigate("/login");
         } else
             alert("Sign up failed! Please try again later.")
