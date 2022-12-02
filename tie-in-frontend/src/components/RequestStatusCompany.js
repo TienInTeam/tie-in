@@ -10,7 +10,7 @@ function RequestStatusCompany({id, projectTitle, deadline, status, onSeeMoreClic
     }
   return (
     <div className="request-status-card-company">
-        <p>{projectTitle}</p>
+        <h2>{projectTitle}</h2>
         <p>{applications.data.number_applications} applications</p>
         <p>{deadline}</p>
         <p>{status}</p>

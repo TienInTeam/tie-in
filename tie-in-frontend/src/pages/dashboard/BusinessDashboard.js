@@ -95,12 +95,15 @@ const BusinessDashboard = () => {
                     </div>
                 </div>
                 <div className={"business-project-wrapper"}>
-                    <h2>Request Status List</h2>
+                    <div>
+                        <h2 className={"project-title"}>Request Status List</h2>
+                    </div>
+                    <div className="projects-container">
                     <div className={"title-wrapper"}>
-                        <h2>Request</h2>
-                        <h2>Applications</h2>
-                        <h2>Deadline</h2>
-                        <h2>Status</h2>
+                        <h2>Request:</h2>
+                        <h2>Applications:</h2>
+                        <h2>Deadline:</h2>
+                        <h2>Status:</h2>
                     </div>
                      {requestBusinessProject.data?.filter((businessProject) => businessProject.business.business_id === businessId)
                          .map((filteredBusinessProject, index) => (
@@ -114,6 +117,7 @@ const BusinessDashboard = () => {
                             />
                         ))
                     }
+                </div>
                 </div>
             </div>
         </div>
