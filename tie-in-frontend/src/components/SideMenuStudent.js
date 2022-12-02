@@ -1,8 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 import { getStudentByEmail } from '../api/student';
 
 function SideMenuStudent({ setHamburgerMenu }) {
+  const currentRoute = useLocation().pathname.toLowerCase();
   const email = sessionStorage.getItem("userEmail");
 
   const requestStudent = useQuery(["student"], () => getStudentByEmail(email),
@@ -25,16 +26,16 @@ function SideMenuStudent({ setHamburgerMenu }) {
         <nav>
           <ul>
             <li>
-              <Link to="/studentdashboard" onClick={() => { setHamburgerMenu(false) }}>Dashboard</Link>
+              <Link className={currentRoute.includes("studentdashboard") ? "tab active" : "tab"} to="/studentdashboard" onClick={() => { setHamburgerMenu(false) }}>Dashboard</Link>
             </li>
             <li>
-            <Link to="/uploadstudentproject" onClick={() => { setHamburgerMenu(false) }}>Upload Project</Link>
+            <Link className={currentRoute.includes("uploadstudentproject") ? "tab active" : "tab"} to="/uploadstudentproject" onClick={() => { setHamburgerMenu(false) }}>Upload Project</Link>
             </li>
             <li>
-              <Link to="/businessprojectslist" onClick={() => { setHamburgerMenu(false) }}>Business Projects</Link>
+              <Link className={currentRoute.includes("businessprojectslist") ? "tab active" : "tab"} to="/businessprojectslist" onClick={() => { setHamburgerMenu(false) }}>Business Projects</Link>
             </li>
             <li>
-            <Link to="/studentprojectslist" onClick={() => { setHamburgerMenu(false) }}>Student Projects</Link>
+            <Link className={currentRoute.includes("studentprojectslist") ? "tab active" : "tab"} to="/studentprojectslist" onClick={() => { setHamburgerMenu(false) }}>Student Projects</Link>
             </li>
           </ul>
         </nav>

@@ -13,6 +13,11 @@
   min-width: 150px;
   max-width: 230px;
 
+  .active {
+    color: $primary_yellow;
+
+ }
+
   img {
     width: 190px;
     height: 190px;
