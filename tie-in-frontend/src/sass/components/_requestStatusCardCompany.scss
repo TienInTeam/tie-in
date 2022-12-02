@@ -1,0 +1,10 @@
+.request-status-card-company {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-items: baseline;
+  align-items: center;
+
+  p {
+    font-size: 18px;
+  }
+}
