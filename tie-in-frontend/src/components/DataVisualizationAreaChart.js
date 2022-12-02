@@ -8,34 +8,34 @@ const DataVisualizationAreaChart = ({ inputData }) => {
     };
 
     if (sessionStorage.getItem("userType") === "student") {
-        data = [
-            { month: "Jun", value: 18 },
-            { month: "Jul", value: 13 },
-            { month: "Aug", value: 10 },
-            { month: "Sep", value: 10 },
-            { month: "Oct", value: 32 },
-            { month: "Nov", value: 135 },
-        ]
         text = 'Business Project trends';
     }
     else if (sessionStorage.getItem("userType") === "business") {
-        data = [
-            { month: "Jun", value: 15 },
-            { month: "Jul", value: 12 },
-            { month: "Aug", value: 10 },
-            { month: "Sep", value: 35 },
-            { month: "Oct", value: 65 },
-            { month: "Nov", value: 20 },
-        ]
         text = 'Student Project trends';
     }
+    
+    //get data from input and convert to array for data visualization
+    data = Object.entries(inputData).map(([day, value]) => (
+        {day, value}))
 
+    //sort by date
+    data.sort(function(a, b) {
+        return new Date(a.day)-new Date(b.day);
+    });
+
+    //truncate year from the date
+    data = data.map((index) => (
+        {
+            day : `${index.day.substring(5,10)}`, value: index.value
+        }
+        ));
+    
+    //get total count
     data?.map((entry, index) => {
         total = total + entry.value;
     });
 
     const CustomizedTick2 = ({ x, y, payload }) => {
-        // console.log(props)
         return <text style={{ fontSize: "12px", float: "right", textAlign: "right" }} x={x - 24} y={y - 6} textAnchor="top" dominantBaseline="hanging">
             {payload.value}
         </text>
@@ -58,7 +58,7 @@ const DataVisualizationAreaChart = ({ inputData }) => {
         gradientColor: "rgba(221, 91, 64, 0.3)",
         areaStrokeColor: "blue",
         customizedTick: CustomizedTick2,
-        // tickFormatter: null,
+        tickFormatter: null,
         renderTooltip: renderTooltip,
     }
 
@@ -70,26 +70,28 @@ const DataVisualizationAreaChart = ({ inputData }) => {
     return (
         <div className='project-upload-trajectory' style={styles}>
             <h2>{text}</h2>
-            <h3 className='trajectory-header'>Total projects: {total}</h3>
+            <div className="chart-header">
+                <h3>Past <span>{data.length}</span> days</h3>
+                <h3 className='trajectory-header'>Total Project Count: <span>{total}</span></h3>
+            </div>
             <ResponsiveContainer width={450} height={290}>
                 <AreaChart
                     data={args.chartData}
-                    margin={{ top: 20, right: 10, left: -30, bottom: 0 }}>
+                    margin={{ top: 20, right: 30, left: -30, bottom: 0 }}>
                     <defs>
                         <linearGradient id={"colorUv" + args.uniqueId} x1="0" y1="0" x2="0" y2="1">
                             <stop offset="100%" stopColor={args.gradientColor} />
                         </linearGradient>
                     </defs>
-                    <XAxis dataKey="month" />
+                    <XAxis dataKey="day" interval={1} domain ={0}
+                    height={40}/>
                     <YAxis
-                        // dataKey="value"
+                    dataKey="value"
                         width={80}
                         tick={args.customizedTick}
                         interval={0}
-                        domain={[0,100]}
+                         domain={[ 'dataMin', 'dataMax+1']}
                     tickFormatter={args.tickFormatter}
-                    // interval={0} domain={[0, 50]}
-                    // tickLine={false} width={80} dataKey="value"
                     />
                     <Tooltip content={args.renderTooltip}
                     />

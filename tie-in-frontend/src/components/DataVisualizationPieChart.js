@@ -1,30 +1,32 @@
 import { PieChart, Pie, Legend, Label, Cell, ResponsiveContainer } from 'recharts';
 
 
-const DataVisualizationPieChart = ({ inputPage }) => {
-    let data, text, total = 0;
+const DataVisualizationPieChart = ({ inputData }) => {
+    let dataArray, text, total = 0;
     const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const d = new Date();
     let currentMonth = month[d.getMonth()];
     if (sessionStorage.getItem("userType") === "student") {
-        data = [
-            { name: 'AI', value: 5 },
-            { name: 'Web Development', value: 10 },
-            { name: 'Robotics', value: 21 },
-            { name: 'E-ommerce', value: 11 },
-        ];
         text = 'New Business Projects';
     }
     else if (sessionStorage.getItem("userType") === "business") {
-        data = [
-            { name: 'Ux Design', value: 14 },
-            { name: 'Web Development', value: 5 },
-            { name: 'Marketing', value: 10 },
-            { name: 'E-ommerce', value: 20 },
-        ];
         text = 'New Student Projects';
     }
+    dataArray = Object.entries(inputData).map(([name, value]) => ({ name, value }))
+    let data = [];
+    let count = 0;
+    dataArray.map((key, index) => {
+        if(index <3 )
+        {
+           data[index] = ({ name: key.name, value: key.value})
+        }
 
+        if(index >=3 ){
+            count = count +  key.value
+            data[3] = ({ name: "others", value: count})
+        }
+      });
+ 
     data.map((entry, index) => {
         total = total + entry.value;
     });
@@ -47,7 +49,7 @@ const DataVisualizationPieChart = ({ inputPage }) => {
         <>
             <div className="new-project-component">
                 <h2>{text}</h2>
-                <h3>{currentMonth} project Uploads</h3>
+                <h3>{currentMonth} Uploaded Project By Category</h3>
                 <ResponsiveContainer width={440} height={310} className="text-center" >
                     <PieChart >
                         <Pie
