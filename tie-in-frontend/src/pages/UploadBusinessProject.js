@@ -11,6 +11,7 @@ import { ReactComponent as BackIcon } from '../assets/icons/navigation/back-icon
 import { ReactComponent as UploadIcon } from '../assets/icons/actions/actions-upload.svg';
 import MultiStepProgressBar from "../components/MultiProgressBar";
 import { ReactComponent as RemoveIcon } from '../assets/icons/others/close-icon.svg';
+import SuccessPopUp from "../components/SuccessPopUp";
 
 
 function UploadBusinessProject() {
@@ -55,6 +56,7 @@ function UploadBusinessProject() {
     const [additionalLink, setAdditionalLink] = useState("");
     const [business, setBusiness] = useState({});
     const [currentStep, setCurrentStep] = useState(1);
+    const [success, setSuccess] = useState(false);
 
     const validateInput = () => {
         if (projectName === "" || description === "" || teamSize === "" || estimatedBudget === "" || teamRequirement === "") {
@@ -88,7 +90,8 @@ function UploadBusinessProject() {
 
     const onSubmit = () => {
         if (validateInput()) {
-            saveProject.mutate();
+            // saveProject.mutate();
+            setSuccess(true)
         }
     }
     const onSave = () => {
@@ -109,19 +112,22 @@ function UploadBusinessProject() {
     };
 
     const onTechnologyRemove = (index) => {
-      alert("technology ")
-   }
-   const onCategoryRemove = (index) => {
-      alert("category ")
-   }
+        alert("technology ")
+    }
+    const onCategoryRemove = (index) => {
+        alert("category ")
+    }
+    const onClickSuccess = () => {
+        navigate("/dashboard")
+    }
 
     const renderTechnologies = () => {
-        if(technologies.length > 0) {
+        if (technologies.length > 0) {
             return technologies.map((technology, index) => {
-                return(
+                return (
                     <div key={index} className={"selectedOption"}>
                         <p>{technology}</p>
-                        <RemoveIcon className={"remove"} onClick={() => onTechnologyRemove(index)}/>
+                        <RemoveIcon className={"remove"} onClick={() => onTechnologyRemove(index)} />
                     </div>
                 )
             })
@@ -131,12 +137,12 @@ function UploadBusinessProject() {
     }
 
     const renderCategories = () => {
-        if(categories.length > 0) {
+        if (categories.length > 0) {
             return categories.map((category, index) => {
-                return(
+                return (
                     <div key={index} className={"selectedOption"}>
                         <p>{category}</p>
-                        <RemoveIcon className={"remove"} onClick={() => onCategoryRemove(index)}/>
+                        <RemoveIcon className={"remove"} onClick={() => onCategoryRemove(index)} />
                     </div>
                 )
             })
@@ -147,7 +153,10 @@ function UploadBusinessProject() {
 
 
     return (
-        <div className="upload-business-project">
+        <div className={!success ? "upload-business-project" : "upload-business-project upload-dark"}>
+            <div className={!success ? "success-pop-up" : "success-pop-up dark"}>
+                {success && <SuccessPopUp title={"Awsome!"} subtitle={"Your project has been uploaded successfully"} label={"Back to Dashboard"} onClickSuccess={onClickSuccess} />}
+            </div>
             <div className="header-wrapper">
                 {currentStep > 1 ? <div className="icon back-icon" onClick={onBack}><BackIcon /></div> : <div className="icon back-icon" onClick={onLocation}><BackIcon /></div>}
                 <div><h2>Upload Business Project</h2></div>
@@ -190,12 +199,12 @@ function UploadBusinessProject() {
                             onChange={(e) => setEstimatedBudget(e.target.value)}
                             defaultValue=""
                         >
-                        <option value="" disabled>Please choose the budget</option>
-                                <option value="5000-10000">5000-10000</option>
-                                <option value="10000-15000">10000-15000</option>
-                                <option value="15000-20000">15000-20000</option>
-                                <option value="20000-25000">20000-25000</option>
-                                <option value="other">other</option>
+                            <option value="" disabled>Please choose the budget</option>
+                            <option value="5000-10000">5000-10000</option>
+                            <option value="10000-15000">10000-15000</option>
+                            <option value="15000-20000">15000-20000</option>
+                            <option value="20000-25000">20000-25000</option>
+                            <option value="other">other</option>
                         </select>
                     </div>
                     <div className="location-input">
@@ -226,7 +235,7 @@ function UploadBusinessProject() {
             {currentStep === 2 ? <div className="second-step">
                 <div className="category-input">
                     <label htmlFor="category">Project Category (Required)</label>
-                    <select id="category" placeholder="Select a category related to your project" onChange={(e) => setCategories([...categories,e.target.value])}>
+                    <select id="category" placeholder="Select a category related to your project" onChange={(e) => setCategories([...categories, e.target.value])}>
                         <option> ---Choose category---</option>
                         <option value="UI/UX">UI/UX</option>
                         <option value="Mobile Application">Mobile Application</option>
@@ -239,7 +248,7 @@ function UploadBusinessProject() {
                 </div>
                 <div className="technology-input">
                     <label htmlFor="technology">Technology (Optional)</label>
-                    <select id="technology" placeholder="Select a technology related to your project" onChange={(e) => setTechnologies([...technologies,e.target.value])}>
+                    <select id="technology" placeholder="Select a technology related to your project" onChange={(e) => setTechnologies([...technologies, e.target.value])}>
                         <option> ---Choose technology---</option>
                         <option> JS </option>
                         <option> React.JS </option>
