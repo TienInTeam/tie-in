@@ -16,10 +16,6 @@
         }
     }
 
-    .mobile-side-menu {
-        display: none;
-    }
-
     .top-menu {
         color: white;
         background-color: $darker_blue_card_background;
@@ -69,6 +65,12 @@
 
     .mobil-login {
         display: none;
+    }
+
+    .site-header-menu ul > li > a {
+        font-family: $headline_font;
+        font-weight: bold;
+        font-size: 20px;
     }
 
     @media screen and (max-width: 600px) {
@@ -124,7 +126,9 @@
 
 .site-header-top {
     background-color: $darker_blue_card_background;
-    display: flex;
+    // display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     justify-content: space-between;
     padding: 0 1rem 0 1rem;
 
