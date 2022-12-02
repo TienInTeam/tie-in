@@ -3,7 +3,6 @@ import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {getBusinessByEmail} from "../../api/business";
 import {
-    getApplicationForBusinessProject,
     requestBusinessProjects,
 } from "../../api/businessProject";
 import {requestStudentProjectByCategory, requestStudentProjectUploadTrend} from "../../api/dataVisualization";
