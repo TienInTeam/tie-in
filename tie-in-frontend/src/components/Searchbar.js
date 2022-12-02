@@ -12,7 +12,7 @@ function Searchbar({ onCategory, onSize, onLocation, onSearch, onCheck }) {
       </div>
       <form className="search-wrapper">
         <div className="icon search-icon"><SearchIcon /></div>
-        <InputType type={"text"} placeHolder={"Input Project Name"} onChange={(e) => onSearch(e.target.value)}/>
+        <InputType type={"text"} placeholder={"Input Project Name"} onChange={(e) => onSearch(e.target.value)}/>
       </form>
       <form>
         <div className="filter-wrapper">

@@ -3,20 +3,20 @@
   border-radius: 1rem;
   margin-left: auto;
   margin-right: auto;
-  max-width: 950px;
+  max-width: 1300px;
 }
 
 .request-status-card {
   background-color: $blue_card_background;
-  border-radius: 1rem;
-  margin-bottom: 1rem;
-  padding-left: 1rem;
   display: grid;
-  align-items: baseline;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  text-align: start;
+  align-items: center;
   color: $white;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;}
+
+.request-status-card h2 {
+  font-size: 18px;
 }
 
 .request-status-card *,
@@ -46,8 +46,8 @@
 
 .team-wrapper img {
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
 }
 
 .team-wrapper img:nth-child(2) {
@@ -56,4 +56,55 @@
 
 .team-wrapper img:nth-child(3) {
   transform: translateX(-20px);
+}
+
+.request-status-header .secondary {
+  width: 120px;
+}
+
+@media screen and (max-width: 600px) {
+  .team-images-wrapper {
+    display: none;
+  }
+
+  .request-status-card h2::before {
+    content: "Company:";
+  }
+
+  .app-status-container .request-status-card div p::before {
+    content: "Team:";
+  }
+
+  .request-status-card p:nth-of-type(1)::before {
+    content: "Date:";
+  }
+
+  .request-status-card p:nth-of-type(2)::before {
+    content: "Status:";
+  }
+
+  .request-status-card h2::before,
+  .request-status-card p::before {
+    font-family: $headline_font;
+    font-size: 23px;
+  }
+
+  .request-status-card h2,
+  .request-status-card p {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    justify-content: center;
+  }
+
+  .request-status-card {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
+    align-items: start;
+    padding-bottom: 1rem;
+  }
+
+  .title-wrapper-second {
+    display: none;
+  }
 }
