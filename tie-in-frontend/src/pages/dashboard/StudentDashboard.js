@@ -116,7 +116,7 @@ function StudentDashboard() {
   }
 
   return (
-    <div className="grid-container">
+    <div className="grid-container student-dashboard">
       <div className="desktop-menu">
         <SideMenu />
       </div>
@@ -131,29 +131,35 @@ function StudentDashboard() {
         </div>
 
         <div className={"business-project-wrapper"}>
-          <h2>Recent Business Projects</h2>
-          <div className={"recent-requests-title-wrapper"}>
-            <h2>Company Name</h2>
-            <h2>Category</h2>
-            <h2>Due Date</h2>
-            <h2>Location</h2>
+          <div>
+            <h2 className="project-title">Recent Business Projects</h2>
           </div>
-          {renderHighlightedBusinessProjects()}
+          <div className="projects-container">
+            <div className={"title-wrapper"}>
+              <h2>Company:</h2>
+              <h2>Category:</h2>
+              <h2>Due Date:</h2>
+              <h2>Location:</h2>
+            </div>
+            {renderHighlightedBusinessProjects()}
+          </div>
         </div>
 
-        <div className={"request-status-list-wrapper"}>
-          <div className="request-status-header">
-            <h2>Applications Status</h2>
-            <Button label={"See More"} variant={"secondary"} onClick={onApplicationSeeMore} />
-          </div>
-          <div className={"title-wrapper"}>
+      <div className={"request-status-list-wrapper"}>
+        <div className="request-status-header">
+          <h2>Applications Status</h2>
+          <Button label={"See More"} variant={"secondary"} onClick={onApplicationSeeMore} />
+        </div>
+        <div className="app-status-container">
+          <div className={"title-wrapper-second"}>
             <h2>Company:</h2>
             <h2 className="team-wrapper">Team:</h2>
             <h2>Date:</h2>
             <h2>Status:</h2>
           </div>
-          {renderApplicationStatus()}
+            {renderApplicationStatus()}
         </div>
+      </div>
       </div>
     </div>
   )

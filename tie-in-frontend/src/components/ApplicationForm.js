@@ -80,8 +80,8 @@ function ApplicationForm({ studentTeam }) {
   return (
     <div className="application-card">
       <div className="name">
-        <InputType label={"First Name(Required)"} type={"text"} placeHolder={"Enter your first name"} onChange={(e) => setFirstName(e.target.value)} />
-        <InputType label={"Last Name (Required)"} type={"text"} placeHolder={"Enter your last name"} onChange={(e) => setLastName(e.target.value)} />
+        <InputType label={"First Name(Required)"} type={"text"} placeholder={"Enter your first name"} onChange={(e) => setFirstName(e.target.value)} />
+        <InputType label={"Last Name (Required)"} type={"text"} placeholder={"Enter your last name"} onChange={(e) => setLastName(e.target.value)} />
       </div>
       <InputType type={"email"} label={"Email (required)"} onChange={(e) => setEmail(e.target.value)} />
       <InputType label={"Phone number"} onChange={(e) => setContact(e.target.value)} />
