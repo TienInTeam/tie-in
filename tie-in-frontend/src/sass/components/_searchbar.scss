@@ -17,6 +17,7 @@
     }
     p{
       font-size: 1.25rem;
+      padding-bottom: 1rem;
     }
   }
 
@@ -79,13 +80,16 @@ margin-bottom: 1rem;
     #submitted-application{
       width: 33px;
       height: 33px;
+    //  input[]{
+    //   border-radius: 40px;
+    //  }
     }
   }
 }
 
 @media only screen and (min-width: 600px) {
  .search-bar {
-  padding: 1.5rem 5rem;
+  padding: 1.5rem 10rem;
 
   .text-wrapper {
     
@@ -119,6 +123,10 @@ margin-bottom: 1rem;
         justify-content: space-between;
         gap: 1.2rem;
         margin-bottom: .5rem;
+      }
+      .text-wrapper{
+        display: flex;
+        flex-flow: row nowrap;
       }
   }
 
