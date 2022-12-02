@@ -5,21 +5,22 @@
   gap: 2rem;
   margin-left: auto;
   margin-right: auto;
-  max-width: 950px;
+  max-width: 1300px;
   margin-bottom: 2rem;
   color: $white;
   border-radius: 1rem;
 }
 
 .request-status-header {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding: 0 0 0 1rem;
+  padding-right: 1rem;
 }
 
 .request-status-header h2 {
   grid-column: 1/3;
+  padding-left: 2rem;
 }
 
 .request-status-header .button {
@@ -31,22 +32,10 @@
 }
 
 .business-project-wrapper h2 {
-  padding: 0.5rem 0 0 1rem;
   color: $white;
 }
 
 .recent-requests-title-wrapper {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-}
-
-.title-wrapper {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  align-items: baseline;
-  gap: 1rem;
-  justify-content: space-evenly;
-  color: $white;
-  padding: 0 0 0 1rem;
-
 }
