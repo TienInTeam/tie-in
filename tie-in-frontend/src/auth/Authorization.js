@@ -9,11 +9,10 @@ export const signUp = async (email, password) => {
     const user = authentication.currentUser;
     if (user !== null) {
       const email = user.email;
-      //const uid = user.uid;
-      alert("USER is " + JSON.stringify(user.uid))
+      const uid = user.uid;
       sessionStorage.setItem('authToken', userCredential.user.refreshToken);
       sessionStorage.setItem('userEmail', email);
-      sessionStorage.setItem('userId', user.uid);
+      sessionStorage.setItem('userId', uid);
     }
   } catch (e) {
     console.error('error: ' + e)
