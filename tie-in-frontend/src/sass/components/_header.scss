@@ -9,6 +9,7 @@
 
     li {
         list-style-type: none;
+        margin: 0 1rem;
 
         a {
             text-decoration: none;
@@ -67,10 +68,14 @@
         display: none;
     }
 
-    .site-header-menu ul > li > a {
+    .site-header-menu ul>li>a {
         font-family: $headline_font;
         font-weight: bold;
         font-size: 20px;
+    }
+
+    .mobile-side-menu {
+        display: none;
     }
 
     @media screen and (max-width: 600px) {
@@ -126,9 +131,7 @@
 
 .site-header-top {
     background-color: $darker_blue_card_background;
-    // display: flex;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
     justify-content: space-between;
     padding: 0 1rem 0 1rem;
 
@@ -144,6 +147,7 @@
         display: flex;
         align-items: center;
         cursor: pointer;
+        flex: 1 0 25%;
     }
 
     .site-header-cta-menu {
@@ -169,7 +173,7 @@
             display: flex;
             flex-flow: row wrap;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             gap: 0.75rem;
         }
 
@@ -187,7 +191,7 @@
         display: flex;
         align-items: center;
         justify-content: end;
-        flex: 1 0 40%;
+        // flex: 1 0 25%;
         gap: 1rem;
     }
 
@@ -203,11 +207,19 @@
         margin-right: 1rem;
     }
 
+    .mobile-home-menu {
+        flex: 1 0 50%;
+    }
+
     @media screen and (max-width: 600px) {
         align-items: center;
 
         .button,
         a h2 {
+            display: none;
+        }
+
+        .mobile-home-menu {
             display: none;
         }
 
