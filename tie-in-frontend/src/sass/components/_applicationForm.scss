@@ -1,0 +1,95 @@
+.application-card {
+  background-color: $blue_card_background;
+  border-radius: 30px;
+  padding: 3.5rem;
+  max-width: 900px;
+
+  textarea {
+    border-radius: 8px;
+    box-sizing: border-box;
+  }
+
+  select,
+  input {
+    height: 30px;
+    border-radius: 6px;
+    box-sizing: border-box;
+  }
+
+  label {
+    text-align-last: left;
+  }
+
+  textarea {
+    resize: none;
+    height: 90px;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    text-align: left;
+    font-size: $body_font;
+  }
+
+  option:hover,
+  option:focus,
+  option:checked {
+    background-color: $primary_yellow !important;
+    box-shadow: 0 0 1px $primary_yellow !important;
+  }
+
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 1px solid $primary_yellow;
+    border-radius: 3px;
+  }
+
+  div:nth-child(1)>label>span::before,
+  div:nth-child(2)>label>span::before,
+  .select-team>label::before {
+    content: "*";
+    color: $primary_yellow;
+  }
+
+  label span {
+    display: flex;
+  }
+
+  .name-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: .5rem;
+  }
+
+  .select-team {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .checkbox {
+    display: flex;
+    align-items: center;
+    margin: .5rem 0 1rem 0;
+  }
+
+  #individualProjectCheck {
+    border-radius: 8px !important;
+  }
+
+  .message {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+  }
+
+  .button {
+    display: flex;
+    justify-content: center;
+  }
+
+  .primary {
+    width: 110px;
+  }
+}
