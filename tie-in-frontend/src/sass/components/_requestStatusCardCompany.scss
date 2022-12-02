@@ -4,7 +4,12 @@
   justify-items: baseline;
   align-items: center;
 
-  p {
+  p, h2{
     font-size: 18px;
   }
+}
+
+
+.request-status-card-company:not(:nth-last-of-type(1)) {
+  border-bottom: 1px solid #FFFFFF;
 }
