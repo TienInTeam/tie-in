@@ -1,3 +1,17 @@
 .business-project-list {
   padding: 0 1rem;
+
+  .business-project-list-body{
+    margin: 0;
+    padding: 0;
+  }
+  
 }
+
+@media only screen and (min-width: 800px) {
+  .business-project-list-body{
+    padding: 3rem 2rem 0 2rem;
+  }
+}
+
+//
