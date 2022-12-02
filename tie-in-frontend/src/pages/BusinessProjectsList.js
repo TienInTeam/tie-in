@@ -93,7 +93,7 @@ function BusinessProjectsList() {
                         requestBusinessProject.refetch()
                     }} />
                 <div className="business-project-list-body">
-                    {searchFilter || categoryFilter || sizeFilter || locationFilter || checkFilter ? requestBusinessProject.data.map((business, index) =>
+                    {searchFilter || categoryFilter || sizeFilter || locationFilter || checkFilter ? requestBusinessProject.data.map((businessProject, index) =>
                         <BusinessProjectPreview
                             businessProject={businessProject}
                             key={index}
@@ -118,6 +118,7 @@ function BusinessProjectsList() {
                         />
                     )
                 }
+            </div>
             </div>
         </div>
     );
