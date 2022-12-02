@@ -1,23 +1,90 @@
-.highlightBusinessProject{
+.highlightBusinessProject {
+  background-color: $blue_card_background;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   align-items: center;
   color: $white;
 }
+
 .business-project-wrapper {
   background-color: $darker_blue_card_background;
   border-radius: 1rem;
   margin-left: auto;
   margin-right: auto;
-  max-width: 950px;
+  max-width: 1300px;
+  margin-bottom: 2rem;
 }
 
-.highlightBusinessProject {
-  background-color: $blue_card_background;
-  border-radius: 1rem;
-  margin-bottom: 1rem;
+.highlightBusinessProject h2 {
+  font-size: 18px;
 }
 
-.highlightBusinessProject h2{
-  padding: 0 0 0 1rem;
+.category {
+  background-color: $quaternary_background_color;
+  margin-top: .4rem;
+  border-radius: 50px;
+  padding: .2rem 1rem;
+  font-size: 11px;
+  text-align: center;
+  min-height: 20px;
+  min-width: 40px;
+}
+
+.highlightBusinessProject:not(:nth-last-of-type(1)),
+.request-status-card:not(:nth-last-of-type(1)) {
+  border-bottom: 1px solid $white;
+}
+
+@media screen and (max-width: 600px) {
+
+  .business-project-wrapper,
+  .request-status-list-wrapper {
+    width: 96vw;
+    margin-top: 2rem;
+  }
+
+
+  .projects-container .highlightBusinessProject h2::before {
+    content: "Company:";
+  }
+
+  .business-project-wrapper p:nth-of-type(1)::before {
+    content: "Category:";
+  }
+
+  .business-project-wrapper p:nth-of-type(2)::before {
+    content: "Due Date:";
+  }
+
+  .business-project-wrapper p:nth-of-type(3)::before {
+    content: "Location:";
+  }
+
+  .projects-container .highlightBusinessProject h2::before,
+  .business-project-wrapper p:nth-of-type(1)::before,
+  .business-project-wrapper p:nth-of-type(2)::before,
+  .business-project-wrapper p:nth-of-type(3)::before {
+    font-family: $headline_font;
+    font-size: 23px;
+  }
+
+  .projects-container .highlightBusinessProject h2,
+  .business-project-wrapper p {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .highlightBusinessProject {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
+    align-items: start;
+    padding-bottom: 1rem;
+  }
+
+  .projects-container>div>div {
+    grid-column: 2/3;
+  }
 }

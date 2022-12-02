@@ -20,21 +20,21 @@ function SideMenuStudent({ setHamburgerMenu }) {
       <>
         <div className="image-wrapper">
           <img src={requestStudent.data.photo_url} alt="business" />
-          <h3>{requestStudent.data.first_name +" "+ requestStudent.data.last_name}</h3>
+          <h3>{requestStudent.data.first_name + " " + requestStudent.data.last_name}</h3>
         </div>
         <nav>
           <ul>
             <li>
-              <Link to="/uploadstudentproject" onClick={() => {setHamburgerMenu(false)}}>Upload student project</Link>
+              <Link to="/studentdashboard" onClick={() => { setHamburgerMenu(false) }}>Dashboard</Link>
             </li>
             <li>
-              <Link to="/studentdashboard" onClick={() => {setHamburgerMenu(false)}}>Student Dashboard</Link>
+            <Link to="/uploadstudentproject" onClick={() => { setHamburgerMenu(false) }}>Upload Project</Link>
             </li>
             <li>
-              <Link to="/studentprojectslist" onClick={() => {setHamburgerMenu(false)}}>Student Projects</Link>
+              <Link to="/businessprojectslist" onClick={() => { setHamburgerMenu(false) }}>Business Projects</Link>
             </li>
             <li>
-              <Link to="/businessprojectslist" onClick={() => {setHamburgerMenu(false)}}>Business Projects</Link>
+            <Link to="/studentprojectslist" onClick={() => { setHamburgerMenu(false) }}>Student Projects</Link>
             </li>
           </ul>
         </nav>
