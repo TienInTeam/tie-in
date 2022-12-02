@@ -1,11 +1,11 @@
 .home {
   display: flex;
-  flex-direction: column;
+  flex-flow: column nowrap;
 
   .intro-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 3rem 10rem 2rem 10rem;
+    padding: $padding_vertical_size 10rem $padding_vertical_size 10rem;
 
     h1 {
       display: flex;
@@ -45,7 +45,7 @@
 
   .steps-section {
     display: grid;
-    padding: 3rem 10rem 2rem 10rem;
+    padding: $padding_vertical_size 10rem $padding_vertical_size 10rem;
 
     h2 {
       grid-column: 1/-1;
@@ -68,7 +68,7 @@
     }
 
     .student-wrapper-two {
-      margin: 8rem 0 4rem 0;
+      // margin: 8rem 0 4rem 0;
       svg {
         width: 427px;
         height: 444px;
@@ -83,7 +83,7 @@
     }
 
     .business-wrapper-two {
-      margin: 8rem 0 4rem 0;
+      // margin: 8rem 0 4rem 0;
 
       svg {
         width: 438px;
@@ -131,28 +131,26 @@
     display: flex;
     flex-flow: column nowrap;
     background-color: $blue_card_background;
-    padding: 3rem 10rem 2rem 10rem;
+    padding: $padding_vertical_size 10rem $padding_vertical_size 10rem;
 
     .why-us-title {
       text-align: center;
-      @include desktop_h3_heading;
+      @include desktop_h2_heading;
     }
 
     .info-wrapper {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      align-items: stretch;
-      justify-items: stretch;
       column-gap: 1rem;
 
       .image-text-wrapper {
         display: grid;
-        grid-template-rows: 350px 50px;
+        grid-template-rows: 350px auto;
         align-items: stretch;
         justify-content: stretch;
 
         svg {
-          width: 100%;
+          width: 100px;
           height: auto;
           padding: 0.5rem;
         }
@@ -161,20 +159,21 @@
           flex: 1 0 auto;
           text-align: center;
           margin: 0;
+          @include desktop_body_text;
         }
       }
     }
   }
 
   .contact-us-section {
-    padding: 3rem 10rem 2rem 10rem;
+    padding: $padding_vertical_size 5rem $padding_vertical_size 5rem;
     display: flex;
     flex-flow: column nowrap;
     align-items: stretch;
 
     .contact-us-title {
       text-align: center;
-      @include desktop_h3_heading;
+      @include desktop_h2_heading;
     }
 
     .profiles-wrapper {
@@ -188,6 +187,7 @@
         flex-flow: column nowrap;
         align-items: center;
         padding: 2rem 2rem;
+        // border: 1px solid white;
 
         .profile-photo-name-wrapper {
           display: flex;
@@ -211,31 +211,33 @@
           align-items: center;
           min-height: 48px;
           justify-content: center;
-          padding: 1rem 0 1rem 0;
+          padding: 0 0 1rem 0;
           p {
             @include desktop_caption_bold;
             margin: 0;
           }
         }
 
-        .profile-linkedin-wrapper {
-          display: flex;
-          flex-flow: row nowrap;
-          // align-self: start;
-          a {
-            @include desktop_link_text;
-            vertical-align: text-bottom;
-            padding: 0.25rem 0 0 0.5rem;
-          }
-        }
+        .profile-link-wrapper {
+          display: grid;
 
-        .profile-email-wrapper {
-          display: flex;
-          flex-flow: row nowrap;
-          // align-self: start;
-          a {
-            @include desktop_link_text;
-            padding: 0.25rem 0 0 0.5rem;
+          .profile-linkedin-wrapper {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            a {
+              @include desktop_link_text;
+              vertical-align: text-bottom;
+              padding: 0.25rem 0 0 0.5rem;
+            }
+          }
+
+          .profile-email-wrapper {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            a {
+              @include desktop_link_text;
+              padding: 0.25rem 0 0 0.5rem;
+            }
           }
         }
       }
@@ -366,7 +368,7 @@
           @include desktop_body_text;
 
           svg {
-            width: 100%;
+            width: 250px;
             height: auto;
             padding: 0.5rem;
           }

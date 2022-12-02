@@ -19,13 +19,15 @@ const ContactProfile = ({
         <p>{titleOne}</p>
         {titleTwo != undefined && <p>{titleTwo}</p>}
       </div>
-      <div className="profile-linkedin-wrapper">
-        <LinkedIn />
-        <a href={""}>{linkedIn}</a>
-      </div>
-      <div className="profile-email-wrapper">
-        <Email />
-        <a href={`mailto: ${email}`}>{email}</a>
+      <div class="profile-link-wrapper">
+        <div className="profile-linkedin-wrapper">
+          <LinkedIn />
+          <a href={""}>{linkedIn}</a>
+        </div>
+        <div className="profile-email-wrapper">
+          <Email />
+          <a href={`mailto: ${email}`}>{email}</a>
+        </div>
       </div>
     </div>
   );
