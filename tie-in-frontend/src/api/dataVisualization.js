@@ -2,6 +2,7 @@ import project from "./baseURL";
 
 export const requestBusinessProjectUploadTrend = () => {
     return project.get("/businessProjectTrend").then((res) => {
+        return res.data;
     })
 }
 
