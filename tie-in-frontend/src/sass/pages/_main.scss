@@ -5,6 +5,7 @@ body {
   margin: 0;
   font-family: $body_font;
   min-height: 100vh;
+  z-index: 10;
 }
 h1,
 h2,
@@ -48,10 +49,7 @@ a {
   font-size: 22px;
 }
 
-.grid-container {
-  display: grid;
-  grid-template-columns: 22% 77%;
-}
+
 
 #root {
   background-color: $dark_blue_background;
@@ -65,5 +63,16 @@ a {
 @media screen and (max-width: 600px) {
   .desktop-menu {
     display: none;
+  }
+
+}
+
+@media screen and (min-width: 600px) {
+ 
+  .grid-container 
+  {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 1rem;
   }
 }
