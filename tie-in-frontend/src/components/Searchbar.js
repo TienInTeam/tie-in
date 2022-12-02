@@ -26,7 +26,7 @@ function Searchbar({ onCategory, onSize, onLocation, onSearch, onCheck }) {
             <option value="Marketing">Marketing</option>
           </select>
           <select id="size" aria-label="Choose size" onChange={(e) => onSize(e.target.value)} defaultValue="">
-            <option value="" disabled>Size</option>
+            <option value="" disabled>Team Size</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>

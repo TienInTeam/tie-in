@@ -116,20 +116,21 @@
     align-items: end;
     justify-content: center;
 
-    button{
+    button {
       width: 126px;
-    height: 44px;
-    
+      height: 44px;
+
     }
   }
 
-  .Closed, .open{
+  .Closed,
+  .open {
     grid-column: 3/4;
   }
 
   .button .secondary {
     padding: 0;
-    
+
   }
 
   .category {
@@ -193,7 +194,6 @@
       }
 
       .category {
-        width: 50%;
         padding: 0.2rem 1.5rem;
       }
 
@@ -201,21 +201,28 @@
         display: block;
       }
 
-      button{
-        width: 197px;
-      height: 44px;
-      font-size: 18px;
-      border-radius: 50px;
-      }
+
 
     }
 
   }
+}
 
+@media only screen and (min-width: 800px) {
+  .business-project-preview {
+    .body-container {
+      button {
+        width: 197px;
+        height: 44px;
+        font-size: 18px;
+        border-radius: 50px;
+      }
+    }
+  }
 }
 
 @media only screen and (max-width: 600px) {
-  .business-project-list{
+  .business-project-list {
     min-width: 90vw;
   }
 }
