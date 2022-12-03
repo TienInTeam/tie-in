@@ -40,6 +40,8 @@
   left:0;
   right: 0;
   z-index: 3;
+  min-height: 100vh;
+    height: 100%;
 }
 
 .upload-business-project.upload-dark {
@@ -50,7 +52,14 @@
 
 @media screen and (max-width: 600px){
   .success-popup {
-    width: 180px;
+    width: 100px;
     height: 500px;
   }
+ .success-pop-up.dark > div > img {
+  width: 300px;
+ }
+
+ .success-pop-up.dark > div > div > button {
+  margin: 0;
+ }
 }

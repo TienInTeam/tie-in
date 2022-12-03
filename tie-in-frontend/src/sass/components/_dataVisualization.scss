@@ -113,11 +113,25 @@
        }
 
       div:nth-child(2) > div > div.recharts-responsive-container.text-center > div > svg {
-        max-width: 350px;
+        max-width: 300px;
     }
 
     div:nth-child(1) > div > div.recharts-responsive-container > div > svg {
+        max-width: 290px;
+        margin-right: 3rem;
+    }
+
+    .recharts-wrapper {
         max-width: 370px;
     }
+
+    .recharts-legend-item-text {
+        font-size: 12px;
+    }
+
+    .recharts-layer .recharts-pie {
+        margin-right: 1rem;
+    }
+
     }
 }
