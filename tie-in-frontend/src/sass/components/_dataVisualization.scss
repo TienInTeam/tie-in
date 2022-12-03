@@ -107,5 +107,17 @@
         width: 96%;
         margin-top: 2.5rem;
         padding-top: 2rem;
+
+       .recharts-responsive-container.text-center > div {
+        max-width: 98vw;
+       }
+
+      div:nth-child(2) > div > div.recharts-responsive-container.text-center > div > svg {
+        max-width: 350px;
+    }
+
+    div:nth-child(1) > div > div.recharts-responsive-container > div > svg {
+        max-width: 370px;
+    }
     }
 }

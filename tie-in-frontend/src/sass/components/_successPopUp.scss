@@ -47,3 +47,10 @@
   min-width: 100vw;
   margin: 0;
 }
+
+@media screen and (max-width: 600px){
+  .success-popup {
+    width: 180px;
+    height: 500px;
+  }
+}

@@ -7,7 +7,7 @@ function SuccessPopUp({ title, subtitle, onClickSuccess, label }) {
     <div className="success-popup">
       <h2>{title}</h2>
       <p>{subtitle}</p>
-      <CheckMarkIcon />
+      <img src={require("../assets/icons/others/Sucess2.gif")}/>
       <Button variant={"primary"} label={label} onClick={onClickSuccess} />
     </div>
   );
