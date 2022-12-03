@@ -155,7 +155,7 @@ function UploadBusinessProject() {
     return (
         <div className={!success ? "upload-business-project" : "upload-business-project upload-dark"}>
             <div className={!success ? "success-pop-up" : "success-pop-up dark"}>
-                {success && <SuccessPopUp title={"Awsome!"} subtitle={"Your project has been uploaded successfully"} label={"Back to Dashboard"} onClickSuccess={onClickSuccess} />}
+                {success && <SuccessPopUp title={"Awesome!"} subtitle={"Your project has been uploaded successfully"} label={"Back to Dashboard"} onClickSuccess={onClickSuccess} />}
             </div>
             <div className="header-wrapper">
                 {currentStep > 1 ? <div className="icon back-icon" onClick={onBack}><BackIcon /></div> : <div className="icon back-icon" onClick={onLocation}><BackIcon /></div>}
