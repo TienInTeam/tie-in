@@ -48,6 +48,7 @@
     outline: 1px solid $primary_yellow;
     border-radius: 3px;
   }
+
   .date-checkbox {
     margin-bottom: 1rem;
     display: flex;
@@ -81,9 +82,9 @@
     margin-bottom: 0;
   }
 
-.progress-bar > div > div:nth-child(3) > div > div {
-  margin-top: 2.4rem;
-}
+  .progress-bar>div>div:nth-child(3)>div>div {
+    margin-top: 2.4rem;
+  }
 
   .location-checkbox {
     margin-bottom: 1rem;
@@ -115,13 +116,13 @@
   }
 
   .react-datepicker__day--selected:hover,
-  .react-datepicker__day--selected::selection{
+  .react-datepicker__day--selected::selection {
     background-color: $primary_yellow;
   }
 
- .react-datepicker__day.react-datepicker__day--029.react-datepicker__day--keyboard-selected.react-datepicker__day--today {
-  background-color: $primary_yellow;
- }
+  .react-datepicker__day.react-datepicker__day--029.react-datepicker__day--keyboard-selected.react-datepicker__day--today {
+    background-color: $primary_yellow;
+  }
 
   .category-input,
   .technology-input,
@@ -132,12 +133,13 @@
     margin-bottom: 1rem;
   }
 
-option:hover,
-option:focus,
-option:checked{
-  background-color: $primary_yellow !important;
-  box-shadow: 0 0 1px $primary_yellow !important;
-}
+  option:hover,
+  option:focus,
+  option:checked {
+    background-color: $primary_yellow !important;
+    box-shadow: 0 0 1px $primary_yellow !important;
+  }
+
   .category-input select,
   .technology-input select,
   .location-input select,
@@ -177,8 +179,8 @@ option:checked{
     height: 50px;
   }
 
-  #upload-file:focus + .upload-button,
-  .upload-box:hover .upload-button{
+  #upload-file:focus+.upload-button,
+  .upload-box:hover .upload-button {
     border: 3px solid $primary_yellow !important;
   }
 
