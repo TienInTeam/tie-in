@@ -47,19 +47,6 @@ const BusinessDashboard = () => {
 
     const requestBusinessProject = useQuery(["businessProjects"], () => requestBusinessProjects())
 
-    // if (requestStudentProject.isLoading) {
-    //     return <img className={"loading"} src={require('../../assets/icons/others/loading3.gif')}/>
-    // }
-    // if (studentProjectUploadTrend.isLoading) {
-    //     return <img src={require('../../assets/icons/others/loading3.gif')}/>
-    // }
-    // if (studentProjectByCategory.isLoading) {
-    //     return <img src={require('../../assets/icons/others/loading3.gif')}/>
-    // }
-    // if (requestBusinessProject.isLoading) {
-    //     return <img src={require('../../assets/icons/others/loading3.gif')}/>
-    // }
-
 
     if (requestBusinessProject.isLoading || studentProjectUploadTrend.isLoading || studentProjectByCategory.isLoading || requestBusinessProject.isLoading) {
         return <img className={"loading"} src={require('../../assets/icons/others/loading3.gif')}/>
