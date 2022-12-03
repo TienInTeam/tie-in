@@ -1,5 +1,5 @@
 import {useQuery} from "@tanstack/react-query";
-import React, {useState} from "react";
+import React from "react";
 import {useNavigate} from "react-router-dom";
 import {getBusinessByEmail} from "../../api/business";
 import {
@@ -47,17 +47,22 @@ const BusinessDashboard = () => {
 
     const requestBusinessProject = useQuery(["businessProjects"], () => requestBusinessProjects())
 
-    if (requestStudentProject.isLoading) {
-        return <span>Loading...</span>
-    }
-    if (studentProjectUploadTrend.isLoading) {
-        return <span>Loading...</span>
-    }
-    if (studentProjectByCategory.isLoading) {
-        return <span>Loading...</span>
-    }
-    if (requestBusinessProject.isLoading) {
-        return <span>Loading...</span>
+    // if (requestStudentProject.isLoading) {
+    //     return <img className={"loading"} src={require('../../assets/icons/others/loading3.gif')}/>
+    // }
+    // if (studentProjectUploadTrend.isLoading) {
+    //     return <img src={require('../../assets/icons/others/loading3.gif')}/>
+    // }
+    // if (studentProjectByCategory.isLoading) {
+    //     return <img src={require('../../assets/icons/others/loading3.gif')}/>
+    // }
+    // if (requestBusinessProject.isLoading) {
+    //     return <img src={require('../../assets/icons/others/loading3.gif')}/>
+    // }
+
+
+    if (requestBusinessProject.isLoading || studentProjectUploadTrend.isLoading || studentProjectByCategory.isLoading || requestBusinessProject.isLoading) {
+        return <img className={"loading"} src={require('../../assets/icons/others/loading3.gif')}/>
     }
 
     const onSeeMore = () => {
@@ -69,7 +74,7 @@ const BusinessDashboard = () => {
             <div className="desktop-menu">
                 <SideMenu/>
             </div>
-            <div>
+            <div className="site-content">
                 <div className={"data-visualization"}>
                     <div className="visualization-component">
                         <DataVisualizationAreaChart inputData={studentProjectUploadTrend.data} />

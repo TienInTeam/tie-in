@@ -8,10 +8,10 @@ const DataVisualizationAreaChart = ({ inputData }) => {
     };
 
     if (sessionStorage.getItem("userType") === "student") {
-        text = 'Business Project trends';
+        text = 'Business Project Trend';
     }
     else if (sessionStorage.getItem("userType") === "business") {
-        text = 'Student Project trends';
+        text = 'Student Project Trend';
     }
     
     //get data from input and convert to array for data visualization
@@ -69,12 +69,14 @@ const DataVisualizationAreaChart = ({ inputData }) => {
     }
     return (
         <div className='project-upload-trajectory' style={styles}>
-            <h2>{text}</h2>
-            <div className="chart-header">
-                <h3>Past <span>{data.length}</span> days</h3>
-                <h3 className='trajectory-header'>Total Project Count: <span>{total}</span></h3>
+            <div className="header-text">
+                <h2>{text}</h2>
+                <div className="chart-header">
+                    <h3>Last <span>{data.length}</span> days</h3>
+                    <h3 className='trajectory-header'>Total Project Count: <span>{total}</span></h3>
+                </div>
             </div>
-            <ResponsiveContainer width={450} height={290}>
+            <ResponsiveContainer width={420} height={290}>
                 <AreaChart
                     data={args.chartData}
                     margin={{ top: 10, right: 30, left: -40, bottom: 10 }}>
@@ -89,7 +91,7 @@ const DataVisualizationAreaChart = ({ inputData }) => {
                     <YAxis
                     allowDataOverflow = "false"
                     dataKey="value"
-                        width={80}
+                        width={70}
                         tick={args.customizedTick}
                         interval={0}
                          domain={[ 'dataMin', 'dataMax+1']}

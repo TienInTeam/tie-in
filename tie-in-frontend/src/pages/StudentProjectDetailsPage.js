@@ -8,7 +8,7 @@ function StudentProjectDetailsPage() {
   let params = useParams();
   const requestStudentProjectById = useQuery(["studentProject"], () => requestStudentProject(params.id));
   if (requestStudentProjectById.isLoading) {
-    return <span>Loading...</span>
+    return <img className={"loading"} src={require('../assets/icons/others/loading3.gif')}/>
   }
 
   if (requestStudentProjectById.isError) {
