@@ -19,9 +19,6 @@ function ApplicationForm({ studentTeam }) {
     "business_request_id": businessProjectId,
     "status": "Open",
   }), {
-    onSuccess: () => {
-      alert("Application Completed");
-    },
     onError: () => {
       alert("Something went wrong, please try again.");
     }
@@ -66,7 +63,7 @@ function ApplicationForm({ studentTeam }) {
         return true;
       }
     }
-    if (teamId === null && !individualIsSelected) {
+    if (!teamId && !individualIsSelected) {
       alert("Select team or apply as individual");
       return false;
     }
