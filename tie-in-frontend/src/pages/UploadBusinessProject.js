@@ -40,12 +40,12 @@ function UploadBusinessProject() {
         }
     });
     const navigate = useNavigate();
-    const [projectName, setProjectName] = useState("");
-    const [description, setDescription] = useState("");
+    const [projectName, setProjectName] = useState("EA Sport Tech Anim");
+    const [description, setDescription] = useState("We want to create a web app for animation development of the new FIFA game");
     const [endDate, setEndDate] = useState(null);
     const [dateIsChecked, setDateIsChecked] = useState(false);
-    const [teamSize, setTeamSize] = useState("");
-    const [teamRequirement, setTeamRequirement] = useState("");
+    const [teamSize, setTeamSize] = useState("5");
+    const [teamRequirement, setTeamRequirement] = useState("3 Developers, 2 designer");
     const [estimatedBudget, setEstimatedBudget] = useState("");
     const [location, setLocation] = useState("");
     const [locationIsChecked, setLocationIsChecked] = useState(false);
@@ -164,10 +164,15 @@ function UploadBusinessProject() {
             <MultiStepProgressBar currentStep={currentStep} />
             {currentStep === 1 ?
                 <div className="first-step">
-                    <InputType label={"Project Title (Required)"} type={"text"} placeholder={"Enter your project name"} onChange={(e) => setProjectName(e.target.value)} />
+                    <InputType
+                        label={"Project Title (Required)"}
+                        type={"text"} placeholder={"Enter your project name"}
+                        onChange={(e) => setProjectName(e.target.value)}
+                        value={projectName}
+                    />
                     <label>
                         <span>Project Summary (Required)</span>
-                        <textarea placeholder="Enter your project summary" onChange={(e) => setDescription(e.target.value)} />
+                        <textarea value={description} placeholder="Enter your project summary" onChange={(e) => setDescription(e.target.value)} />
                     </label>
                     <label>Expected Deadline (Required)</label>
                     <Datepicker
@@ -188,8 +193,8 @@ function UploadBusinessProject() {
                             }} />
                         <label htmlFor="notSpecifiedDate">Not Specified Yet</label>
                     </div>
-                    <InputType label={"Team Size (Required)"} type={"number"} placeholder={"Enter your preferred team size"} min={1} onChange={(e) => setTeamSize(e.target.value)} />
-                    <InputType label={"Team Requirement (Required)"} type={"text"} placeholder={"Enter your team requirements"} onChange={(e) => setTeamRequirement(e.target.value)} />
+                    <InputType value={teamSize} label={"Team Size (Required)"} type={"number"} placeholder={"Enter your preferred team size"} min={1} onChange={(e) => setTeamSize(e.target.value)} />
+                    <InputType value={teamRequirement} label={"Team Requirement (Required)"} type={"text"} placeholder={"Enter your team requirements"} onChange={(e) => setTeamRequirement(e.target.value)} />
                     <div className="budget-input">
                         <label htmlFor="budget">Estimated Budget (Required)</label>
                         <select
