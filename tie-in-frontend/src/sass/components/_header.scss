@@ -96,6 +96,10 @@
             height: 100%;
         }
 
+        .home-menu {
+            flex-direction: column;
+        }
+
         .show-menu,
         .show-home-menu {
             transform: translateX(0%);
@@ -223,7 +227,7 @@
         margin-right: 1rem;
     }
 
-    .mobile-home-menu {
+    .home-menu {
         flex: 1 0 50%;
     }
 
@@ -235,9 +239,9 @@
             display: none;
         }
 
-        .mobile-home-menu {
-            display: none;
-        }
+        // .mobile-home-menu {
+        //     display: none;
+        // }
 
         .hamburger-menu,
         .site-logo,
