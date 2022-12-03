@@ -94,8 +94,12 @@
   }
 
   @media screen and (max-width: 600px) {
+    padding: 2rem;
+
     .name-wrapper {
       flex-direction: column;
-    }
+      margin: auto;
+    }    
+    
   }
 }

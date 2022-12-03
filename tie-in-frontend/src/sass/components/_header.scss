@@ -78,10 +78,6 @@
         display: none;
     }
 
-    // .home-menu {
-    //     display: block;
-    // }
-
     @media screen and (max-width: 600px) {
         .home-menu,
         .mobile-side-menu {
@@ -124,6 +120,7 @@
         }
 
         .site-header-top {
+            margin-bottom: 1rem;
             position: fixed;
             left: 0;
             right: 0;

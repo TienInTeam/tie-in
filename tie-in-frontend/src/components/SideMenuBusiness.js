@@ -29,7 +29,7 @@ function SideMenuBusiness({ setHamburgerMenu }) {
               <Link className={currentRoute.includes("dashboard") ? "tab active" : "tab"} to="/dashboard" onClick={() => { setHamburgerMenu(false) }}>Dashboard</Link>
             </li>
             <li>
-              <Link className={currentRoute.includes("uploadbusinessproject") ? "tab active" : "tab"} to="/uploadbusinessproject" onClick={() => { setHamburgerMenu(false) }}>Upload business project</Link>
+              <Link className={currentRoute.includes("uploadbusinessproject") ? "tab active" : "tab"} to="/uploadbusinessproject" onClick={() => { setHamburgerMenu(false) }}>Upload Project</Link>
             </li>
             <li>
               <Link className={currentRoute.includes("studentprojectslist") ? "tab active" : "tab"} to="/studentprojectslist" onClick={() => { setHamburgerMenu(false) }}>Student Projects</Link>
