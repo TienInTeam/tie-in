@@ -49,11 +49,11 @@ function BusinessProjectsList() {
         });
 
     if (requestBusiness.isLoading) {
-        return <span>Loading...</span>
+        return <img className={"loading"} src={require('../assets/icons/others/loading3.gif')}/>
     }
 
     if (requestBusinessProject.isLoading) {
-        return <span>Loading...</span>
+        return <img className={"loading"} src={require('../assets/icons/others/loading3.gif')}/>
     }
     const onSeeMore = (id) => {
         navigate('/businessrequestdetails', {

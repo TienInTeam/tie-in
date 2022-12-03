@@ -58,7 +58,7 @@ function StudentDashboard() {
 
 
   if (requestBusinessProject.isLoading) {
-    return <span>Loading...</span>
+    return <img className={"loading"} src={require('../../assets/icons/others/loading3.gif')}/>
   }
 
   if (requestApplications.isLoading) {
@@ -66,13 +66,13 @@ function StudentDashboard() {
   }
 
   if (requestBusiness.isLoading) {
-    return <span>Loading...</span>
+    return <img className={"loading"} src={require('../../assets/icons/others/loading3.gif')}/>
   }
   if (businessProjectUploadTrend.isLoading) {
-    return <span>Loading...</span>
+    return <img className={"loading"} src={require('../../assets/icons/others/loading3.gif')}/>
   }
   if (businessProjectByCategory.isLoading) {
-    return <span>Loading...</span>
+    return <img className={"loading"} src={require('../../assets/icons/others/loading3.gif')}/>
   }
 
   const renderHighlightedBusinessProjects = () => {
