@@ -26,9 +26,16 @@ const Login = () => {
       <form name='registration_form' onSubmit={handleLoginSubmit}>
         <h2>Login</h2>
         {error && alert(error)}
-        <input type="email" ref={emailRef} name="email" placeholder="Email" /><br />
-        <input type="password" ref={passwordRef} name="password" />
-        <button type='submit'>Submit</button>
+        <div className="username">
+          <label htmlFor="user">Username</label>
+          <input id="user" type="email" ref={emailRef} name="email" placeholder="Email" /><br />
+        </div>
+        <div className="password">
+          <label htmlFor="pass">Password</label>
+          <input id="pass" type="password" ref={passwordRef} name="password" />
+          <p>Forget your password?</p>
+        </div>
+        <button type='submit' className='primary'>Submit</button>
       </form>
     </div>
   )

@@ -7,7 +7,7 @@
   }
   .business-project-main-title {
     display: flex;
-    margin-top: 2rem;
+    margin-top: 6rem;
     align-items: center;
     gap: 2px;
   }
@@ -15,7 +15,6 @@
   .form-wrapper {
     display: flex;
     flex-direction: column;
-    align-items: start;
     margin-top: 2rem;
   }
 
@@ -24,5 +23,12 @@
     margin: 0;
     margin-left: 1rem;
     margin-bottom: .3rem;
+  }
+
+}
+@media screen and (max-width: 600px) {
+  .business-project-main-form .form-wrapper {
+  margin: auto;
+  width: 94%;
   }
 }
