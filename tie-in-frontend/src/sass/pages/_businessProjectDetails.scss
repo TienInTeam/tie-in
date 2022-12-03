@@ -80,4 +80,31 @@
     .company-logo img {
         border-radius: 50%;
     }
+
+    @media screen and (max-width: 600px){
+        .business-project-details-main,
+        .business-request-header,
+        .business-request-body {
+            padding: 0;
+        }
+
+        .business-request-header h2 {
+            font-size: 1.1rem;
+        }
+
+        .business-request-header img {
+            width: 30px;
+            height: 30px;
+            margin: .3rem;
+        }
+
+        .business-request-header {
+            margin-bottom: 1rem;
+        }
+
+        .business-project-main-title h2{
+font-size: 1.7rem;
+margin: 2rem 0;
+        }
+    }
 }
