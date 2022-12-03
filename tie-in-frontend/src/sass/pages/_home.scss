@@ -80,9 +80,11 @@
         width: 427px;
         height: 444px;
       }
+
       .st4 {
         fill: #F49F7A;
       }
+
       .st11 {
         fill: #87310F;
       }
@@ -121,6 +123,7 @@
 
       .button {
         align-self: center;
+
         button {
           @include desktop_button_text;
           padding: 0.5rem 4rem;
@@ -221,6 +224,7 @@
           min-height: 48px;
           justify-content: center;
           padding: 0 0 1rem 0;
+
           p {
             @include desktop_caption_bold;
             margin: 0;
@@ -233,6 +237,7 @@
           .profile-linkedin-wrapper {
             display: grid;
             grid-template-columns: auto 1fr;
+
             a {
               @include desktop_link_text;
               vertical-align: text-bottom;
@@ -243,6 +248,7 @@
           .profile-email-wrapper {
             display: grid;
             grid-template-columns: auto 1fr;
+
             a {
               @include desktop_link_text;
               padding: 0.25rem 0 0 0.5rem;
@@ -251,12 +257,14 @@
         }
       }
     }
+
     .contact-form-section {
       p {
         @include desktop_caption_normal;
         color: #fcb51f;
         margin: 0;
       }
+
       .contact-form-wrapper {
         background-color: $blue_card_background;
         border-radius: 10px;
@@ -273,6 +281,7 @@
           .button {
             display: flex;
             justify-content: center;
+
             button {
               @include desktop_button_text;
               padding: 0.5rem 4rem;
@@ -395,8 +404,7 @@
       }
 
       .text-button-wrapper {
-        .text-wrapper {
-        }
+        .text-wrapper {}
       }
     }
 
@@ -492,5 +500,9 @@
 @media screen and (max-width: 600px) {
   .body {
     padding: 0;
+  }
+
+  .home .contact-form .name {
+    flex-direction: column;
   }
 }
