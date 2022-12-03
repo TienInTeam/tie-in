@@ -13,11 +13,7 @@ const TeamsBox = ({name, members, teamId, onApprove}) => {
 
     const renderMembers = () => {
         return requestTeam.data?.members.map((member, index) => {
-                if (index <= 2) {
-                    return <img key={index} src={member.photo_url} alt="student"/>
-                } else if (index === members.length - 1) {
-                    return <p key={index}>+<span>{index - 2}</span></p>
-                }
+            return <img key={index} src={member.photo_url} alt="student"/>
             }
         )
     }

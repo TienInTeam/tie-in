@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useQuery } from "@tanstack/react-query";
 import {requestBusinessProjectsByID} from "../api/businessProject";
@@ -10,14 +10,17 @@ const BusinessRequestDetails = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const businessProjectId = location.state.id;
+    const [businessEmail, setBusinessEmail] = useState(null);
+
     const requestBusinessProjectByID = useQuery(["businessProjectById"], () => requestBusinessProjectsByID(businessProjectId),
         {
+            onSuccess: (data) => {
+                setBusinessEmail(data?.email)
+            },
             onError: (error) => {
                 alert(error.message);
             }
         });
-
-    const businessEmail= requestBusinessProjectByID.data?.email;
 
     const requestBusinessByEmail = useQuery(["business"], () => getBusinessByEmail(businessEmail),
         {
@@ -53,7 +56,7 @@ const BusinessRequestDetails = () => {
                 <div className="business-project-details-main">
                     <BusinessProjectDetails
                         businessProject={requestBusinessProjectByID.data}
-                        business={requestBusinessByEmail.data}
+                        business={requestBusinessByEmail.data?.find((business) => business._id === requestBusinessProjectByID.data.business.business_id)}
                         onApply={onApply}
                     />
                 </div>
@@ -61,6 +64,6 @@ const BusinessRequestDetails = () => {
             </div>
 
         </>
-    )
+    );
 }
 export default BusinessRequestDetails;
