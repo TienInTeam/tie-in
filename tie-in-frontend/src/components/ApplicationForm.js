@@ -89,11 +89,11 @@ function ApplicationForm({ studentTeam }) {
       </div>
       <div className="name">
         <div className="name-wrapper">
-          <InputType label={"First Name"} type={"text"} placeholder={"Enter your first name"} onChange={(e) => setFirstName(e.target.value)} />
-          <InputType label={"Last Name"} type={"text"} placeholder={"Enter your last name"} onChange={(e) => setLastName(e.target.value)} />
+          <InputType value={firstName} label={"First Name"} type={"text"} placeholder={"Enter your first name"} onChange={(e) => setFirstName(e.target.value)} />
+          <InputType value={lastName} label={"Last Name"} type={"text"} placeholder={"Enter your last name"} onChange={(e) => setLastName(e.target.value)} />
         </div>
       </div>
-      <InputType type={"email"} label={"Email"} placeholder={"Enter your email address"} onChange={(e) => setEmail(e.target.value)} />
+      <InputType value={email} type={"email"} label={"Email"} placeholder={"Enter your email address"} onChange={(e) => setEmail(e.target.value)} />
       <InputType label={"Phone number"} placeholder={"Enter your phone number"} onChange={(e) => setContact(e.target.value)} />
       <div className="select-team">
         <label>Select Team (required): </label>
