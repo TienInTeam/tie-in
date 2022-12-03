@@ -46,9 +46,6 @@ const BusinessRequestDetails = () => {
         });
     }
 
-    console.log("Business  by email" + JSON.stringify(requestBusinessByEmail.data))
-    console.log("Business project by id " + JSON.stringify(requestBusinessProjectByID.data))
-
     return (
         <>
             <div className="business-project-main">
