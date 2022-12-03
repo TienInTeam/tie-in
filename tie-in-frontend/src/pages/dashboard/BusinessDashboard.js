@@ -69,7 +69,7 @@ const BusinessDashboard = () => {
             <div className="desktop-menu">
                 <SideMenu/>
             </div>
-            <div>
+            <div className="site-content">
                 <div className={"data-visualization"}>
                     <div className="visualization-component">
                         <DataVisualizationAreaChart inputData={studentProjectUploadTrend.data} />
