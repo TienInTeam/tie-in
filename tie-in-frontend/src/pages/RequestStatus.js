@@ -26,13 +26,13 @@ function RequestStatus(options) {
     const updateApplication = useMutation(["application"], (id) => updateApplicationStatus(id));
 
     if (requestBusinessApplications.isLoading) {
-        return <span>Loading...</span>
+        return <img className={"loading"} src={require('../assets/icons/others/loading3.gif')}/>
     }
     if (requestBusinessProject.isLoading) {
-        return <span>Loading...</span>
+        return <img className={"loading"} src={require('../assets/icons/others/loading3.gif')}/>
     }
     if (requestBusiness.isLoading) {
-        return <span>Loading...</span>
+        return <img className={"loading"} src={require('../assets/icons/others/loading3.gif')}/>
     }
 
     const onClose = (businessProjectId) => {

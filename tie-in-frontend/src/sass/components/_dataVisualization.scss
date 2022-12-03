@@ -6,11 +6,27 @@
     border-radius: 20px;
 
     h2 {
-        text-align: center;
+        text-align: left;
+        padding-left: 1rem;
         font-size: 2rem;
     }
 
-    .recharts-responsive-container{
+    h3 {
+        margin: 1.25rem;
+        text-align: left;
+        font-size: 20px;
+    }
+
+    .header-text,
+    .chart-header {
+        max-width: 450px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+
+    .recharts-responsive-container {
         display: block;
         margin-left: auto;
         margin-right: auto;
@@ -18,7 +34,7 @@
 
     .project-upload-trajectory {
 
-        
+
 
         g.recharts-cartesian-axis-tick text {
             fill: white;
@@ -36,21 +52,13 @@
             .recharts-area-area {
                 fill-opacity: 1;
             }
-            
+
         }
     }
 
     .new-project-component {
 
 
-        h3 {
-            margin: 1rem;
-            text-align: center;
-        }
-
-        text {
-            font-weight: bold;
-        }
 
         .recharts-pie g.recharts-pie-sector {
             stroke-width: 0;
@@ -66,18 +74,23 @@
             }
         }
 
-        .recharts-legend-item-text{
+        .recharts-legend-item-text {
             color: $white !important;
         }
 
-        text{
+        text {
             fill: $dark_blue_background !important;
         }
-        .label-center{
+
+        .label-center {
             fill: white !important;
         }
 
     }
+
+    // .project-upload-trajectory:hover {
+    //     width:min-content;
+    // }
 
     @media screen and (max-width: 600px) {
         width: 96vw;
@@ -93,5 +106,6 @@
         flex-direction: column;
         width: 96%;
         margin-top: 2.5rem;
+        padding-top: 2rem;
     }
 }
