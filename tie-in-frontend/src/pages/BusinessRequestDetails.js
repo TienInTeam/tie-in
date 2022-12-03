@@ -32,10 +32,10 @@ const BusinessRequestDetails = () => {
     );
 
     if (requestBusinessProjectByID.isLoading) {
-        return <span>Loading...</span>
+        return <img className={"loading"} src={require('../assets/icons/others/loading3.gif')}/>
     }
     if (requestBusinessByEmail.isLoading) {
-        return <span>Loading...</span>
+        return <img className={"loading"} src={require('../assets/icons/others/loading3.gif')}/>
     }
 
     const onApply = () => {
