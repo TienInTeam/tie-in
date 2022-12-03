@@ -13,7 +13,7 @@ function SideMenuBusiness({ setHamburgerMenu }) {
       }
     });
   if (requestBusiness.isLoading) {
-    return <span>Loading...</span>
+    return <img className={"loading"} src={require('../assets/icons/others/loading3.gif')}/>
   }
 
   return (
