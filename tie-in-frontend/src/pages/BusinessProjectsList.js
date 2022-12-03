@@ -64,7 +64,8 @@ function BusinessProjectsList() {
     };
 
     const onCheckStatus = () => {
-        alert("Check status is clicked")
+        alert(requestBusinessProject.data.status)
+
     }
     const onCategoryChange = (value) => {
         setCategoryFilter(value);
@@ -92,32 +93,32 @@ function BusinessProjectsList() {
                         requestBusinessProject.refetch()
                     }} />
                 <div className="business-project-list-body">
-                    {searchFilter || categoryFilter || sizeFilter || locationFilter || checkFilter ? requestBusinessProject.data.map((business, index) =>
+                    {searchFilter || categoryFilter || sizeFilter || locationFilter || checkFilter ? requestBusinessProject.data.map((businessProject, index) =>
                         <BusinessProjectPreview
-                            businessProject={business}
+                            businessProject={businessProject}
                             key={index}
-                            businessImage={requestBusiness.data.map((business) => {
-                                return business.logo_url
-                            })
-                                .filter(businessProject => requestBusiness.data._id === requestBusinessProject.data.business_id)}
-                            onSeeMore={() => onSeeMore(business._id)}
+                            businessImage={
+                                requestBusiness.data.filter((business) =>businessProject.business.business_id === business._id)
+                                    .map((filteredBusiness) =>  (filteredBusiness.logo_url))
+                            }
+                            onSeeMore={() => onSeeMore(businessProject._id)}
                             onCheckStatus={onCheckStatus}
                         />
                     ) :
-                        requestBusinessProject.data.map((business, index) =>
-                            <BusinessProjectPreview
-                                businessProject={business}
-                                key={index}
-                                businessImage={requestBusiness.data.map((business) => {
-                                    return business.logo_url
-                                })
-                                    .filter(businessProject => requestBusiness.data.id === requestBusinessProject.data.business_id)}
-                                onSeeMore={() => onSeeMore(business._id)}
-                                onCheckStatus={onCheckStatus}
-                            />
-                        )
-                    }
-                </div>
+                    requestBusinessProject.data.map((businessProject, index) =>
+                        <BusinessProjectPreview
+                            businessProject={businessProject}
+                            key={index}
+                            businessImage={
+                            requestBusiness.data.filter((business) =>businessProject.business.business_id === business._id)
+                                .map((filteredBusiness) =>  (filteredBusiness.logo_url))
+                        }
+                            onSeeMore={() => onSeeMore(businessProject._id)}
+                            onCheckStatus={onCheckStatus}
+                        />
+                    )
+                }
+            </div>
             </div>
         </div>
     );

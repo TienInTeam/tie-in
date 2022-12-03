@@ -73,7 +73,7 @@ export default function Header() {
             <div className={displayMenu ? 'top-menu show' : 'top-menu'}>
                 <ul>
                     <li>
-                        <p>{sessionStorage.getItem('userName')}</p>
+                        <h2>{sessionStorage.getItem('userName')}</h2>
                     </li>
                     <li><a href="#editProfile">Edit Profile</a></li>
                     <li><a href="#settings">Settings</a></li>
@@ -92,15 +92,17 @@ export default function Header() {
                 <div className="icon hamburger-menu" onClick={changeHamburgerMenu}>
                     <MenuIcon />
                 </div>
-                <a onClick={onLogo} className='site-logo'>
-                    <Logo />
-                    <h2>Tie-in</h2>
-                </a>
+                <div>
+                    <a onClick={onLogo} className='site-logo'>
+                        <Logo />
+                        <h2>Tie-in</h2>
+                    </a>
+                </div>
                 <div className={'site-header-menu'}>
-                    <div className={hamburgerMenu ? "mobile-side-menu show-home-menu" : "mobile-side-menu"}>
+                    <div className={hamburgerMenu ? "home-menu show-home-menu" : "home-menu"}>
                         <ul>
-                            <li onClick={() => setHamburgerMenu(!hamburgerMenu)}><a href="#studentTeam">Student Team</a></li>
-                            <li onClick={() => setHamburgerMenu(!hamburgerMenu)}><a href="#logout">Company</a></li>
+                            <li onClick={() => setHamburgerMenu(!hamburgerMenu)}><a href="#studentTeam">Student</a></li>
+                            <li onClick={() => setHamburgerMenu(!hamburgerMenu)}><a href="#logout">Business</a></li>
                             <li onClick={() => setHamburgerMenu(!hamburgerMenu)}><a href="#whyUs">Why Us</a></li>
                             <li onClick={() => setHamburgerMenu(!hamburgerMenu)}><a href="#contactUs">Contact Us</a></li>
                             <li className="mobile-login" onClick={login}><a href="#login">Login</a></li>

@@ -1,8 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
+import { useLocation } from 'react-router-dom';
 import { Link, Outlet } from 'react-router-dom';
 import { getBusinessByEmail } from '../api/business';
 
 function SideMenuBusiness({ setHamburgerMenu }) {
+  const currentRoute = useLocation().pathname.toLowerCase();
   const email = sessionStorage.getItem("userEmail");
   const requestBusiness = useQuery(["business"], () => getBusinessByEmail(email),
     {
@@ -24,16 +26,19 @@ function SideMenuBusiness({ setHamburgerMenu }) {
         <nav>
           <ul>
             <li>
-              <Link to="/dashboard" onClick={() => {setHamburgerMenu(false)}}>Dashboard</Link>
+              <Link className={currentRoute.includes("dashboard") ? "tab active" : "tab"} to="/dashboard" onClick={() => { setHamburgerMenu(false) }}>Dashboard</Link>
             </li>
             <li>
-              <Link to="/uploadbusinessproject" onClick={() => {setHamburgerMenu(false)}}>Upload Project</Link>
+              <Link className={currentRoute.includes("uploadbusinessproject") ? "tab active" : "tab"} to="/uploadbusinessproject" onClick={() => { setHamburgerMenu(false) }}>Upload business project</Link>
             </li>
             <li>
-              <Link to="/studentprojectslist" onClick={() => {setHamburgerMenu(false)}}>Student Projects</Link>
+              <Link className={currentRoute.includes("studentprojectslist") ? "tab active" : "tab"} to="/studentprojectslist" onClick={() => { setHamburgerMenu(false) }}>Student Projects</Link>
             </li>
             <li>
-              <Link to="/requeststatus" onClick={() => {setHamburgerMenu(false)}}>Request Status</Link>
+              <Link className={currentRoute.includes("requeststatus") ? "tab active" : "tab"} to="/requeststatus" onClick={() => { setHamburgerMenu(false) }}>Request Status</Link>
+            </li>
+            <li>
+              <Link className={currentRoute.includes("myprojects") ? "tab active" : "tab"} to="/myprojects" onClick={() => { setHamburgerMenu(false) }}>My Projects</Link>
             </li>
           </ul>
         </nav>

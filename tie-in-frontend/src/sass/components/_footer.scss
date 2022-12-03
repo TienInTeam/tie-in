@@ -10,12 +10,13 @@
         a {
             text-decoration: none;
             border-bottom: 1px solid $white;
+            font-family: $body_font;
         }
     }
 }
 
 .site-footer-main {
-    background-color: $blue_card_background;
+    background-color: $darker_blue_card_background;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -49,6 +50,8 @@
             gap: 2rem;
         }
     }
+
+    font-family: $body_font;
 
     @media screen and (max-width: 600px) {
         flex-direction: column;
