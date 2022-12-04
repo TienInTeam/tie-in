@@ -25,9 +25,9 @@ function ApplicationForm({ studentTeam }) {
   });
 
   const navigate = useNavigate();
-  const [firstName, setFirstName] = useState("Andrew");
-  const [lastName, setLastName] = useState("Yip");
-  const [email, setEmail] = useState("andrew@gmail.com");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
   const [contact, setContact] = useState("");
   const [teamId, setTeamId] = useState(null);
   const [individualId, setIndividualId] = useState("");

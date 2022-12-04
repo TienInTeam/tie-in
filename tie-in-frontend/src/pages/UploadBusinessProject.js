@@ -40,12 +40,12 @@ function UploadBusinessProject() {
         }
     });
     const navigate = useNavigate();
-    const [projectName, setProjectName] = useState("EA Sport Tech Anim");
-    const [description, setDescription] = useState("We want to create a web app for animation development of the new FIFA game");
+    const [projectName, setProjectName] = useState("");
+    const [description, setDescription] = useState("");
     const [endDate, setEndDate] = useState(null);
     const [dateIsChecked, setDateIsChecked] = useState(false);
     const [teamSize, setTeamSize] = useState("5");
-    const [teamRequirement, setTeamRequirement] = useState("3 Developers, 2 designer");
+    const [teamRequirement, setTeamRequirement] = useState("");
     const [estimatedBudget, setEstimatedBudget] = useState("");
     const [location, setLocation] = useState("");
     const [locationIsChecked, setLocationIsChecked] = useState(false);
