@@ -1,7 +1,7 @@
 import InputType from "./InputType";
 import { ReactComponent as SearchIcon } from '../assets/icons/actions/actions-search.svg';
 
-function SearchbarBusiness({ onSearch, onLocation, onCategory, onInstituition}) {
+function SearchbarBusiness({ onSearch, onLocation, onCategory, onInstitution}) {
   return (
     <div className="search-bar">
       <div className="text-wrapper">
@@ -23,8 +23,8 @@ function SearchbarBusiness({ onSearch, onLocation, onCategory, onInstituition}) 
             <option value="Commercial">Commercial</option>
             <option value="Marketing">Marketing</option>
           </select>
-          <select id="instituition" aria-label="Choose instituition" onChange={(e) => onInstituition(e.target.value)} defaultValue="">
-            <option value="" disabled>Instituition</option>
+          <select id="institution" aria-label="Choose institution" onChange={(e) => onInstitution(e.target.value)} defaultValue="">
+            <option value="" disabled>Institution</option>
             <option value="Langara">Langara</option>
             <option value="BCIT">BCIT</option>
             <option value="UBC">UBC</option>
