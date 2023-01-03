@@ -4,8 +4,10 @@ import StudentProjectPreview from "../components/StudentProjectPreview";
 import SideMenu from "../components/SideMenu";
 import SearchbarBusiness from "../components/SearchbarBusiness";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function StudentProjectsList() {
+  const navigate = useNavigate();
   const [searchFilter, setSearchFilter] = useState(null);
   const [categoryFilter, setCategoryFilter] = useState(null);
   const [institutionFilter, setInstitutionFilter] = useState(null);
@@ -14,7 +16,7 @@ function StudentProjectsList() {
   const requestStudentProject = useQuery(["studentProject"], () => requestStudentProjects(),
     {
       select: (studentProject) => (studentProject.filter(studentProject => {
-        return searchFilter ? studentProject.name.toLowerCase().includes(searchFilter.toLowerCase()) : true
+        return searchFilter ? studentProject.project_name.toLowerCase().includes(searchFilter.toLowerCase()) : true
       }
       )
         .filter(studentProject => {
@@ -51,8 +53,12 @@ function StudentProjectsList() {
     setLocationFilter(value);
   }
 
-  const onSeeMore = () => {
-    alert("see more is clicked")
+  const onSeeMore = (id) => {
+    navigate('/studentprojectdetails', {
+      state: {
+        id: `${id}`
+      }
+    })
   }
   return (
     <div className="student-projects-list grid-container">
@@ -62,9 +68,9 @@ function StudentProjectsList() {
       <div>
         <SearchbarBusiness onSearch={searchHandle} onCategory={categoryHandle} onInstitution={institutionHandle} onLocation={locationHandle} />
         <div className="business-project-list-body">
-          { searchFilter || categoryFilter || institutionFilter || locationFilter ? requestStudentProject.data.map((student, index) => (
+          { searchFilter || categoryFilter || institutionFilter || locationFilter ? requestStudentProject.data?.map((student, index) => (
             <StudentProjectPreview studentProject={student} key={index} onSeeMore={() => onSeeMore(index)} />
-          )) : requestStudentProject.data.map((student, index) => (
+          )) : requestStudentProject.data?.map((student, index) => (
             <StudentProjectPreview studentProject={student} key={index} onSeeMore={() => onSeeMore(index)} />
           ))
         }

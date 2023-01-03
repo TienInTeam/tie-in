@@ -21,6 +21,7 @@ import ApplyBusinessProject from "./pages/ApplyBusinessProject";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import RequestStatus from "./pages/RequestStatus";
+import StudentProjectDetailsPage from "./pages/StudentProjectDetailsPage";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +45,7 @@ root.render(
                         <Route path='/studentprojectslist' element={<StudentProjectsList/>}/>
                         <Route path='/businessprojectslist' element={<BusinessProjectsList/>}/>
                         <Route path='/businessrequestdetails' element={<BusinessRequestDetails/>}/>
+                        <Route path='/studentprojectdetails' element={<StudentProjectDetailsPage />}/>
                         <Route path='/requeststatus' element={<RequestStatus />} />
                         <Route path='/applybusinessproject' element={<ApplyBusinessProject />} />
                         <Route path='/businessDashboard' element={<BusinessDashboard />} />

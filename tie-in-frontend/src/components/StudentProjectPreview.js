@@ -2,13 +2,13 @@ import React from 'react'
 import Button from './Button';
 
 function StudentProjectPreview({ studentProject, onSeeMore }) {
-  const { logo, name, institution, description, category, location } = studentProject;
+  const { logo_url, project_name, institution, description, category, location } = studentProject;
 
   return (
     <div className="student-project-preview">
       <div className="title-container">
-        <img src={logo} alt="project's logo" />
-        <h2>{name}</h2>
+        <img src={logo_url} alt="project's logo" />
+        <h2>{project_name}</h2>
       </div>
       <div className="body-container">
         <div>
